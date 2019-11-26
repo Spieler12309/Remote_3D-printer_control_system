@@ -1,0 +1,36 @@
+# ignore Quartus II generated folders
+FPGA/*_sim
+FPGA/db
+FPGA/greybox_tmp
+FPGA/incremental_db
+FPGA/simulation
+FPGA/testbench
+FPGA/timing
+
+# ignore Quartus II generated files
+FPGA/*_generation_script*
+FPGA/*_inst.vhd
+FPGA/*.bak
+FPGA/*.cmp
+FPGA/*.done
+FPGA/*.eqn
+FPGA/*.html
+FPGA/*.jdi
+FPGA/*.jpg
+FPGA/*.mif
+FPGA/*.pin
+FPGA/*.pof
+FPGA/*.ptf.*
+FPGA/*.qar
+FPGA/*.qarlog
+FPGA/*.qws
+FPGA/*.rpt
+FPGA/*.smsg
+FPGA/*.sopc_builder
+FPGA/*.summary
+FPGA/*.tcl
+FPGA/*.txt
+FPGA/*~
+FPGA/*example*
+FPGA/*sopc_*
+FPGA/PLLJ_PLLSPE_INFO.txt
