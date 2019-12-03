@@ -1,3 +1,4 @@
+#FPGA
 # ignore Quartus II generated folders
 FPGA/*_sim
 FPGA/db
@@ -34,3 +35,6 @@ FPGA/*~
 FPGA/*example*
 FPGA/*sopc_*
 FPGA/PLLJ_PLLSPE_INFO.txt
+
+
+#HPS
