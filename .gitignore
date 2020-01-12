@@ -9,32 +9,58 @@ FPGA/testbench
 FPGA/timing
 
 # ignore Quartus II generated files
-FPGA/*_generation_script*
-FPGA/*_inst.vhd
-FPGA/*.bak
-FPGA/*.cmp
-FPGA/*.done
-FPGA/*.eqn
-FPGA/*.html
-FPGA/*.jdi
-FPGA/*.jpg
-FPGA/*.mif
-FPGA/*.pin
-FPGA/*.pof
-FPGA/*.ptf.*
-FPGA/*.qar
-FPGA/*.qarlog
-FPGA/*.qws
-FPGA/*.rpt
-FPGA/*.smsg
-FPGA/*.sopc_builder
-FPGA/*.summary
-FPGA/*.tcl
+FPGA/**/*_generation_script*
+FPGA/**/*_inst.vhd
+FPGA/**/*.bak
+FPGA/**/*.cmp
+FPGA/**/*.done
+FPGA/**/*.eqn
+FPGA/**/*.html
+FPGA/**/*.jdi
+FPGA/**/*.jpg
+FPGA/**/*.mif
+FPGA/**/*.pin
+FPGA/**/*.pof
+FPGA/**/*.ptf.*
+FPGA/**/*.qar
+FPGA/**/*.qarlog
+FPGA/**/*.qws
+FPGA/**/*.rpt
+FPGA/**/*.smsg
+FPGA/**/*.sopc_builder
+FPGA/**/*.summary
+FPGA/**/*.tcl
 FPGA/*.txt
-FPGA/*~
-FPGA/*example*
-FPGA/*sopc_*
+FPGA/v*~
+FPGA/**/*example*
+FPGA/**/*sopc_*
 FPGA/PLLJ_PLLSPE_INFO.txt
+FPGA/source/testbench/python/.idea/workspace.xml
 
+
+
+# ignore ModelSim generated files and directories (temp files and so on)
+FPGA/ModelSim/[_@]*
+
+# ignore compilation output of ModelSim
+FPGA/ModelSim/*.mti
+FPGA/ModelSim/*.dat
+FPGA/ModelSim/*.dbs
+FPGA/ModelSim/*.psm
+FPGA/ModelSim/*.bak
+FPGA/ModelSim/*.cmp
+FPGA/ModelSim/*.jpg
+FPGA/ModelSim/*.html
+FPGA/ModelSim/*.bsf
+
+# ignore simulation output of ModelSim
+FPGA/ModelSim/wlf*
+FPGA/ModelSim/*.wlf
+FPGA/ModelSim/*.vstf
+FPGA/ModelSim/*.ucdb
+FPGA/ModelSim/cov*/
+FPGA/ModelSim/transcript*
+FPGA/ModelSim/sc_dpiheader.h
+FPGA/ModelSim/vsim.dbg
 
 #HPS
