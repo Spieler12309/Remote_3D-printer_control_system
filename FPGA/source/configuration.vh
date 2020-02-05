@@ -1,6 +1,8 @@
 `ifndef CONFIG_VH
 `define CONFIG_VH
 
+`define	MAIN_FREQ	'd50000000
+
 //Работа с числами с фиксированной точностью
 //Точность чисел
 `define	FLOAT_NUMBER_FLOAT_PART				'd20

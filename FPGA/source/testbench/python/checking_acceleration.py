@@ -12,7 +12,7 @@ k = 100 #микрошагов/мм
 
 print("v0 = {}, vk = {}, a = {}".format(v0, vk, a))
 
-N = 2 #Количество микрошагов
+N = 200 #Количество микрошагов
 
 #Переведем скорость из мм/с в микрошаг/с
 v0m = v0 * k
@@ -23,17 +23,19 @@ print("v0m = {}, vkm = {}, am = {}".format(v0m, vkm, am))
 t0 = int(f / v0m)
 tna = int(f / vkm)
 t = (vk - v0) / a #(f / (a * k)) * ((t0 - tna) / (t0 * tna))
-delta = int(((tna ** 2) - (t0 ** 2)) / (2 * t * f + tna - t0))
+delta = int(((t0 ** 2) - (tna ** 2)) / (2 * t * f + tna - t0))
 if (delta == 0):
-   delta = -1;
-if (delta > 0):
+   delta = 1;
+if (delta < 0):
     delta = -delta
 t0 = 150
 tna = 23
-delta = -7
+delta = 7
 print("t0 = {}, tna = {}, delta = {}".format(t0, tna, delta))
 
-nn = int((tna - t0) / delta) + (((tna - t0) % delta) != 0) * 1
+nn = int((t0 - tna) / delta)
+tna = t0 - delta * nn
+print("t0 = {}, tna = {}, delta = {}".format(t0, tna, delta))
 print("N = {}, nn = {}".format(N, nn))
 
 def impulses_to_seconds(L):
@@ -44,14 +46,14 @@ def impulses_to_seconds(L):
 
 def calc_time(N):
     if (N > 2 * nn):
-        t1 = t0 * nn + int((nn * (delta * (nn - 1)) / 2))
+        t1 = t0 * nn - int((nn * (delta * (nn - 1)) / 2))
         t2 = tna * (N - 2 * nn)
         t3 = t1
         tt = t1 + t2 + t3
     else:
         a = int(N / 2)
-        t1 = t0 * a + int((a * (delta * (a - 1)) / 2))
-        t2 = (t0 + delta * a) if ((N % 2) == 1) else 0
+        t1 = t0 * a - int((a * (delta * (a - 1)) / 2))
+        t2 = (t0 - delta * a) if ((N % 2) == 1) else 0
         t3 = t1
         tt = t1 + t2 + t3
     return t1, t2, t3, tt
@@ -85,7 +87,7 @@ def test_acc():
 def acceleration_03_delta(N):
     #print("nn = " + str(nn))
     t = 0
-    dt = t0 - delta
+    dt = t0 + delta
     x = []
     yn = []
     yv = []
@@ -94,16 +96,16 @@ def acceleration_03_delta(N):
         if (i < (int(N / 2) + N % 2)):
             #print("acc {} {} {} {}".format(i, dt + delta, tna, k))
             if (dt != tna):
-                if (abs(delta) < abs(tna - dt)):
+                if (delta < dt - tna):
                     g = delta
                 else:
-                    g = tna - dt
-            dt = max(dt + delta, tna)
+                    g = dt - tna
+            dt = max(dt - delta, tna)
             #print(g)
         else:
             if (i >= max(N - nn, int(N / 2) + 1)): #косяк
                 #print("dec {} {} {} {}".format(i, dt - delta, tna, k))
-                dt = min(dt - g, t0)
+                dt = min(dt + g, t0)
                 g = delta
             else:
                 pass#print("const {} {} {} {}".format(i, dt, tna, k))

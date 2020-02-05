@@ -1,0 +1,17 @@
+gcode/1_Right_Wing_FIXED.gcode                    : dmax =         2441603.
+gcode/2_Left_Wing_FIXED.gcode                     : dmax =         2441477.
+gcode/3_Right-_Claw.gcode                         : dmax =         2441468.
+gcode/4_Left-Claw.gcode                           : dmax =         2441458.
+gcode/5_BodyFIXED.gcode                           : dmax =         2441476.
+gcode/6_Tail.gcode                                : dmax =         2441660.
+gcode/Body.gcode                                  : dmax =         2464238.
+gcode/Box.gcode                                   : dmax =         2441779.
+gcode/Box_1.gcode                                 : dmax =         2441706.
+gcode/Box_2.gcode                                 : dmax =         2441854.
+gcode/Box_3.gcode                                 : dmax =         2441854.
+gcode/Box_4.gcode                                 : dmax =         2441706.
+gcode/Box_5.gcode                                 : dmax =         2441922.
+gcode/Box_6.gcode                                 : dmax =         2441779.
+gcode/ChargerCover.gcode                          : dmax =         2441563.
+gcode/Cover.gcode                                 : dmax =         2443656.
+gcode/desk_organiser_in_front_of_pc.gcode         : dmax =         2444858.

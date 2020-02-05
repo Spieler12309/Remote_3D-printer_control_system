@@ -1,4 +1,4 @@
-`include "configuration.vh"
+`include "../configuration.vh"
 
 module fixed_point_number(	/*input		wire	[`FLOAT_NUMBER_LENGHT - 1:0]	data_a,
 									input		wire	[`FLOAT_NUMBER_LENGHT - 1:0]	data_b,

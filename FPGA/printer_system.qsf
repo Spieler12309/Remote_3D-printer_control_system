@@ -4,7 +4,7 @@
 
 set_global_assignment -name FAMILY "Cyclone V"
 set_global_assignment -name DEVICE 5CSEBA6U23I7
-set_global_assignment -name TOP_LEVEL_ENTITY jas_constrol
+set_global_assignment -name TOP_LEVEL_ENTITY calc_time
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "16.0.2"
 set_global_assignment -name LAST_QUARTUS_VERSION "18.1.0 Lite Edition"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:27:10 DECEMBER 01,2019"
@@ -206,15 +206,6 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name VERILOG_FILE source/testbench/testbench_jas_control.v
-set_global_assignment -name VERILOG_FILE "source/speed-jerk-acc/jas_constrol.v"
-set_global_assignment -name VERILOG_FILE "source/speed-jerk-acc/minSteps.v"
-set_global_assignment -name VERILOG_FILE "source/speed-jerk-acc/jerk_acc_speed.v"
-set_global_assignment -name VERILOG_FILE source/floatALU/fixed_point_number.v
-set_global_assignment -name VERILOG_INCLUDE_FILE source/configuration.vh
-set_global_assignment -name VERILOG_FILE printer_system.v
-set_global_assignment -name QIP_FILE source/floatALU/divider.qip
-set_global_assignment -name QIP_FILE source/floatALU/mult.qip
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -484,3 +475,11 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[33]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[34]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to GPIO_1[35]
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/speed_to_timing.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/jerk_acc_speed.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/jas_constrol.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/calc_time.sv"
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/calc_new_parameters.sv"
+set_global_assignment -name VERILOG_INCLUDE_FILE source/configuration.vh
+set_global_assignment -name VERILOG_FILE printer_system.v
+set_global_assignment -name SYSTEMVERILOG_FILE "source/speed-jerk-acc/find_max_timing.sv"
