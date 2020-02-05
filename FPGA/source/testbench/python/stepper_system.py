@@ -395,8 +395,8 @@ def check_gcode(fileName):
     dmax = 0
 
 
-    fll = open(fileName[6:] + ".txt", "w")
-    fll.close
+    #fll = open(fileName[6:] + ".txt", "w")
+    #fll.close
 
     for v0 in tqdm.tqdm(range(11, 80, 15)):
         for vk in tqdm.tqdm(range(v0 + 2, 120, 30)):

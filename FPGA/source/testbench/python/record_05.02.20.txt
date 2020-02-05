@@ -4,3 +4,4 @@ gcode/3_Right-_Claw.gcode                         : dmax =         2422650.
 gcode/4_Left-Claw.gcode                           : dmax =         2422668.
 gcode/5_BodyFIXED.gcode                           : dmax =         2423712.
 gcode/6_Tail.gcode                                : dmax =         2424576.
+gcode/Body.gcode                                  : dmax =         2437474.
