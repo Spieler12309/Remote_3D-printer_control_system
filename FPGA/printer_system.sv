@@ -105,6 +105,51 @@ module printer_system(
 //=======================================================
 //  REG/WIRE declarations
 //=======================================================
+//Декларация основных сигнальных кабелей
+wire	[0:2]		heaters;
+wire	[2:0]		motors	[0:4]; //{enable, step, dir}
+wire	[0:4]		motors_invertion;
+wire	[0:5]		endstops;
+wire	[0:5]		endstops_invertion;
+wire				bar_end;
+wire				bar_end_invertion;
+wire	[1:0]		uart; //RX, TX
+wire	[1:0]		i2c; //SDA, SCL
+wire	[11:0]	temp		[0:2];
+wire	[11:0]	analog	[0:7];
+
+//Модуль для чтения аналоговых сигналов
+adc_control u0 (
+	.CLOCK    (FPGA_CLK1_50),    //                clk.clk
+	.ADC_SCLK (ADC_SCK), // external_interface.SCLK
+	.ADC_CS_N (ADC_CONVST), //                   .CS_N
+	.ADC_DOUT (ADC_SDO), //                   .DOUT
+	.ADC_DIN  (ADC_SDI),  //                   .DIN
+	.CH0      (analog[0]),      //           readings.CH0
+	.CH1      (analog[1]),      //                   .CH1
+	.CH2      (analog[2]),      //                   .CH2
+	.CH3      (analog[3]),      //                   .CH3
+	.CH4      (analog[4]),      //                   .CH4
+	.CH5      (analog[5]),      //                   .CH5
+	.CH6      (analog[6]),      //                   .CH6
+	.CH7      (analog[7]),      //                   .CH7
+	.RESET    (!KEY[0])     //              reset.reset
+);
+
+//Связь сигнальных кабелей с входными портами
+assign heaters 	= {GPIO_1[31], GPIO_1[33], GPIO_1[35]};
+assign motors[0]	= {GPIO_0[1], 	GPIO_0[3], 	GPIO_0[5]}; //Motor X
+assign motors[1]	= {GPIO_0[11], GPIO_0[13], GPIO_0[15]}; //Motor Y
+assign motors[2]	= {GPIO_0[17], GPIO_0[19], GPIO_0[21]}; //Motor Z
+assign motors[3]	= {GPIO_1[19], GPIO_1[21], GPIO_1[23]}; //Motor E0
+assign motors[4]	= {GPIO_1[25], GPIO_1[27], GPIO_1[29]}; //Motor E1
+assign endstops 	= {GPIO_1[11], GPIO_1[9], 	GPIO_1[7], GPIO_1[5], GPIO_1[3], GPIO_1[1]};
+assign bar_end 	= GPIO_1[13];
+assign uart			= {GPIO_0[35], GPIO_0[33]};
+assign i2c			= {GPIO_0[29], GPIO_0[31]};
+assign temp[0] 	= analog[1];
+assign temp[1] 	= analog[3];
+assign temp[2] 	= analog[5];
 
 
 

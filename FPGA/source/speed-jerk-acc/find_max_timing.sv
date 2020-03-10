@@ -2,15 +2,17 @@ module find_max_timing(
 	input		wire				clk,
 	input		wire				reset,
 	input		wire				start,
-	input		wire	[31:0]	params_a [0:4],
-	input		wire	[31:0]	params_b [0:4],
-	input		wire	[31:0]	params_z [0:4],
-	input		wire	[31:0]	params_e [0:4],
+	input		wire	[31:0]	params_x 	[0:4],
+	input		wire	[31:0]	params_y 	[0:4],
+	input		wire	[31:0]	params_z 	[0:4],
+	input		wire	[31:0]	params_e0 	[0:4],
+	input		wire	[31:0]	params_e1 	[0:4],
 	
-	input		wire	[63:0]	timing_a	[0:3],
-	input		wire	[63:0]	timing_b	[0:3],
-	input		wire	[63:0]	timing_z	[0:3],
-	input		wire	[63:0]	timing_e	[0:3],
+	input		wire	[63:0]	timing_x		[0:3],
+	input		wire	[63:0]	timing_y		[0:3],
+	input		wire	[63:0]	timing_z		[0:3],
+	input		wire	[63:0]	timing_e0	[0:3],
+	input		wire	[63:0]	timing_e1	[0:3],
 
 
 	output	wire	[63:0]	max_timing 	[0:3],
@@ -30,29 +32,37 @@ begin
 	end
 	else
 	begin
-		if (timing_a[3] > timing_b[3] && timing_a[3] > timing_z[3] && timing_a[3] > timing_e[3])
+		if (timing_x[3] > timing_y[3] && timing_x[3] > timing_z[3] && timing_x[3] > timing_e0[3] && timing_x[3] > timing_e1[3])
 		begin
-			max_params = params_a;
-			max_timing = timing_a;
+			max_params <= params_x;
+			max_timing <= timing_x;
 		end
 		else
 		begin
-			if (timing_b[3] > timing_a[3] && timing_b[3] > timing_z[3] && timing_b[3] > timing_e[3])
+			if (timing_y[3] > timing_x[3] && timing_y[3] > timing_z[3] && timing_y[3] > timing_e0[3] && timing_y[3] > timing_e1[3])
 			begin
-				max_params = params_b;
-				max_timing = timing_b;
+				max_params <= params_y;
+				max_timing <= timing_y;
 			end
 			else
 			begin
-				if (timing_z[3] > timing_b[3] && timing_z[3] > timing_a[3] && timing_z[3] > timing_e[3])
+				if (timing_z[3] > timing_x[3] && timing_z[3] > timing_y[3] && timing_z[3] > timing_e0[3] && timing_z[3] > timing_e1[3])
 				begin
-					max_params = params_z;
-					max_timing = timing_z;
+					max_params <= params_z;
+					max_timing <= timing_z;
 				end
 				else
 				begin
-					max_params = params_e;
-					max_timing = timing_e;
+					if (timing_e0[3] > timing_x[3] && timing_e0[3] > timing_y[3] && timing_e0[3] > timing_z[3] && timing_e0[3] > timing_e1[3])
+					begin
+						max_params <= params_e0;
+						max_timing <= timing_e0;
+					end
+					else
+					begin
+						max_params <= params_e1;
+						max_timing <= timing_e1;
+					end
 				end
 			end
 		end

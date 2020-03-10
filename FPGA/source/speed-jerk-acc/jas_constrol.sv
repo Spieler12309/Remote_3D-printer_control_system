@@ -3,8 +3,8 @@
 module jas_constrol(
 	input		wire				clk,
 	input		wire				reset,
-	input		wire	[31:0]	params [0:4],
 	input		wire				start,	//Сигнал начала ускорения
+	input		wire	[31:0]	params [0:4],	
 
 	output	reg				finish,	//Сигнал окончания движения
 	output	reg				step);	//Сигнал двигателя

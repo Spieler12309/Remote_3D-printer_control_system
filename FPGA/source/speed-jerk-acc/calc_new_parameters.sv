@@ -1,13 +1,14 @@
 module calc_new_parameters(
 	input		wire				clk,
 	input		wire				reset,
+	input		wire				start,	//Разрешение для вычисления
 	input		wire	[31:0]	max_params 	[0:4],
 	input		wire	[31:0]	params 		[0:4],
 	input		wire	[63:0]	max_timing 	[0:3],
-	input		wire				start,	//Сигнал начала ускорения
+	
 
 	output	reg	[31:0]	new_par		[0:4],
-	output	reg				finish	//Сигнал окончания движения
+	output	reg				finish
 	);
 
 reg	[63:0]	t1 = 0;
