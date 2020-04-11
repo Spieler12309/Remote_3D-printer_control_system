@@ -4,6 +4,7 @@ module speed_to_timing(
 	input		wire				clk,
 	input		wire				reset,
 	input		wire				start,
+	input		wire	signed	[31:0]	num,
 	input		wire	[31:0]	speed, //микрошагов/сек
 	//Ускорение принтера
 	input		wire	[31:0]	acceleration, //микрошагов/сек^2
@@ -28,14 +29,14 @@ begin
 		params[1] <= 'd0;
 		params[2] <= 'd0;
 		params[3] <= 'd0;
-		params[4] <= 'd0;	
+		params[4] <= 'd0;
 		finish	 <= 'b0;
 	end
 	else
 	begin
 		if (start)
 		begin
-			params[0] = 'd0;
+			params[0] = num < 'd0 ? -num : num;
 			params[2] = `MAIN_FREQ / jerk;
 			params[3] = `MAIN_FREQ / speed;
 			t = (`MAIN_FREQ / acceleration) * (params[2] - params[3]) / (params[2] * params[3]);

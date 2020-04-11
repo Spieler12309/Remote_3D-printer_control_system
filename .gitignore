@@ -7,6 +7,12 @@ FPGA/incremental_db
 FPGA/simulation
 FPGA/testbench
 FPGA/timing
+FPGA/**/.qsys_edit
+FPGA/printer_system.asm.rpt.htm_files
+FPGA/printer_system.fit.rpt.htm_files
+FPGA/printer_system.flow.rpt.htm_files
+FPGA/printer_system.map.rpt.htm_files
+FPGA/printer_system.sta.rpt.htm_files
 
 # ignore Quartus II generated files
 FPGA/**/*_generation_script*

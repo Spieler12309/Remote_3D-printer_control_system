@@ -13,7 +13,7 @@
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "7";
          type = "int";
       }
       datum sopceditor_expanded
@@ -35,72 +35,7 @@
          type = "String";
       }
    }
-   element button_pio
-   {
-      datum _sortIndex
-      {
-         value = "7";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element button_pio.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "12288";
-         type = "String";
-      }
-   }
    element clk_0
-   {
-      datum _sortIndex
-      {
-         value = "11";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "1";
-         type = "boolean";
-      }
-   }
-   element configuration_1
-   {
-      datum _sortIndex
-      {
-         value = "32";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element configuration_1.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "16448";
-         type = "String";
-      }
-   }
-   element dipsw_pio
    {
       datum _sortIndex
       {
@@ -113,32 +48,11 @@
          type = "boolean";
       }
    }
-   element dipsw_pio.external_connection
-   {
-      datum _tags
-      {
-         value = "";
-         type = "String";
-      }
-   }
-   element dipsw_pio.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "12352";
-         type = "String";
-      }
-   }
-   element endstops
+   element command_dt
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "23";
          type = "int";
       }
       datum sopceditor_expanded
@@ -147,16 +61,171 @@
          type = "boolean";
       }
    }
-   element endstops.s1
+   element command_dt.s1
    {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
       datum baseAddress
       {
-         value = "20992";
+         value = "20704";
+         type = "String";
+      }
+   }
+   element command_e0
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_e0.s1
+   {
+      datum baseAddress
+      {
+         value = "20576";
+         type = "String";
+      }
+   }
+   element command_e1
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_e1.s1
+   {
+      datum baseAddress
+      {
+         value = "20608";
+         type = "String";
+      }
+   }
+   element command_f
+   {
+      datum _sortIndex
+      {
+         value = "21";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_f.s1
+   {
+      datum baseAddress
+      {
+         value = "20640";
+         type = "String";
+      }
+   }
+   element command_t
+   {
+      datum _sortIndex
+      {
+         value = "22";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_t.s1
+   {
+      datum baseAddress
+      {
+         value = "20672";
+         type = "String";
+      }
+   }
+   element command_type
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_x
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_x.s1
+   {
+      datum baseAddress
+      {
+         value = "20480";
+         type = "String";
+      }
+   }
+   element command_y
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_y.s1
+   {
+      datum baseAddress
+      {
+         value = "20512";
+         type = "String";
+      }
+   }
+   element command_z
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element command_z.s1
+   {
+      datum baseAddress
+      {
+         value = "20544";
          type = "String";
       }
    }
@@ -173,37 +242,11 @@
          type = "boolean";
       }
    }
-   element fans
-   {
-      datum _sortIndex
-      {
-         value = "16";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element fans.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "16544";
-         type = "String";
-      }
-   }
    element flags_in
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "12";
          type = "int";
       }
       datum sopceditor_expanded
@@ -229,7 +272,7 @@
    {
       datum _sortIndex
       {
-         value = "31";
+         value = "14";
          type = "int";
       }
       datum sopceditor_expanded
@@ -324,32 +367,6 @@
          type = "String";
       }
    }
-   element led_pio
-   {
-      datum _sortIndex
-      {
-         value = "9";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element led_pio.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "12320";
-         type = "String";
-      }
-   }
    element mm_bridge_0
    {
       datum _sortIndex
@@ -375,7 +392,7 @@
    {
       datum _sortIndex
       {
-         value = "26";
+         value = "13";
          type = "int";
       }
       datum sopceditor_expanded
@@ -384,11 +401,11 @@
          type = "boolean";
       }
    }
-   element stepper_1_speed
+   element settings_acceleration_e0
    {
       datum _sortIndex
       {
-         value = "18";
+         value = "32";
          type = "int";
       }
       datum sopceditor_expanded
@@ -397,24 +414,19 @@
          type = "boolean";
       }
    }
-   element stepper_1_speed.s1
+   element settings_acceleration_e0.s1
    {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
       datum baseAddress
       {
-         value = "20480";
+         value = "20992";
          type = "String";
       }
    }
-   element stepper_1_steps_in
+   element settings_acceleration_e1
    {
       datum _sortIndex
       {
-         value = "19";
+         value = "33";
          type = "int";
       }
       datum sopceditor_expanded
@@ -423,176 +435,15 @@
          type = "boolean";
       }
    }
-   element stepper_1_steps_in.s1
+   element settings_acceleration_e1.s1
    {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
       datum baseAddress
       {
-         value = "20512";
+         value = "21024";
          type = "String";
       }
    }
-   element stepper_1_steps_out
-   {
-      datum _sortIndex
-      {
-         value = "27";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_1_steps_out.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20736";
-         type = "String";
-      }
-   }
-   element stepper_2_speed
-   {
-      datum _sortIndex
-      {
-         value = "20";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_2_speed.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20544";
-         type = "String";
-      }
-   }
-   element stepper_2_steps_in
-   {
-      datum _sortIndex
-      {
-         value = "21";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_2_steps_in.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20576";
-         type = "String";
-      }
-   }
-   element stepper_2_steps_out
-   {
-      datum _sortIndex
-      {
-         value = "28";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_2_steps_out.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20768";
-         type = "String";
-      }
-   }
-   element stepper_3_speed
-   {
-      datum _sortIndex
-      {
-         value = "22";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_3_speed.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20608";
-         type = "String";
-      }
-   }
-   element stepper_3_steps_in
-   {
-      datum _sortIndex
-      {
-         value = "23";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_3_steps_in.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20640";
-         type = "String";
-      }
-   }
-   element stepper_3_steps_out
+   element settings_acceleration_x
    {
       datum _sortIndex
       {
@@ -605,72 +456,15 @@
          type = "boolean";
       }
    }
-   element stepper_3_steps_out.s1
+   element settings_acceleration_x.s1
    {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
       datum baseAddress
       {
-         value = "20800";
+         value = "20896";
          type = "String";
       }
    }
-   element stepper_4_speed
-   {
-      datum _sortIndex
-      {
-         value = "24";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_4_speed.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20672";
-         type = "String";
-      }
-   }
-   element stepper_4_steps_in
-   {
-      datum _sortIndex
-      {
-         value = "25";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element stepper_4_steps_in.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "20704";
-         type = "String";
-      }
-   }
-   element stepper_4_steps_out
+   element settings_acceleration_y
    {
       datum _sortIndex
       {
@@ -683,16 +477,242 @@
          type = "boolean";
       }
    }
-   element stepper_4_steps_out.s1
+   element settings_acceleration_y.s1
    {
-      datum _lockedAddress
+      datum baseAddress
       {
-         value = "1";
+         value = "20928";
+         type = "String";
+      }
+   }
+   element settings_acceleration_z
+   {
+      datum _sortIndex
+      {
+         value = "31";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
          type = "boolean";
       }
+   }
+   element settings_acceleration_z.s1
+   {
+      datum baseAddress
+      {
+         value = "20960";
+         type = "String";
+      }
+   }
+   element settings_jerk_e0
+   {
+      datum _sortIndex
+      {
+         value = "37";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_jerk_e0.s1
+   {
+      datum baseAddress
+      {
+         value = "21152";
+         type = "String";
+      }
+   }
+   element settings_jerk_e1
+   {
+      datum _sortIndex
+      {
+         value = "38";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_jerk_e1.s1
+   {
+      datum baseAddress
+      {
+         value = "21184";
+         type = "String";
+      }
+   }
+   element settings_jerk_x
+   {
+      datum _sortIndex
+      {
+         value = "34";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_jerk_x.s1
+   {
+      datum baseAddress
+      {
+         value = "21056";
+         type = "String";
+      }
+   }
+   element settings_jerk_y
+   {
+      datum _sortIndex
+      {
+         value = "35";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_jerk_y.s1
+   {
+      datum baseAddress
+      {
+         value = "21088";
+         type = "String";
+      }
+   }
+   element settings_jerk_z
+   {
+      datum _sortIndex
+      {
+         value = "36";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_jerk_z.s1
+   {
+      datum baseAddress
+      {
+         value = "21120";
+         type = "String";
+      }
+   }
+   element settings_max_speed_e0
+   {
+      datum _sortIndex
+      {
+         value = "27";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_max_speed_e0.s1
+   {
       datum baseAddress
       {
          value = "20832";
+         type = "String";
+      }
+   }
+   element settings_max_speed_e1
+   {
+      datum _sortIndex
+      {
+         value = "28";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_max_speed_e1.s1
+   {
+      datum baseAddress
+      {
+         value = "20864";
+         type = "String";
+      }
+   }
+   element settings_max_speed_x
+   {
+      datum _sortIndex
+      {
+         value = "24";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_max_speed_x.s1
+   {
+      datum baseAddress
+      {
+         value = "20736";
+         type = "String";
+      }
+   }
+   element settings_max_speed_y
+   {
+      datum _sortIndex
+      {
+         value = "25";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_max_speed_y.s1
+   {
+      datum baseAddress
+      {
+         value = "20768";
+         type = "String";
+      }
+   }
+   element settings_max_speed_z
+   {
+      datum _sortIndex
+      {
+         value = "26";
+         type = "int";
+      }
+      datum sopceditor_expanded
+      {
+         value = "0";
+         type = "boolean";
+      }
+   }
+   element settings_max_speed_z.s1
+   {
+      datum baseAddress
+      {
+         value = "20800";
          type = "String";
       }
    }
@@ -722,11 +742,11 @@
          type = "String";
       }
    }
-   element temp0
+   element temp_0
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "9";
          type = "int";
       }
       datum sopceditor_expanded
@@ -735,59 +755,7 @@
          type = "boolean";
       }
    }
-   element temp0.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "24608";
-         type = "String";
-      }
-   }
-   element temp1
-   {
-      datum _sortIndex
-      {
-         value = "15";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element temp1.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "24640";
-         type = "String";
-      }
-   }
-   element temp_bed
-   {
-      datum _sortIndex
-      {
-         value = "13";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element temp_bed.s1
+   element temp_0.s1
    {
       datum _lockedAddress
       {
@@ -800,11 +768,11 @@
          type = "String";
       }
    }
-   element temp_bed_bottom
+   element temp_1
    {
       datum _sortIndex
       {
-         value = "33";
+         value = "10";
          type = "int";
       }
       datum sopceditor_expanded
@@ -813,7 +781,7 @@
          type = "boolean";
       }
    }
-   element temp_bed_bottom.s1
+   element temp_1.s1
    {
       datum _lockedAddress
       {
@@ -822,86 +790,21 @@
       }
       datum baseAddress
       {
-         value = "24672";
+         value = "24608";
          type = "String";
       }
    }
-   element temp_bed_upper
+   element temp_2
    {
       datum _sortIndex
       {
-         value = "34";
+         value = "11";
          type = "int";
       }
       datum sopceditor_expanded
       {
          value = "0";
          type = "boolean";
-      }
-   }
-   element temp_bed_upper.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "24704";
-         type = "String";
-      }
-   }
-   element temp_e1_bottom
-   {
-      datum _sortIndex
-      {
-         value = "35";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element temp_e1_bottom.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "24736";
-         type = "String";
-      }
-   }
-   element temp_e1_upper
-   {
-      datum _sortIndex
-      {
-         value = "36";
-         type = "int";
-      }
-      datum sopceditor_expanded
-      {
-         value = "0";
-         type = "boolean";
-      }
-   }
-   element temp_e1_upper.s1
-   {
-      datum _lockedAddress
-      {
-         value = "1";
-         type = "boolean";
-      }
-      datum baseAddress
-      {
-         value = "24768";
-         type = "String";
       }
    }
 }
@@ -918,37 +821,57 @@
  <parameter name="hideFromIPCatalog" value="false" />
  <parameter name="lockedInterfaceDefinition" value="" />
  <parameter name="maxAdditionalLatency" value="1" />
- <parameter name="projectName" value="printer.qpf" />
+ <parameter name="projectName" value="" />
  <parameter name="sopcBorderPoints" value="false" />
  <parameter name="systemHash" value="0" />
  <parameter name="testBenchDutName" value="" />
  <parameter name="timeStamp" value="0" />
  <parameter name="useTestBenchNamingPattern" value="false" />
  <instanceScript></instanceScript>
- <interface
-   name="button_pio_external_connection"
-   internal="button_pio.external_connection"
-   type="conduit"
-   dir="end" />
  <interface name="clk" internal="clk_0.clk_in" type="clock" dir="end" />
  <interface
-   name="configuration_1_external_connection"
-   internal="configuration_1.external_connection"
+   name="command_dt_external_connection"
+   internal="command_dt.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="dipsw_pio_external_connection"
-   internal="dipsw_pio.external_connection"
+   name="command_e0_external_connection"
+   internal="command_e0.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="endstops_external_connection"
-   internal="endstops.external_connection"
+   name="command_e1_external_connection"
+   internal="command_e1.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="fans_external_connection"
-   internal="fans.external_connection"
+   name="command_f_external_connection"
+   internal="command_f.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="command_t_external_connection"
+   internal="command_t.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="command_type_external_connection"
+   internal="command_type.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="command_x_external_connection"
+   internal="command_x.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="command_y_external_connection"
+   internal="command_y.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="command_z_external_connection"
+   internal="command_z.external_connection"
    type="conduit"
    dir="end" />
  <interface
@@ -989,11 +912,6 @@
  <interface name="hps_0_h2f_user0_clock" internal="hps_0.h2f_user0_clock" />
  <interface name="hps_0_hps_io" internal="hps_0.hps_io" type="conduit" dir="end" />
  <interface name="hps_0_uart1" internal="hps_0.uart1" type="conduit" dir="end" />
- <interface
-   name="led_pio_external_connection"
-   internal="led_pio.external_connection"
-   type="conduit"
-   dir="end" />
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface
    name="pll_sys_outclk100mhz"
@@ -1017,98 +935,93 @@
    dir="start" />
  <interface name="reset" internal="clk_0.clk_in_reset" type="reset" dir="end" />
  <interface
-   name="stepper_1_speed_external_connection"
-   internal="stepper_1_speed.external_connection"
+   name="settings_acceleration_e0_external_connection"
+   internal="settings_acceleration_e0.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_1_steps_in_external_connection"
-   internal="stepper_1_steps_in.external_connection"
+   name="settings_acceleration_e1_external_connection"
+   internal="settings_acceleration_e1.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_1_steps_out_external_connection"
-   internal="stepper_1_steps_out.external_connection"
+   name="settings_acceleration_x_external_connection"
+   internal="settings_acceleration_x.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_2_speed_external_connection"
-   internal="stepper_2_speed.external_connection"
+   name="settings_acceleration_y_external_connection"
+   internal="settings_acceleration_y.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_2_steps_in_external_connection"
-   internal="stepper_2_steps_in.external_connection"
+   name="settings_acceleration_z_external_connection"
+   internal="settings_acceleration_z.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_2_steps_out_external_connection"
-   internal="stepper_2_steps_out.external_connection"
+   name="settings_jerk_e0_external_connection"
+   internal="settings_jerk_e0.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_3_speed_external_connection"
-   internal="stepper_3_speed.external_connection"
+   name="settings_jerk_e1_external_connection"
+   internal="settings_jerk_e1.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_3_steps_in_external_connection"
-   internal="stepper_3_steps_in.external_connection"
+   name="settings_jerk_x_external_connection"
+   internal="settings_jerk_x.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_3_steps_out_external_connection"
-   internal="stepper_3_steps_out.external_connection"
+   name="settings_jerk_y_external_connection"
+   internal="settings_jerk_y.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_4_speed_external_connection"
-   internal="stepper_4_speed.external_connection"
+   name="settings_jerk_z_external_connection"
+   internal="settings_jerk_z.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_4_steps_in_external_connection"
-   internal="stepper_4_steps_in.external_connection"
+   name="settings_max_speed_e0_external_connection"
+   internal="settings_max_speed_e0.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="stepper_4_steps_out_external_connection"
-   internal="stepper_4_steps_out.external_connection"
+   name="settings_max_speed_e1_external_connection"
+   internal="settings_max_speed_e1.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp0_external_connection"
-   internal="temp0.external_connection"
+   name="settings_max_speed_x_external_connection"
+   internal="settings_max_speed_x.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp1_external_connection"
-   internal="temp1.external_connection"
+   name="settings_max_speed_y_external_connection"
+   internal="settings_max_speed_y.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp_bed_bottom_external_connection"
-   internal="temp_bed_bottom.external_connection"
+   name="settings_max_speed_z_external_connection"
+   internal="settings_max_speed_z.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp_bed_external_connection"
-   internal="temp_bed.external_connection"
+   name="temp_0_external_connection"
+   internal="temp_0.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp_bed_upper_external_connection"
-   internal="temp_bed_upper.external_connection"
+   name="temp_1_external_connection"
+   internal="temp_1.external_connection"
    type="conduit"
    dir="end" />
  <interface
-   name="temp_e1_bottom_external_connection"
-   internal="temp_e1_bottom.external_connection"
-   type="conduit"
-   dir="end" />
- <interface
-   name="temp_e1_upper_external_connection"
-   internal="temp_e1_upper.external_connection"
+   name="temp_2_external_connection"
+   internal="temp_2.external_connection"
    type="conduit"
    dir="end" />
  <module
@@ -1120,28 +1033,84 @@
   <parameter name="INTR_TYPE" value="0" />
   <parameter name="IRQ_PORT_CNT" value="3" />
  </module>
- <module name="button_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="true" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="true" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="FALLING" />
-  <parameter name="generateIRQ" value="true" />
-  <parameter name="irqType" value="EDGE" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="2" />
- </module>
  <module name="clk_0" kind="clock_source" version="18.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
+ <module name="command_dt" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_e0" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_e1" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_f" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_t" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
  <module
-   name="configuration_1"
+   name="command_type"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -1158,33 +1127,47 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="32" />
  </module>
- <module name="dipsw_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="true" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="true" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="ANY" />
-  <parameter name="generateIRQ" value="true" />
-  <parameter name="irqType" value="EDGE" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="4" />
- </module>
- <module name="endstops" kind="altera_avalon_pio" version="18.1" enabled="1">
+ <module name="command_x" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
   <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
+  <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="6" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_y" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module name="command_z" kind="altera_avalon_pio" version="18.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
  </module>
  <module
    name="f2sdram_only_master"
@@ -1199,20 +1182,6 @@
   <parameter name="FIFO_DEPTHS" value="2" />
   <parameter name="PLI_PORT" value="50000" />
   <parameter name="USE_PLI" value="0" />
- </module>
- <module name="fans" kind="altera_avalon_pio" version="18.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="2" />
  </module>
  <module name="flags_in" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -1819,20 +1788,6 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
  </module>
- <module name="led_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="127" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="7" />
- </module>
  <module
    name="mm_bridge_0"
    kind="altera_avalon_mm_bridge"
@@ -2055,7 +2010,7 @@
   <parameter name="gui_use_locked" value="true" />
  </module>
  <module
-   name="stepper_1_speed"
+   name="settings_acceleration_e0"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2073,25 +2028,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_1_steps_in"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="32" />
- </module>
- <module
-   name="stepper_1_steps_out"
+   name="settings_acceleration_e1"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2109,7 +2046,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_2_speed"
+   name="settings_acceleration_x"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2127,25 +2064,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_2_steps_in"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="32" />
- </module>
- <module
-   name="stepper_2_steps_out"
+   name="settings_acceleration_y"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2163,7 +2082,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_3_speed"
+   name="settings_acceleration_z"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2181,25 +2100,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_3_steps_in"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="32" />
- </module>
- <module
-   name="stepper_3_steps_out"
+   name="settings_jerk_e0"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2217,7 +2118,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_4_speed"
+   name="settings_jerk_e1"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2235,7 +2136,7 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_4_steps_in"
+   name="settings_jerk_x"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2243,7 +2144,7 @@
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
   <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Input" />
+  <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
@@ -2253,7 +2154,115 @@
   <parameter name="width" value="32" />
  </module>
  <module
-   name="stepper_4_steps_out"
+   name="settings_jerk_y"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_jerk_z"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_max_speed_e0"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_max_speed_e1"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_max_speed_x"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_max_speed_y"
+   kind="altera_avalon_pio"
+   version="18.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="32" />
+ </module>
+ <module
+   name="settings_max_speed_z"
    kind="altera_avalon_pio"
    version="18.1"
    enabled="1">
@@ -2277,7 +2286,7 @@
    enabled="1">
   <parameter name="id" value="-60670" />
  </module>
- <module name="temp0" kind="altera_avalon_pio" version="18.1" enabled="1">
+ <module name="temp_0" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -2291,7 +2300,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="12" />
  </module>
- <module name="temp1" kind="altera_avalon_pio" version="18.1" enabled="1">
+ <module name="temp_1" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -2305,84 +2314,12 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="12" />
  </module>
- <module name="temp_bed" kind="altera_avalon_pio" version="18.1" enabled="1">
+ <module name="temp_2" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
   <parameter name="clockRate" value="50000000" />
   <parameter name="direction" value="Input" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
- </module>
- <module
-   name="temp_bed_bottom"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
- </module>
- <module
-   name="temp_bed_upper"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
- </module>
- <module
-   name="temp_e1_bottom"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
-  <parameter name="edgeType" value="RISING" />
-  <parameter name="generateIRQ" value="false" />
-  <parameter name="irqType" value="LEVEL" />
-  <parameter name="resetValue" value="0" />
-  <parameter name="simDoTestBenchWiring" value="false" />
-  <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
- </module>
- <module
-   name="temp_e1_upper"
-   kind="altera_avalon_pio"
-   version="18.1"
-   enabled="1">
-  <parameter name="bitClearingEdgeCapReg" value="false" />
-  <parameter name="bitModifyingOutReg" value="false" />
-  <parameter name="captureEdge" value="false" />
-  <parameter name="clockRate" value="50000000" />
-  <parameter name="direction" value="Output" />
   <parameter name="edgeType" value="RISING" />
   <parameter name="generateIRQ" value="false" />
   <parameter name="irqType" value="LEVEL" />
@@ -2427,52 +2364,14 @@
   <parameter name="baseAddress" value="0x1000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="led_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="mm_bridge_0.m0"
-   end="dipsw_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="mm_bridge_0.m0"
-   end="button_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="endstops.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5200" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp_bed.s1">
+ <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x6000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp0.s1">
+ <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp_1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x6020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp1.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="fans.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x40a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="flags_in.s1">
@@ -2484,7 +2383,30 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_1_speed.s1">
+   end="flags_out.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x4020" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection kind="avalon" version="18.1" start="mm_bridge_0.m0" end="temp_2.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x6040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="command_type.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="command_x.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5000" />
   <parameter name="defaultConnection" value="false" />
@@ -2493,7 +2415,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_1_steps_in.s1">
+   end="command_y.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5020" />
   <parameter name="defaultConnection" value="false" />
@@ -2502,7 +2424,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_2_speed.s1">
+   end="command_z.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5040" />
   <parameter name="defaultConnection" value="false" />
@@ -2511,7 +2433,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_2_steps_in.s1">
+   end="command_e0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5060" />
   <parameter name="defaultConnection" value="false" />
@@ -2520,7 +2442,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_3_speed.s1">
+   end="command_e1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5080" />
   <parameter name="defaultConnection" value="false" />
@@ -2529,7 +2451,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_3_steps_in.s1">
+   end="command_f.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x50a0" />
   <parameter name="defaultConnection" value="false" />
@@ -2538,7 +2460,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_4_speed.s1">
+   end="command_t.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x50c0" />
   <parameter name="defaultConnection" value="false" />
@@ -2547,7 +2469,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_4_steps_in.s1">
+   end="command_dt.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x50e0" />
   <parameter name="defaultConnection" value="false" />
@@ -2556,7 +2478,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_1_steps_out.s1">
+   end="settings_max_speed_x.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5100" />
   <parameter name="defaultConnection" value="false" />
@@ -2565,7 +2487,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_2_steps_out.s1">
+   end="settings_max_speed_y.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5120" />
   <parameter name="defaultConnection" value="false" />
@@ -2574,7 +2496,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_3_steps_out.s1">
+   end="settings_max_speed_z.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5140" />
   <parameter name="defaultConnection" value="false" />
@@ -2583,7 +2505,7 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="stepper_4_steps_out.s1">
+   end="settings_max_speed_e0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x5160" />
   <parameter name="defaultConnection" value="false" />
@@ -2592,54 +2514,99 @@
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="flags_out.s1">
+   end="settings_max_speed_e1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4020" />
+  <parameter name="baseAddress" value="0x5180" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="configuration_1.s1">
+   end="settings_acceleration_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4040" />
+  <parameter name="baseAddress" value="0x51a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="temp_bed_bottom.s1">
+   end="settings_acceleration_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6060" />
+  <parameter name="baseAddress" value="0x51c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="temp_bed_upper.s1">
+   end="settings_acceleration_e1.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6080" />
+  <parameter name="baseAddress" value="0x5220" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="temp_e1_bottom.s1">
+   end="settings_acceleration_e0.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x60a0" />
+  <parameter name="baseAddress" value="0x5200" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="mm_bridge_0.m0"
-   end="temp_e1_upper.s1">
+   end="settings_acceleration_z.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x60c0" />
+  <parameter name="baseAddress" value="0x51e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="settings_jerk_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5240" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="settings_jerk_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5260" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="settings_jerk_z.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5280" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="settings_jerk_e0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x52a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="mm_bridge_0.m0"
+   end="settings_jerk_e1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x52c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2691,43 +2658,7 @@
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="button_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="led_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="dipsw_pio.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="endstops.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5200" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="temp_bed.s1">
+   end="temp_0.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x6000" />
   <parameter name="defaultConnection" value="false" />
@@ -2736,27 +2667,9 @@
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="temp0.s1">
+   end="temp_1.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x6020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="temp1.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="fans.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x40a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2772,114 +2685,6 @@
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="stepper_1_speed.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5000" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_1_steps_in.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5020" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_2_speed.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5040" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_2_steps_in.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5060" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_3_speed.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5080" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_3_steps_in.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x50a0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_4_speed.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x50c0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_4_steps_in.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x50e0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_1_steps_out.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5100" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_2_steps_out.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5120" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_3_steps_out.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5140" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
-   end="stepper_4_steps_out.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5160" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="fpga_only_master.master"
    end="flags_out.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x4020" />
@@ -2889,45 +2694,225 @@
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="configuration_1.s1">
+   end="temp_2.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4040" />
+  <parameter name="baseAddress" value="0x6040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="temp_bed_bottom.s1">
+   end="command_type.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6060" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="temp_bed_upper.s1">
+   end="command_x.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6080" />
+  <parameter name="baseAddress" value="0x5000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="temp_e1_bottom.s1">
+   end="command_y.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x60a0" />
+  <parameter name="baseAddress" value="0x5020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="18.1"
    start="fpga_only_master.master"
-   end="temp_e1_upper.s1">
+   end="command_z.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x60c0" />
+  <parameter name="baseAddress" value="0x5040" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="command_e0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5060" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="command_e1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5080" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="command_f.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x50a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="command_t.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x50c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="command_dt.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x50e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_max_speed_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_max_speed_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5120" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_max_speed_z.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5140" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_max_speed_e0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5160" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_max_speed_e1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5180" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_acceleration_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x51a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_acceleration_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x51c0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_acceleration_z.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x51e0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_acceleration_e0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5200" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_acceleration_e1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5220" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_jerk_x.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5240" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_jerk_y.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5260" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_jerk_z.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x5280" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_jerk_e0.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x52a0" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="fpga_only_master.master"
+   end="settings_jerk_e1.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x52c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -2936,14 +2921,11 @@
    start="clk_0.clk"
    end="hps_only_master.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="sysid_qsys.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="led_pio.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
    end="fpga_only_master.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="dipsw_pio.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="button_pio.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="jtag_uart.clk" />
  <connection
    kind="clock"
@@ -2952,94 +2934,95 @@
    end="f2sdram_only_master.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="mm_bridge_0.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="ILC.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="endstops.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="temp_bed.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="temp0.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="temp1.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="fans.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="temp_0.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="temp_1.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="flags_in.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_1_speed.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_1_steps_in.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_2_speed.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_2_steps_in.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_3_speed.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_3_steps_in.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_4_speed.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_4_steps_in.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_4_steps_out.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_2_steps_out.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_3_steps_out.clk" />
- <connection
-   kind="clock"
-   version="18.1"
-   start="clk_0.clk"
-   end="stepper_1_steps_out.clk" />
  <connection kind="clock" version="18.1" start="clk_0.clk" end="flags_out.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="temp_2.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_type.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_x.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_y.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_z.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_e0.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_e1.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_f.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_t.clk" />
+ <connection kind="clock" version="18.1" start="clk_0.clk" end="command_dt.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="temp_bed_bottom.clk" />
+   end="settings_max_speed_x.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="temp_bed_upper.clk" />
+   end="settings_max_speed_y.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="temp_e1_bottom.clk" />
- <connection kind="clock" version="18.1" start="clk_0.clk" end="temp_e1_upper.clk" />
+   end="settings_max_speed_z.clk" />
  <connection
    kind="clock"
    version="18.1"
    start="clk_0.clk"
-   end="configuration_1.clk" />
+   end="settings_max_speed_e0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_max_speed_e1.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_acceleration_x.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_acceleration_y.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_acceleration_z.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_acceleration_e0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_acceleration_e1.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_jerk_x.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_jerk_y.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_jerk_z.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_jerk_e0.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="clk_0.clk"
+   end="settings_jerk_e1.clk" />
  <connection
    kind="clock"
    version="18.1"
@@ -3068,28 +3051,8 @@
    end="jtag_uart.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
- <connection
-   kind="interrupt"
-   version="18.1"
-   start="hps_0.f2h_irq0"
-   end="button_pio.irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection
-   kind="interrupt"
-   version="18.1"
-   start="hps_0.f2h_irq0"
-   end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
  <connection kind="interrupt" version="18.1" start="ILC.irq" end="jtag_uart.irq">
   <parameter name="irqNumber" value="2" />
- </connection>
- <connection kind="interrupt" version="18.1" start="ILC.irq" end="button_pio.irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection kind="interrupt" version="18.1" start="ILC.irq" end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="reset"
@@ -3115,21 +3078,6 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="led_pio.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="dipsw_pio.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="button_pio.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
    end="jtag_uart.reset" />
  <connection
    kind="reset"
@@ -3140,15 +3088,12 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="endstops.reset" />
+   end="temp_0.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="temp_bed.reset" />
- <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="temp0.reset" />
- <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="temp1.reset" />
- <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="fans.reset" />
+   end="temp_1.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -3158,67 +3103,7 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="stepper_1_speed.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_1_steps_in.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_2_speed.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_2_steps_in.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_3_speed.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_3_steps_in.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_4_speed.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_4_steps_in.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
    end="pll_sys.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_2_steps_out.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_1_steps_out.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_3_steps_out.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="clk_0.clk_reset"
-   end="stepper_4_steps_out.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -3228,27 +3113,127 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="configuration_1.reset" />
+   end="temp_2.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="temp_bed_bottom.reset" />
+   end="command_type.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="temp_bed_upper.reset" />
+   end="command_x.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="temp_e1_bottom.reset" />
+   end="command_y.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
-   end="temp_e1_upper.reset" />
+   end="command_z.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="command_e0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="command_e1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="command_t.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="command_dt.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="command_f.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_max_speed_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_max_speed_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_max_speed_z.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_max_speed_e0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_max_speed_e1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_acceleration_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_acceleration_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_acceleration_z.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_acceleration_e0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_acceleration_e1.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_jerk_x.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_jerk_y.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_jerk_z.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_jerk_e0.reset" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
+   end="settings_jerk_e1.reset" />
  <connection kind="reset" version="18.1" start="clk_0.clk_reset" end="ILC.reset_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.maxAdditionalLatency" value="1" />

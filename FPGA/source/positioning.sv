@@ -29,13 +29,6 @@ module positioning (
 	input		wire			stepper_e1_direction,
 
 
-	//Информация об инверсия двигателей
-	input		wire			stepper_x_inversion,
-	input		wire			stepper_y_inversion,
-	input		wire			stepper_z_inversion,
-	input		wire			stepper_e0_inversion,
-	input		wire			stepper_e1_inversion,
-	
 	//Сигналы для установки новых координат
 	input		wire			stepper_x_set_new_coordinates,
 	input		wire			stepper_y_set_new_coordinates,
@@ -56,62 +49,64 @@ module positioning (
 	output	reg	signed	[31:0]	pos_e0 = 0,
 	output	reg	signed	[31:0]	pos_e1 = 0
 );
-	
-	
-	//Изменение текущих координат по управляющему сигналу двигателей
-	always @(posedge reset or posedge stepper_x_set_new_coordinates or posedge stepper_x_step)
-	begin 
-		if (reset)
-			pos_x = 0;
-		else
-			if (stepper_x_set_new_coordinates)
-				pos_x = new_pos_x;
-			else
-				pos_x = pos_x + ((stepper_x_enable == 1'b0) ? (((stepper_x_direction ^ stepper_x_inversion) == 1'b0) ? $signed('b1): $signed(-32'd1)) : $signed(0));
-	end
 
-	always @(posedge reset or posedge stepper_y_set_new_coordinates or posedge stepper_y_step)
-	begin
-		if (reset)
-			pos_y = 0;
-		else
-			if (stepper_y_set_new_coordinates)
-				pos_y = new_pos_y;
-			else
-				pos_y = pos_y + ((stepper_y_enable == 1'b0) ? (((stepper_y_direction ^ stepper_y_inversion) == 1'b0) ? $signed('b1): $signed(-32'd1)) : $signed(0));
-	end
 
-	always @(posedge reset or posedge stepper_z_set_new_coordinates or posedge stepper_z_step)
+//Изменение текущих координат по управляющему сигналу двигателей
+always @(posedge reset or posedge stepper_x_set_new_coordinates or posedge stepper_x_step)
+begin 
+	if (reset)
+		pos_x = 0;
+	else
 	begin
-		if (reset)
-			pos_z = 0;
+		if (stepper_x_set_new_coordinates)
+			pos_x = new_pos_x;
 		else
-			if (stepper_z_set_new_coordinates)
-				pos_z = new_pos_z;
-			else
-				pos_z = pos_z + ((stepper_z_enable == 1'b0) ? (((stepper_z_direction ^ stepper_z_inversion) == 1'b0) ? $signed('b1): $signed(-32'd1)) : $signed(0));
+			pos_x = pos_x + ((~stepper_x_enable) ? ((~stepper_x_direction) ? $signed(32'd1): $signed(-32'd1)) : $signed(32'd0));
 	end
+end
 
-	always @(posedge reset or posedge stepper_e0_set_new_coordinates or posedge stepper_e0_step)
-	begin
-		if (reset)
-			pos_e0 = 0;
+always @(posedge reset or posedge stepper_y_set_new_coordinates or posedge stepper_y_step)
+begin
+	if (reset)
+		pos_y = 0;
+	else
+		if (stepper_y_set_new_coordinates)
+			pos_y = new_pos_y;
 		else
-			if (stepper_e0_set_new_coordinates)
-				pos_e0 = new_pos_e0;
-			else
-				pos_e0 = pos_e0 + ((stepper_e0_enable == 1'b0) ? (((stepper_e0_direction ^ stepper_e0_inversion) == 1'b0) ? $signed('b1): $signed(-32'd1)) : $signed(0));
-	end
-	
-	always @(posedge reset or posedge stepper_e1_set_new_coordinates or posedge stepper_e1_step)
-	begin
-		if (reset)
-			pos_e1 = 0;
+			pos_y = pos_y + ((stepper_y_enable == 1'b0) ? (((stepper_y_direction) == 1'b0) ? $signed(32'd1): $signed(-32'd1)) : $signed(32'd0));
+end
+
+always @(posedge reset or posedge stepper_z_set_new_coordinates or posedge stepper_z_step)
+begin
+	if (reset)
+		pos_z = 0;
+	else
+		if (stepper_z_set_new_coordinates)
+			pos_z = new_pos_z;
 		else
-			if (stepper_e1_set_new_coordinates)
-				pos_e1 = new_pos_e1;
-			else
-				pos_e1 = pos_e1 + ((stepper_e1_enable == 1'b0) ? (((stepper_e1_direction ^ stepper_e1_inversion) == 1'b0) ? $signed('b1): $signed(-32'd1)) : $signed(0));
-	end
-	
+			pos_z = pos_z + ((stepper_z_enable == 1'b0) ? (((stepper_z_direction) == 1'b0) ? $signed(32'd1): $signed(-32'd1)) : $signed(32'd0));
+end
+
+always @(posedge reset or posedge stepper_e0_set_new_coordinates or posedge stepper_e0_step)
+begin
+	if (reset)
+		pos_e0 = 0;
+	else
+		if (stepper_e0_set_new_coordinates)
+			pos_e0 = new_pos_e0;
+		else
+			pos_e0 = pos_e0 + ((stepper_e0_enable == 1'b0) ? (((stepper_e0_direction) == 1'b0) ? $signed(32'd1): $signed(-32'd1)) : $signed(32'd0));
+end
+
+always @(posedge reset or posedge stepper_e1_set_new_coordinates or posedge stepper_e1_step)
+begin
+	if (reset)
+		pos_e1 = 0;
+	else
+		if (stepper_e1_set_new_coordinates)
+			pos_e1 = new_pos_e1;
+		else
+			pos_e1 = pos_e1 + ((stepper_e1_enable == 1'b0) ? (((stepper_e1_direction) == 1'b0) ? $signed(32'd1): $signed(-32'd1)) : $signed(32'd0));
+end
+
 endmodule

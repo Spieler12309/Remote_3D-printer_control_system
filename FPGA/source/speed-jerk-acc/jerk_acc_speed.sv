@@ -26,18 +26,25 @@ module jerk_acc_speed (
 	input		wire				[31:0]	jerk_e0, //микрошагов/сек
 	input		wire				[31:0]	jerk_e1, //микрошагов/сек
 	
+	//Информация об инверсия двигателей
+	input		wire			stepper_x_inversion,
+	input		wire			stepper_y_inversion,
+	input		wire			stepper_z_inversion,
+	input		wire			stepper_e0_inversion,
+	input		wire			stepper_e1_inversion,
+
 	//Данные Gcode команды движения
 	input		wire				[31:0]	speed, //микрошагов/сек
-	input		wire	signed	[31:0]	num_x, //микрошагов
-	input		wire	signed	[31:0]	num_y, //микрошагов
-	input		wire	signed	[31:0]	num_z, //микрошагов
-	input		wire	signed	[31:0]	num_e0, //микрошагов
-	input		wire	signed	[31:0]	num_e1, //микрошагов
-	input		wire							start_driving,
+	input		wire	signed	[31:0]	num_x_m, //микрошагов
+	input		wire	signed	[31:0]	num_y_m, //микрошагов
+	input		wire	signed	[31:0]	num_z_m, //микрошагов
+	input		wire	signed	[31:0]	num_e0_m, //микрошагов
+	input		wire	signed	[31:0]	num_e1_m, //микрошагов
+	input		wire							start_driving_main,
 	
 	//Сигналы с концевиков
-	input		wire				[0:5]		endstops,
-	input		wire							bar_end,
+	input		wire				[0:5]		endstops_nf,
+	input		wire							bar_end_nf,
 
 	//Включить/выключить двигатели
 	input		wire							enable_steppers,
@@ -69,7 +76,8 @@ module jerk_acc_speed (
 	output	reg							stepper_e1_step,
 	output	reg							stepper_e1_direction,
 
-	output	wire						finish
+	output	wire						finish,
+	output	wire						error
 	);
 								
 wire	[31:0]	speed_x;
@@ -99,25 +107,13 @@ wire	[31:0]	new_params_e1	[0:4];
 wire	[63:0]	max_timing 	[0:3];
 wire	[31:0]	max_params	[0:4];
 
-wire				fin_stt_x;
-wire				fin_stt_y;
-wire				fin_stt_z;
-wire				fin_stt_e0;
-wire				fin_stt_e1;
+wire				fin_stt;
 
-wire				fin_ct_x;
-wire				fin_ct_y;
-wire				fin_ct_z;
-wire				fin_ct_e0;
-wire				fin_ct_e1;
+wire				fin_ct;
 
 wire				fin_fmt;
 
-wire				fin_cnp_x;
-wire				fin_cnp_y;
-wire				fin_cnp_z;
-wire				fin_cnp_e0;
-wire				fin_cnp_e1;
+wire				fin_cnp;
 
 wire				fin_jc_x;
 wire				fin_jc_y;
@@ -128,144 +124,208 @@ wire				fin_jc_e1;
 assign speed_x = max_speed_x < speed ? max_speed_x : speed;
 assign speed_y = max_speed_y < speed ? max_speed_y : speed;
 assign speed_z = max_speed_z < speed ? max_speed_z : speed;
-assign speed_e0 = max_speed_e0;	
-assign speed_e1 = max_speed_e1;	
+assign speed_e0 = max_speed_e0;
+assign speed_e1 = max_speed_e1;
 
-assign finish = fin_jc_x && fin_jc_y && fin_jc_z && fin_jc_e0 && fin_jc_e1;
+wire	[31:0]	num_x;	
+wire	[31:0]	num_y;	
+wire	[31:0]	num_z;	
+wire	[31:0]	num_e0;
+wire	[31:0]	num_e1;
 
-always @(posedge enable_steppers)
+wire	[0:5]		endstops;
+wire				bar_end;
+
+reg [1:0]	x	= 0; //0 - =; 1 - -; 2 - +;
+reg [1:0]	y	= 0; //0 - =; 1 - -; 2 - +;
+endstop_filter ef0(.clk(clk),
+					.in(endstops_nf[0]),
+					.out(endstops[0]));
+endstop_filter ef1(.clk(clk),
+					.in(endstops_nf[1]),
+					.out(endstops[1]));
+endstop_filter ef2(.clk(clk),
+					.in(endstops_nf[2]),
+					.out(endstops[2]));
+endstop_filter ef3(.clk(clk),
+					.in(endstops_nf[3]),
+					.out(endstops[3]));
+endstop_filter ef4(.clk(clk),
+					.in(endstops_nf[4]),
+					.out(endstops[4]));
+endstop_filter ef5(.clk(clk),
+					.in(endstops_nf[5]),
+					.out(endstops[5]));
+
+endstop_filter ef6(.clk(clk),
+					.in(bar_end_nf),
+					.out(bar_end));
+
+assign num_x = (stepper_x_inversion == 0) ? num_x_m : -num_x_m;
+assign num_y = (stepper_y_inversion == 0) ? num_y_m : -num_y_m;
+assign num_z = (stepper_z_inversion == 0) ? num_z_m : -num_z_m;
+assign num_e0 = (stepper_e0_inversion == 0) ? num_e0_m : -num_e0_m;
+assign num_e1 = (stepper_e1_inversion == 0) ? num_e1_m : -num_e1_m;
+
+assign stepper_x_direction = num_x[31];
+assign stepper_y_direction = num_y[31];
+assign stepper_z_direction = num_z[31];
+assign stepper_e0_direction = num_e0[31];
+assign stepper_e1_direction = num_e1[31];
+
+assign finish = fin_jc_x && fin_jc_y && fin_jc_z && fin_jc_e0 && fin_jc_e1 || error && start_driving_main;
+
+assign error = (((x == 1) && endstops[0]) || 
+			((x == 2) && endstops[1])) &&
+		(((y == 1) && endstops[2]) || 
+			((y == 2) && endstops[3])) &&
+		((~stepper_z_direction && endstops[4]) || 
+			(stepper_z_direction && endstops[5]));
+wire	start_driving;
+assign start_driving = (start_driving_main == 1'b1) && (error == 1'b0);
+
+always @(posedge clk)
 begin
-	stepper_x_enable <= 1'b0;
-	stepper_y_enable <= 1'b0;
-	stepper_z_enable <= 1'b0;
-	stepper_e0_enable <= 1'b0;
-	stepper_e1_enable <= 1'b0;
+	//Вычисление направления движения по осям x и y
+	if ((stepper_x_direction == 0) && (stepper_y_direction == 0))
+	begin
+		x = 2;
+		if (num_x > num_y)
+			y = 2;
+		else 
+		begin
+			if (num_x == num_y)
+				y = 0;
+			else
+				y = 1;
+		end
+	end
+	
+	if ((stepper_x_direction == 0) && (stepper_y_direction == 1))
+	begin
+		y = 2;
+		if (num_x > num_y)
+			x = 2;
+		else 
+		begin
+			if (num_x == num_y)
+				x = 0;
+			else
+				x = 1;
+		end
+	end
+	
+	if ((stepper_x_direction == 1) && (stepper_y_direction == 0))
+	begin
+		y = 1;
+		if (num_y > num_x)
+			x = 2;
+		else 
+		begin
+			if (num_x == num_y)
+				x = 0;
+			else
+				x = 1;
+		end
+	end
+	
+	if ((stepper_x_direction == 1) && (stepper_y_direction == 1))
+	begin
+		x = 1;
+		if (num_y > num_x)
+			y = 2;
+		else 
+		begin
+			if (num_x == num_y)
+				y = 0;
+			else
+				y = 1;
+		end
+	end
 end
 
-always @(posedge disable_steppers)
+always @(posedge enable_steppers or posedge disable_steppers)
 begin
-	stepper_x_enable <= 1'b1;
-	stepper_y_enable <= 1'b1;
-	stepper_z_enable <= 1'b1;
-	stepper_e0_enable <= 1'b1;
-	stepper_e1_enable <= 1'b1;
+	if (enable_steppers)
+	begin
+		stepper_x_enable <= 1'b0;
+		stepper_y_enable <= 1'b0;
+		stepper_z_enable <= 1'b0;
+		stepper_e0_enable <= 1'b0;
+		stepper_e1_enable <= 1'b0;
+	end
+	else
+	begin
+		stepper_x_enable <= 1'b1;
+		stepper_y_enable <= 1'b1;
+		stepper_z_enable <= 1'b1;
+		stepper_e0_enable <= 1'b1;
+		stepper_e1_enable <= 1'b1;
+	end
 end
-
 
 //Вычисление задержек на основе заданных параметров движения для каждого двигателя
-speed_to_timing stt_x(
+speeds_to_timings stt(
 	.clk(clk),
 	.reset(reset),
 	.start(start_driving),
-	.speed(speed_x), 
-	.acceleration(acceleration_x), 
-	.jerk(jerk_x), 
-	
-	.params(params_x),
-	.finish(fin_stt_x));
-								
-speed_to_timing stt_y(	
-	.clk(clk),
-	.reset(reset), 
-	.start(start_driving),
-	.speed(speed_y), 
-	.acceleration(acceleration_y), 
-	.jerk(jerk_y), 
-	
-	.params(params_y),
-	.finish(fin_stt_y));
-								
-speed_to_timing stt_z(	
-	.clk(clk),
-	.reset(reset), 
-	.start(start_driving),
-	.speed(speed_z), 
-	.acceleration(acceleration_z), 
-	.jerk(jerk_z), 
-	
-	.params(params_z),
-	.finish(fin_stt_z));
-								
-speed_to_timing stt_e0(	
-	.clk(clk),
-	.reset(reset), 
-	.start(start_driving),
-	.speed(speed_e0), 
-	.acceleration(acceleration_e0), 
-	.jerk(jerk_e0), 
-	
-	.params(params_e0),
-	.finish(fin_stt_e0));
-								
-speed_to_timing stt_e1(	 
-	.clk(clk),
-	.reset(reset), 
-	.start(start_driving),
-	.speed(speed_e1), 
-	.acceleration(acceleration_e1), 
-	.jerk(jerk_e1), 
-	
-	.params(params_e1),
-	.finish(fin_stt_e1));
-
+	.num_x(num_x),
+	.num_y(num_y),
+	.num_z(num_z),
+	.num_e0(num_e0),
+	.num_e1(num_e1),
+	.speed_x(speed_x),
+	.speed_y(speed_y),
+	.speed_z(speed_z),
+	.speed_e0(speed_e0),
+	.speed_e1(speed_e1),
+	.acceleration_x(acceleration_x),
+	.acceleration_y(acceleration_y),
+	.acceleration_z(acceleration_z),
+	.acceleration_e0(acceleration_e0),
+	.acceleration_e1(acceleration_e1),
+	.jerk_x(jerk_x),
+	.jerk_y(jerk_y),
+	.jerk_z(jerk_z),
+	.jerk_e0(jerk_e0),
+	.jerk_e1(jerk_e1),
+		
+	.params_x(params_x),
+	.params_y(params_y),
+	.params_z(params_z),
+	.params_e0(params_e0),
+	.params_e1(params_e1),
+	.finish(fin_stt)
+);
 	
 //Вычисление первоначального времени выполнения движения для каждого двигателя
-calc_time ct_x(
+calc_times ct(
 	.clk(clk),
 	.reset(reset),
-	.start(fin_stt_x),
-	.params({num_x < 'd0 ? -num_x : num_x, params_x[1], params_x[2], params_x[3], params_x[4]}),
+	.start(fin_stt),
+	.params_x(params_x),
+	.params_y(params_y),
+	.params_z(params_z),
+	.params_e0(params_e0),
+	.params_e1(params_e1),
 	
-	.timing(timing_x),
-	.finish(fin_ct_x));
-
-calc_time ct_y(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_stt_y),
-	.params({num_y < 'd0 ? -num_y : num_y, params_y[1], params_y[2], params_y[3], params_y[4]}),
-	
-	.timing(timing_y),
-	.finish(fin_ct_y));
-					
-calc_time ct_z(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_stt_z),
-	.params({num_z < 'd0 ? -num_z : num_z, params_z[1], params_z[2], params_z[3], params_z[4]}),
-	
-	.timing(timing_z),
-	.finish(fin_ct_z));
-					
-calc_time ct_e0(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_stt_e0),
-	.params({num_e0 < 'd0 ? -num_e0 : num_e0, params_e0[1], params_e0[2], params_e0[3], params_e0[4]}),
-	
-	.timing(timing_e0),
-	.finish(fin_ct_e0));
-					
-calc_time ct_e1(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_stt_e1),
-	.params({num_e1 < 'd0 ? -num_e1 : num_e1, params_e1[1], params_e1[2], params_e1[3], params_e1[4]}),
-	
-	.timing(timing_e1),
-	.finish(fin_ct_e1));
-	
+	.timing_x(timing_x),
+	.timing_y(timing_y),
+	.timing_z(timing_z),
+	.timing_e0(timing_e0),
+	.timing_e1(timing_e1),
+	.finish(fin_ct));
 
 //Нахождение максимального вычисленного времения	
 find_max_timing fmt(	
 	.clk(clk),
 	.reset(reset),
-	.start(fin_ct_x && fin_ct_y && fin_ct_z && fin_ct_e0 && fin_ct_e1),
-	.params_x({num_x < 'd0 ? -num_x : num_x, params_x[1], params_x[2], params_x[3], params_x[4]}),
-	.params_y({num_y < 'd0 ? -num_y : num_y, params_y[1], params_y[2], params_y[3], params_y[4]}),
-	.params_z({num_z < 'd0 ? -num_z : num_z, params_z[1], params_z[2], params_z[3], params_z[4]}),
-	.params_e0({num_e0 < 'd0 ? -num_e0 : num_e0, params_e0[1], params_e0[2], params_e0[3], params_e0[4]}),
-	.params_e1({num_e1 < 'd0 ? -num_e1 : num_e1, params_e1[1], params_e1[2], params_e1[3], params_e1[4]}),	
+	.start(fin_ct),
+	.params_x(params_x),
+	.params_y(params_y),
+	.params_z(params_z),
+	.params_e0(params_e0),
+	.params_e1(params_e1),
 	.timing_x(timing_x),
 	.timing_y(timing_y),
 	.timing_z(timing_z),
@@ -278,65 +338,26 @@ find_max_timing fmt(
 	.finish(fin_fmt));
 
 //Вычисление новых параметров движения на основе 
-calc_new_parameters cnp_x(
+calc_all_new_parameters canp(
 	.clk(clk),
 	.reset(reset),
 	.start(fin_fmt),
 	.max_params(max_params),
-	.params(params_x),
+	.params_x(params_x),
+	.params_y(params_y),
+	.params_z(params_z),
+	.params_e0(params_e0),
+	.params_e1(params_e1),
 	.max_timing(max_timing),
 	
-	.new_par(new_params_x),
-	.finish(cnp_x)
+	.new_par_x(new_params_x),
+	.new_par_y(new_params_y),
+	.new_par_z(new_params_z),
+	.new_par_e0(new_params_e0),
+	.new_par_e1(new_params_e1),
+	.finish(canp_x)
 	);
 
-calc_new_parameters cnp_y(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_fmt),
-	.max_params(max_params),
-	.params(params_y),
-	.max_timing(max_timing),
-	
-	.new_par(new_params_y),
-	.finish(cnp_y)
-	);
-
-calc_new_parameters cnp_z(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_fmt),
-	.max_params(max_params),
-	.params(params_z),
-	.max_timing(max_timing),
-	
-	.new_par(new_params_z),
-	.finish(cnp_z)
-	);
-
-calc_new_parameters cnp_e0(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_fmt),
-	.max_params(max_params),
-	.params(params_e0),
-	.max_timing(max_timing),
-	
-	.new_par(new_params_e0),
-	.finish(cnp_e0)
-	);
-
-calc_new_parameters cnp_e1(
-	.clk(clk),
-	.reset(reset),
-	.start(fin_fmt),
-	.max_params(max_params),
-	.params(params_e1),
-	.max_timing(max_timing),
-	
-	.new_par(new_params_e1),
-	.finish(cnp_e1)
-	);
 
 //генерация импульсов управления двигатетями
 jas_constrol jc_x(
