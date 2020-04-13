@@ -39,7 +39,7 @@ module adctemp_temp(
 						temp = -'d55;
 					else
 					begin
-						temp = (5 * (i * (m[i - 1] - m[i]) + m[i] - rt) / (m[i - 1] - m[i])) - 55;
+						temp = (5 * (i * (mem[i - 1] - mem[i]) + mem[i] - rt) / (mem[i - 1] - mem[i])) - 55;
 					end
 				end
 				state = state + 1;

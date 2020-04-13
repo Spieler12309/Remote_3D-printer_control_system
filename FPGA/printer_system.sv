@@ -255,9 +255,6 @@ adctemp_temp att2(.clk(clk),
 					.k(10),
 					.temp(temp_2));
 
-assign temp_0 = temp[0];
-assign temp_1 = temp[1];
-assign temp_2 = temp[2];
 assign flags_in[12] = heaters[0];
 assign flags_in[13] = heaters[1];
 assign flags_in[14] = heaters[2];

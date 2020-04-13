@@ -11,13 +11,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b6c4419d-01a8-48d3-8aef-65bac260d006" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/hps_sdram_p0_summary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/hps_sdram_p0_summary.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.qsf" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.qsf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sld" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sof" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sof" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/source/configuration.vh" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/source/configuration.vh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/source/adctemp_temp.sv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/source/adctemp_temp.sv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +59,7 @@
       <option name="presentableId" value="Default" />
       <updated>1568554486041</updated>
       <workItem from="1568554494217" duration="22000" />
-      <workItem from="1586676295975" duration="32283000" />
+      <workItem from="1586676295975" duration="33302000" />
     </task>
     <servers />
   </component>
