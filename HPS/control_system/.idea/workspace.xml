@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CMakeRunConfigurationManager" shouldGenerate="true" shouldDeleteObsolete="true">
+    <generated />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6c4419d-01a8-48d3-8aef-65bac260d006" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/hps_sdram_p0_summary.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/hps_sdram_p0_summary.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.qsf" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.qsf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sld" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sof" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sof" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../FPGA/source/configuration.vh" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/source/configuration.vh" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1aQmeuhHXWMYPdEdvkILilH46uK" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\FQW\HPS\control_system\printer\Controller" />
+    </key>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="showServicesTree" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6c4419d-01a8-48d3-8aef-65bac260d006" name="Default Changelist" comment="" />
+      <created>1568554486041</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1568554486041</updated>
+      <workItem from="1568554494217" duration="22000" />
+      <workItem from="1586676295975" duration="32283000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="668" y="367" key="com.intellij.ide.util.TipDialog" timestamp="1586676296121">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="668" y="367" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1586676296121" />
+    <state x="124" y="200" width="710" height="732" key="find.popup" timestamp="1586760926380">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="124" y="200" width="710" height="732" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586760926380" />
+    <state x="136" y="252" key="run.anything.popup" timestamp="1586716183208">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="136" y="252" key="run.anything.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1586716183208" />
+  </component>
+</project>

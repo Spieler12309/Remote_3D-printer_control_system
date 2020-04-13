@@ -24,6 +24,8 @@ module control_unit(
 	output	reg		signed	[31:0]	new_command_z,
 	output	reg		signed	[31:0]	new_command_e0,
 	output	reg		signed	[31:0]	new_command_e1,
+	output	reg								is_realative = 1'b0, //0 - абсолютная, 1 - относительная
+	output	reg								is_realative_extruder = 1'b0, //0 - абсолютная, 1 - относительная
 	output	reg										start_move,
 	output	reg						[0:2]		start_heat,
 	output	reg						[0:2]		start_heat_long,
@@ -34,8 +36,6 @@ module control_unit(
 	output	reg										finish,
 	output	reg										error);
 
-reg	is_realative = 1'b0; //0 - абсолютная, 1 - относительная
-reg	is_realative_extruder = 1'b0; //0 - абсолютная, 1 - относительная
 reg [31:0]		w = 'd0;
 always @(posedge clk or posedge reset)
 begin
@@ -163,7 +163,7 @@ begin
 						if (command_x >=0 && command_x <= 2)
 						begin
 							start_heat[command_x] <= 1'b1; //Выбор на основе command_x
-							finish <= ~heaters_finish[command_x]; //Ситуация при включении ??
+							finish <= ~heaters_finish[command_x];
 						end
 						else
 						begin
@@ -182,7 +182,7 @@ begin
 						begin
 							start_heat_long[command_x] <= 1'b1; //Выбор на основе command_x
 							finish <= 1'b1; 
-							w = 'd1000;
+							w = 'd100;
 						end
 						else
 						begin

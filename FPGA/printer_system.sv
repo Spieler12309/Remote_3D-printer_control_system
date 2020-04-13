@@ -142,6 +142,9 @@ wire	[31:0]	settings_jerk_e1;
 wire	[31:0]	settings_jerk_e0;
 wire	[31:0]	settings_jerk_z;
 wire	[31:0]	settings_jerk_y;
+wire	[11:0]	settings_max_temp_e0;
+wire	[11:0]	settings_max_temp_e1;
+wire	[11:0]	settings_max_temp_bed;
 wire	[31:0]	flags_in;
 wire	[31:0]	flags_out;
 reg 	[31:0] 	flags_read;
@@ -175,7 +178,10 @@ wire	[0:2]		start_heat;
 wire	[0:2]		start_heat_long;
 wire					enable_steppers;
 wire					disable_steppers;
-wire					start_cooling;
+wire					cooling;
+
+wire					is_related;
+wire					is_related_extruder;
 
 // connection of internal logics
 //assign LED[7: 6] = fpga_led_internal;
@@ -208,6 +214,7 @@ assign {GPIO_0[11], GPIO_0[13], GPIO_0[15]}	=	motors[1]; //Motor Y
 assign {GPIO_0[17], GPIO_0[19], GPIO_0[21]}	=	motors[2]; //Motor Z
 assign {GPIO_1[19], GPIO_1[21], GPIO_1[23]}	=	motors[3]; //Motor E0
 assign {GPIO_1[25], GPIO_1[27], GPIO_1[29]}	=	motors[4]; //Motor E1
+assign GPIO_1[12] = cooling;
 assign endstops 	= {GPIO_1[11] ^ flags_read[6], 
 							GPIO_1[9]  ^ flags_read[7], 
 							GPIO_1[7]  ^ flags_read[8], 
@@ -220,6 +227,55 @@ assign bar_end 	= GPIO_1[13] ^ flags_read[12];
 assign temp[0] 	= analog[1];
 assign temp[1] 	= analog[3];
 assign temp[2] 	= analog[5];
+
+assign flags_in[0] = endstops[0];
+assign flags_in[1] = endstops[1];
+assign flags_in[2] = endstops[2];
+assign flags_in[3] = endstops[3];
+assign flags_in[4] = endstops[4];
+assign flags_in[5] = endstops[5];
+assign flags_in[6] = bar_end;
+
+adctemp_temp att0(.clk(clk),
+					.adc_temp(temp[0]),
+					.res(100000),
+					.voltage(33), //Напряжение, умноженное на k
+					.k(10),
+					.temp(temp_0));
+adctemp_temp att1(.clk(clk),
+					.adc_temp(temp[1]),
+					.res(100000),
+					.voltage(33), //Напряжение, умноженное на k
+					.k(10),
+					.temp(temp_1));
+adctemp_temp att2(.clk(clk),
+					.adc_temp(temp[2]),
+					.res(100000),
+					.voltage(33), //Напряжение, умноженное на k
+					.k(10),
+					.temp(temp_2));
+
+assign temp_0 = temp[0];
+assign temp_1 = temp[1];
+assign temp_2 = temp[2];
+assign flags_in[12] = heaters[0];
+assign flags_in[13] = heaters[1];
+assign flags_in[14] = heaters[2];
+assign flags_in[15] = ~KEY[0];
+assign flags_in[16] = ~KEY[1];
+assign flags_in[17] = SW[0];
+assign flags_in[18] = SW[1];
+assign flags_in[19] = SW[2];
+assign flags_in[20] = SW[3];
+
+assign LED[0] = heaters[0];
+assign LED[1] = heaters[1];
+assign LED[2] = heaters[2];
+assign LED[3] = flags_read[0];
+assign LED[4] = flags_in[7];
+assign LED[5] = flags_in[21];
+assign LED[6] = finish_driving;
+assign LED[7] = flags_in[22];
 
 soc_system ss0 (
 	.clk_clk                                             (FPGA_CLK1_50),                                             //                                          clk.clk
@@ -349,7 +405,17 @@ soc_system ss0 (
 	.settings_jerk_z_external_connection_export          (settings_jerk_z),          //          settings_jerk_z_external_connection.export
 	.settings_jerk_y_external_connection_export          (settings_jerk_y),           //          settings_jerk_y_external_connection.export
 	.flags_in_external_connection_export                 (flags_in),                 //                 flags_in_external_connection.export
-	.flags_out_external_connection_export                (flags_out)                //                flags_out_external_connection.export
+	.flags_out_external_connection_export                (flags_out),                //                flags_out_external_connection.export
+	.settings_max_temp_e0_external_connection_export     (settings_max_temp_e0),                //                settings_max_temp_e0_external_connection.export
+	.settings_max_temp_e1_external_connection_export     (settings_max_temp_e1),                //                settings_max_temp_e1_external_connection.export
+	.settings_max_temp_bed_external_connection_export    (settings_max_temp_bed),                //               settings_max_temp_bed_external_connection.export
+	.position_x_external_connection_export					  (pos_x),
+	.position_y_external_connection_export					  (pos_y),
+	.position_z_external_connection_export					  (pos_z),
+	.position_e0_external_connection_export				  (pos_e0),
+	.position_e1_external_connection_export				  (pos_e1),
+	.position_type_external_connection_export				  (is_related),
+	.position_extruder_type_external_connection_export	  (is_related_extruder)
 );
 
 control_unit cu0(
@@ -375,13 +441,15 @@ control_unit cu0(
 	.new_command_z(new_command_z),
 	.new_command_e0(new_command_e0),
 	.new_command_e1(new_command_e1),
+	.is_realative(is_related),
+	.is_realative_extruder(is_related_extruder),
 	.start_move(start_move),
 	.start_heat(start_heat),
 	.start_heat_long(start_heat_long),
 	//.change_position(),
 	.enable_steppers(enable_steppers),
 	.disable_steppers(disable_steppers),
-	.start_cooling(),
+	.start_cooling(cooling),
 	.finish(flags_in[7]),
 	.error(flags_in[21])
 	);
@@ -439,7 +507,7 @@ positioning p0(
 
 //Подключение модуля управления движением каретки
 jerk_acc_speed jas0( 	
-	.clk(FPGA_CLK1_50),
+	.clk(CLK_1MHz),
 	.reset(hps_fpga_reset_n),	
 	.max_speed_x(settings_max_speed_x), //микрошагов/сек
 	.max_speed_y(settings_max_speed_y), //микрошагов/сек
@@ -496,6 +564,7 @@ heater_control hc0(
 	.temp(temp[0]),
 	.t(command_t),
 	.dt(command_dt),
+	.max_temp(settings_max_temp_e0),
 	.heat(start_heat[0]),
 	.heat_long(start_heat_long[0]),
 
@@ -507,6 +576,7 @@ heater_control hc1(
 	.temp(temp[1]),
 	.t(command_t),
 	.dt(command_dt),
+	.max_temp(settings_max_temp_e1),
 	.heat(start_heat[1]),
 	.heat_long(start_heat_long[1]),
 
@@ -518,6 +588,7 @@ heater_control hc2(
 	.temp(temp[2]),
 	.t(command_t),
 	.dt(command_dt),
+	.max_temp(settings_max_temp_bed),
 	.heat(start_heat[2]),
 	.heat_long(start_heat_long[2]),
 

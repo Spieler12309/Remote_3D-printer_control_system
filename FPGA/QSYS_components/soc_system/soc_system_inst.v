@@ -1,5 +1,14 @@
 	soc_system u0 (
 		.clk_clk                                             (<connected-to-clk_clk>),                                             //                                          clk.clk
+		.command_dt_external_connection_export               (<connected-to-command_dt_external_connection_export>),               //               command_dt_external_connection.export
+		.command_e0_external_connection_export               (<connected-to-command_e0_external_connection_export>),               //               command_e0_external_connection.export
+		.command_e1_external_connection_export               (<connected-to-command_e1_external_connection_export>),               //               command_e1_external_connection.export
+		.command_f_external_connection_export                (<connected-to-command_f_external_connection_export>),                //                command_f_external_connection.export
+		.command_t_external_connection_export                (<connected-to-command_t_external_connection_export>),                //                command_t_external_connection.export
+		.command_type_external_connection_export             (<connected-to-command_type_external_connection_export>),             //             command_type_external_connection.export
+		.command_x_external_connection_export                (<connected-to-command_x_external_connection_export>),                //                command_x_external_connection.export
+		.command_y_external_connection_export                (<connected-to-command_y_external_connection_export>),                //                command_y_external_connection.export
+		.command_z_external_connection_export                (<connected-to-command_z_external_connection_export>),                //                command_z_external_connection.export
 		.flags_in_external_connection_export                 (<connected-to-flags_in_external_connection_export>),                 //                 flags_in_external_connection.export
 		.flags_out_external_connection_export                (<connected-to-flags_out_external_connection_export>),                //                flags_out_external_connection.export
 		.hps_0_f2h_cold_reset_req_reset_n                    (<connected-to-hps_0_f2h_cold_reset_req_reset_n>),                    //                     hps_0_f2h_cold_reset_req.reset_n
@@ -85,33 +94,34 @@
 		.pll_sys_outclk10mhz_clk                             (<connected-to-pll_sys_outclk10mhz_clk>),                             //                          pll_sys_outclk10mhz.clk
 		.pll_sys_outclk1mhz_clk                              (<connected-to-pll_sys_outclk1mhz_clk>),                              //                           pll_sys_outclk1mhz.clk
 		.pll_sys_outclk5mhz_clk                              (<connected-to-pll_sys_outclk5mhz_clk>),                              //                           pll_sys_outclk5mhz.clk
+		.position_e0_external_connection_export              (<connected-to-position_e0_external_connection_export>),              //              position_e0_external_connection.export
+		.position_e1_external_connection_export              (<connected-to-position_e1_external_connection_export>),              //              position_e1_external_connection.export
+		.position_extruder_type_external_connection_export   (<connected-to-position_extruder_type_external_connection_export>),   //   position_extruder_type_external_connection.export
+		.position_type_external_connection_export            (<connected-to-position_type_external_connection_export>),            //            position_type_external_connection.export
+		.position_x_external_connection_export               (<connected-to-position_x_external_connection_export>),               //               position_x_external_connection.export
+		.position_y_external_connection_export               (<connected-to-position_y_external_connection_export>),               //               position_y_external_connection.export
+		.position_z_external_connection_export               (<connected-to-position_z_external_connection_export>),               //               position_z_external_connection.export
 		.reset_reset_n                                       (<connected-to-reset_reset_n>),                                       //                                        reset.reset_n
-		.temp_2_external_connection_export                   (<connected-to-temp_2_external_connection_export>),                   //                   temp_2_external_connection.export
-		.temp_1_external_connection_export                   (<connected-to-temp_1_external_connection_export>),                   //                   temp_1_external_connection.export
-		.temp_0_external_connection_export                   (<connected-to-temp_0_external_connection_export>),                   //                   temp_0_external_connection.export
-		.command_type_external_connection_export             (<connected-to-command_type_external_connection_export>),             //             command_type_external_connection.export
-		.command_x_external_connection_export                (<connected-to-command_x_external_connection_export>),                //                command_x_external_connection.export
-		.command_y_external_connection_export                (<connected-to-command_y_external_connection_export>),                //                command_y_external_connection.export
-		.command_z_external_connection_export                (<connected-to-command_z_external_connection_export>),                //                command_z_external_connection.export
-		.command_e0_external_connection_export               (<connected-to-command_e0_external_connection_export>),               //               command_e0_external_connection.export
-		.command_e1_external_connection_export               (<connected-to-command_e1_external_connection_export>),               //               command_e1_external_connection.export
-		.command_f_external_connection_export                (<connected-to-command_f_external_connection_export>),                //                command_f_external_connection.export
-		.command_t_external_connection_export                (<connected-to-command_t_external_connection_export>),                //                command_t_external_connection.export
-		.command_dt_external_connection_export               (<connected-to-command_dt_external_connection_export>),               //               command_dt_external_connection.export
-		.settings_max_speed_e1_external_connection_export    (<connected-to-settings_max_speed_e1_external_connection_export>),    //    settings_max_speed_e1_external_connection.export
-		.settings_max_speed_e0_external_connection_export    (<connected-to-settings_max_speed_e0_external_connection_export>),    //    settings_max_speed_e0_external_connection.export
-		.settings_max_speed_z_external_connection_export     (<connected-to-settings_max_speed_z_external_connection_export>),     //     settings_max_speed_z_external_connection.export
-		.settings_max_speed_y_external_connection_export     (<connected-to-settings_max_speed_y_external_connection_export>),     //     settings_max_speed_y_external_connection.export
-		.settings_max_speed_x_external_connection_export     (<connected-to-settings_max_speed_x_external_connection_export>),     //     settings_max_speed_x_external_connection.export
+		.settings_acceleration_e0_external_connection_export (<connected-to-settings_acceleration_e0_external_connection_export>), // settings_acceleration_e0_external_connection.export
+		.settings_acceleration_e1_external_connection_export (<connected-to-settings_acceleration_e1_external_connection_export>), // settings_acceleration_e1_external_connection.export
 		.settings_acceleration_x_external_connection_export  (<connected-to-settings_acceleration_x_external_connection_export>),  //  settings_acceleration_x_external_connection.export
 		.settings_acceleration_y_external_connection_export  (<connected-to-settings_acceleration_y_external_connection_export>),  //  settings_acceleration_y_external_connection.export
 		.settings_acceleration_z_external_connection_export  (<connected-to-settings_acceleration_z_external_connection_export>),  //  settings_acceleration_z_external_connection.export
-		.settings_acceleration_e0_external_connection_export (<connected-to-settings_acceleration_e0_external_connection_export>), // settings_acceleration_e0_external_connection.export
-		.settings_acceleration_e1_external_connection_export (<connected-to-settings_acceleration_e1_external_connection_export>), // settings_acceleration_e1_external_connection.export
-		.settings_jerk_x_external_connection_export          (<connected-to-settings_jerk_x_external_connection_export>),          //          settings_jerk_x_external_connection.export
-		.settings_jerk_e1_external_connection_export         (<connected-to-settings_jerk_e1_external_connection_export>),         //         settings_jerk_e1_external_connection.export
 		.settings_jerk_e0_external_connection_export         (<connected-to-settings_jerk_e0_external_connection_export>),         //         settings_jerk_e0_external_connection.export
+		.settings_jerk_e1_external_connection_export         (<connected-to-settings_jerk_e1_external_connection_export>),         //         settings_jerk_e1_external_connection.export
+		.settings_jerk_x_external_connection_export          (<connected-to-settings_jerk_x_external_connection_export>),          //          settings_jerk_x_external_connection.export
+		.settings_jerk_y_external_connection_export          (<connected-to-settings_jerk_y_external_connection_export>),          //          settings_jerk_y_external_connection.export
 		.settings_jerk_z_external_connection_export          (<connected-to-settings_jerk_z_external_connection_export>),          //          settings_jerk_z_external_connection.export
-		.settings_jerk_y_external_connection_export          (<connected-to-settings_jerk_y_external_connection_export>)           //          settings_jerk_y_external_connection.export
+		.settings_max_speed_e0_external_connection_export    (<connected-to-settings_max_speed_e0_external_connection_export>),    //    settings_max_speed_e0_external_connection.export
+		.settings_max_speed_e1_external_connection_export    (<connected-to-settings_max_speed_e1_external_connection_export>),    //    settings_max_speed_e1_external_connection.export
+		.settings_max_speed_x_external_connection_export     (<connected-to-settings_max_speed_x_external_connection_export>),     //     settings_max_speed_x_external_connection.export
+		.settings_max_speed_y_external_connection_export     (<connected-to-settings_max_speed_y_external_connection_export>),     //     settings_max_speed_y_external_connection.export
+		.settings_max_speed_z_external_connection_export     (<connected-to-settings_max_speed_z_external_connection_export>),     //     settings_max_speed_z_external_connection.export
+		.settings_max_temp_bed_external_connection_export    (<connected-to-settings_max_temp_bed_external_connection_export>),    //    settings_max_temp_bed_external_connection.export
+		.settings_max_temp_e0_external_connection_export     (<connected-to-settings_max_temp_e0_external_connection_export>),     //     settings_max_temp_e0_external_connection.export
+		.settings_max_temp_e1_external_connection_export     (<connected-to-settings_max_temp_e1_external_connection_export>),     //     settings_max_temp_e1_external_connection.export
+		.temp_0_external_connection_export                   (<connected-to-temp_0_external_connection_export>),                   //                   temp_0_external_connection.export
+		.temp_1_external_connection_export                   (<connected-to-temp_1_external_connection_export>),                   //                   temp_1_external_connection.export
+		.temp_2_external_connection_export                   (<connected-to-temp_2_external_connection_export>)                    //                   temp_2_external_connection.export
 	);
 

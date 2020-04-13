@@ -76,8 +76,8 @@ module jerk_acc_speed (
 	output	reg							stepper_e1_step,
 	output	reg							stepper_e1_direction,
 
-	output	wire						finish,
-	output	wire						error
+	output	wire							finish,
+	output	wire							error
 	);
 								
 wire	[31:0]	speed_x;
@@ -127,11 +127,17 @@ assign speed_z = max_speed_z < speed ? max_speed_z : speed;
 assign speed_e0 = max_speed_e0;
 assign speed_e1 = max_speed_e1;
 
-wire	[31:0]	num_x;	
-wire	[31:0]	num_y;	
-wire	[31:0]	num_z;	
+wire	[31:0]	num_x;
+wire	[31:0]	num_y;
+wire	[31:0]	num_z;
 wire	[31:0]	num_e0;
 wire	[31:0]	num_e1;
+
+wire	[31:0]	num_x_now;
+wire	[31:0]	num_y_now;
+wire	[31:0]	num_z_now;
+wire	[31:0]	num_e0_now;
+wire	[31:0]	num_e1_now;
 
 wire	[0:5]		endstops;
 wire				bar_end;
@@ -175,11 +181,11 @@ assign stepper_e1_direction = num_e1[31];
 
 assign finish = fin_jc_x && fin_jc_y && fin_jc_z && fin_jc_e0 && fin_jc_e1 || error && start_driving_main;
 
-assign error = (((x == 1) && endstops[0]) || 
-			((x == 2) && endstops[1])) &&
-		(((y == 1) && endstops[2]) || 
-			((y == 2) && endstops[3])) &&
-		((~stepper_z_direction && endstops[4]) || 
+assign error = ((((x == 1) && endstops[0]) || 
+			((x == 2) && endstops[1])) && (num_y - num_y_now == num_x - num_x_now) && (stepper_x_direction != stepper_y_direction)) &&
+		((((y == 1) && endstops[2]) || 
+			((y == 2) && endstops[3])) && (num_y - num_y_now == num_x - num_x_now) && (stepper_x_direction == stepper_y_direction)) &&
+		((~stepper_z_direction && endstops[4] && num_z != num_z_now) || 
 			(stepper_z_direction && endstops[5]));
 wire	start_driving;
 assign start_driving = (start_driving_main == 1'b1) && (error == 1'b0);
@@ -367,6 +373,7 @@ jas_constrol jc_x(
 	.params(new_params_x),	
 
 	.finish(fin_jc_x),
+	.step_num(num_x_now),
 	.step(stepper_x_step));
 
 jas_constrol jc_y(
@@ -376,6 +383,7 @@ jas_constrol jc_y(
 	.params(new_params_y),	
 
 	.finish(fin_jc_y),
+	.step_num(num_y_now),
 	.step(stepper_y_step));
 
 jas_constrol jc_z(
@@ -385,6 +393,7 @@ jas_constrol jc_z(
 	.params(new_params_z),	
 
 	.finish(fin_jc_z),
+	.step_num(num_z_now),
 	.step(stepper_z_step));
 
 jas_constrol jc_e0(
@@ -394,6 +403,7 @@ jas_constrol jc_e0(
 	.params(new_params_e0),	
 
 	.finish(fin_jc_e0),
+	.step_num(num_e0_now),
 	.step(stepper_e0_step));
 
 jas_constrol jc_e1(
@@ -403,6 +413,7 @@ jas_constrol jc_e1(
 	.params(new_params_e1),	
 
 	.finish(fin_jc_e1),
+	.step_num(num_e1_now),
 	.step(stepper_e1_step));
 
 endmodule

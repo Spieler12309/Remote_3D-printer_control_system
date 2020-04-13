@@ -1,6 +1,15 @@
 
 module soc_system (
 	clk_clk,
+	command_dt_external_connection_export,
+	command_e0_external_connection_export,
+	command_e1_external_connection_export,
+	command_f_external_connection_export,
+	command_t_external_connection_export,
+	command_type_external_connection_export,
+	command_x_external_connection_export,
+	command_y_external_connection_export,
+	command_z_external_connection_export,
 	flags_in_external_connection_export,
 	flags_out_external_connection_export,
 	hps_0_f2h_cold_reset_req_reset_n,
@@ -86,36 +95,46 @@ module soc_system (
 	pll_sys_outclk10mhz_clk,
 	pll_sys_outclk1mhz_clk,
 	pll_sys_outclk5mhz_clk,
+	position_e0_external_connection_export,
+	position_e1_external_connection_export,
+	position_extruder_type_external_connection_export,
+	position_type_external_connection_export,
+	position_x_external_connection_export,
+	position_y_external_connection_export,
+	position_z_external_connection_export,
 	reset_reset_n,
-	temp_2_external_connection_export,
-	temp_1_external_connection_export,
-	temp_0_external_connection_export,
-	command_type_external_connection_export,
-	command_x_external_connection_export,
-	command_y_external_connection_export,
-	command_z_external_connection_export,
-	command_e0_external_connection_export,
-	command_e1_external_connection_export,
-	command_f_external_connection_export,
-	command_t_external_connection_export,
-	command_dt_external_connection_export,
-	settings_max_speed_e1_external_connection_export,
-	settings_max_speed_e0_external_connection_export,
-	settings_max_speed_z_external_connection_export,
-	settings_max_speed_y_external_connection_export,
-	settings_max_speed_x_external_connection_export,
+	settings_acceleration_e0_external_connection_export,
+	settings_acceleration_e1_external_connection_export,
 	settings_acceleration_x_external_connection_export,
 	settings_acceleration_y_external_connection_export,
 	settings_acceleration_z_external_connection_export,
-	settings_acceleration_e0_external_connection_export,
-	settings_acceleration_e1_external_connection_export,
-	settings_jerk_x_external_connection_export,
-	settings_jerk_e1_external_connection_export,
 	settings_jerk_e0_external_connection_export,
+	settings_jerk_e1_external_connection_export,
+	settings_jerk_x_external_connection_export,
+	settings_jerk_y_external_connection_export,
 	settings_jerk_z_external_connection_export,
-	settings_jerk_y_external_connection_export);	
+	settings_max_speed_e0_external_connection_export,
+	settings_max_speed_e1_external_connection_export,
+	settings_max_speed_x_external_connection_export,
+	settings_max_speed_y_external_connection_export,
+	settings_max_speed_z_external_connection_export,
+	settings_max_temp_bed_external_connection_export,
+	settings_max_temp_e0_external_connection_export,
+	settings_max_temp_e1_external_connection_export,
+	temp_0_external_connection_export,
+	temp_1_external_connection_export,
+	temp_2_external_connection_export);	
 
 	input		clk_clk;
+	output	[31:0]	command_dt_external_connection_export;
+	output	[31:0]	command_e0_external_connection_export;
+	output	[31:0]	command_e1_external_connection_export;
+	output	[31:0]	command_f_external_connection_export;
+	output	[31:0]	command_t_external_connection_export;
+	output	[31:0]	command_type_external_connection_export;
+	output	[31:0]	command_x_external_connection_export;
+	output	[31:0]	command_y_external_connection_export;
+	output	[31:0]	command_z_external_connection_export;
 	input	[31:0]	flags_in_external_connection_export;
 	output	[31:0]	flags_out_external_connection_export;
 	input		hps_0_f2h_cold_reset_req_reset_n;
@@ -201,32 +220,33 @@ module soc_system (
 	output		pll_sys_outclk10mhz_clk;
 	output		pll_sys_outclk1mhz_clk;
 	output		pll_sys_outclk5mhz_clk;
+	input	[11:0]	position_e0_external_connection_export;
+	input	[11:0]	position_e1_external_connection_export;
+	input		position_extruder_type_external_connection_export;
+	input		position_type_external_connection_export;
+	input	[11:0]	position_x_external_connection_export;
+	input	[11:0]	position_y_external_connection_export;
+	input	[11:0]	position_z_external_connection_export;
 	input		reset_reset_n;
-	input	[11:0]	temp_2_external_connection_export;
-	input	[11:0]	temp_1_external_connection_export;
-	input	[11:0]	temp_0_external_connection_export;
-	output	[31:0]	command_type_external_connection_export;
-	output	[31:0]	command_x_external_connection_export;
-	output	[31:0]	command_y_external_connection_export;
-	output	[31:0]	command_z_external_connection_export;
-	output	[31:0]	command_e0_external_connection_export;
-	output	[31:0]	command_e1_external_connection_export;
-	output	[31:0]	command_f_external_connection_export;
-	output	[31:0]	command_t_external_connection_export;
-	output	[31:0]	command_dt_external_connection_export;
-	output	[31:0]	settings_max_speed_e1_external_connection_export;
-	output	[31:0]	settings_max_speed_e0_external_connection_export;
-	output	[31:0]	settings_max_speed_z_external_connection_export;
-	output	[31:0]	settings_max_speed_y_external_connection_export;
-	output	[31:0]	settings_max_speed_x_external_connection_export;
+	output	[31:0]	settings_acceleration_e0_external_connection_export;
+	output	[31:0]	settings_acceleration_e1_external_connection_export;
 	output	[31:0]	settings_acceleration_x_external_connection_export;
 	output	[31:0]	settings_acceleration_y_external_connection_export;
 	output	[31:0]	settings_acceleration_z_external_connection_export;
-	output	[31:0]	settings_acceleration_e0_external_connection_export;
-	output	[31:0]	settings_acceleration_e1_external_connection_export;
-	output	[31:0]	settings_jerk_x_external_connection_export;
-	output	[31:0]	settings_jerk_e1_external_connection_export;
 	output	[31:0]	settings_jerk_e0_external_connection_export;
-	output	[31:0]	settings_jerk_z_external_connection_export;
+	output	[31:0]	settings_jerk_e1_external_connection_export;
+	output	[31:0]	settings_jerk_x_external_connection_export;
 	output	[31:0]	settings_jerk_y_external_connection_export;
+	output	[31:0]	settings_jerk_z_external_connection_export;
+	output	[31:0]	settings_max_speed_e0_external_connection_export;
+	output	[31:0]	settings_max_speed_e1_external_connection_export;
+	output	[31:0]	settings_max_speed_x_external_connection_export;
+	output	[31:0]	settings_max_speed_y_external_connection_export;
+	output	[31:0]	settings_max_speed_z_external_connection_export;
+	output	[11:0]	settings_max_temp_bed_external_connection_export;
+	output	[11:0]	settings_max_temp_e0_external_connection_export;
+	output	[11:0]	settings_max_temp_e1_external_connection_export;
+	input	[11:0]	temp_0_external_connection_export;
+	input	[11:0]	temp_1_external_connection_export;
+	input	[11:0]	temp_2_external_connection_export;
 endmodule

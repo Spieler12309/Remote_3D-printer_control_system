@@ -2,6 +2,7 @@ module heater_control(	input 	wire 				clk,
 								input		wire	[11:0]	temp,
 								input 	wire	signed	[11:0]	t,
 								input		wire	signed	[11:0]	dt,
+								input		wire	signed	[11:0]	max_temp,
 								input		wire					heat,
 								input		wire					heat_long,
 
@@ -10,9 +11,12 @@ module heater_control(	input 	wire 				clk,
 wire [11:0] temp_filter;
 wire	[11:0]	temp_bottom;
 wire	[11:0]	temp_upper;
+wire	[11:0]	temp_heat;
 
+reg		signed	[11:0]	rth = 'd0;
 reg		signed	[11:0]	rt = 'd0;
 reg		signed	[11:0]	rdt = 'd0;
+
 reg [7:0] w = 'd0;
 reg		g = 1'b0;
 reg		hp = 1'b0;
@@ -21,6 +25,13 @@ reg		hlp = 1'b0;
 analog_filter #(16) filter_1( .clk(clk),
 										.signal_in(temp),
 										.signal_out(temp_filter));
+
+temp_adctemp tat0(.clk(clk),
+					.temp(rth),
+					.res(100000),
+					.voltage(33), //Напряжение, умноженное на k
+					.k(10),
+					.adc_temp(temp_heat));
 
 temp_adctemp tat1(.clk(clk),
 					.temp(rt-rdt),
@@ -35,7 +46,41 @@ temp_adctemp tat2(.clk(clk),
 					.voltage(33), //Напряжение, умноженное на k
 					.k(10),
 					.adc_temp(temp_upper));
-
+					
+always @(posedge heat or posedge heat_long)
+begin
+	if (heat)
+	begin
+		if (t >= max_temp)
+		begin
+			rth <= 'd0;
+			rt <= 'd0;
+			rdt <= 'd0;
+		end
+		else
+		begin
+			rth <= t;
+			rt <= 'd0;
+			rdt <= 'd0;
+		end
+	end
+	else
+	begin
+		if (t >= max_temp)
+		begin
+			rth <= 'd0;
+			rt <= 'd0;
+			rdt <= 'd0;
+		end
+		else
+		begin
+			rth <= 'd0;
+			rt <= t;
+			rdt <= dt;
+		end
+	end
+end
+					
 always @(posedge clk)
 begin
 	g = (heat != hp) | (heat_long != hlp);
@@ -45,8 +90,8 @@ begin
 	begin
 		if (heat == 1'b0)
 			f = 1'b1;
-			
-		if (heat == 1'b1) //нагрев	
+
+		if (heat == 1'b1) //нагрев
 		begin
 			if (f == 1'b1)
 			begin
@@ -56,7 +101,7 @@ begin
 				end
 				else
 				begin
-					if (temp_filter <= temp_upper)
+					if (temp_filter <= temp_heat)
 					begin
 						enable_heater = 1'b0;
 						f = 1'b0;
@@ -68,23 +113,20 @@ begin
 		end
 		else 
 		begin 
-			if (heat_long == 1'b1) //нагрев и удержание
+			if (g)
+				w = 'd100;
+			else
 			begin
-				if (g)
+				if (temp_filter <= temp_upper)
 				begin
-					w = 'd100;
+					enable_heater = 1'b0;
 				end
 				else
 				begin
-					if (temp_filter <= temp_upper)
-						enable_heater = 1'b0;
-					else
-						if (temp_filter >= temp_bottom)
-							enable_heater = 1'b1;
+					if (temp_filter >= temp_bottom)
+						enable_heater = 1'b1;
 				end
 			end
-			else
-				enable_heater = 1'b0;
 		end
 	end
 	else

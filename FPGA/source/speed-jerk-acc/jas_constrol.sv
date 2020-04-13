@@ -7,6 +7,7 @@ module jas_constrol(
 	input		wire	[31:0]	params [0:4],	
 
 	output	reg				finish,	//Сигнал окончания движения
+	output	reg	[31:0]	step_num = 'b0,
 	output	reg				step);	//Сигнал двигателя
 
 wire	[31:0]	N 		= params[0]; //Количество шагов для движения
@@ -17,7 +18,7 @@ wire	[31:0]	delta = params[4]; //Пошаговое уменьшение зад�
 
 reg	[31:0]	i = 0;
 reg	[31:0]	wait_step = 'b0;
-reg	[31:0]	step_num = 'b0;
+
 reg	[31:0]	g = 0;
 
 always @(posedge clk or posedge reset)
