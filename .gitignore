@@ -13,8 +13,11 @@ FPGA/printer_system.fit.rpt.htm_files
 FPGA/printer_system.flow.rpt.htm_files
 FPGA/printer_system.map.rpt.htm_files
 FPGA/printer_system.sta.rpt.htm_files
+FPGA/QSYS_components/adc_control
+FPGA/QSYS_components/soc_system
 HPS/control_system/bin
 HPS/control_system/build
+HPS/control_system/.idea
 
 # ignore Quartus II generated files
 FPGA/**/*_generation_script*

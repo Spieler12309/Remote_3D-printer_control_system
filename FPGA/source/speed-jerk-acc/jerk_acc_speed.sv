@@ -1,83 +1,84 @@
 `include "../configuration.vh"
+//`define DEBUG //Расскомментировать для тестирования
 
 module jerk_acc_speed ( 
 	//Входные сигналы
-	input		wire							clk,
-	input		wire							reset,
+	input		wire									clk,
+	input		wire									reset,
 	
 	//Максимальная скорость принтера
-	input		wire				[31:0]	max_speed_x, //микрошагов/сек
-	input		wire				[31:0]	max_speed_y, //микрошагов/сек
-	input		wire				[31:0]	max_speed_z, //микрошагов/сек
-	input		wire				[31:0]	max_speed_e0, //микрошагов/сек
-	input		wire				[31:0]	max_speed_e1, //микрошагов/сек
+	input		wire					[31:0]	max_speed_x, //микрошагов/сек
+	input		wire					[31:0]	max_speed_y, //микрошагов/сек
+	input		wire					[31:0]	max_speed_z, //микрошагов/сек
+	input		wire					[31:0]	max_speed_e0, //микрошагов/сек
+	input		wire					[31:0]	max_speed_e1, //микрошагов/сек
 	
 	//Ускорение принтера
-	input		wire				[31:0]	acceleration_x, //микрошагов/сек^2
-	input		wire				[31:0]	acceleration_y, //микрошагов/сек^2
-	input		wire				[31:0]	acceleration_z, //микрошагов/сек^2
-	input		wire				[31:0]	acceleration_e0, //микрошагов/сек^2
-	input		wire				[31:0]	acceleration_e1, //микрошагов/сек^2
+	input		wire					[31:0]	acceleration_x, //микрошагов/сек^2
+	input		wire					[31:0]	acceleration_y, //микрошагов/сек^2
+	input		wire					[31:0]	acceleration_z, //микрошагов/сек^2
+	input		wire					[31:0]	acceleration_e0, //микрошагов/сек^2
+	input		wire					[31:0]	acceleration_e1, //микрошагов/сек^2
 	
 	//Рывок принтера
-	input		wire				[31:0]	jerk_x, //микрошагов/сек
-	input		wire				[31:0]	jerk_y, //микрошагов/сек
-	input		wire				[31:0]	jerk_z, //микрошагов/сек
-	input		wire				[31:0]	jerk_e0, //микрошагов/сек
-	input		wire				[31:0]	jerk_e1, //микрошагов/сек
+	input		wire					[31:0]	jerk_x, //микрошагов/сек
+	input		wire					[31:0]	jerk_y, //микрошагов/сек
+	input		wire					[31:0]	jerk_z, //микрошагов/сек
+	input		wire					[31:0]	jerk_e0, //микрошагов/сек
+	input		wire					[31:0]	jerk_e1, //микрошагов/сек
 	
 	//Информация об инверсия двигателей
-	input		wire			stepper_x_inversion,
-	input		wire			stepper_y_inversion,
-	input		wire			stepper_z_inversion,
-	input		wire			stepper_e0_inversion,
-	input		wire			stepper_e1_inversion,
+	input		wire									stepper_x_inversion,
+	input		wire									stepper_y_inversion,
+	input		wire									stepper_z_inversion,
+	input		wire									stepper_e0_inversion,
+	input		wire									stepper_e1_inversion,
 
 	//Данные Gcode команды движения
-	input		wire				[31:0]	speed, //микрошагов/сек
+	input		wire					[31:0]	speed, //микрошагов/сек
 	input		wire	signed	[31:0]	num_x_m, //микрошагов
 	input		wire	signed	[31:0]	num_y_m, //микрошагов
 	input		wire	signed	[31:0]	num_z_m, //микрошагов
 	input		wire	signed	[31:0]	num_e0_m, //микрошагов
 	input		wire	signed	[31:0]	num_e1_m, //микрошагов
-	input		wire							start_driving_main,
+	input		wire									start_driving_main,
 	
 	//Сигналы с концевиков
-	input		wire				[0:5]		endstops_nf,
-	input		wire							bar_end_nf,
+	input		wire					[0:5]		endstops_nf,
+	input		wire									bar_end_nf,
 
 	//Включить/выключить двигатели
-	input		wire							enable_steppers,
-	input		wire							disable_steppers,
+	input		wire									enable_steppers,
+	input		wire									disable_steppers,
 					
 	//Выходные сигналы
 	//Двигатель a
-	output	reg							stepper_x_enable,
-	output	reg							stepper_x_step,
-	output	reg							stepper_x_direction,	
+	output	reg										stepper_x_enable,
+	output	wire									stepper_x_step,
+	output	wire									stepper_x_direction,	
 	
 	//Двигатель b
-	output	reg							stepper_y_enable,
-	output	reg							stepper_y_step,
-	output	reg							stepper_y_direction,	
+	output	reg										stepper_y_enable,
+	output	wire									stepper_y_step,
+	output	wire									stepper_y_direction,	
 	
 	//Двигатель оси z
-	output	reg							stepper_z_enable,
-	output	reg							stepper_z_step,
-	output	reg							stepper_z_direction,	
+	output	reg										stepper_z_enable,
+	output	wire									stepper_z_step,
+	output	wire									stepper_z_direction,	
 	
 	//Двигатель экструдера 0
-	output	reg							stepper_e0_enable,
-	output	reg							stepper_e0_step,
-	output	reg							stepper_e0_direction,
+	output	reg										stepper_e0_enable,
+	output	wire									stepper_e0_step,
+	output	wire									stepper_e0_direction,
 	
 	//Двигатель экструдера 1
-	output	reg							stepper_e1_enable,
-	output	reg							stepper_e1_step,
-	output	reg							stepper_e1_direction,
+	output	reg										stepper_e1_enable,
+	output	wire									stepper_e1_step,
+	output	wire									stepper_e1_direction,
 
-	output	wire							finish,
-	output	wire							error
+	output	wire									finish,
+	output	wire									error
 	);
 								
 wire	[31:0]	speed_x;
@@ -86,44 +87,40 @@ wire	[31:0]	speed_z;
 wire	[31:0]	speed_e0;
 wire	[31:0]	speed_e1;
 
-wire	[63:0]	timing_x 	[0:3];
-wire	[63:0]	timing_y 	[0:3];
-wire	[63:0]	timing_z 	[0:3];
-wire	[63:0]	timing_e0 	[0:3];
-wire	[63:0]	timing_e1 	[0:3];
+wire	[63:0]	timing_x 			[0:3];
+wire	[63:0]	timing_y 			[0:3];
+wire	[63:0]	timing_z 			[0:3];
+wire	[63:0]	timing_e0 		[0:3];
+wire	[63:0]	timing_e1 		[0:3];
 
-wire	[31:0]	params_x		[0:4];
-wire	[31:0]	params_y		[0:4];
-wire	[31:0]	params_z		[0:4];
-wire	[31:0]	params_e0	[0:4];
-wire	[31:0]	params_e1	[0:4];
+wire	[31:0]	params_x			[0:4];
+wire	[31:0]	params_y			[0:4];
+wire	[31:0]	params_z			[0:4];
+wire	[31:0]	params_e0			[0:4];
+wire	[31:0]	params_e1			[0:4];
 
-wire	[31:0]	new_params_x		[0:4];
-wire	[31:0]	new_params_y		[0:4];
-wire	[31:0]	new_params_z		[0:4];
+wire	[31:0]	new_params_x	[0:4];
+wire	[31:0]	new_params_y	[0:4];
+wire	[31:0]	new_params_z	[0:4];
 wire	[31:0]	new_params_e0	[0:4];
 wire	[31:0]	new_params_e1	[0:4];
 
-wire	[63:0]	max_timing 	[0:3];
-wire	[31:0]	max_params	[0:4];
+wire	[63:0]	max_timing 		[0:3];
+wire	[31:0]	max_params		[0:4];
 
-wire				fin_stt;
+wire					fin_stt;
+wire					fin_ct;
+wire					fin_fmt;
+wire					fin_canp;
+wire					fin_jc_x;
+wire					fin_jc_y;
+wire					fin_jc_z;
+wire					fin_jc_e0;
+wire					fin_jc_e1;
 
-wire				fin_ct;
-
-wire				fin_fmt;
-
-wire				fin_cnp;
-
-wire				fin_jc_x;
-wire				fin_jc_y;
-wire				fin_jc_z;
-wire				fin_jc_e0;
-wire				fin_jc_e1;
-
-assign speed_x = max_speed_x < speed ? max_speed_x : speed;
-assign speed_y = max_speed_y < speed ? max_speed_y : speed;
-assign speed_z = max_speed_z < speed ? max_speed_z : speed;
+assign speed_x  = max_speed_x < speed ? max_speed_x : speed;
+assign speed_y  = max_speed_y < speed ? max_speed_y : speed;
+assign speed_z  = max_speed_z < speed ? max_speed_z : speed;
 assign speed_e0 = max_speed_e0;
 assign speed_e1 = max_speed_e1;
 
@@ -140,7 +137,7 @@ wire	[31:0]	num_e0_now;
 wire	[31:0]	num_e1_now;
 
 wire	[0:5]		endstops;
-wire				bar_end;
+wire					bar_end;
 
 reg [1:0]	x	= 0; //0 - =; 1 - -; 2 - +;
 reg [1:0]	y	= 0; //0 - =; 1 - -; 2 - +;
@@ -189,6 +186,15 @@ assign error = ((((x == 1) && endstops[0]) ||
 			(stepper_z_direction && endstops[5]));
 wire	start_driving;
 assign start_driving = (start_driving_main == 1'b1) && (error == 1'b0);
+
+initial
+begin
+	stepper_x_enable <= 1'b0;
+	stepper_y_enable <= 1'b0;
+	stepper_z_enable <= 1'b0;
+	stepper_e0_enable <= 1'b0;
+	stepper_e1_enable <= 1'b0;
+end
 
 always @(posedge clk)
 begin
@@ -338,7 +344,6 @@ find_max_timing fmt(
 	.timing_e0(timing_e0),
 	.timing_e1(timing_e1),
 
-
 	.max_timing(max_timing),
 	.max_params(max_params),
 	.finish(fin_fmt));
@@ -361,7 +366,7 @@ calc_all_new_parameters canp(
 	.new_par_z(new_params_z),
 	.new_par_e0(new_params_e0),
 	.new_par_e1(new_params_e1),
-	.finish(canp_x)
+	.finish(fin_canp)
 	);
 
 
@@ -369,7 +374,7 @@ calc_all_new_parameters canp(
 jas_constrol jc_x(
 	.clk(clk),
 	.reset(reset),
-	.start(cnp_x && cnp_y && cnp_z && cnp_e0 && cnp_e1),
+	.start(fin_canp),
 	.params(new_params_x),	
 
 	.finish(fin_jc_x),
@@ -379,7 +384,7 @@ jas_constrol jc_x(
 jas_constrol jc_y(
 	.clk(clk),
 	.reset(reset),
-	.start(cnp_x && cnp_y && cnp_z && cnp_e0 && cnp_e1),
+	.start(fin_canp),
 	.params(new_params_y),	
 
 	.finish(fin_jc_y),
@@ -389,7 +394,7 @@ jas_constrol jc_y(
 jas_constrol jc_z(
 	.clk(clk),
 	.reset(reset),
-	.start(cnp_x && cnp_y && cnp_z && cnp_e0 && cnp_e1),
+	.start(fin_canp),
 	.params(new_params_z),	
 
 	.finish(fin_jc_z),
@@ -399,7 +404,7 @@ jas_constrol jc_z(
 jas_constrol jc_e0(
 	.clk(clk),
 	.reset(reset),
-	.start(cnp_x && cnp_y && cnp_z && cnp_e0 && cnp_e1),
+	.start(fin_canp),
 	.params(new_params_e0),	
 
 	.finish(fin_jc_e0),
@@ -409,7 +414,7 @@ jas_constrol jc_e0(
 jas_constrol jc_e1(
 	.clk(clk),
 	.reset(reset),
-	.start(cnp_x && cnp_y && cnp_z && cnp_e0 && cnp_e1),
+	.start(fin_canp),
 	.params(new_params_e1),	
 
 	.finish(fin_jc_e1),
