@@ -1,0 +1,1 @@
+/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/sublime.dir/tcpserver.c.o CMakeFiles/sublime.dir/Common.c.o  -o sublime.exe -Wl,--out-implib,libsublime.dll.a -Wl,--major-image-version,0,--minor-image-version,0 
