@@ -5,9 +5,17 @@ int32_t MechanicsController::move(float dx, float dy, float dz, uint32_t fx, uin
 
     *command_type = CODE_GCODE_G0;
 
-    *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x + dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-    *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x - dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-    *command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
+    if (KINEMATICS == 0) {
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x +
+                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x -
+                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+    }
+    else
+    if (KINEMATICS == 1){
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x);
+        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+    }*command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
 
     *command_f_x  = fx * printer->printerVariables.settings.movement.step_per_Unit.x / 60;
     *command_f_y  = fy * printer->printerVariables.settings.movement.step_per_Unit.y / 60;
@@ -46,8 +54,16 @@ int32_t MechanicsController::move(float dx, float dy, float dz, uint32_t fx, uin
 int32_t MechanicsController::moveExtrude(  float dx, float dy, float dz, float de0, float de1,
                                             uint32_t fx, uint32_t fy, uint32_t fz, uint32_t fe0, uint32_t fe1){ //G1
     *command_type = CODE_GCODE_G1;
-    *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x + dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-    *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x - dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+    if (KINEMATICS == 0) {
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x +
+                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x -
+                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+    }
+    else if (KINEMATICS == 1){
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x);
+        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+    }
     *command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
     *command_e0 = static_cast<int32_t>(de0 * printer->printerVariables.settings.movement.step_per_Unit.e0);
     *command_e1 = static_cast<int32_t>(de1 * printer->printerVariables.settings.movement.step_per_Unit.e1);
@@ -135,7 +151,6 @@ int32_t MechanicsController::setRelative() { //G91
 int32_t MechanicsController::setCurrentPosition(bool x, bool y, bool z, bool e,
                                                float dx, float dy, float dz, float de) { //G92
     *command_type = CODE_GCODE_G92;
-    //TODO: ошибка при выполнении X1 Y2 Z0 получились координаты X26.6 Y-23.6
 
     float pos_x, pos_y, pos_z, pos_e0, pos_e1;
     getPositions(  pos_x, pos_y,
@@ -162,8 +177,16 @@ int32_t MechanicsController::setCurrentPosition(bool x, bool y, bool z, bool e,
         else
             new_e = pos_e1 * printer->printerVariables.settings.movement.step_per_Unit.e1;
 
-    *command_x = static_cast<int32_t>(new_x + new_y);
-    *command_y = static_cast<int32_t>(new_x - new_y);
+
+    if (KINEMATICS == 0) {
+        *command_x = static_cast<int32_t>(new_x + new_y);
+        *command_y = static_cast<int32_t>(new_x - new_y);
+    }
+    else if (KINEMATICS == 1){
+        *command_x = static_cast<int32_t>(new_x);
+        *command_y = static_cast<int32_t>(new_y);
+    }
+
     *command_z = static_cast<int32_t>(new_z);
     switch(extruderNumber)
     {
@@ -407,15 +430,15 @@ void MechanicsController::getPositions(float& pos_x, float& pos_y,
                                         float& pos_z, float& pos_e0,
                                         float& pos_e1)
 {
-    cout << "Координаты в виде моторов:" << endl;
-    cout << "X : " << (*position_x);
-    cout << "; Y : " << (*position_y);
-    cout << "; Z : " << (*position_z);
-    cout << "; E0: " << (*position_e0);
-    cout << "; E1: " << (*position_e1) << endl;
+    if (KINEMATICS == 0) {
+        pos_x  = ((*position_x) + (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.x);
+        pos_y  = ((*position_x) - (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.y);
+    }
+    else if (KINEMATICS == 1){
+        pos_x  = (*position_x) / (printer->printerVariables.settings.movement.step_per_Unit.x);
+        pos_y  = (*position_x) / (printer->printerVariables.settings.movement.step_per_Unit.y);
+    }
 
-    pos_x  = ((*position_x) + (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.x);
-    pos_y  = ((*position_x) - (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.y);
     pos_z  = (*position_z) / printer->printerVariables.settings.movement.step_per_Unit.z;
     pos_e0 = (*position_e0) / printer->printerVariables.settings.movement.step_per_Unit.e0;
     pos_e1 = (*position_e1) / printer->printerVariables.settings.movement.step_per_Unit.e1;

@@ -2,6 +2,9 @@
 #define INC_3D_PRINTER_CONFIGURATION_H
 
 #include <cstdint>
+
+static const int32_t KINEMATICS = 0; //0 - CoreXY; 1 - Simple kinematics
+
 static const int32_t NUM_EXTRUDERS                  = 2;
 static const int32_t NUM_STEPPERS                   = 5;
 static const int32_t NUM_ENDSTOPS                   = 6;
