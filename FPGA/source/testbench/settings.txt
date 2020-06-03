@@ -1,0 +1,34 @@
+quartus_eda --gen_testbench --tool=modelsim_oem --format=verilog 
+	--write_settings_files=off printer_system 
+	-c printer_system 
+	--vector_source="D:/GitHub/FQW/FPGA/source/testbench/speed_to_timig.vwf" 
+	--testbench_file=""D:/GitHub/FQW/FPGA/simulation/qsim/speed_to_timig.vwf.vt"
+
+quartus_eda --write_settings_files=off --simulation --functional=on 
+	--flatten_buses=off --tool=modelsim_oem 
+	--format=verilog 
+	--output_directory="D:/GitHub/FQW/FPGA/simulation/qsim/" 
+	printer_system -c printer_system
+
+onerror {exit -code 1}
+vlib work
+vlog -work work printer_system.vo
+vlog -work work speed_to_timig.vwf.vt
+vsim -novopt -c -t 1ps -L cyclonev_ver -L altera_ver -L altera_mf_ver 
+				-L 220model_ver -L sgate_ver 
+				-L altera_lnsim_ver 
+				work.speed_to_timing_vlg_vec_tst
+vcd file -direction printer_system.msim.vcd
+vcd add -internal speed_to_timing_vlg_vec_tst/*
+vcd add -internal speed_to_timing_vlg_vec_tst/i1/*
+proc simTimestamp {} {
+    echo "Simulation time: $::now ps"
+    if { [string equal running [runStatus]] } {
+        after 2500 simTimestamp
+    }
+}
+after 2500 simTimestamp
+run -all
+quit -f
+
+

@@ -1,0 +1,76 @@
+{
+  "max_speed": {
+    "E0": 200.0,
+    "X": 6000.0,
+    "Y": 6000.0,
+    "Z": 2000.0
+  },
+  "num_endstops": 6,
+  "motors_inverting": {
+    "E0": "false",
+    "X": "false",
+    "Y": "false",
+    "Z": "false"
+  },
+  "speed": {
+    "E0": 200.0,
+    "X": 6000.0,
+    "Y": 6000.0,
+    "Z": 2000.0
+  },
+  "home_speed_fast": {
+    "X": 8000.0,
+    "Y": 8000.0,
+    "Z": 2000.0
+  },
+  "acceleration": {
+    "E0": 360000.0,
+    "X": 4343.0,
+    "Y": 7200000.0,
+    "Z": 3600000.0
+  },
+  "num_extruders": 2,
+  "jerk": {
+    "E0": 200.0,
+    "X": 14.0,
+    "Y": 1000.0,
+    "Z": 500.0
+  },
+  "delta": 1.0,
+  "set_extruder": 1,
+  "max_size": {
+    "X": 250.0,
+    "Y": 250.0,
+    "Z": 250.0
+  },
+  "endstops_inverting": {
+    "Y_MIN": "false",
+    "Y_MAX": "false",
+    "Z_MAX": "false",
+    "X_MIN": "false",
+    "Z_MIN": "false",
+    "X_MAX": "false"
+  },
+  "num_motors": 5,
+  "barend_inverting": "false",
+  "pid": {
+    "P": 32.5,
+    "I": 3.57,
+    "D": 73.89
+  },
+  "max_temps": {
+    "BED": 150.0,
+    "E0": 300.0
+  },
+  "steps_per_unit": {
+    "E0": 800.0,
+    "X": 80.0,
+    "Y": 80.0,
+    "Z": 800.0
+  },
+  "home_speed_slow": {
+    "X": 1444.0,
+    "Y": 1000.0,
+    "Z": 500.0
+  }
+}
