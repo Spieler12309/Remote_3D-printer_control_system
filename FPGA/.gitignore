@@ -24,6 +24,9 @@ QSYS_components/soc_system
 **/*.done
 **/*.eqn
 **/*.html
+**/*.rpt.html
+**/*.flow.rpt.htm
+**/*.map.rpt.htm
 **/*.jdi
 **/*.jpg
 **/*.mif
