@@ -1,0 +1,22 @@
+const_speed: 1
+      9450 	 jas1.fin_stt
+X:  N =      81515, nn =          0, t0 =        100, tna =        100, delta =          0
+Y:  N =      98466, nn =          0, t0 =        120, tna =        120, delta =          0
+Z:  N =      78678, nn =          0, t0 =        133, tna =        133, delta =          0
+E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
+E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
+     18950 	 jas1.fin_ct
+X:  t1 =          0, t2 =    8151500, t30 =          0, tt =    8151500
+Y:  t1 =          0, t2 =   11815920, t30 =          0, tt =   11815920
+Z:  t1 =          0, t2 =   10464174, t30 =          0, tt =   10464174
+E0: t1 =          0, t2 =          0, t30 =          0, tt =          0
+E1: t1 =          0, t2 =          0, t30 =          0, tt =          0
+     19050 	 jas1.fin_fmt
+max_params: N =      98466, nn =          0, t0 =        120, tna =        120, delta =          0
+max_timing: t1 =          0, t2 =   11815920, t30 =          0, tt =   11815920
+     28550 	 jas1.fin_canp
+X:  N =      81515, nn =          0, t0 =        144, tna =        144, delta =          0
+Y:  N =      98466, nn =          0, t0 =        120, tna =        120, delta =          0
+Z:  N =      78678, nn =          0, t0 =        150, tna =        150, delta =          0
+E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
+E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0

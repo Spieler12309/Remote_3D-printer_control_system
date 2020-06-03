@@ -56,6 +56,6 @@ public:
     }
 };
 
-typedef dict<char, float> Parameters;
+typedef dict<string, float> Parameters;
 
 #endif //INC_3D_PRINTER_DICT_H

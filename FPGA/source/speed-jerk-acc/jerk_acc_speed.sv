@@ -1,5 +1,4 @@
 `include "../configuration.vh"
-//`define DEBUG //Расскомментировать для тестирования
 
 module jerk_acc_speed ( 
 	//Входные сигналы
@@ -35,7 +34,11 @@ module jerk_acc_speed (
 	input		wire									stepper_e1_inversion,
 
 	//Данные Gcode команды движения
-	input		wire					[31:0]	speed, //микрошагов/сек
+	input		wire					[31:0]	speed_x_main, //микрошагов/сек
+	input		wire					[31:0]	speed_y_main, //микрошагов/сек
+	input		wire					[31:0]	speed_z_main, //микрошагов/сек
+	input		wire					[31:0]	speed_e0_main, //микрошагов/сек
+	input		wire					[31:0]	speed_e1_main, //микрошагов/сек
 	input		wire	signed	[31:0]	num_x_m, //микрошагов
 	input		wire	signed	[31:0]	num_y_m, //микрошагов
 	input		wire	signed	[31:0]	num_z_m, //микрошагов
@@ -78,35 +81,68 @@ module jerk_acc_speed (
 	output	wire									stepper_e1_direction,
 
 	output	wire									finish,
-	output	wire									error
+	output	wire									error,
+
+	output	wire					[31:0]	num_x_now,
+	output	wire					[31:0]	num_y_now,
+	output	wire					[31:0]	num_z_now,
+	output	wire					[31:0]	num_e0_now,
+	output	wire					[31:0]	num_e1_now,
+
+	output 	wire					[63:0]	timing_x 			[0:3],
+	output 	wire					[63:0]	timing_y 			[0:3],
+	output 	wire					[63:0]	timing_z 			[0:3],
+	output 	wire					[63:0]	timing_e0 		[0:3],
+	output 	wire					[63:0]	timing_e1 		[0:3],
+	output 	wire					[31:0]	params_x			[0:4],
+	output 	wire					[31:0]	params_y			[0:4],
+	output 	wire					[31:0]	params_z			[0:4],
+	output 	wire					[31:0]	params_e0			[0:4],
+	output 	wire					[31:0]	params_e1			[0:4],
+	output 	wire					[31:0]	new_params_x	[0:4],
+	output 	wire					[31:0]	new_params_y	[0:4],
+	output 	wire					[31:0]	new_params_z	[0:4],
+	output 	wire					[31:0]	new_params_e0	[0:4],
+	output 	wire					[31:0]	new_params_e1	[0:4],
+	output 	wire					[63:0]	max_timing 		[0:3],
+	output 	wire					[31:0]	max_params		[0:4]
 	);
-								
+
 wire	[31:0]	speed_x;
 wire	[31:0]	speed_y;
 wire	[31:0]	speed_z;
 wire	[31:0]	speed_e0;
 wire	[31:0]	speed_e1;
 
-wire	[63:0]	timing_x 			[0:3];
-wire	[63:0]	timing_y 			[0:3];
-wire	[63:0]	timing_z 			[0:3];
-wire	[63:0]	timing_e0 		[0:3];
-wire	[63:0]	timing_e1 		[0:3];
+// wire	[63:0]	timing_x 			[0:3];
+// wire	[63:0]	timing_y 			[0:3];
+// wire	[63:0]	timing_z 			[0:3];
+// wire	[63:0]	timing_e0 		[0:3];
+// wire	[63:0]	timing_e1 		[0:3];
 
-wire	[31:0]	params_x			[0:4];
-wire	[31:0]	params_y			[0:4];
-wire	[31:0]	params_z			[0:4];
-wire	[31:0]	params_e0			[0:4];
-wire	[31:0]	params_e1			[0:4];
+// wire	[31:0]	params_x			[0:4];
+// wire	[31:0]	params_y			[0:4];
+// wire	[31:0]	params_z			[0:4];
+// wire	[31:0]	params_e0			[0:4];
+// wire	[31:0]	params_e1			[0:4];
 
-wire	[31:0]	new_params_x	[0:4];
-wire	[31:0]	new_params_y	[0:4];
-wire	[31:0]	new_params_z	[0:4];
-wire	[31:0]	new_params_e0	[0:4];
-wire	[31:0]	new_params_e1	[0:4];
+// wire	[31:0]	new_params_x	[0:4];
+// wire	[31:0]	new_params_y	[0:4];
+// wire	[31:0]	new_params_z	[0:4];
+// wire	[31:0]	new_params_e0	[0:4];
+// wire	[31:0]	new_params_e1	[0:4];
 
-wire	[63:0]	max_timing 		[0:3];
-wire	[31:0]	max_params		[0:4];
+// wire	[63:0]	max_timing 		[0:3];
+// wire	[31:0]	max_params		[0:4];
+
+
+
+wire					const_speed;
+wire					const_speed_x;
+wire					const_speed_y;
+wire					const_speed_z;
+wire					const_speed_e0;
+wire					const_speed_e1;
 
 wire					fin_stt;
 wire					fin_ct;
@@ -118,23 +154,17 @@ wire					fin_jc_z;
 wire					fin_jc_e0;
 wire					fin_jc_e1;
 
-assign speed_x  = max_speed_x < speed ? max_speed_x : speed;
-assign speed_y  = max_speed_y < speed ? max_speed_y : speed;
-assign speed_z  = max_speed_z < speed ? max_speed_z : speed;
-assign speed_e0 = max_speed_e0;
-assign speed_e1 = max_speed_e1;
+assign speed_x  = max_speed_x < speed_x_main ? max_speed_x : speed_x_main;
+assign speed_y  = max_speed_y < speed_y_main ? max_speed_y : speed_y_main;
+assign speed_z  = max_speed_z < speed_z_main ? max_speed_z : speed_z_main;
+assign speed_e0 = max_speed_e0 < speed_e0_main ? max_speed_e0 : speed_e0_main;
+assign speed_e1 = max_speed_e1 < speed_e1_main ? max_speed_e1 : speed_e1_main;
 
 wire	[31:0]	num_x;
 wire	[31:0]	num_y;
 wire	[31:0]	num_z;
 wire	[31:0]	num_e0;
 wire	[31:0]	num_e1;
-
-wire	[31:0]	num_x_now;
-wire	[31:0]	num_y_now;
-wire	[31:0]	num_z_now;
-wire	[31:0]	num_e0_now;
-wire	[31:0]	num_e1_now;
 
 wire	[0:5]		endstops;
 wire					bar_end;
@@ -164,19 +194,27 @@ endstop_filter ef6(.clk(clk),
 					.in(bar_end_nf),
 					.out(bar_end));
 
-assign num_x = (stepper_x_inversion == 0) ? num_x_m : -num_x_m;
-assign num_y = (stepper_y_inversion == 0) ? num_y_m : -num_y_m;
-assign num_z = (stepper_z_inversion == 0) ? num_z_m : -num_z_m;
-assign num_e0 = (stepper_e0_inversion == 0) ? num_e0_m : -num_e0_m;
-assign num_e1 = (stepper_e1_inversion == 0) ? num_e1_m : -num_e1_m;
+assign num_x 	= (num_x_m[31] == 0) ? num_x_m : ~num_x_m + 1;
+assign num_y 	= (num_y_m[31] == 0) ? num_y_m : ~num_y_m + 1;
+assign num_z 	= (num_z_m[31] == 0) ? num_z_m : ~num_z_m + 1;
+assign num_e0 = (num_e0_m[31] == 0) ? num_e0_m : ~num_e0_m + 1;
+assign num_e1 = (num_e1_m[31] == 0) ? num_e1_m : ~num_e1_m + 1;
 
-assign stepper_x_direction = num_x[31];
-assign stepper_y_direction = num_y[31];
-assign stepper_z_direction = num_z[31];
-assign stepper_e0_direction = num_e0[31];
-assign stepper_e1_direction = num_e1[31];
+assign stepper_x_direction = stepper_x_inversion ^ num_x_m[31];
+assign stepper_y_direction = stepper_y_inversion ^ num_y_m[31];
+assign stepper_z_direction = stepper_z_inversion ^ num_z_m[31];
+assign stepper_e0_direction = stepper_e0_inversion ^ num_e0_m[31];
+assign stepper_e1_direction = stepper_e1_inversion ^ num_e1_m[31];
 
-assign finish = fin_jc_x && fin_jc_y && fin_jc_z && fin_jc_e0 && fin_jc_e1 || error && start_driving_main;
+assign const_speed_x 	= ((speed_x  == jerk_x )  || (acceleration_x  == 0)) && num_x  != 0;
+assign const_speed_y 	= ((speed_y  == jerk_y )  || (acceleration_y  == 0)) && num_y  != 0;
+assign const_speed_z 	= ((speed_z  == jerk_z )  || (acceleration_z  == 0)) && num_z  != 0;
+assign const_speed_e0 = ((speed_e0 == jerk_e0)  || (acceleration_e0 == 0)) && num_e0 != 0;
+assign const_speed_e1 = ((speed_e1 == jerk_e1)  || (acceleration_e1 == 0)) && num_e1 != 0;
+
+assign const_speed = const_speed_x || const_speed_y || const_speed_z || const_speed_e0 || const_speed_e1;
+
+assign finish = ((fin_jc_x && fin_jc_y) && (fin_jc_z && fin_jc_e0) && fin_jc_e1 || error) && start_driving_main;
 
 assign error = ((((x == 1) && endstops[0]) || 
 			((x == 2) && endstops[1])) && (num_y - num_y_now == num_x - num_x_now) && (stepper_x_direction != stepper_y_direction)) &&
@@ -185,7 +223,7 @@ assign error = ((((x == 1) && endstops[0]) ||
 		((~stepper_z_direction && endstops[4] && num_z != num_z_now) || 
 			(stepper_z_direction && endstops[5]));
 wire	start_driving;
-assign start_driving = (start_driving_main == 1'b1) && (error == 1'b0);
+assign start_driving = (start_driving_main) && (~error);
 
 initial
 begin
@@ -281,6 +319,7 @@ speeds_to_timings stt(
 	.clk(clk),
 	.reset(reset),
 	.start(start_driving),
+	.const_speed(const_speed),
 	.num_x(num_x),
 	.num_y(num_y),
 	.num_z(num_z),
@@ -353,6 +392,7 @@ calc_all_new_parameters canp(
 	.clk(clk),
 	.reset(reset),
 	.start(fin_fmt),
+	.const_speed(const_speed),
 	.max_params(max_params),
 	.params_x(params_x),
 	.params_y(params_y),

@@ -4,23 +4,28 @@
 #include <string>
 #include <fstream>
 #include <exception>
+#include <ctype.h>
+#include <stdio.h>
+#include <iostream>
 
 #include "dict.h"
 
 using namespace std;
 
-class gcodeParser {
+class GcodeParser {
     string path;
     fstream f;
 
     unsigned int commands; // количество команд
-    unsigned int current_command;
+    unsigned int currentCommand;
 public:
-    explicit gcodeParser(const string& path);
-    ~gcodeParser();
+    explicit GcodeParser(const string& path);
+    explicit GcodeParser();
+    ~GcodeParser();
     int get_command_percentage();
 
     pair<string, Parameters> parse_command();
+    pair<string, Parameters> parse_command(string line);
     bool is_done();
 };
 

@@ -1,10 +1,10 @@
 `include "configuration.vh"
 
 module control_unit(
-	input		wire							clk,
-	input		wire							reset,
-	input		wire							start,
-	input		wire				[31:0]	command_type,
+	input		wire									clk,
+	input		wire									reset,
+	input		wire									start,
+	input		wire					[31:0]	command_type,
 	input		wire	signed	[31:0]	command_x,
 	input		wire	signed	[31:0]	command_y,
 	input		wire	signed	[31:0]	command_z,
@@ -24,8 +24,8 @@ module control_unit(
 	output	reg		signed	[31:0]	new_command_z,
 	output	reg		signed	[31:0]	new_command_e0,
 	output	reg		signed	[31:0]	new_command_e1,
-	output	reg								is_realative = 1'b0, //0 - абсолютная, 1 - относительная
-	output	reg								is_realative_extruder = 1'b0, //0 - абсолютная, 1 - относительная
+	output	reg										is_realative, //0 - абсолютная, 1 - относительная
+	output	reg										is_realative_extruder, //0 - абсолютная, 1 - относительная
 	output	reg										start_move,
 	output	reg						[0:2]		start_heat,
 	output	reg						[0:2]		start_heat_long,
@@ -36,7 +36,30 @@ module control_unit(
 	output	reg										finish,
 	output	reg										error);
 
-reg [31:0]		w = 'd0;
+reg [31:0]		w;
+reg [3:0]     state;
+
+initial
+begin
+	w <= 'd0;
+	new_command_x  <= 'd0;
+	new_command_y  <= 'd0;
+	new_command_z  <= 'd0;
+	new_command_e0 <= 'd0;
+	new_command_e1 <= 'd0;
+	is_realative <= 'd0;
+	is_realative_extruder <= 'd0;
+	start_move <= 'd0;
+	start_heat <= 'd0;
+	start_heat_long <= 'd0;
+	enable_steppers <= 'd0;
+	disable_steppers <= 'd0;
+	start_cooling <= 'd1;
+	finish <= 'd0;
+	error <= 'd0;
+	state <= 'd0;
+end
+
 always @(posedge clk or posedge reset)
 begin
 	if (reset)
@@ -49,6 +72,7 @@ begin
 		disable_steppers <= 1'b0;
 		error <= 1'b0;
 		finish <= 1'b0;
+		state <= 'd0;
 	end
 	else
 	begin		
@@ -56,7 +80,7 @@ begin
 		begin
 			if (start && ~finish)
 			begin
-				error = 1'b0;
+				error <= 1'b0;
 				case (command_type)
 					`GCODE_G0, `GCODE_G1:
 					begin						
@@ -75,29 +99,29 @@ begin
 					end
 					/*`GCODE_G28:
 					begin
-						start_home = 1'b1;
+						start_home <= 1'b1;
 					end*/
 					`GCODE_G90:
 					begin
-						start_move <= 1'b0;
-						start_heat <= 3'b000;
-						start_heat_long <= 3'b000;
-						//change_position <= 1'b0;
-						enable_steppers <= 1'b0;
-						disable_steppers <= 1'b0;
-						is_realative <= 1'b0;
-						finish <= 1'b1;
+							start_move <= 1'b0;
+							start_heat <= 3'b000;
+							start_heat_long <= 3'b000;
+							//change_position <= 1'b0;
+							enable_steppers <= 1'b0;
+							disable_steppers <= 1'b0;
+							is_realative <= 1'b0;
+							finish <= 1'b1;
 					end
 					`GCODE_G91:
 					begin
-						start_move <= 1'b0;
-						start_heat <= 3'b000;
-						start_heat_long <= 3'b000;
-						//change_position <= 1'b0;
-						enable_steppers <= 1'b0;
-						disable_steppers <= 1'b0;
-						is_realative <= 1'b1;
-						finish <= 1'b1;
+							start_move <= 1'b0;
+							start_heat <= 3'b000;
+							start_heat_long <= 3'b000;
+							//change_position <= 1'b0;
+							enable_steppers <= 1'b0;
+							disable_steppers <= 1'b0;
+							is_realative <= 1'b1;
+							finish <= 1'b1;
 					end
 					/*`GCODE_G92:
 					begin
@@ -160,7 +184,7 @@ begin
 						//change_position <= 1'b0;
 						enable_steppers <= 1'b0;
 						disable_steppers <= 1'b0;
-						if (command_x >=0 && command_x <= 2)
+						if (command_x >= 0 && command_x <= 2)
 						begin
 							start_heat[command_x] <= 1'b1; //Выбор на основе command_x
 							finish <= ~heaters_finish[command_x];
@@ -178,11 +202,11 @@ begin
 						//change_position <= 1'b0;
 						enable_steppers <= 1'b0;
 						disable_steppers <= 1'b0;
-						if (command_x >=0 && command_x <= 2)
+						if (command_x >= 0 && command_x <= 2)
 						begin
 							start_heat_long[command_x] <= 1'b1; //Выбор на основе command_x
 							finish <= 1'b1; 
-							w = 'd100;
+							w <= 'd100;
 						end
 						else
 						begin
@@ -208,7 +232,7 @@ begin
 						//change_position <= 1'b0;
 						enable_steppers <= 1'b0;
 						disable_steppers <= 1'b0;
-						w = 'd0;
+						w <= 'd0;
 						finish <= 1'b1;
 						error <= 1'b1; 
 					end
@@ -218,14 +242,15 @@ begin
 			begin
 				if (~start)
 				begin
-					start_move = 1'b0;
-					start_heat = 1'b0;
-					start_heat_long = 1'b0;
-					enable_steppers = 1'b0;
-					disable_steppers = 1'b0;
-					finish = 1'b0;	
-					error = 1'b0;		
-					w = 'd0;
+					start_move <= 1'b0;
+					start_heat <= 1'b0;
+					start_heat_long <= 1'b0;
+					enable_steppers <= 1'b0;
+					disable_steppers <= 1'b0;
+					finish <= 1'b0;	
+					error <= 1'b0;		
+					w <= 'd0;
+					state <= 'd0;
 				end
 			end
 		end

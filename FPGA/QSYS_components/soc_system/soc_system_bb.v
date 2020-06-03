@@ -4,7 +4,11 @@ module soc_system (
 	command_dt_external_connection_export,
 	command_e0_external_connection_export,
 	command_e1_external_connection_export,
-	command_f_external_connection_export,
+	command_f_e0_external_connection_export,
+	command_f_e1_external_connection_export,
+	command_f_x_external_connection_export,
+	command_f_y_external_connection_export,
+	command_f_z_external_connection_export,
 	command_t_external_connection_export,
 	command_type_external_connection_export,
 	command_x_external_connection_export,
@@ -75,6 +79,15 @@ module soc_system (
 	hps_0_uart1_out2_n,
 	hps_0_uart1_rxd,
 	hps_0_uart1_txd,
+	max_params_0_external_connection_export,
+	max_params_1_external_connection_export,
+	max_params_2_external_connection_export,
+	max_params_3_external_connection_export,
+	max_params_4_external_connection_export,
+	max_timing_0_external_connection_export,
+	max_timing_1_external_connection_export,
+	max_timing_2_external_connection_export,
+	max_timing_3_external_connection_export,
 	memory_mem_a,
 	memory_mem_ba,
 	memory_mem_ck,
@@ -91,14 +104,62 @@ module soc_system (
 	memory_mem_odt,
 	memory_mem_dm,
 	memory_oct_rzqin,
+	new_rparams_e0_0_external_connection_export,
+	new_rparams_e0_1_external_connection_export,
+	new_rparams_e0_2_external_connection_export,
+	new_rparams_e0_3_external_connection_export,
+	new_rparams_e0_4_external_connection_export,
+	new_rparams_e1_0_external_connection_export,
+	new_rparams_e1_1_external_connection_export,
+	new_rparams_e1_2_external_connection_export,
+	new_rparams_e1_3_external_connection_export,
+	new_rparams_e1_4_external_connection_export,
+	new_rparams_x_0_external_connection_export,
+	new_rparams_x_1_external_connection_export,
+	new_rparams_x_2_external_connection_export,
+	new_rparams_x_3_external_connection_export,
+	new_rparams_x_4_external_connection_export,
+	new_rparams_y_0_external_connection_export,
+	new_rparams_y_1_external_connection_export,
+	new_rparams_y_2_external_connection_export,
+	new_rparams_y_3_external_connection_export,
+	new_rparams_y_4_external_connection_export,
+	new_rparams_z_0_external_connection_export,
+	new_rparams_z_1_external_connection_export,
+	new_rparams_z_2_external_connection_export,
+	new_rparams_z_3_external_connection_export,
+	new_rparams_z_4_external_connection_export,
+	params_e0_0_external_connection_export,
+	params_e0_1_external_connection_export,
+	params_e0_2_external_connection_export,
+	params_e0_3_external_connection_export,
+	params_e0_4_external_connection_export,
+	params_e1_0_external_connection_export,
+	params_e1_1_external_connection_export,
+	params_e1_2_external_connection_export,
+	params_e1_3_external_connection_export,
+	params_e1_4_external_connection_export,
+	params_x_0_external_connection_export,
+	params_x_1_external_connection_export,
+	params_x_2_external_connection_export,
+	params_x_3_external_connection_export,
+	params_x_4_external_connection_export,
+	params_y_0_external_connection_export,
+	params_y_1_external_connection_export,
+	params_y_2_external_connection_export,
+	params_y_3_external_connection_export,
+	params_y_4_external_connection_export,
+	params_z_0_external_connection_export,
+	params_z_1_external_connection_export,
+	params_z_2_external_connection_export,
+	params_z_3_external_connection_export,
+	params_z_4_external_connection_export,
 	pll_sys_outclk100mhz_clk,
 	pll_sys_outclk10mhz_clk,
 	pll_sys_outclk1mhz_clk,
 	pll_sys_outclk5mhz_clk,
 	position_e0_external_connection_export,
 	position_e1_external_connection_export,
-	position_extruder_type_external_connection_export,
-	position_type_external_connection_export,
 	position_x_external_connection_export,
 	position_y_external_connection_export,
 	position_z_external_connection_export,
@@ -121,16 +182,45 @@ module soc_system (
 	settings_max_temp_bed_external_connection_export,
 	settings_max_temp_e0_external_connection_export,
 	settings_max_temp_e1_external_connection_export,
+	step_e0_now_external_connection_export,
+	step_e1_now_external_connection_export,
+	step_x_now_external_connection_export,
+	step_y_now_external_connection_export,
+	step_z_now_external_connection_export,
 	temp_0_external_connection_export,
 	temp_1_external_connection_export,
-	temp_2_external_connection_export);	
+	temp_2_external_connection_export,
+	timing_e0_0_external_connection_export,
+	timing_e0_1_external_connection_export,
+	timing_e0_2_external_connection_export,
+	timing_e0_3_external_connection_export,
+	timing_e1_0_external_connection_export,
+	timing_e1_1_external_connection_export,
+	timing_e1_2_external_connection_export,
+	timing_e1_3_external_connection_export,
+	timing_x_0_external_connection_export,
+	timing_x_1_external_connection_export,
+	timing_x_2_external_connection_export,
+	timing_x_3_external_connection_export,
+	timing_y_0_external_connection_export,
+	timing_y_1_external_connection_export,
+	timing_y_2_external_connection_export,
+	timing_y_3_external_connection_export,
+	timing_z_0_external_connection_export,
+	timing_z_1_external_connection_export,
+	timing_z_2_external_connection_export,
+	timing_z_3_external_connection_export);	
 
 	input		clk_clk;
-	output	[31:0]	command_dt_external_connection_export;
+	output	[11:0]	command_dt_external_connection_export;
 	output	[31:0]	command_e0_external_connection_export;
 	output	[31:0]	command_e1_external_connection_export;
-	output	[31:0]	command_f_external_connection_export;
-	output	[31:0]	command_t_external_connection_export;
+	output	[31:0]	command_f_e0_external_connection_export;
+	output	[31:0]	command_f_e1_external_connection_export;
+	output	[31:0]	command_f_x_external_connection_export;
+	output	[31:0]	command_f_y_external_connection_export;
+	output	[31:0]	command_f_z_external_connection_export;
+	output	[11:0]	command_t_external_connection_export;
 	output	[31:0]	command_type_external_connection_export;
 	output	[31:0]	command_x_external_connection_export;
 	output	[31:0]	command_y_external_connection_export;
@@ -200,6 +290,15 @@ module soc_system (
 	output		hps_0_uart1_out2_n;
 	input		hps_0_uart1_rxd;
 	output		hps_0_uart1_txd;
+	input	[31:0]	max_params_0_external_connection_export;
+	input	[31:0]	max_params_1_external_connection_export;
+	input	[31:0]	max_params_2_external_connection_export;
+	input	[31:0]	max_params_3_external_connection_export;
+	input	[31:0]	max_params_4_external_connection_export;
+	input	[31:0]	max_timing_0_external_connection_export;
+	input	[31:0]	max_timing_1_external_connection_export;
+	input	[31:0]	max_timing_2_external_connection_export;
+	input	[31:0]	max_timing_3_external_connection_export;
 	output	[14:0]	memory_mem_a;
 	output	[2:0]	memory_mem_ba;
 	output		memory_mem_ck;
@@ -216,14 +315,62 @@ module soc_system (
 	output		memory_mem_odt;
 	output	[3:0]	memory_mem_dm;
 	input		memory_oct_rzqin;
+	input	[31:0]	new_rparams_e0_0_external_connection_export;
+	input	[31:0]	new_rparams_e0_1_external_connection_export;
+	input	[31:0]	new_rparams_e0_2_external_connection_export;
+	input	[31:0]	new_rparams_e0_3_external_connection_export;
+	input	[31:0]	new_rparams_e0_4_external_connection_export;
+	input	[31:0]	new_rparams_e1_0_external_connection_export;
+	input	[31:0]	new_rparams_e1_1_external_connection_export;
+	input	[31:0]	new_rparams_e1_2_external_connection_export;
+	input	[31:0]	new_rparams_e1_3_external_connection_export;
+	input	[31:0]	new_rparams_e1_4_external_connection_export;
+	input	[31:0]	new_rparams_x_0_external_connection_export;
+	input	[31:0]	new_rparams_x_1_external_connection_export;
+	input	[31:0]	new_rparams_x_2_external_connection_export;
+	input	[31:0]	new_rparams_x_3_external_connection_export;
+	input	[31:0]	new_rparams_x_4_external_connection_export;
+	input	[31:0]	new_rparams_y_0_external_connection_export;
+	input	[31:0]	new_rparams_y_1_external_connection_export;
+	input	[31:0]	new_rparams_y_2_external_connection_export;
+	input	[31:0]	new_rparams_y_3_external_connection_export;
+	input	[31:0]	new_rparams_y_4_external_connection_export;
+	input	[31:0]	new_rparams_z_0_external_connection_export;
+	input	[31:0]	new_rparams_z_1_external_connection_export;
+	input	[31:0]	new_rparams_z_2_external_connection_export;
+	input	[31:0]	new_rparams_z_3_external_connection_export;
+	input	[31:0]	new_rparams_z_4_external_connection_export;
+	input	[31:0]	params_e0_0_external_connection_export;
+	input	[31:0]	params_e0_1_external_connection_export;
+	input	[31:0]	params_e0_2_external_connection_export;
+	input	[31:0]	params_e0_3_external_connection_export;
+	input	[31:0]	params_e0_4_external_connection_export;
+	input	[31:0]	params_e1_0_external_connection_export;
+	input	[31:0]	params_e1_1_external_connection_export;
+	input	[31:0]	params_e1_2_external_connection_export;
+	input	[31:0]	params_e1_3_external_connection_export;
+	input	[31:0]	params_e1_4_external_connection_export;
+	input	[31:0]	params_x_0_external_connection_export;
+	input	[31:0]	params_x_1_external_connection_export;
+	input	[31:0]	params_x_2_external_connection_export;
+	input	[31:0]	params_x_3_external_connection_export;
+	input	[31:0]	params_x_4_external_connection_export;
+	input	[31:0]	params_y_0_external_connection_export;
+	input	[31:0]	params_y_1_external_connection_export;
+	input	[31:0]	params_y_2_external_connection_export;
+	input	[31:0]	params_y_3_external_connection_export;
+	input	[31:0]	params_y_4_external_connection_export;
+	input	[31:0]	params_z_0_external_connection_export;
+	input	[31:0]	params_z_1_external_connection_export;
+	input	[31:0]	params_z_2_external_connection_export;
+	input	[31:0]	params_z_3_external_connection_export;
+	input	[31:0]	params_z_4_external_connection_export;
 	output		pll_sys_outclk100mhz_clk;
 	output		pll_sys_outclk10mhz_clk;
 	output		pll_sys_outclk1mhz_clk;
 	output		pll_sys_outclk5mhz_clk;
 	input	[11:0]	position_e0_external_connection_export;
 	input	[11:0]	position_e1_external_connection_export;
-	input		position_extruder_type_external_connection_export;
-	input		position_type_external_connection_export;
 	input	[11:0]	position_x_external_connection_export;
 	input	[11:0]	position_y_external_connection_export;
 	input	[11:0]	position_z_external_connection_export;
@@ -246,7 +393,32 @@ module soc_system (
 	output	[11:0]	settings_max_temp_bed_external_connection_export;
 	output	[11:0]	settings_max_temp_e0_external_connection_export;
 	output	[11:0]	settings_max_temp_e1_external_connection_export;
+	input	[31:0]	step_e0_now_external_connection_export;
+	input	[31:0]	step_e1_now_external_connection_export;
+	input	[31:0]	step_x_now_external_connection_export;
+	input	[31:0]	step_y_now_external_connection_export;
+	input	[31:0]	step_z_now_external_connection_export;
 	input	[11:0]	temp_0_external_connection_export;
 	input	[11:0]	temp_1_external_connection_export;
 	input	[11:0]	temp_2_external_connection_export;
+	input	[31:0]	timing_e0_0_external_connection_export;
+	input	[31:0]	timing_e0_1_external_connection_export;
+	input	[31:0]	timing_e0_2_external_connection_export;
+	input	[31:0]	timing_e0_3_external_connection_export;
+	input	[31:0]	timing_e1_0_external_connection_export;
+	input	[31:0]	timing_e1_1_external_connection_export;
+	input	[31:0]	timing_e1_2_external_connection_export;
+	input	[31:0]	timing_e1_3_external_connection_export;
+	input	[31:0]	timing_x_0_external_connection_export;
+	input	[31:0]	timing_x_1_external_connection_export;
+	input	[31:0]	timing_x_2_external_connection_export;
+	input	[31:0]	timing_x_3_external_connection_export;
+	input	[31:0]	timing_y_0_external_connection_export;
+	input	[31:0]	timing_y_1_external_connection_export;
+	input	[31:0]	timing_y_2_external_connection_export;
+	input	[31:0]	timing_y_3_external_connection_export;
+	input	[31:0]	timing_z_0_external_connection_export;
+	input	[31:0]	timing_z_1_external_connection_export;
+	input	[31:0]	timing_z_2_external_connection_export;
+	input	[31:0]	timing_z_3_external_connection_export;
 endmodule

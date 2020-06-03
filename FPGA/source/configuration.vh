@@ -1,7 +1,7 @@
 `ifndef CONFIG_VH
 `define CONFIG_VH
 
-`define	MAIN_FREQ	'd1000000 //Для управления двигателями
+`define	MAIN_FREQ	'd50000000 //Для управления двигателями
 
 //Кодирование команд G-Code
 `define	GCODE_G0  	32'd0
@@ -17,11 +17,14 @@
 `define	GCODE_M82 	32'd10
 `define	GCODE_M83 	32'd11
 `define	GCODE_M104	32'd12
-`define	GCODE_M106	32'd13
-`define	GCODE_M107	32'd14
-`define	GCODE_M109	32'd15
-`define	GCODE_M140	32'd16
-`define	GCODE_M190	32'd17
+`define	GCODE_M105	32'd13
+`define	GCODE_M106	32'd14
+`define	GCODE_M107	32'd15
+`define	GCODE_M109	32'd16
+`define	GCODE_M114	32'd17
+`define	GCODE_M119	32'd18
+`define	GCODE_M140	32'd19
+`define	GCODE_M190	32'd20
 
 //
 

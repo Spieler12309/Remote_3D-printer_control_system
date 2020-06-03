@@ -3,61 +3,6 @@
 
 #include "configuration.h"
 
-
-enum StateType {Waiting, 
-                Printing,
-                Pause_Printing,
-                Stop_Printing,
-                ShuttingDown};
-
-enum CoordinateSystemType {Relative, Absolute};
-
-enum DrivingControl {   X_Minus,
-                        X_Plus, 
-                        Y_Minus, 
-                        Y_Plus, 
-                        Z_Minus, 
-                        Z_Plus, 
-                        E_Minus, 
-                        E_Plus};
-
-enum SlicingParameters {Layer_Width_Minus, 
-                        Layer_Width_Plus, 
-                        Base_Thicknes_Minus, 
-                        Base_Thicknes_Plus, 
-                        Filling_Density_Minus, 
-                        Filling_Density_Plus};
-
-enum SettingsPID {  PID_P_Minus=6, 
-                    PID_P_Plus, 
-                    PID_I_Minus, 
-                    PID_I_Plus, 
-                    PID_D_Minus, 
-                    PID_D_Plus};
-
-enum PreprintSetup {Nozzle_Plus=0, 
-                    Nozzle_Minus, 
-                    Pad_Plus, 
-                    Pad_Minus,
-                    Cooler_Minus,
-                    Cooler_Plus};
-
-enum SpeedSettings {Speed_X_Plus, 
-                    Speed_X_Minus, 
-                    Speed_Y_Plus, 
-                    Speed_Y_Minus, 
-                    Speed_Z_Plus, 
-                    Speed_Z_Minus, 
-                    Speed_E_Plus, 
-                    Speed_E_Minus};
-
-enum StepsSettings {Steps_X_Plus, 
-                    Steps_X_Minus, 
-                    Steps_Y_Plus, 
-                    Steps_Y_Minus, 
-                    Steps_Z_Plus, 
-                    Steps_Z_Minus};
-
 struct PrinterVariables {
 
     /* Types */
@@ -65,107 +10,138 @@ struct PrinterVariables {
     struct Status {
         // Errors / Для индикаторов ошибок
         bool isPadHot           = false; // Статус температуры стола
-        bool isRodEmpty         = false; // Пруток закончился 
-        bool isExtruderDirty    = false; //
-        bool isRodBroken        = false; // Обрыв прутка
-    };
-
-    struct Common {
-
-        /* Types */
-
-        enum Preset { PLA, ABS, PVA, PRESET1, PRESET2, PRESET3 };
-        enum InfoLine { IDLE, PAUSED, BLOCKED_SCREEN, ERROR }; // СЮДА НУЖНО ДОБАВИТЬ ВСЕ СТАТУСЫ
-        enum Precision { P100 = 10000, P10 = 1000, P1 = 100, P01 = 10, P001 = 1};
-
-        struct Element {
-            bool isEnabled;
-            int current;
-            int set;
-            int max;
-
-            bool operator==(const Element& rhs) {
-                bool compare =  isEnabled == rhs.isEnabled ||
-                                current == rhs.current ||
-                                set == rhs.set ||
-                                max == rhs.max;
-                return compare;
-            }
-            
-        };
-
-        /* Properties */
-
-        Preset currentPreset      = PLA;  // Текущий выбранный пресет
-        Precision currentPrecision = P1; // 100 10 1 0.1 0.01
-
-        InfoLine infoLine   = IDLE;     // Информационная стока
-        bool isThinking = false;        // Для вращающейся фигни
-        int processBar  = 0;
-
-        Element nozzle  = {false, 0, 0, MAX_TEMP[0]};
-        Element pad     = {false, 0, 0, MAX_TEMP[2]};
-        Element cooler  = {false, 0, 0, 100};
-
-        float PID_P = 0.0f;
-        float PID_I = 0.0f;
-        float PID_D = 0.0f;
-
-        bool isTemperatureAuto = false; // ?
-    };
-
-    // // Slicer settings
-    // struct Slicer {
-    //     float layerWidth       = 0.25f;
-    //     float baseThicknes     = 0.1f;
-    //     float fillingDensity   = 10; //в процентах
-    // };
-
-    // Presets settings
-    struct Presets {
-    
-        struct Set {
-            int nozzle  = 0;
-            int pad     = 0;
-            int cooler  = 0;
-        };
-
-        Set PLA;
-        Set ABS;
-        Set PVA;
-        Set Preset1;
-        Set Preset2;
-        Set Preset3;
+        bool isRodEmpty         = false; // Пруток закончился
     };
 
     // Movement settings
-    struct Movement {
-
-        struct Speed {
-            float speedX = 100.0f;
-            float speedY = 100.0f;
-            float speedZ = 100.0f;
-            float speedE = 100.0f;
+    struct Settings {
+        struct Heaters {
+            struct PID {
+                float p = 0.0f;
+                float i = 0.0f;
+                float d = 0.0f;
+            };
+            struct Max_Temp {
+                int32_t bed = 300;
+                int32_t e0  = 300;
+                int32_t e1  = 300;
+            };
+            int32_t delta = 1;
+            PID pid;
+            Max_Temp max_Temp;
         };
 
-        struct Steps{
-            float steps_x = 250.0f;
-            float steps_y = 250.0f;
-            float steps_z = 250.0f;
+        struct Movement {
+            struct Default_Speed {
+                float x  = 6000.0f;
+                float y  = 6000.0f;
+                float z  = 2000.0f;
+                float e0 =  200.0f;
+                float e1 =  200.0f;
+            };
+
+            struct Max_Speed {
+                float x  = 6000.0f;
+                float y  = 6000.0f;
+                float z  = 2000.0f;
+                float e0 =  200.0f;
+                float e1 =  200.0f;
+            };
+
+            struct Max_Acceleration {
+                float x  = 7200000.0f;
+                float y  = 7200000.0f;
+                float z  = 3600000.0f;
+                float e0 =  360000.0f;
+                float e1 =  360000.0f;
+            };
+
+            struct Max_Jerk {
+                float x  = 1000.0f;
+                float y  = 1000.0f;
+                float z  =  100.0f;
+                float e0 =  200.0f;
+                float e1 =  200.0f;
+            };
+
+            struct Homing {
+                struct Fast {
+                    float x = 8000;
+                    float y = 8000;
+                    float z = 2000;
+                };
+                struct Slow {
+                    float x = 1000;
+                    float y = 1000;
+                    float z = 500;
+                };
+
+                Fast fast;
+                Slow slow;
+            };
+
+            struct Step_per_Unit {
+                float x  =  80.0f;
+                float y  =  80.0f;
+                float z  = 800.0f;
+                float e0 =  92.0f;
+                float e1 =  92.0f;
+            };
+
+            struct Size{
+                float x = 250.0f;
+                float y = 250.0f;
+                float z = 250.0f;
+            };
+
+            int32_t num_extruders = 1;
+            int32_t num_endstops = 1;
+            int32_t num_motors = 5;
+            int32_t num_barend = 1;
+
+            struct Invertion {
+                struct Motors {
+                    string x = "false";
+                    string y = "false";
+                    string z = "false";
+                    string e0 = "false";
+                    string e1 = "false";
+                };
+                struct Endstops {
+                    string xmin = "true";
+                    string xmax = "true";
+                    string ymin = "true";
+                    string ymax = "true";
+                    string zmin = "true";
+                    string zmax = "true";
+                };
+                struct Barend {
+                    string e0 = "false";
+                    string e1 = "false";
+                };
+
+                Motors motors;
+                Endstops endstops;
+                Barend barend;
+            };
+
+
+            Default_Speed default_Speed;
+            Max_Speed max_Speed;
+            Max_Acceleration max_Acceleration;
+            Max_Jerk max_Jerk;
+            Step_per_Unit step_per_Unit;
+            Size size;
+            Homing homing;
+            Invertion invertion;
         };
 
-        Speed speed;
-        Steps steps;
+        Heaters heaters;
+        Movement movement;
     };
 
-    /* Properties */
-
+    Settings settings;
     Status status;
-    Common common;
-
-    Presets presets;
-    //Slicer slicer;
-    Movement movement;
 };
 
 /* Helper function */

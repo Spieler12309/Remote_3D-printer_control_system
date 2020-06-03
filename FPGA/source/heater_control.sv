@@ -6,21 +6,34 @@ module heater_control(	input 	wire 				clk,
 								input		wire					heat,
 								input		wire					heat_long,
 
-								output	reg						enable_heater = 1'b0,
-								output	reg						f = 1'b1);
+								output	reg						enable_heater,
+								output	reg						f);
 wire [11:0] temp_filter;
 wire	[11:0]	temp_bottom;
 wire	[11:0]	temp_upper;
 wire	[11:0]	temp_heat;
 
-reg		signed	[11:0]	rth = 'd0;
-reg		signed	[11:0]	rt = 'd0;
-reg		signed	[11:0]	rdt = 'd0;
+reg		signed	[11:0]	rth;
+reg		signed	[11:0]	rt;
+reg		signed	[11:0]	rdt;
 
-reg [7:0] w = 'd0;
-reg		g = 1'b0;
-reg		hp = 1'b0;
-reg		hlp = 1'b0;
+reg [7:0] w;
+reg				g;
+reg				hp;
+reg				hlp;
+
+initial
+begin
+	enable_heater = 1'b0;
+	f = 1'b1;
+	rth = 'd0;
+	rt = 'd0;
+	rdt = 'd0;
+	w = 'd0;
+	g = 1'b0;
+	hp = 1'b0;
+	hlp = 1'b0;
+end
 
 analog_filter #(16) filter_1( .clk(clk),
 										.signal_in(temp),
@@ -28,23 +41,14 @@ analog_filter #(16) filter_1( .clk(clk),
 
 temp_adctemp tat0(.clk(clk),
 					.temp(rth),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.adc_temp(temp_heat));
 
 temp_adctemp tat1(.clk(clk),
 					.temp(rt-rdt),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.adc_temp(temp_bottom));
 
 temp_adctemp tat2(.clk(clk),
 					.temp(rt),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.adc_temp(temp_upper));
 					
 always @(posedge heat or posedge heat_long)

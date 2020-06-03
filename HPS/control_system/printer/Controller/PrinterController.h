@@ -4,16 +4,26 @@
 #include <cstring>
 #include <cmath>
 #include <unistd.h>
+#include <stdio.h>
+#include <string>
+#include <bits/stdc++.h>
 
 #include "Dict.h"
 #include "Types.h"
 #include "configuration.h"
 
 #include "MechanicsController.h"
-#include "FileManager.h"
 
 #include <iostream>
 #include <fstream>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+#include <unistd.h>
+
+#include <json.h>
+using json = nlohmann::json;
 
 using namespace std;
 
@@ -23,74 +33,76 @@ public:
     PrinterController();
 
     MechanicsController mechanics;
-    FileManager fileManager;
+    PrinterVariables printerVariables;
 
-    StateType state;
-    PrinterVariables settings;
-
-
-    // пути к файлам для печати
-    string to_print;
     // пути к файлам с настройками/вспомагательным
-    const string to_settings = "settings.txt";
-    const string extra_set = "temp.txt";
+    const string toSettings = "/home/root/printer_management/webapp/static/js/setting.json";
+    const char* fromPipe = "/home/root/printer_management/outputPipe.msg";
+    const char* toPipe = "/home/root/printer_management/inputPipe.msg";
 
-    void main_loop();
+    void mainLoop();
 
     // методы отвечающие за состояния
     void waiting();
-    void printing();
+    void printing(string command);
 
     // список необходимых gcode комманд
     // сейчас функции возвращаю void, но потом должны возращать код ошибки
-    void gcode_G0(const Parameters& parameters);
-    void gcode_G1(const Parameters& parameters);
-    void gcode_G4(const Parameters& parameters);
-    void gcode_G28(const Parameters& parameters);
-    void gcode_G90(const Parameters& parameters);
-    void gcode_G91(const Parameters& parameters);
-    void gcode_G92(const Parameters& parameters);
-    void gcode_M6(const Parameters& parameters);
-    void gcode_M17(const Parameters& parameters);
-    void gcode_M18(const Parameters& parameters);
-    void gcode_M82(const Parameters& parameters);
-    void gcode_M83(const Parameters& parameters);
-    void gcode_M104(const Parameters& parameters);
-    void gcode_M106(const Parameters& parameters);
-    void gcode_M107(const Parameters& parameters);
-    void gcode_M109(const Parameters& parameters);
-    void gcode_M140(const Parameters& parameters);
-    void gcode_M190(const Parameters& parameters);
+    string gcodeG0      (const Parameters& parameters);
+    string gcodeG1      (const Parameters& parameters);
+    string gcodeG4      (const Parameters& parameters);
+    string gcodeG28     (const Parameters& parameters);
+    string gcodeG90     (const Parameters& parameters);
+    string gcodeG91     (const Parameters& parameters);
+    string gcodeG92     (const Parameters& parameters);
+    string gcodeM6      (const Parameters& parameters);
 
-    dict<string, void(PrinterController::*)(const Parameters&)> gcode_commands = {
-            {"G0", &PrinterController::gcode_G0},
-            {"G1", &PrinterController::gcode_G1},
-            {"G4", &PrinterController::gcode_G4},
-            {"G28", &PrinterController::gcode_G28},
-            {"G90", &PrinterController::gcode_G90},
-            {"G91", &PrinterController::gcode_G91},
-            {"G92", &PrinterController::gcode_G92},
-            {"M6", &PrinterController::gcode_M6},
-            {"M17", &PrinterController::gcode_M17},
-            {"M18", &PrinterController::gcode_M18},
-            {"M82", &PrinterController::gcode_M82},
-            {"M83", &PrinterController::gcode_M83},
-            {"M104", &PrinterController::gcode_M104},
-            {"M106", &PrinterController::gcode_M106},
-            {"M107", &PrinterController::gcode_M107},
-            {"M109", &PrinterController::gcode_M109},
-            {"M140", &PrinterController::gcode_M140},
-            {"M190", &PrinterController::gcode_M190},
+    string gcodeM17     (const Parameters& parameters);
+    string gcodeM18     (const Parameters& parameters);
+    string gcodeM82     (const Parameters& parameters);
+    string gcodeM83     (const Parameters& parameters);
+    string gcodeM104    (const Parameters& parameters);
+    string gcodeM105    (const Parameters& parameters);
+    string gcodeM106    (const Parameters& parameters);
+    string gcodeM107    (const Parameters& parameters);
+    string gcodeM109    (const Parameters& parameters);
+    string gcodeM114    (const Parameters& parameters);
+    string gcodeM119    (const Parameters& parameters);
+    string gcodeM140    (const Parameters& parameters);
+    string gcodeM190    (const Parameters& parameters);
+    string gcodeM501    (const Parameters& parameters);
+
+    dict<string, string(PrinterController::*)(const Parameters&)> gcode_commands = {
+            {"G0",      &PrinterController::gcodeG0},
+            {"G1",      &PrinterController::gcodeG1},
+            {"G4",      &PrinterController::gcodeG4},
+            {"G28",     &PrinterController::gcodeG28},
+            {"G90",     &PrinterController::gcodeG90},
+            {"G91",     &PrinterController::gcodeG91},
+            {"G92",     &PrinterController::gcodeG92},
+
+            {"M6",      &PrinterController::gcodeM6},
+            {"M17",     &PrinterController::gcodeM17},
+            {"M18",     &PrinterController::gcodeM18},
+            {"M82",     &PrinterController::gcodeM82},
+            {"M83",     &PrinterController::gcodeM83},
+            {"M104",    &PrinterController::gcodeM104},
+            {"M105",    &PrinterController::gcodeM105},
+            {"M106",    &PrinterController::gcodeM106},
+            {"M107",    &PrinterController::gcodeM107},
+            {"M109",    &PrinterController::gcodeM109},
+            {"M114",    &PrinterController::gcodeM114},
+            {"M119",    &PrinterController::gcodeM119},
+            {"M140",    &PrinterController::gcodeM140},
+            {"M190",    &PrinterController::gcodeM190},
+            {"M501",    &PrinterController::gcodeM501},
     };
 
 
-    void update_parameters(); //Обновить изменяющиеся параметры (температура, статус, др)
-    void set_pid(float pid_p, float pid_i, float pid_d);
-    void set_speed(float x, float y, float z, float e);
-    void set_max_xyz(float max_x, float max_y, float max_z);
-    void get_pid(float& pid_p, float& pid_i, float& pid_d);
-    void get_speed(float& x, float& y, float& z, float& e);
-    void get_max_xyz(float& max_x, float& max_y, float& max_z);
+    void loadSettings();
+    void createSettings();
+    void writeToPipe(string s);
+    string readFromPipe();
     
 };
 

@@ -105,7 +105,7 @@ module printer_system(
 wire	[0:2]		heaters;
 wire	[0:2]		motors	[0:4]; //{enable, step, dir}
 wire	[0:5]		endstops;
-wire				bar_end;
+wire					bar_end;
 wire	[1:0]		uart; //RX, TX
 wire	[1:0]		i2c; //SDA, SCL
 wire	[11:0]	temp		[0:2];
@@ -114,24 +114,28 @@ wire	[11:0]	temp_0;
 wire	[11:0]	temp_1;
 wire	[11:0]	temp_2;
 wire	[31:0]	command_type;
-wire	[31:0]	command_x;
-wire	[31:0]	command_y;
-wire	[31:0]	command_z;
-wire	[31:0]	command_e0;
-wire	[31:0]	command_e1;
+wire	signed [31:0]	command_x;
+wire	signed [31:0]	command_y;
+wire	signed [31:0]	command_z;
+wire	signed [31:0]	command_e0;
+wire	signed [31:0]	command_e1;
 wire	[31:0]	new_command_x;
 wire	[31:0]	new_command_y;
 wire	[31:0]	new_command_z;
 wire	[31:0]	new_command_e0;
 wire	[31:0]	new_command_e1;
-wire	[31:0]	command_f;
-wire	[31:0]	command_t;
-wire	[31:0]	command_dt;
+wire	[31:0]	command_f_x;
+wire	[31:0]	command_f_y;
+wire	[31:0]	command_f_z;
+wire	[31:0]	command_f_e0;
+wire	[31:0]	command_f_e1;
+wire	[11:0]	command_t;
+wire	[11:0]	command_dt;
 wire	[31:0]	settings_max_speed_e1;
 wire	[31:0]	settings_max_speed_e0;
-wire	[31:0]	settings_max_speed_z_;
-wire	[31:0]	settings_max_speed_y_;
-wire	[31:0]	settings_max_speed_x_;
+wire	[31:0]	settings_max_speed_z;
+wire	[31:0]	settings_max_speed_y;
+wire	[31:0]	settings_max_speed_x;
 wire	[31:0]	settings_acceleration_x;
 wire	[31:0]	settings_acceleration_y;
 wire	[31:0]	settings_acceleration_z;
@@ -180,12 +184,15 @@ wire					enable_steppers;
 wire					disable_steppers;
 wire					cooling;
 
-wire					is_related;
-wire					is_related_extruder;
+wire	[31:0]	step_x;
+wire	[31:0]	step_y;
+wire	[31:0]	step_z;
+wire	[31:0]	step_e0;
+wire	[31:0]	step_e1;
 
 // connection of internal logics
 //assign LED[7: 6] = fpga_led_internal;
-assign fpga_clk_50 = FPGA_CLK1_50;
+assign fpga_clk_50 = CLK_1MHz;
 assign stm_hw_events = {{15{1'b0}}, SW, fpga_led_internal, fpga_debounced_buttons};
 
 
@@ -221,7 +228,7 @@ assign endstops 	= {GPIO_1[11] ^ flags_read[6],
 							GPIO_1[5]  ^ flags_read[9], 
 							GPIO_1[3]  ^ flags_read[10], 
 							GPIO_1[1]  ^ flags_read[11]};
-assign bar_end 	= GPIO_1[13] ^ flags_read[12];
+assign bar_end 	=  GPIO_1[13] ^ flags_read[12];
 //assign uart			= {GPIO_0[35], GPIO_0[33]};
 //assign i2c			= {GPIO_0[29], GPIO_0[31]};
 assign temp[0] 	= analog[1];
@@ -236,19 +243,19 @@ assign flags_in[4] = endstops[4];
 assign flags_in[5] = endstops[5];
 assign flags_in[6] = bar_end;
 
-adctemp_temp att0(.clk(clk),
+adctemp_temp att0(.clk(CLK_1MHz),
 					.adc_temp(temp[0]),
 					.res(100000),
 					.voltage(33), //Напряжение, умноженное на k
 					.k(10),
 					.temp(temp_0));
-adctemp_temp att1(.clk(clk),
+adctemp_temp att1(.clk(CLK_1MHz),
 					.adc_temp(temp[1]),
 					.res(100000),
 					.voltage(33), //Напряжение, умноженное на k
 					.k(10),
 					.temp(temp_1));
-adctemp_temp att2(.clk(clk),
+adctemp_temp att2(.clk(CLK_1MHz),
 					.adc_temp(temp[2]),
 					.res(100000),
 					.voltage(33), //Напряжение, умноженное на k
@@ -265,14 +272,33 @@ assign flags_in[18] = SW[1];
 assign flags_in[19] = SW[2];
 assign flags_in[20] = SW[3];
 
-assign LED[0] = heaters[0];
-assign LED[1] = heaters[1];
-assign LED[2] = heaters[2];
-assign LED[3] = flags_read[0];
-assign LED[4] = flags_in[7];
-assign LED[5] = flags_in[21];
-assign LED[6] = finish_driving;
-assign LED[7] = flags_in[22];
+assign LED[0] = heaters[0];			//Идет нагрев 0
+assign LED[1] = heaters[1];			//Идет нагрев 1
+assign LED[2] = heaters[2];			//Идет нагрев 2
+assign LED[3] = flags_read[0];	//run_command
+assign LED[4] = flags_in[7];		//command_finish
+assign LED[5] = flags_in[21];		//command_error
+assign LED[6] = finish_driving;	//finish_driving
+assign LED[7] = flags_in[22];		//driving_error
+
+wire	[63:0]	timing_x 			[0:3];
+wire	[63:0]	timing_y 			[0:3];
+wire	[63:0]	timing_z 			[0:3];
+wire	[63:0]	timing_e0 		[0:3];
+wire	[63:0]	timing_e1 		[0:3];
+wire	[31:0]	params_x			[0:4];
+wire	[31:0]	params_y			[0:4];
+wire	[31:0]	params_z			[0:4];
+wire	[31:0]	params_e0			[0:4];
+wire	[31:0]	params_e1			[0:4];
+wire	[31:0]	new_params_x	[0:4];
+wire	[31:0]	new_params_y	[0:4];
+wire	[31:0]	new_params_z	[0:4];
+wire	[31:0]	new_params_e0	[0:4];
+wire	[31:0]	new_params_e1	[0:4];
+wire	[63:0]	max_timing 		[0:3];
+wire	[31:0]	max_params		[0:4];
+
 
 soc_system ss0 (
 	.clk_clk                                             (FPGA_CLK1_50),                                             //                                          clk.clk
@@ -383,7 +409,11 @@ soc_system ss0 (
 	.command_z_external_connection_export                (command_z),                //                command_z_external_connection.export
 	.command_e0_external_connection_export               (command_e0),               //               command_e0_external_connection.export
 	.command_e1_external_connection_export               (command_e1),               //               command_e1_external_connection.export
-	.command_f_external_connection_export                (command_f),                //                command_f_external_connection.export
+	.command_f_x_external_connection_export              (command_f_x),              //              command_f_x_external_connection.export
+  .command_f_y_external_connection_export              (command_f_y),              //              command_f_y_external_connection.export
+  .command_f_z_external_connection_export              (command_f_z),              //              command_f_z_external_connection.export
+  .command_f_e0_external_connection_export             (command_f_e0),             //             command_f_e0_external_connection.export
+  .command_f_e1_external_connection_export             (command_f_e1),              //             command_f_e1_external_connection.export
 	.command_t_external_connection_export                (command_t),                //                command_t_external_connection.export
 	.command_dt_external_connection_export               (command_dt),               //               command_dt_external_connection.export
 	.settings_max_speed_e1_external_connection_export    (settings_max_speed_e1),    //    settings_max_speed_e1_external_connection.export
@@ -406,18 +436,120 @@ soc_system ss0 (
 	.settings_max_temp_e0_external_connection_export     (settings_max_temp_e0),                //                settings_max_temp_e0_external_connection.export
 	.settings_max_temp_e1_external_connection_export     (settings_max_temp_e1),                //                settings_max_temp_e1_external_connection.export
 	.settings_max_temp_bed_external_connection_export    (settings_max_temp_bed),                //               settings_max_temp_bed_external_connection.export
-	.position_x_external_connection_export					  (pos_x),
-	.position_y_external_connection_export					  (pos_y),
-	.position_z_external_connection_export					  (pos_z),
-	.position_e0_external_connection_export				  (pos_e0),
-	.position_e1_external_connection_export				  (pos_e1),
-	.position_type_external_connection_export				  (is_related),
-	.position_extruder_type_external_connection_export	  (is_related_extruder)
+	.position_x_external_connection_export					  	 (pos_x),
+	.position_y_external_connection_export					  	 (pos_y),
+	.position_z_external_connection_export					  	 (pos_z),
+	.position_e0_external_connection_export				 			 (pos_e0),
+	.position_e1_external_connection_export				 			 (pos_e1),
+	
+	.params_x_0_external_connection_export               (params_x[0]),
+  .params_x_1_external_connection_export               (params_x[1]),
+  .params_x_2_external_connection_export               (params_x[2]),
+  .params_x_3_external_connection_export               (params_x[3]),
+  .params_x_4_external_connection_export               (params_x[4]),
+  
+  .params_y_0_external_connection_export               (params_y[0]),
+  .params_y_1_external_connection_export               (params_y[1]),
+  .params_y_2_external_connection_export               (params_y[2]),
+  .params_y_3_external_connection_export               (params_y[3]),
+  .params_y_4_external_connection_export               (params_y[4]),
+  
+  .params_z_0_external_connection_export               (params_z[0]),
+  .params_z_1_external_connection_export               (params_z[1]),
+  .params_z_2_external_connection_export               (params_z[2]),
+  .params_z_3_external_connection_export               (params_z[3]),
+  .params_z_4_external_connection_export               (params_z[4]),
+  
+  .params_e0_0_external_connection_export              (params_e0[0]),
+  .params_e0_1_external_connection_export              (params_e0[1]),
+  .params_e0_2_external_connection_export              (params_e0[2]),
+  .params_e0_3_external_connection_export              (params_e0[3]),
+  .params_e0_4_external_connection_export              (params_e0[4]),
+  
+  .params_e1_0_external_connection_export              (params_e1[0]),
+  .params_e1_1_external_connection_export              (params_e1[1]),
+  .params_e1_2_external_connection_export              (params_e1[2]),
+  .params_e1_3_external_connection_export              (params_e1[3]),
+  .params_e1_4_external_connection_export              (params_e1[4]),
+  
+
+  .timing_x_0_external_connection_export               (timing_x[0][31:0]),
+  .timing_x_1_external_connection_export               (timing_x[1][31:0]),
+  .timing_x_2_external_connection_export               (timing_x[2][31:0]),
+  .timing_x_3_external_connection_export               (timing_x[3][31:0]),
+  
+  .timing_y_0_external_connection_export               (timing_y[0][31:0]),
+  .timing_y_1_external_connection_export               (timing_y[1][31:0]),
+  .timing_y_2_external_connection_export               (timing_y[2][31:0]),
+  .timing_y_3_external_connection_export               (timing_y[3][31:0]),
+  
+  .timing_e1_0_external_connection_export              (timing_e1[0][31:0]),
+  .timing_e1_1_external_connection_export              (timing_e1[1][31:0]),
+  .timing_e1_2_external_connection_export              (timing_e1[2][31:0]),
+  .timing_e1_3_external_connection_export              (timing_e1[3][31:0]),
+  
+  .timing_e0_0_external_connection_export              (timing_e0[0][31:0]),
+  .timing_e0_1_external_connection_export              (timing_e0[1][31:0]),
+  .timing_e0_2_external_connection_export              (timing_e0[2][31:0]),
+  .timing_e0_3_external_connection_export              (timing_e0[3][31:0]),
+  
+  .timing_z_0_external_connection_export               (timing_z[0][31:0]),
+  .timing_z_1_external_connection_export               (timing_z[1][31:0]),
+  .timing_z_2_external_connection_export               (timing_z[2][31:0]),
+  .timing_z_3_external_connection_export               (timing_z[3][31:0]),
+  
+
+  .new_rparams_x_0_external_connection_export          (new_params_x[0]),
+  .new_rparams_x_1_external_connection_export          (new_params_x[1]),
+  .new_rparams_x_2_external_connection_export          (new_params_x[2]),
+  .new_rparams_x_3_external_connection_export          (new_params_x[3]),
+  .new_rparams_x_4_external_connection_export          (new_params_x[4]),
+  
+  .new_rparams_y_0_external_connection_export          (new_params_y[0]),
+  .new_rparams_y_1_external_connection_export          (new_params_y[1]),
+  .new_rparams_y_2_external_connection_export          (new_params_y[2]),
+  .new_rparams_y_3_external_connection_export          (new_params_y[3]),
+  .new_rparams_y_4_external_connection_export          (new_params_y[4]),
+  
+  .new_rparams_z_0_external_connection_export          (new_params_z[0]),
+  .new_rparams_z_1_external_connection_export          (new_params_z[1]),
+  .new_rparams_z_2_external_connection_export          (new_params_z[2]),
+  .new_rparams_z_3_external_connection_export          (new_params_z[3]),
+  .new_rparams_z_4_external_connection_export          (new_params_z[4]),
+  
+  .new_rparams_e0_0_external_connection_export         (new_params_e0[0]),
+  .new_rparams_e0_1_external_connection_export         (new_params_e0[1]),
+  .new_rparams_e0_2_external_connection_export         (new_params_e0[2]),
+  .new_rparams_e0_3_external_connection_export         (new_params_e0[3]),
+  .new_rparams_e0_4_external_connection_export         (new_params_e0[4]),
+  
+  .new_rparams_e1_0_external_connection_export         (new_params_e1[0]),
+  .new_rparams_e1_1_external_connection_export         (new_params_e1[1]),
+  .new_rparams_e1_2_external_connection_export         (new_params_e1[2]),
+  .new_rparams_e1_3_external_connection_export         (new_params_e1[3]),
+  .new_rparams_e1_4_external_connection_export         (new_params_e1[4]),
+  
+  .max_params_0_external_connection_export             (max_params[0]),
+  .max_params_1_external_connection_export             (max_params[1]),
+  .max_params_2_external_connection_export             (max_params[2]),
+  .max_params_3_external_connection_export             (max_params[3]),
+  .max_params_4_external_connection_export             (max_params[4]),
+
+  .max_timing_0_external_connection_export             (max_timing[0][31:0]),
+  .max_timing_1_external_connection_export             (max_timing[1][31:0]),
+  .max_timing_2_external_connection_export             (max_timing[2][31:0]),
+  .max_timing_3_external_connection_export             (max_timing[3][31:0]),
+  
+  .step_x_now_external_connection_export               (step_x),
+  .step_y_now_external_connection_export               (step_y),
+  .step_z_now_external_connection_export               (step_z),
+  .step_e0_now_external_connection_export              (step_e0),
+  .step_e1_now_external_connection_export              (step_e1)
 );
 
 control_unit cu0(
 	.clk(FPGA_CLK1_50),
-	.reset(hps_fpga_reset_n),
+	.reset(flags_read[18]),
 	.start(flags_read[0]),
 	.command_type(command_type),
 	.command_x(command_x),
@@ -438,8 +570,8 @@ control_unit cu0(
 	.new_command_z(new_command_z),
 	.new_command_e0(new_command_e0),
 	.new_command_e1(new_command_e1),
-	.is_realative(is_related),
-	.is_realative_extruder(is_related_extruder),
+	.is_realative(flags_in[23]),
+	.is_realative_extruder(flags_in[24]),
 	.start_move(start_move),
 	.start_heat(start_heat),
 	.start_heat_long(start_heat_long),
@@ -452,7 +584,7 @@ control_unit cu0(
 	);
 
 positioning p0(
-	.reset(hps_fpga_reset_n),
+	.reset(flags_read[18]),
 
 
 	//Управляющие сигналы двигателей
@@ -504,8 +636,8 @@ positioning p0(
 
 //Подключение модуля управления движением каретки
 jerk_acc_speed jas0( 	
-	.clk(CLK_1MHz),
-	.reset(hps_fpga_reset_n),	
+	.clk(FPGA_CLK1_50),
+	.reset(flags_read[18]),	
 	.max_speed_x(settings_max_speed_x), //микрошагов/сек
 	.max_speed_y(settings_max_speed_y), //микрошагов/сек
 	.max_speed_z(settings_max_speed_z), //микрошагов/сек
@@ -526,7 +658,11 @@ jerk_acc_speed jas0(
 	.stepper_z_inversion(flags_read[3]),
 	.stepper_e0_inversion(flags_read[4]),
 	.stepper_e1_inversion(flags_read[5]),
-	.speed(command_type), //микрошагов/сек
+	.speed_x_main(command_f_x), //микрошагов/сек
+	.speed_y_main(command_f_y), //микрошагов/сек
+	.speed_z_main(command_f_z), //микрошагов/сек
+	.speed_e0_main(command_f_e0), //микрошагов/сек
+	.speed_e1_main(command_f_e1), //микрошагов/сек
 	.num_x_m(new_command_x), //микрошагов
 	.num_y_m(new_command_y), //микрошагов
 	.num_z_m(new_command_z), //микрошагов
@@ -553,11 +689,35 @@ jerk_acc_speed jas0(
 	.stepper_e1_step(motors[4][1]),
 	.stepper_e1_direction(motors[4][2]),
 	.finish(finish_driving),
-	.error(flags_in[22])
+	.error(flags_in[22]),
+
+	.num_x_now	(step_x),
+	.num_y_now	(step_y),
+	.num_z_now	(step_z),
+	.num_e0_now	(step_e0),
+	.num_e1_now	(step_e1),
+
+	.timing_x 		(timing_x),
+	.timing_y 		(timing_y),
+	.timing_z 		(timing_z),
+	.timing_e0 		(timing_e0),
+	.timing_e1 		(timing_e1),
+	.params_x		(params_x),
+	.params_y		(params_y),
+	.params_z		(params_z),
+	.params_e0		(params_e0),
+	.params_e1		(params_e1),
+	.new_params_x	(new_params_x),
+	.new_params_y	(new_params_y),
+	.new_params_z	(new_params_z),
+	.new_params_e0	(new_params_e0),
+	.new_params_e1	(new_params_e1),
+	.max_timing 	(max_timing),
+	.max_params		(max_params)
 	);
 
 heater_control hc0(	
-	.clk(FPGA_CLK1_50),
+	.clk(CLK_1MHz),
 	.temp(temp[0]),
 	.t(command_t),
 	.dt(command_dt),
@@ -569,7 +729,7 @@ heater_control hc0(
 	.f(heaters_finish[0]));
 
 heater_control hc1(	
-	.clk(FPGA_CLK1_50),
+	.clk(),
 	.temp(temp[1]),
 	.t(command_t),
 	.dt(command_dt),
@@ -581,7 +741,7 @@ heater_control hc1(
 	.f(heaters_finish[1]));
 
 heater_control hc2(	
-	.clk(FPGA_CLK1_50),
+	.clk(CLK_1MHz),
 	.temp(temp[2]),
 	.t(command_t),
 	.dt(command_dt),

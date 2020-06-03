@@ -1,6 +1,10 @@
-#include "GCodeParser.h"
+#include "GcodeParser.h"
 
-gcodeParser::gcodeParser(const string& path) {
+GcodeParser::GcodeParser() {
+
+}
+
+GcodeParser::GcodeParser(const string& path) {
     this->path = path;
     f.open(path);
     // проверить существует ли файл
@@ -8,7 +12,7 @@ gcodeParser::gcodeParser(const string& path) {
         throw invalid_argument("Wrong gcode file path!");
     }
 
-    current_command = 0;
+    currentCommand = 0;
     commands = 0;
     // прочитать файл - почтитать кол-во commands
     string line;
@@ -23,11 +27,11 @@ gcodeParser::gcodeParser(const string& path) {
     f.seekg(0, f.beg);
 }
 
-gcodeParser::~gcodeParser() {
+GcodeParser::~GcodeParser() {
     f.close();
 }
 
-pair<string, Parameters> gcodeParser::parse_command() {
+pair<string, Parameters> GcodeParser::parse_command() {
     string command;
     Parameters parameters;
 
@@ -42,7 +46,14 @@ pair<string, Parameters> gcodeParser::parse_command() {
             if (space_idx == -1) {
                 command = line.substr(0, i);
             } else {
-                parameters.insert(line[space_idx + 1], stof(line.substr(space_idx + 2, i - space_idx - 2)));
+                if (isalpha(line[space_idx + 2])) {
+                    parameters.insert(line.substr(space_idx + 1, 2),
+                                      stof(line.substr(space_idx + 3, i - space_idx - 2)));
+                }
+                else {
+                    parameters.insert(line.substr(space_idx + 1, 1),
+                                      stof(line.substr(space_idx + 2, i - space_idx - 2)));
+                }
             }
             space_idx = i;
         }
@@ -52,18 +63,24 @@ pair<string, Parameters> gcodeParser::parse_command() {
         if (space_idx == -1) {
             command = line.substr(0, line.size());
         } else {
-            parameters.insert(line[space_idx + 1], stof(line.substr(space_idx + 2, i - space_idx - 2)));
+            if (isalpha(line[space_idx + 2])) {
+                parameters.insert(line.substr(line[space_idx + 1], 2),
+                                  stof(line.substr(space_idx + 3, i - space_idx - 2)));
+            }
+            else {
+                parameters.insert(line.substr(line[space_idx + 1], 1),
+                                  stof(line.substr(space_idx + 2, i - space_idx - 2)));
+            }
         }
     }
-    ++current_command;
+    ++currentCommand;
 
     return make_pair(command, parameters);
 }
 
-pair<string, Parameters> gcodeParser::parse_command(string line) {
+pair<string, Parameters> GcodeParser::parse_command(string line) {
     string command;
     Parameters parameters;
-
     int space_idx = -1;
     int i = 0;
     for (; i < line.size() && line[i] != ';'; ++i) {
@@ -71,28 +88,40 @@ pair<string, Parameters> gcodeParser::parse_command(string line) {
             if (space_idx == -1) {
                 command = line.substr(0, i);
             } else {
-                parameters.insert(line[space_idx + 1], stof(line.substr(space_idx + 2, i - space_idx - 2)));
+                if (isalpha(line[space_idx + 2])) {
+                    parameters.insert(line.substr(space_idx + 1, 2),
+                                      stof(line.substr(space_idx + 3, i - space_idx - 2)));
+                }
+                else {
+                    parameters.insert(line.substr(space_idx + 1, 1),
+                                      stof(line.substr(space_idx + 2, i - space_idx - 2)));
+                }
             }
             space_idx = i;
         }
     }
-
     if (i == line.size()) {
         if (space_idx == -1) {
             command = line.substr(0, line.size());
         } else {
-            parameters.insert(line[space_idx + 1], stof(line.substr(space_idx + 2, i - space_idx - 2)));
+            if (isalpha(line[space_idx + 2])) {
+                parameters.insert(line.substr(space_idx + 1, 2),
+                                  stof(line.substr(space_idx + 3, i - space_idx - 2)));
+            }
+            else {
+                parameters.insert(line.substr(space_idx + 1, 1),
+                                  stof(line.substr(space_idx + 2, i - space_idx - 2)));
+            }
         }
     }
-    ++current_command;
-
+    ++currentCommand;
     return make_pair(command, parameters);
 }
 
-bool gcodeParser::is_done() {
-    return commands == current_command;
+bool GcodeParser::is_done() {
+    return commands == currentCommand;
 }
 
-int gcodeParser::get_command_percentage(){
-    return (int) 100 * (float) current_command / commands;
+int GcodeParser::get_command_percentage(){
+    return (int) 100 * (float) currentCommand / commands;
 }

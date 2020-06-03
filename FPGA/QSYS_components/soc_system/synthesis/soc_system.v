@@ -5,11 +5,15 @@
 `timescale 1 ps / 1 ps
 module soc_system (
 		input  wire        clk_clk,                                             //                                          clk.clk
-		output wire [31:0] command_dt_external_connection_export,               //               command_dt_external_connection.export
+		output wire [11:0] command_dt_external_connection_export,               //               command_dt_external_connection.export
 		output wire [31:0] command_e0_external_connection_export,               //               command_e0_external_connection.export
 		output wire [31:0] command_e1_external_connection_export,               //               command_e1_external_connection.export
-		output wire [31:0] command_f_external_connection_export,                //                command_f_external_connection.export
-		output wire [31:0] command_t_external_connection_export,                //                command_t_external_connection.export
+		output wire [31:0] command_f_e0_external_connection_export,             //             command_f_e0_external_connection.export
+		output wire [31:0] command_f_e1_external_connection_export,             //             command_f_e1_external_connection.export
+		output wire [31:0] command_f_x_external_connection_export,              //              command_f_x_external_connection.export
+		output wire [31:0] command_f_y_external_connection_export,              //              command_f_y_external_connection.export
+		output wire [31:0] command_f_z_external_connection_export,              //              command_f_z_external_connection.export
+		output wire [11:0] command_t_external_connection_export,                //                command_t_external_connection.export
 		output wire [31:0] command_type_external_connection_export,             //             command_type_external_connection.export
 		output wire [31:0] command_x_external_connection_export,                //                command_x_external_connection.export
 		output wire [31:0] command_y_external_connection_export,                //                command_y_external_connection.export
@@ -79,6 +83,15 @@ module soc_system (
 		output wire        hps_0_uart1_out2_n,                                  //                                             .out2_n
 		input  wire        hps_0_uart1_rxd,                                     //                                             .rxd
 		output wire        hps_0_uart1_txd,                                     //                                             .txd
+		input  wire [31:0] max_params_0_external_connection_export,             //             max_params_0_external_connection.export
+		input  wire [31:0] max_params_1_external_connection_export,             //             max_params_1_external_connection.export
+		input  wire [31:0] max_params_2_external_connection_export,             //             max_params_2_external_connection.export
+		input  wire [31:0] max_params_3_external_connection_export,             //             max_params_3_external_connection.export
+		input  wire [31:0] max_params_4_external_connection_export,             //             max_params_4_external_connection.export
+		input  wire [31:0] max_timing_0_external_connection_export,             //             max_timing_0_external_connection.export
+		input  wire [31:0] max_timing_1_external_connection_export,             //             max_timing_1_external_connection.export
+		input  wire [31:0] max_timing_2_external_connection_export,             //             max_timing_2_external_connection.export
+		input  wire [31:0] max_timing_3_external_connection_export,             //             max_timing_3_external_connection.export
 		output wire [14:0] memory_mem_a,                                        //                                       memory.mem_a
 		output wire [2:0]  memory_mem_ba,                                       //                                             .mem_ba
 		output wire        memory_mem_ck,                                       //                                             .mem_ck
@@ -95,14 +108,62 @@ module soc_system (
 		output wire        memory_mem_odt,                                      //                                             .mem_odt
 		output wire [3:0]  memory_mem_dm,                                       //                                             .mem_dm
 		input  wire        memory_oct_rzqin,                                    //                                             .oct_rzqin
+		input  wire [31:0] new_rparams_e0_0_external_connection_export,         //         new_rparams_e0_0_external_connection.export
+		input  wire [31:0] new_rparams_e0_1_external_connection_export,         //         new_rparams_e0_1_external_connection.export
+		input  wire [31:0] new_rparams_e0_2_external_connection_export,         //         new_rparams_e0_2_external_connection.export
+		input  wire [31:0] new_rparams_e0_3_external_connection_export,         //         new_rparams_e0_3_external_connection.export
+		input  wire [31:0] new_rparams_e0_4_external_connection_export,         //         new_rparams_e0_4_external_connection.export
+		input  wire [31:0] new_rparams_e1_0_external_connection_export,         //         new_rparams_e1_0_external_connection.export
+		input  wire [31:0] new_rparams_e1_1_external_connection_export,         //         new_rparams_e1_1_external_connection.export
+		input  wire [31:0] new_rparams_e1_2_external_connection_export,         //         new_rparams_e1_2_external_connection.export
+		input  wire [31:0] new_rparams_e1_3_external_connection_export,         //         new_rparams_e1_3_external_connection.export
+		input  wire [31:0] new_rparams_e1_4_external_connection_export,         //         new_rparams_e1_4_external_connection.export
+		input  wire [31:0] new_rparams_x_0_external_connection_export,          //          new_rparams_x_0_external_connection.export
+		input  wire [31:0] new_rparams_x_1_external_connection_export,          //          new_rparams_x_1_external_connection.export
+		input  wire [31:0] new_rparams_x_2_external_connection_export,          //          new_rparams_x_2_external_connection.export
+		input  wire [31:0] new_rparams_x_3_external_connection_export,          //          new_rparams_x_3_external_connection.export
+		input  wire [31:0] new_rparams_x_4_external_connection_export,          //          new_rparams_x_4_external_connection.export
+		input  wire [31:0] new_rparams_y_0_external_connection_export,          //          new_rparams_y_0_external_connection.export
+		input  wire [31:0] new_rparams_y_1_external_connection_export,          //          new_rparams_y_1_external_connection.export
+		input  wire [31:0] new_rparams_y_2_external_connection_export,          //          new_rparams_y_2_external_connection.export
+		input  wire [31:0] new_rparams_y_3_external_connection_export,          //          new_rparams_y_3_external_connection.export
+		input  wire [31:0] new_rparams_y_4_external_connection_export,          //          new_rparams_y_4_external_connection.export
+		input  wire [31:0] new_rparams_z_0_external_connection_export,          //          new_rparams_z_0_external_connection.export
+		input  wire [31:0] new_rparams_z_1_external_connection_export,          //          new_rparams_z_1_external_connection.export
+		input  wire [31:0] new_rparams_z_2_external_connection_export,          //          new_rparams_z_2_external_connection.export
+		input  wire [31:0] new_rparams_z_3_external_connection_export,          //          new_rparams_z_3_external_connection.export
+		input  wire [31:0] new_rparams_z_4_external_connection_export,          //          new_rparams_z_4_external_connection.export
+		input  wire [31:0] params_e0_0_external_connection_export,              //              params_e0_0_external_connection.export
+		input  wire [31:0] params_e0_1_external_connection_export,              //              params_e0_1_external_connection.export
+		input  wire [31:0] params_e0_2_external_connection_export,              //              params_e0_2_external_connection.export
+		input  wire [31:0] params_e0_3_external_connection_export,              //              params_e0_3_external_connection.export
+		input  wire [31:0] params_e0_4_external_connection_export,              //              params_e0_4_external_connection.export
+		input  wire [31:0] params_e1_0_external_connection_export,              //              params_e1_0_external_connection.export
+		input  wire [31:0] params_e1_1_external_connection_export,              //              params_e1_1_external_connection.export
+		input  wire [31:0] params_e1_2_external_connection_export,              //              params_e1_2_external_connection.export
+		input  wire [31:0] params_e1_3_external_connection_export,              //              params_e1_3_external_connection.export
+		input  wire [31:0] params_e1_4_external_connection_export,              //              params_e1_4_external_connection.export
+		input  wire [31:0] params_x_0_external_connection_export,               //               params_x_0_external_connection.export
+		input  wire [31:0] params_x_1_external_connection_export,               //               params_x_1_external_connection.export
+		input  wire [31:0] params_x_2_external_connection_export,               //               params_x_2_external_connection.export
+		input  wire [31:0] params_x_3_external_connection_export,               //               params_x_3_external_connection.export
+		input  wire [31:0] params_x_4_external_connection_export,               //               params_x_4_external_connection.export
+		input  wire [31:0] params_y_0_external_connection_export,               //               params_y_0_external_connection.export
+		input  wire [31:0] params_y_1_external_connection_export,               //               params_y_1_external_connection.export
+		input  wire [31:0] params_y_2_external_connection_export,               //               params_y_2_external_connection.export
+		input  wire [31:0] params_y_3_external_connection_export,               //               params_y_3_external_connection.export
+		input  wire [31:0] params_y_4_external_connection_export,               //               params_y_4_external_connection.export
+		input  wire [31:0] params_z_0_external_connection_export,               //               params_z_0_external_connection.export
+		input  wire [31:0] params_z_1_external_connection_export,               //               params_z_1_external_connection.export
+		input  wire [31:0] params_z_2_external_connection_export,               //               params_z_2_external_connection.export
+		input  wire [31:0] params_z_3_external_connection_export,               //               params_z_3_external_connection.export
+		input  wire [31:0] params_z_4_external_connection_export,               //               params_z_4_external_connection.export
 		output wire        pll_sys_outclk100mhz_clk,                            //                         pll_sys_outclk100mhz.clk
 		output wire        pll_sys_outclk10mhz_clk,                             //                          pll_sys_outclk10mhz.clk
 		output wire        pll_sys_outclk1mhz_clk,                              //                           pll_sys_outclk1mhz.clk
 		output wire        pll_sys_outclk5mhz_clk,                              //                           pll_sys_outclk5mhz.clk
 		input  wire [11:0] position_e0_external_connection_export,              //              position_e0_external_connection.export
 		input  wire [11:0] position_e1_external_connection_export,              //              position_e1_external_connection.export
-		input  wire        position_extruder_type_external_connection_export,   //   position_extruder_type_external_connection.export
-		input  wire        position_type_external_connection_export,            //            position_type_external_connection.export
 		input  wire [11:0] position_x_external_connection_export,               //               position_x_external_connection.export
 		input  wire [11:0] position_y_external_connection_export,               //               position_y_external_connection.export
 		input  wire [11:0] position_z_external_connection_export,               //               position_z_external_connection.export
@@ -125,9 +186,34 @@ module soc_system (
 		output wire [11:0] settings_max_temp_bed_external_connection_export,    //    settings_max_temp_bed_external_connection.export
 		output wire [11:0] settings_max_temp_e0_external_connection_export,     //     settings_max_temp_e0_external_connection.export
 		output wire [11:0] settings_max_temp_e1_external_connection_export,     //     settings_max_temp_e1_external_connection.export
+		input  wire [31:0] step_e0_now_external_connection_export,              //              step_e0_now_external_connection.export
+		input  wire [31:0] step_e1_now_external_connection_export,              //              step_e1_now_external_connection.export
+		input  wire [31:0] step_x_now_external_connection_export,               //               step_x_now_external_connection.export
+		input  wire [31:0] step_y_now_external_connection_export,               //               step_y_now_external_connection.export
+		input  wire [31:0] step_z_now_external_connection_export,               //               step_z_now_external_connection.export
 		input  wire [11:0] temp_0_external_connection_export,                   //                   temp_0_external_connection.export
 		input  wire [11:0] temp_1_external_connection_export,                   //                   temp_1_external_connection.export
-		input  wire [11:0] temp_2_external_connection_export                    //                   temp_2_external_connection.export
+		input  wire [11:0] temp_2_external_connection_export,                   //                   temp_2_external_connection.export
+		input  wire [31:0] timing_e0_0_external_connection_export,              //              timing_e0_0_external_connection.export
+		input  wire [31:0] timing_e0_1_external_connection_export,              //              timing_e0_1_external_connection.export
+		input  wire [31:0] timing_e0_2_external_connection_export,              //              timing_e0_2_external_connection.export
+		input  wire [31:0] timing_e0_3_external_connection_export,              //              timing_e0_3_external_connection.export
+		input  wire [31:0] timing_e1_0_external_connection_export,              //              timing_e1_0_external_connection.export
+		input  wire [31:0] timing_e1_1_external_connection_export,              //              timing_e1_1_external_connection.export
+		input  wire [31:0] timing_e1_2_external_connection_export,              //              timing_e1_2_external_connection.export
+		input  wire [31:0] timing_e1_3_external_connection_export,              //              timing_e1_3_external_connection.export
+		input  wire [31:0] timing_x_0_external_connection_export,               //               timing_x_0_external_connection.export
+		input  wire [31:0] timing_x_1_external_connection_export,               //               timing_x_1_external_connection.export
+		input  wire [31:0] timing_x_2_external_connection_export,               //               timing_x_2_external_connection.export
+		input  wire [31:0] timing_x_3_external_connection_export,               //               timing_x_3_external_connection.export
+		input  wire [31:0] timing_y_0_external_connection_export,               //               timing_y_0_external_connection.export
+		input  wire [31:0] timing_y_1_external_connection_export,               //               timing_y_1_external_connection.export
+		input  wire [31:0] timing_y_2_external_connection_export,               //               timing_y_2_external_connection.export
+		input  wire [31:0] timing_y_3_external_connection_export,               //               timing_y_3_external_connection.export
+		input  wire [31:0] timing_z_0_external_connection_export,               //               timing_z_0_external_connection.export
+		input  wire [31:0] timing_z_1_external_connection_export,               //               timing_z_1_external_connection.export
+		input  wire [31:0] timing_z_2_external_connection_export,               //               timing_z_2_external_connection.export
+		input  wire [31:0] timing_z_3_external_connection_export                //               timing_z_3_external_connection.export
 	);
 
 	wire    [1:0] hps_0_h2f_lw_axi_master_awburst;                           // hps_0:h2f_lw_AWBURST -> mm_interconnect_0:hps_0_h2f_lw_axi_master_awburst
@@ -251,11 +337,11 @@ module soc_system (
 	wire    [1:0] mm_interconnect_1_command_e1_s1_address;                   // mm_interconnect_1:command_e1_s1_address -> command_e1:address
 	wire          mm_interconnect_1_command_e1_s1_write;                     // mm_interconnect_1:command_e1_s1_write -> command_e1:write_n
 	wire   [31:0] mm_interconnect_1_command_e1_s1_writedata;                 // mm_interconnect_1:command_e1_s1_writedata -> command_e1:writedata
-	wire          mm_interconnect_1_command_f_s1_chipselect;                 // mm_interconnect_1:command_f_s1_chipselect -> command_f:chipselect
-	wire   [31:0] mm_interconnect_1_command_f_s1_readdata;                   // command_f:readdata -> mm_interconnect_1:command_f_s1_readdata
-	wire    [1:0] mm_interconnect_1_command_f_s1_address;                    // mm_interconnect_1:command_f_s1_address -> command_f:address
-	wire          mm_interconnect_1_command_f_s1_write;                      // mm_interconnect_1:command_f_s1_write -> command_f:write_n
-	wire   [31:0] mm_interconnect_1_command_f_s1_writedata;                  // mm_interconnect_1:command_f_s1_writedata -> command_f:writedata
+	wire          mm_interconnect_1_command_f_x_s1_chipselect;               // mm_interconnect_1:command_f_x_s1_chipselect -> command_f_x:chipselect
+	wire   [31:0] mm_interconnect_1_command_f_x_s1_readdata;                 // command_f_x:readdata -> mm_interconnect_1:command_f_x_s1_readdata
+	wire    [1:0] mm_interconnect_1_command_f_x_s1_address;                  // mm_interconnect_1:command_f_x_s1_address -> command_f_x:address
+	wire          mm_interconnect_1_command_f_x_s1_write;                    // mm_interconnect_1:command_f_x_s1_write -> command_f_x:write_n
+	wire   [31:0] mm_interconnect_1_command_f_x_s1_writedata;                // mm_interconnect_1:command_f_x_s1_writedata -> command_f_x:writedata
 	wire          mm_interconnect_1_command_t_s1_chipselect;                 // mm_interconnect_1:command_t_s1_chipselect -> command_t:chipselect
 	wire   [31:0] mm_interconnect_1_command_t_s1_readdata;                   // command_t:readdata -> mm_interconnect_1:command_t_s1_readdata
 	wire    [1:0] mm_interconnect_1_command_t_s1_address;                    // mm_interconnect_1:command_t_s1_address -> command_t:address
@@ -366,10 +452,194 @@ module soc_system (
 	wire    [1:0] mm_interconnect_1_position_e0_s1_address;                  // mm_interconnect_1:position_e0_s1_address -> position_e0:address
 	wire   [31:0] mm_interconnect_1_position_e1_s1_readdata;                 // position_e1:readdata -> mm_interconnect_1:position_e1_s1_readdata
 	wire    [1:0] mm_interconnect_1_position_e1_s1_address;                  // mm_interconnect_1:position_e1_s1_address -> position_e1:address
-	wire   [31:0] mm_interconnect_1_position_type_s1_readdata;               // position_type:readdata -> mm_interconnect_1:position_type_s1_readdata
-	wire    [1:0] mm_interconnect_1_position_type_s1_address;                // mm_interconnect_1:position_type_s1_address -> position_type:address
-	wire   [31:0] mm_interconnect_1_position_extruder_type_s1_readdata;      // position_extruder_type:readdata -> mm_interconnect_1:position_extruder_type_s1_readdata
-	wire    [1:0] mm_interconnect_1_position_extruder_type_s1_address;       // mm_interconnect_1:position_extruder_type_s1_address -> position_extruder_type:address
+	wire          mm_interconnect_1_command_f_y_s1_chipselect;               // mm_interconnect_1:command_f_y_s1_chipselect -> command_f_y:chipselect
+	wire   [31:0] mm_interconnect_1_command_f_y_s1_readdata;                 // command_f_y:readdata -> mm_interconnect_1:command_f_y_s1_readdata
+	wire    [1:0] mm_interconnect_1_command_f_y_s1_address;                  // mm_interconnect_1:command_f_y_s1_address -> command_f_y:address
+	wire          mm_interconnect_1_command_f_y_s1_write;                    // mm_interconnect_1:command_f_y_s1_write -> command_f_y:write_n
+	wire   [31:0] mm_interconnect_1_command_f_y_s1_writedata;                // mm_interconnect_1:command_f_y_s1_writedata -> command_f_y:writedata
+	wire          mm_interconnect_1_command_f_z_s1_chipselect;               // mm_interconnect_1:command_f_z_s1_chipselect -> command_f_z:chipselect
+	wire   [31:0] mm_interconnect_1_command_f_z_s1_readdata;                 // command_f_z:readdata -> mm_interconnect_1:command_f_z_s1_readdata
+	wire    [1:0] mm_interconnect_1_command_f_z_s1_address;                  // mm_interconnect_1:command_f_z_s1_address -> command_f_z:address
+	wire          mm_interconnect_1_command_f_z_s1_write;                    // mm_interconnect_1:command_f_z_s1_write -> command_f_z:write_n
+	wire   [31:0] mm_interconnect_1_command_f_z_s1_writedata;                // mm_interconnect_1:command_f_z_s1_writedata -> command_f_z:writedata
+	wire          mm_interconnect_1_command_f_e0_s1_chipselect;              // mm_interconnect_1:command_f_e0_s1_chipselect -> command_f_e0:chipselect
+	wire   [31:0] mm_interconnect_1_command_f_e0_s1_readdata;                // command_f_e0:readdata -> mm_interconnect_1:command_f_e0_s1_readdata
+	wire    [1:0] mm_interconnect_1_command_f_e0_s1_address;                 // mm_interconnect_1:command_f_e0_s1_address -> command_f_e0:address
+	wire          mm_interconnect_1_command_f_e0_s1_write;                   // mm_interconnect_1:command_f_e0_s1_write -> command_f_e0:write_n
+	wire   [31:0] mm_interconnect_1_command_f_e0_s1_writedata;               // mm_interconnect_1:command_f_e0_s1_writedata -> command_f_e0:writedata
+	wire          mm_interconnect_1_command_f_e1_s1_chipselect;              // mm_interconnect_1:command_f_e1_s1_chipselect -> command_f_e1:chipselect
+	wire   [31:0] mm_interconnect_1_command_f_e1_s1_readdata;                // command_f_e1:readdata -> mm_interconnect_1:command_f_e1_s1_readdata
+	wire    [1:0] mm_interconnect_1_command_f_e1_s1_address;                 // mm_interconnect_1:command_f_e1_s1_address -> command_f_e1:address
+	wire          mm_interconnect_1_command_f_e1_s1_write;                   // mm_interconnect_1:command_f_e1_s1_write -> command_f_e1:write_n
+	wire   [31:0] mm_interconnect_1_command_f_e1_s1_writedata;               // mm_interconnect_1:command_f_e1_s1_writedata -> command_f_e1:writedata
+	wire   [31:0] mm_interconnect_1_params_x_0_s1_readdata;                  // params_x_0:readdata -> mm_interconnect_1:params_x_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_x_0_s1_address;                   // mm_interconnect_1:params_x_0_s1_address -> params_x_0:address
+	wire   [31:0] mm_interconnect_1_params_x_1_s1_readdata;                  // params_x_1:readdata -> mm_interconnect_1:params_x_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_x_1_s1_address;                   // mm_interconnect_1:params_x_1_s1_address -> params_x_1:address
+	wire   [31:0] mm_interconnect_1_params_x_2_s1_readdata;                  // params_x_2:readdata -> mm_interconnect_1:params_x_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_x_2_s1_address;                   // mm_interconnect_1:params_x_2_s1_address -> params_x_2:address
+	wire   [31:0] mm_interconnect_1_params_x_3_s1_readdata;                  // params_x_3:readdata -> mm_interconnect_1:params_x_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_x_3_s1_address;                   // mm_interconnect_1:params_x_3_s1_address -> params_x_3:address
+	wire   [31:0] mm_interconnect_1_params_x_4_s1_readdata;                  // params_x_4:readdata -> mm_interconnect_1:params_x_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_x_4_s1_address;                   // mm_interconnect_1:params_x_4_s1_address -> params_x_4:address
+	wire   [31:0] mm_interconnect_1_params_y_0_s1_readdata;                  // params_y_0:readdata -> mm_interconnect_1:params_y_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_y_0_s1_address;                   // mm_interconnect_1:params_y_0_s1_address -> params_y_0:address
+	wire   [31:0] mm_interconnect_1_params_y_1_s1_readdata;                  // params_y_1:readdata -> mm_interconnect_1:params_y_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_y_1_s1_address;                   // mm_interconnect_1:params_y_1_s1_address -> params_y_1:address
+	wire   [31:0] mm_interconnect_1_params_y_2_s1_readdata;                  // params_y_2:readdata -> mm_interconnect_1:params_y_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_y_2_s1_address;                   // mm_interconnect_1:params_y_2_s1_address -> params_y_2:address
+	wire   [31:0] mm_interconnect_1_params_y_3_s1_readdata;                  // params_y_3:readdata -> mm_interconnect_1:params_y_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_y_3_s1_address;                   // mm_interconnect_1:params_y_3_s1_address -> params_y_3:address
+	wire   [31:0] mm_interconnect_1_params_y_4_s1_readdata;                  // params_y_4:readdata -> mm_interconnect_1:params_y_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_y_4_s1_address;                   // mm_interconnect_1:params_y_4_s1_address -> params_y_4:address
+	wire   [31:0] mm_interconnect_1_params_z_0_s1_readdata;                  // params_z_0:readdata -> mm_interconnect_1:params_z_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_z_0_s1_address;                   // mm_interconnect_1:params_z_0_s1_address -> params_z_0:address
+	wire   [31:0] mm_interconnect_1_params_z_1_s1_readdata;                  // params_z_1:readdata -> mm_interconnect_1:params_z_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_z_1_s1_address;                   // mm_interconnect_1:params_z_1_s1_address -> params_z_1:address
+	wire   [31:0] mm_interconnect_1_params_z_2_s1_readdata;                  // params_z_2:readdata -> mm_interconnect_1:params_z_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_z_2_s1_address;                   // mm_interconnect_1:params_z_2_s1_address -> params_z_2:address
+	wire   [31:0] mm_interconnect_1_params_z_3_s1_readdata;                  // params_z_3:readdata -> mm_interconnect_1:params_z_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_z_3_s1_address;                   // mm_interconnect_1:params_z_3_s1_address -> params_z_3:address
+	wire   [31:0] mm_interconnect_1_params_z_4_s1_readdata;                  // params_z_4:readdata -> mm_interconnect_1:params_z_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_z_4_s1_address;                   // mm_interconnect_1:params_z_4_s1_address -> params_z_4:address
+	wire   [31:0] mm_interconnect_1_params_e0_0_s1_readdata;                 // params_e0_0:readdata -> mm_interconnect_1:params_e0_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e0_0_s1_address;                  // mm_interconnect_1:params_e0_0_s1_address -> params_e0_0:address
+	wire   [31:0] mm_interconnect_1_params_e0_1_s1_readdata;                 // params_e0_1:readdata -> mm_interconnect_1:params_e0_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e0_1_s1_address;                  // mm_interconnect_1:params_e0_1_s1_address -> params_e0_1:address
+	wire   [31:0] mm_interconnect_1_params_e0_2_s1_readdata;                 // params_e0_2:readdata -> mm_interconnect_1:params_e0_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e0_2_s1_address;                  // mm_interconnect_1:params_e0_2_s1_address -> params_e0_2:address
+	wire   [31:0] mm_interconnect_1_params_e0_3_s1_readdata;                 // params_e0_3:readdata -> mm_interconnect_1:params_e0_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e0_3_s1_address;                  // mm_interconnect_1:params_e0_3_s1_address -> params_e0_3:address
+	wire   [31:0] mm_interconnect_1_params_e0_4_s1_readdata;                 // params_e0_4:readdata -> mm_interconnect_1:params_e0_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e0_4_s1_address;                  // mm_interconnect_1:params_e0_4_s1_address -> params_e0_4:address
+	wire   [31:0] mm_interconnect_1_params_e1_0_s1_readdata;                 // params_e1_0:readdata -> mm_interconnect_1:params_e1_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e1_0_s1_address;                  // mm_interconnect_1:params_e1_0_s1_address -> params_e1_0:address
+	wire   [31:0] mm_interconnect_1_params_e1_4_s1_readdata;                 // params_e1_4:readdata -> mm_interconnect_1:params_e1_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e1_4_s1_address;                  // mm_interconnect_1:params_e1_4_s1_address -> params_e1_4:address
+	wire   [31:0] mm_interconnect_1_params_e1_3_s1_readdata;                 // params_e1_3:readdata -> mm_interconnect_1:params_e1_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e1_3_s1_address;                  // mm_interconnect_1:params_e1_3_s1_address -> params_e1_3:address
+	wire   [31:0] mm_interconnect_1_params_e1_2_s1_readdata;                 // params_e1_2:readdata -> mm_interconnect_1:params_e1_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e1_2_s1_address;                  // mm_interconnect_1:params_e1_2_s1_address -> params_e1_2:address
+	wire   [31:0] mm_interconnect_1_params_e1_1_s1_readdata;                 // params_e1_1:readdata -> mm_interconnect_1:params_e1_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_params_e1_1_s1_address;                  // mm_interconnect_1:params_e1_1_s1_address -> params_e1_1:address
+	wire   [31:0] mm_interconnect_1_timing_x_0_s1_readdata;                  // timing_x_0:readdata -> mm_interconnect_1:timing_x_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_x_0_s1_address;                   // mm_interconnect_1:timing_x_0_s1_address -> timing_x_0:address
+	wire   [31:0] mm_interconnect_1_timing_x_1_s1_readdata;                  // timing_x_1:readdata -> mm_interconnect_1:timing_x_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_x_1_s1_address;                   // mm_interconnect_1:timing_x_1_s1_address -> timing_x_1:address
+	wire   [31:0] mm_interconnect_1_timing_x_2_s1_readdata;                  // timing_x_2:readdata -> mm_interconnect_1:timing_x_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_x_2_s1_address;                   // mm_interconnect_1:timing_x_2_s1_address -> timing_x_2:address
+	wire   [31:0] mm_interconnect_1_timing_x_3_s1_readdata;                  // timing_x_3:readdata -> mm_interconnect_1:timing_x_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_x_3_s1_address;                   // mm_interconnect_1:timing_x_3_s1_address -> timing_x_3:address
+	wire   [31:0] mm_interconnect_1_timing_y_0_s1_readdata;                  // timing_y_0:readdata -> mm_interconnect_1:timing_y_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_y_0_s1_address;                   // mm_interconnect_1:timing_y_0_s1_address -> timing_y_0:address
+	wire   [31:0] mm_interconnect_1_timing_y_1_s1_readdata;                  // timing_y_1:readdata -> mm_interconnect_1:timing_y_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_y_1_s1_address;                   // mm_interconnect_1:timing_y_1_s1_address -> timing_y_1:address
+	wire   [31:0] mm_interconnect_1_timing_y_2_s1_readdata;                  // timing_y_2:readdata -> mm_interconnect_1:timing_y_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_y_2_s1_address;                   // mm_interconnect_1:timing_y_2_s1_address -> timing_y_2:address
+	wire   [31:0] mm_interconnect_1_timing_y_3_s1_readdata;                  // timing_y_3:readdata -> mm_interconnect_1:timing_y_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_y_3_s1_address;                   // mm_interconnect_1:timing_y_3_s1_address -> timing_y_3:address
+	wire   [31:0] mm_interconnect_1_timing_z_0_s1_readdata;                  // timing_z_0:readdata -> mm_interconnect_1:timing_z_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_z_0_s1_address;                   // mm_interconnect_1:timing_z_0_s1_address -> timing_z_0:address
+	wire   [31:0] mm_interconnect_1_timing_z_1_s1_readdata;                  // timing_z_1:readdata -> mm_interconnect_1:timing_z_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_z_1_s1_address;                   // mm_interconnect_1:timing_z_1_s1_address -> timing_z_1:address
+	wire   [31:0] mm_interconnect_1_timing_z_2_s1_readdata;                  // timing_z_2:readdata -> mm_interconnect_1:timing_z_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_z_2_s1_address;                   // mm_interconnect_1:timing_z_2_s1_address -> timing_z_2:address
+	wire   [31:0] mm_interconnect_1_timing_z_3_s1_readdata;                  // timing_z_3:readdata -> mm_interconnect_1:timing_z_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_z_3_s1_address;                   // mm_interconnect_1:timing_z_3_s1_address -> timing_z_3:address
+	wire   [31:0] mm_interconnect_1_timing_e0_0_s1_readdata;                 // timing_e0_0:readdata -> mm_interconnect_1:timing_e0_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e0_0_s1_address;                  // mm_interconnect_1:timing_e0_0_s1_address -> timing_e0_0:address
+	wire   [31:0] mm_interconnect_1_timing_e0_1_s1_readdata;                 // timing_e0_1:readdata -> mm_interconnect_1:timing_e0_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e0_1_s1_address;                  // mm_interconnect_1:timing_e0_1_s1_address -> timing_e0_1:address
+	wire   [31:0] mm_interconnect_1_timing_e0_2_s1_readdata;                 // timing_e0_2:readdata -> mm_interconnect_1:timing_e0_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e0_2_s1_address;                  // mm_interconnect_1:timing_e0_2_s1_address -> timing_e0_2:address
+	wire   [31:0] mm_interconnect_1_timing_e0_3_s1_readdata;                 // timing_e0_3:readdata -> mm_interconnect_1:timing_e0_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e0_3_s1_address;                  // mm_interconnect_1:timing_e0_3_s1_address -> timing_e0_3:address
+	wire   [31:0] mm_interconnect_1_timing_e1_0_s1_readdata;                 // timing_e1_0:readdata -> mm_interconnect_1:timing_e1_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e1_0_s1_address;                  // mm_interconnect_1:timing_e1_0_s1_address -> timing_e1_0:address
+	wire   [31:0] mm_interconnect_1_timing_e1_1_s1_readdata;                 // timing_e1_1:readdata -> mm_interconnect_1:timing_e1_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e1_1_s1_address;                  // mm_interconnect_1:timing_e1_1_s1_address -> timing_e1_1:address
+	wire   [31:0] mm_interconnect_1_timing_e1_2_s1_readdata;                 // timing_e1_2:readdata -> mm_interconnect_1:timing_e1_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e1_2_s1_address;                  // mm_interconnect_1:timing_e1_2_s1_address -> timing_e1_2:address
+	wire   [31:0] mm_interconnect_1_timing_e1_3_s1_readdata;                 // timing_e1_3:readdata -> mm_interconnect_1:timing_e1_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_timing_e1_3_s1_address;                  // mm_interconnect_1:timing_e1_3_s1_address -> timing_e1_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_x_0_s1_readdata;             // new_rparams_x_0:readdata -> mm_interconnect_1:new_rparams_x_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_x_0_s1_address;              // mm_interconnect_1:new_rparams_x_0_s1_address -> new_rparams_x_0:address
+	wire   [31:0] mm_interconnect_1_new_rparams_x_1_s1_readdata;             // new_rparams_x_1:readdata -> mm_interconnect_1:new_rparams_x_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_x_1_s1_address;              // mm_interconnect_1:new_rparams_x_1_s1_address -> new_rparams_x_1:address
+	wire   [31:0] mm_interconnect_1_new_rparams_x_2_s1_readdata;             // new_rparams_x_2:readdata -> mm_interconnect_1:new_rparams_x_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_x_2_s1_address;              // mm_interconnect_1:new_rparams_x_2_s1_address -> new_rparams_x_2:address
+	wire   [31:0] mm_interconnect_1_new_rparams_x_3_s1_readdata;             // new_rparams_x_3:readdata -> mm_interconnect_1:new_rparams_x_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_x_3_s1_address;              // mm_interconnect_1:new_rparams_x_3_s1_address -> new_rparams_x_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_x_4_s1_readdata;             // new_rparams_x_4:readdata -> mm_interconnect_1:new_rparams_x_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_x_4_s1_address;              // mm_interconnect_1:new_rparams_x_4_s1_address -> new_rparams_x_4:address
+	wire   [31:0] mm_interconnect_1_new_rparams_y_0_s1_readdata;             // new_rparams_y_0:readdata -> mm_interconnect_1:new_rparams_y_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_y_0_s1_address;              // mm_interconnect_1:new_rparams_y_0_s1_address -> new_rparams_y_0:address
+	wire   [31:0] mm_interconnect_1_new_rparams_y_1_s1_readdata;             // new_rparams_y_1:readdata -> mm_interconnect_1:new_rparams_y_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_y_1_s1_address;              // mm_interconnect_1:new_rparams_y_1_s1_address -> new_rparams_y_1:address
+	wire   [31:0] mm_interconnect_1_new_rparams_y_2_s1_readdata;             // new_rparams_y_2:readdata -> mm_interconnect_1:new_rparams_y_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_y_2_s1_address;              // mm_interconnect_1:new_rparams_y_2_s1_address -> new_rparams_y_2:address
+	wire   [31:0] mm_interconnect_1_new_rparams_y_3_s1_readdata;             // new_rparams_y_3:readdata -> mm_interconnect_1:new_rparams_y_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_y_3_s1_address;              // mm_interconnect_1:new_rparams_y_3_s1_address -> new_rparams_y_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_y_4_s1_readdata;             // new_rparams_y_4:readdata -> mm_interconnect_1:new_rparams_y_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_y_4_s1_address;              // mm_interconnect_1:new_rparams_y_4_s1_address -> new_rparams_y_4:address
+	wire   [31:0] mm_interconnect_1_new_rparams_z_0_s1_readdata;             // new_rparams_z_0:readdata -> mm_interconnect_1:new_rparams_z_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_z_0_s1_address;              // mm_interconnect_1:new_rparams_z_0_s1_address -> new_rparams_z_0:address
+	wire   [31:0] mm_interconnect_1_new_rparams_z_1_s1_readdata;             // new_rparams_z_1:readdata -> mm_interconnect_1:new_rparams_z_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_z_1_s1_address;              // mm_interconnect_1:new_rparams_z_1_s1_address -> new_rparams_z_1:address
+	wire   [31:0] mm_interconnect_1_new_rparams_z_2_s1_readdata;             // new_rparams_z_2:readdata -> mm_interconnect_1:new_rparams_z_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_z_2_s1_address;              // mm_interconnect_1:new_rparams_z_2_s1_address -> new_rparams_z_2:address
+	wire   [31:0] mm_interconnect_1_new_rparams_z_3_s1_readdata;             // new_rparams_z_3:readdata -> mm_interconnect_1:new_rparams_z_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_z_3_s1_address;              // mm_interconnect_1:new_rparams_z_3_s1_address -> new_rparams_z_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_z_4_s1_readdata;             // new_rparams_z_4:readdata -> mm_interconnect_1:new_rparams_z_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_z_4_s1_address;              // mm_interconnect_1:new_rparams_z_4_s1_address -> new_rparams_z_4:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e0_0_s1_readdata;            // new_rparams_e0_0:readdata -> mm_interconnect_1:new_rparams_e0_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e0_0_s1_address;             // mm_interconnect_1:new_rparams_e0_0_s1_address -> new_rparams_e0_0:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e0_1_s1_readdata;            // new_rparams_e0_1:readdata -> mm_interconnect_1:new_rparams_e0_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e0_1_s1_address;             // mm_interconnect_1:new_rparams_e0_1_s1_address -> new_rparams_e0_1:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e0_2_s1_readdata;            // new_rparams_e0_2:readdata -> mm_interconnect_1:new_rparams_e0_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e0_2_s1_address;             // mm_interconnect_1:new_rparams_e0_2_s1_address -> new_rparams_e0_2:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e0_3_s1_readdata;            // new_rparams_e0_3:readdata -> mm_interconnect_1:new_rparams_e0_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e0_3_s1_address;             // mm_interconnect_1:new_rparams_e0_3_s1_address -> new_rparams_e0_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e0_4_s1_readdata;            // new_rparams_e0_4:readdata -> mm_interconnect_1:new_rparams_e0_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e0_4_s1_address;             // mm_interconnect_1:new_rparams_e0_4_s1_address -> new_rparams_e0_4:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e1_0_s1_readdata;            // new_rparams_e1_0:readdata -> mm_interconnect_1:new_rparams_e1_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e1_0_s1_address;             // mm_interconnect_1:new_rparams_e1_0_s1_address -> new_rparams_e1_0:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e1_1_s1_readdata;            // new_rparams_e1_1:readdata -> mm_interconnect_1:new_rparams_e1_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e1_1_s1_address;             // mm_interconnect_1:new_rparams_e1_1_s1_address -> new_rparams_e1_1:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e1_2_s1_readdata;            // new_rparams_e1_2:readdata -> mm_interconnect_1:new_rparams_e1_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e1_2_s1_address;             // mm_interconnect_1:new_rparams_e1_2_s1_address -> new_rparams_e1_2:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e1_3_s1_readdata;            // new_rparams_e1_3:readdata -> mm_interconnect_1:new_rparams_e1_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e1_3_s1_address;             // mm_interconnect_1:new_rparams_e1_3_s1_address -> new_rparams_e1_3:address
+	wire   [31:0] mm_interconnect_1_new_rparams_e1_4_s1_readdata;            // new_rparams_e1_4:readdata -> mm_interconnect_1:new_rparams_e1_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_new_rparams_e1_4_s1_address;             // mm_interconnect_1:new_rparams_e1_4_s1_address -> new_rparams_e1_4:address
+	wire   [31:0] mm_interconnect_1_step_x_now_s1_readdata;                  // step_x_now:readdata -> mm_interconnect_1:step_x_now_s1_readdata
+	wire    [1:0] mm_interconnect_1_step_x_now_s1_address;                   // mm_interconnect_1:step_x_now_s1_address -> step_x_now:address
+	wire   [31:0] mm_interconnect_1_step_y_now_s1_readdata;                  // step_y_now:readdata -> mm_interconnect_1:step_y_now_s1_readdata
+	wire    [1:0] mm_interconnect_1_step_y_now_s1_address;                   // mm_interconnect_1:step_y_now_s1_address -> step_y_now:address
+	wire   [31:0] mm_interconnect_1_step_z_now_s1_readdata;                  // step_z_now:readdata -> mm_interconnect_1:step_z_now_s1_readdata
+	wire    [1:0] mm_interconnect_1_step_z_now_s1_address;                   // mm_interconnect_1:step_z_now_s1_address -> step_z_now:address
+	wire   [31:0] mm_interconnect_1_step_e0_now_s1_readdata;                 // step_e0_now:readdata -> mm_interconnect_1:step_e0_now_s1_readdata
+	wire    [1:0] mm_interconnect_1_step_e0_now_s1_address;                  // mm_interconnect_1:step_e0_now_s1_address -> step_e0_now:address
+	wire   [31:0] mm_interconnect_1_step_e1_now_s1_readdata;                 // step_e1_now:readdata -> mm_interconnect_1:step_e1_now_s1_readdata
+	wire    [1:0] mm_interconnect_1_step_e1_now_s1_address;                  // mm_interconnect_1:step_e1_now_s1_address -> step_e1_now:address
+	wire   [31:0] mm_interconnect_1_max_params_0_s1_readdata;                // max_params_0:readdata -> mm_interconnect_1:max_params_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_params_0_s1_address;                 // mm_interconnect_1:max_params_0_s1_address -> max_params_0:address
+	wire   [31:0] mm_interconnect_1_max_params_1_s1_readdata;                // max_params_1:readdata -> mm_interconnect_1:max_params_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_params_1_s1_address;                 // mm_interconnect_1:max_params_1_s1_address -> max_params_1:address
+	wire   [31:0] mm_interconnect_1_max_params_2_s1_readdata;                // max_params_2:readdata -> mm_interconnect_1:max_params_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_params_2_s1_address;                 // mm_interconnect_1:max_params_2_s1_address -> max_params_2:address
+	wire   [31:0] mm_interconnect_1_max_params_3_s1_readdata;                // max_params_3:readdata -> mm_interconnect_1:max_params_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_params_3_s1_address;                 // mm_interconnect_1:max_params_3_s1_address -> max_params_3:address
+	wire   [31:0] mm_interconnect_1_max_params_4_s1_readdata;                // max_params_4:readdata -> mm_interconnect_1:max_params_4_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_params_4_s1_address;                 // mm_interconnect_1:max_params_4_s1_address -> max_params_4:address
+	wire   [31:0] mm_interconnect_1_max_timing_0_s1_readdata;                // max_timing_0:readdata -> mm_interconnect_1:max_timing_0_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_timing_0_s1_address;                 // mm_interconnect_1:max_timing_0_s1_address -> max_timing_0:address
+	wire   [31:0] mm_interconnect_1_max_timing_3_s1_readdata;                // max_timing_3:readdata -> mm_interconnect_1:max_timing_3_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_timing_3_s1_address;                 // mm_interconnect_1:max_timing_3_s1_address -> max_timing_3:address
+	wire   [31:0] mm_interconnect_1_max_timing_2_s1_readdata;                // max_timing_2:readdata -> mm_interconnect_1:max_timing_2_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_timing_2_s1_address;                 // mm_interconnect_1:max_timing_2_s1_address -> max_timing_2:address
+	wire   [31:0] mm_interconnect_1_max_timing_1_s1_readdata;                // max_timing_1:readdata -> mm_interconnect_1:max_timing_1_s1_readdata
+	wire    [1:0] mm_interconnect_1_max_timing_1_s1_address;                 // mm_interconnect_1:max_timing_1_s1_address -> max_timing_1:address
 	wire   [31:0] hps_only_master_master_readdata;                           // mm_interconnect_2:hps_only_master_master_readdata -> hps_only_master:master_readdata
 	wire          hps_only_master_master_waitrequest;                        // mm_interconnect_2:hps_only_master_master_waitrequest -> hps_only_master:master_waitrequest
 	wire   [31:0] hps_only_master_master_address;                            // hps_only_master:master_address -> mm_interconnect_2:hps_only_master_master_address
@@ -437,7 +707,7 @@ module soc_system (
 	wire   [31:0] hps_0_f2h_irq0_irq;                                        // irq_mapper_001:sender_irq -> hps_0:f2h_irq_p0
 	wire   [31:0] hps_0_f2h_irq1_irq;                                        // irq_mapper_002:sender_irq -> hps_0:f2h_irq_p1
 	wire          irq_mapper_receiver0_irq;                                  // jtag_uart:av_irq -> [irq_mapper:receiver0_irq, irq_mapper_001:receiver0_irq]
-	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, command_dt:reset_n, command_e0:reset_n, command_e1:reset_n, command_f:reset_n, command_t:reset_n, command_type:reset_n, command_x:reset_n, command_y:reset_n, command_z:reset_n, flags_in:reset_n, flags_out:reset_n, irq_mapper:reset, jtag_uart:rst_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, position_e0:reset_n, position_e1:reset_n, position_extruder_type:reset_n, position_type:reset_n, position_x:reset_n, position_y:reset_n, position_z:reset_n, settings_acceleration_e0:reset_n, settings_acceleration_e1:reset_n, settings_acceleration_x:reset_n, settings_acceleration_y:reset_n, settings_acceleration_z:reset_n, settings_jerk_e0:reset_n, settings_jerk_e1:reset_n, settings_jerk_x:reset_n, settings_jerk_y:reset_n, settings_jerk_z:reset_n, settings_max_speed_e0:reset_n, settings_max_speed_e1:reset_n, settings_max_speed_x:reset_n, settings_max_speed_y:reset_n, settings_max_speed_z:reset_n, settings_max_temp_bed:reset_n, settings_max_temp_e0:reset_n, settings_max_temp_e1:reset_n, sysid_qsys:reset_n, temp_0:reset_n, temp_1:reset_n, temp_2:reset_n]
+	wire          rst_controller_reset_out_reset;                            // rst_controller:reset_out -> [ILC:reset_n, command_dt:reset_n, command_e0:reset_n, command_e1:reset_n, command_f_e0:reset_n, command_f_e1:reset_n, command_f_x:reset_n, command_f_y:reset_n, command_f_z:reset_n, command_t:reset_n, command_type:reset_n, command_x:reset_n, command_y:reset_n, command_z:reset_n, flags_in:reset_n, flags_out:reset_n, irq_mapper:reset, jtag_uart:rst_n, max_params_0:reset_n, max_params_1:reset_n, max_params_2:reset_n, max_params_3:reset_n, max_params_4:reset_n, max_timing_0:reset_n, max_timing_1:reset_n, max_timing_2:reset_n, max_timing_3:reset_n, mm_bridge_0:reset, mm_interconnect_0:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_1:fpga_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_1:mm_bridge_0_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_only_master_master_translator_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_3:f2sdram_only_master_master_translator_reset_reset_bridge_in_reset_reset, new_rparams_e0_0:reset_n, new_rparams_e0_1:reset_n, new_rparams_e0_2:reset_n, new_rparams_e0_3:reset_n, new_rparams_e0_4:reset_n, new_rparams_e1_0:reset_n, new_rparams_e1_1:reset_n, new_rparams_e1_2:reset_n, new_rparams_e1_3:reset_n, new_rparams_e1_4:reset_n, new_rparams_x_0:reset_n, new_rparams_x_1:reset_n, new_rparams_x_2:reset_n, new_rparams_x_3:reset_n, new_rparams_x_4:reset_n, new_rparams_y_0:reset_n, new_rparams_y_1:reset_n, new_rparams_y_2:reset_n, new_rparams_y_3:reset_n, new_rparams_y_4:reset_n, new_rparams_z_0:reset_n, new_rparams_z_1:reset_n, new_rparams_z_2:reset_n, new_rparams_z_3:reset_n, new_rparams_z_4:reset_n, params_e0_0:reset_n, params_e0_1:reset_n, params_e0_2:reset_n, params_e0_3:reset_n, params_e0_4:reset_n, params_e1_0:reset_n, params_e1_1:reset_n, params_e1_2:reset_n, params_e1_3:reset_n, params_e1_4:reset_n, params_x_0:reset_n, params_x_1:reset_n, params_x_2:reset_n, params_x_3:reset_n, params_x_4:reset_n, params_y_0:reset_n, params_y_1:reset_n, params_y_2:reset_n, params_y_3:reset_n, params_y_4:reset_n, params_z_0:reset_n, params_z_1:reset_n, params_z_2:reset_n, params_z_3:reset_n, params_z_4:reset_n, position_e0:reset_n, position_e1:reset_n, position_x:reset_n, position_y:reset_n, position_z:reset_n, settings_acceleration_e0:reset_n, settings_acceleration_e1:reset_n, settings_acceleration_x:reset_n, settings_acceleration_y:reset_n, settings_acceleration_z:reset_n, settings_jerk_e0:reset_n, settings_jerk_e1:reset_n, settings_jerk_x:reset_n, settings_jerk_y:reset_n, settings_jerk_z:reset_n, settings_max_speed_e0:reset_n, settings_max_speed_e1:reset_n, settings_max_speed_x:reset_n, settings_max_speed_y:reset_n, settings_max_speed_z:reset_n, settings_max_temp_bed:reset_n, settings_max_temp_e0:reset_n, settings_max_temp_e1:reset_n, step_e0_now:reset_n, step_e1_now:reset_n, step_x_now:reset_n, step_y_now:reset_n, step_z_now:reset_n, sysid_qsys:reset_n, temp_0:reset_n, temp_1:reset_n, temp_2:reset_n, timing_e0_0:reset_n, timing_e0_1:reset_n, timing_e0_2:reset_n, timing_e0_3:reset_n, timing_e1_0:reset_n, timing_e1_1:reset_n, timing_e1_2:reset_n, timing_e1_3:reset_n, timing_x_0:reset_n, timing_x_1:reset_n, timing_x_2:reset_n, timing_x_3:reset_n, timing_y_0:reset_n, timing_y_1:reset_n, timing_y_2:reset_n, timing_y_3:reset_n, timing_z_0:reset_n, timing_z_1:reset_n, timing_z_2:reset_n, timing_z_3:reset_n]
 	wire          rst_controller_001_reset_out_reset;                        // rst_controller_001:reset_out -> [mm_interconnect_0:hps_0_h2f_lw_axi_master_agent_clk_reset_reset_bridge_in_reset_reset, mm_interconnect_2:hps_0_f2h_axi_slave_agent_reset_sink_reset_bridge_in_reset_reset, mm_interconnect_3:hps_0_f2h_sdram0_data_translator_reset_reset_bridge_in_reset_reset]
 
 	interrupt_latency_counter #(
@@ -466,7 +736,7 @@ module soc_system (
 		.out_port   (command_dt_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_e0 (
+	soc_system_command_e0 command_e0 (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_1_command_e0_s1_address),    //                  s1.address
@@ -477,7 +747,7 @@ module soc_system (
 		.out_port   (command_e0_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_e1 (
+	soc_system_command_e0 command_e1 (
 		.clk        (clk_clk),                                    //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),            //               reset.reset_n
 		.address    (mm_interconnect_1_command_e1_s1_address),    //                  s1.address
@@ -488,15 +758,59 @@ module soc_system (
 		.out_port   (command_e1_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_f (
-		.clk        (clk_clk),                                   //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
-		.address    (mm_interconnect_1_command_f_s1_address),    //                  s1.address
-		.write_n    (~mm_interconnect_1_command_f_s1_write),     //                    .write_n
-		.writedata  (mm_interconnect_1_command_f_s1_writedata),  //                    .writedata
-		.chipselect (mm_interconnect_1_command_f_s1_chipselect), //                    .chipselect
-		.readdata   (mm_interconnect_1_command_f_s1_readdata),   //                    .readdata
-		.out_port   (command_f_external_connection_export)       // external_connection.export
+	soc_system_command_e0 command_f_e0 (
+		.clk        (clk_clk),                                      //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.address    (mm_interconnect_1_command_f_e0_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_command_f_e0_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_command_f_e0_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_command_f_e0_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_command_f_e0_s1_readdata),   //                    .readdata
+		.out_port   (command_f_e0_external_connection_export)       // external_connection.export
+	);
+
+	soc_system_command_e0 command_f_e1 (
+		.clk        (clk_clk),                                      //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.address    (mm_interconnect_1_command_f_e1_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_command_f_e1_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_command_f_e1_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_command_f_e1_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_command_f_e1_s1_readdata),   //                    .readdata
+		.out_port   (command_f_e1_external_connection_export)       // external_connection.export
+	);
+
+	soc_system_command_e0 command_f_x (
+		.clk        (clk_clk),                                     //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address    (mm_interconnect_1_command_f_x_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_command_f_x_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_command_f_x_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_command_f_x_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_command_f_x_s1_readdata),   //                    .readdata
+		.out_port   (command_f_x_external_connection_export)       // external_connection.export
+	);
+
+	soc_system_command_e0 command_f_y (
+		.clk        (clk_clk),                                     //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address    (mm_interconnect_1_command_f_y_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_command_f_y_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_command_f_y_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_command_f_y_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_command_f_y_s1_readdata),   //                    .readdata
+		.out_port   (command_f_y_external_connection_export)       // external_connection.export
+	);
+
+	soc_system_command_e0 command_f_z (
+		.clk        (clk_clk),                                     //                 clk.clk
+		.reset_n    (~rst_controller_reset_out_reset),             //               reset.reset_n
+		.address    (mm_interconnect_1_command_f_z_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_1_command_f_z_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_1_command_f_z_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_1_command_f_z_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_1_command_f_z_s1_readdata),   //                    .readdata
+		.out_port   (command_f_z_external_connection_export)       // external_connection.export
 	);
 
 	soc_system_command_dt command_t (
@@ -510,7 +824,7 @@ module soc_system (
 		.out_port   (command_t_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_type (
+	soc_system_command_e0 command_type (
 		.clk        (clk_clk),                                      //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
 		.address    (mm_interconnect_1_command_type_s1_address),    //                  s1.address
@@ -521,7 +835,7 @@ module soc_system (
 		.out_port   (command_type_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_x (
+	soc_system_command_e0 command_x (
 		.clk        (clk_clk),                                   //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_1_command_x_s1_address),    //                  s1.address
@@ -532,7 +846,7 @@ module soc_system (
 		.out_port   (command_x_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_y (
+	soc_system_command_e0 command_y (
 		.clk        (clk_clk),                                   //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_1_command_y_s1_address),    //                  s1.address
@@ -543,7 +857,7 @@ module soc_system (
 		.out_port   (command_y_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt command_z (
+	soc_system_command_e0 command_z (
 		.clk        (clk_clk),                                   //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_1_command_z_s1_address),    //                  s1.address
@@ -580,7 +894,7 @@ module soc_system (
 		.in_port  (flags_in_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_command_dt flags_out (
+	soc_system_command_e0 flags_out (
 		.clk        (clk_clk),                                   //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address    (mm_interconnect_1_flags_out_s1_address),    //                  s1.address
@@ -850,6 +1164,78 @@ module soc_system (
 		.av_irq         (irq_mapper_receiver0_irq)                                   //               irq.irq
 	);
 
+	soc_system_flags_in max_params_0 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_params_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_params_0_s1_readdata), //                    .readdata
+		.in_port  (max_params_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_params_1 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_params_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_params_1_s1_readdata), //                    .readdata
+		.in_port  (max_params_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_params_2 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_params_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_params_2_s1_readdata), //                    .readdata
+		.in_port  (max_params_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_params_3 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_params_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_params_3_s1_readdata), //                    .readdata
+		.in_port  (max_params_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_params_4 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_params_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_params_4_s1_readdata), //                    .readdata
+		.in_port  (max_params_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_timing_0 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_timing_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_timing_0_s1_readdata), //                    .readdata
+		.in_port  (max_timing_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_timing_1 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_timing_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_timing_1_s1_readdata), //                    .readdata
+		.in_port  (max_timing_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_timing_2 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_timing_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_timing_2_s1_readdata), //                    .readdata
+		.in_port  (max_timing_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in max_timing_3 (
+		.clk      (clk_clk),                                    //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),            //               reset.reset_n
+		.address  (mm_interconnect_1_max_timing_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_max_timing_3_s1_readdata), //                    .readdata
+		.in_port  (max_timing_3_external_connection_export)     // external_connection.export
+	);
+
 	altera_avalon_mm_bridge #(
 		.DATA_WIDTH        (32),
 		.SYMBOL_WIDTH      (8),
@@ -884,6 +1270,406 @@ module soc_system (
 		.m0_response      (2'b00)                                           // (terminated)
 	);
 
+	soc_system_flags_in new_rparams_e0_0 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e0_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e0_0_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e0_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e0_1 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e0_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e0_1_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e0_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e0_2 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e0_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e0_2_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e0_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e0_3 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e0_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e0_3_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e0_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e0_4 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e0_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e0_4_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e0_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e1_0 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e1_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e1_0_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e1_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e1_1 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e1_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e1_1_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e1_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e1_2 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e1_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e1_2_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e1_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e1_3 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e1_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e1_3_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e1_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_e1_4 (
+		.clk      (clk_clk),                                        //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),                //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_e1_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_e1_4_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_e1_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_x_0 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_x_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_x_0_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_x_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_x_1 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_x_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_x_1_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_x_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_x_2 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_x_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_x_2_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_x_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_x_3 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_x_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_x_3_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_x_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_x_4 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_x_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_x_4_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_x_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_y_0 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_y_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_y_0_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_y_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_y_1 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_y_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_y_1_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_y_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_y_2 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_y_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_y_2_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_y_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_y_3 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_y_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_y_3_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_y_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_y_4 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_y_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_y_4_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_y_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_z_0 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_z_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_z_0_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_z_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_z_1 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_z_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_z_1_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_z_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_z_2 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_z_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_z_2_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_z_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_z_3 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_z_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_z_3_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_z_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in new_rparams_z_4 (
+		.clk      (clk_clk),                                       //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),               //               reset.reset_n
+		.address  (mm_interconnect_1_new_rparams_z_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_new_rparams_z_4_s1_readdata), //                    .readdata
+		.in_port  (new_rparams_z_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e0_0 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e0_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e0_0_s1_readdata), //                    .readdata
+		.in_port  (params_e0_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e0_1 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e0_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e0_1_s1_readdata), //                    .readdata
+		.in_port  (params_e0_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e0_2 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e0_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e0_2_s1_readdata), //                    .readdata
+		.in_port  (params_e0_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e0_3 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e0_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e0_3_s1_readdata), //                    .readdata
+		.in_port  (params_e0_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e0_4 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e0_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e0_4_s1_readdata), //                    .readdata
+		.in_port  (params_e0_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e1_0 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e1_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e1_0_s1_readdata), //                    .readdata
+		.in_port  (params_e1_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e1_1 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e1_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e1_1_s1_readdata), //                    .readdata
+		.in_port  (params_e1_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e1_2 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e1_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e1_2_s1_readdata), //                    .readdata
+		.in_port  (params_e1_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e1_3 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e1_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e1_3_s1_readdata), //                    .readdata
+		.in_port  (params_e1_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_e1_4 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_params_e1_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_e1_4_s1_readdata), //                    .readdata
+		.in_port  (params_e1_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_x_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_x_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_x_0_s1_readdata), //                    .readdata
+		.in_port  (params_x_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_x_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_x_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_x_1_s1_readdata), //                    .readdata
+		.in_port  (params_x_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_x_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_x_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_x_2_s1_readdata), //                    .readdata
+		.in_port  (params_x_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_x_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_x_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_x_3_s1_readdata), //                    .readdata
+		.in_port  (params_x_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_x_4 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_x_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_x_4_s1_readdata), //                    .readdata
+		.in_port  (params_x_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_y_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_y_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_y_0_s1_readdata), //                    .readdata
+		.in_port  (params_y_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_y_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_y_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_y_1_s1_readdata), //                    .readdata
+		.in_port  (params_y_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_y_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_y_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_y_2_s1_readdata), //                    .readdata
+		.in_port  (params_y_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_y_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_y_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_y_3_s1_readdata), //                    .readdata
+		.in_port  (params_y_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_y_4 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_y_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_y_4_s1_readdata), //                    .readdata
+		.in_port  (params_y_4_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_z_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_z_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_z_0_s1_readdata), //                    .readdata
+		.in_port  (params_z_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_z_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_z_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_z_1_s1_readdata), //                    .readdata
+		.in_port  (params_z_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_z_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_z_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_z_2_s1_readdata), //                    .readdata
+		.in_port  (params_z_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_z_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_z_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_z_3_s1_readdata), //                    .readdata
+		.in_port  (params_z_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in params_z_4 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_params_z_4_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_params_z_4_s1_readdata), //                    .readdata
+		.in_port  (params_z_4_external_connection_export)     // external_connection.export
+	);
+
 	soc_system_pll_sys pll_sys (
 		.refclk   (clk_clk),                  //  refclk.clk
 		.rst      (~reset_reset_n),           //   reset.reset
@@ -891,7 +1677,7 @@ module soc_system (
 		.outclk_1 (pll_sys_outclk10mhz_clk),  // outclk1.clk
 		.outclk_2 (pll_sys_outclk5mhz_clk),   // outclk2.clk
 		.outclk_3 (pll_sys_outclk1mhz_clk),   // outclk3.clk
-		.locked   ()                          //  locked.export
+		.locked   ()                          // (terminated)
 	);
 
 	soc_system_position_e0 position_e0 (
@@ -908,22 +1694,6 @@ module soc_system (
 		.address  (mm_interconnect_1_position_e1_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_1_position_e1_s1_readdata), //                    .readdata
 		.in_port  (position_e1_external_connection_export)     // external_connection.export
-	);
-
-	soc_system_position_extruder_type position_extruder_type (
-		.clk      (clk_clk),                                              //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),                      //               reset.reset_n
-		.address  (mm_interconnect_1_position_extruder_type_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_1_position_extruder_type_s1_readdata), //                    .readdata
-		.in_port  (position_extruder_type_external_connection_export)     // external_connection.export
-	);
-
-	soc_system_position_extruder_type position_type (
-		.clk      (clk_clk),                                     //                 clk.clk
-		.reset_n  (~rst_controller_reset_out_reset),             //               reset.reset_n
-		.address  (mm_interconnect_1_position_type_s1_address),  //                  s1.address
-		.readdata (mm_interconnect_1_position_type_s1_readdata), //                    .readdata
-		.in_port  (position_type_external_connection_export)     // external_connection.export
 	);
 
 	soc_system_position_e0 position_x (
@@ -950,7 +1720,7 @@ module soc_system (
 		.in_port  (position_z_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_command_dt settings_acceleration_e0 (
+	soc_system_command_e0 settings_acceleration_e0 (
 		.clk        (clk_clk),                                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                          //               reset.reset_n
 		.address    (mm_interconnect_1_settings_acceleration_e0_s1_address),    //                  s1.address
@@ -961,7 +1731,7 @@ module soc_system (
 		.out_port   (settings_acceleration_e0_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_acceleration_e1 (
+	soc_system_command_e0 settings_acceleration_e1 (
 		.clk        (clk_clk),                                                  //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                          //               reset.reset_n
 		.address    (mm_interconnect_1_settings_acceleration_e1_s1_address),    //                  s1.address
@@ -972,7 +1742,7 @@ module soc_system (
 		.out_port   (settings_acceleration_e1_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_acceleration_x (
+	soc_system_command_e0 settings_acceleration_x (
 		.clk        (clk_clk),                                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                         //               reset.reset_n
 		.address    (mm_interconnect_1_settings_acceleration_x_s1_address),    //                  s1.address
@@ -983,7 +1753,7 @@ module soc_system (
 		.out_port   (settings_acceleration_x_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_acceleration_y (
+	soc_system_command_e0 settings_acceleration_y (
 		.clk        (clk_clk),                                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                         //               reset.reset_n
 		.address    (mm_interconnect_1_settings_acceleration_y_s1_address),    //                  s1.address
@@ -994,7 +1764,7 @@ module soc_system (
 		.out_port   (settings_acceleration_y_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_acceleration_z (
+	soc_system_command_e0 settings_acceleration_z (
 		.clk        (clk_clk),                                                 //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                         //               reset.reset_n
 		.address    (mm_interconnect_1_settings_acceleration_z_s1_address),    //                  s1.address
@@ -1005,7 +1775,7 @@ module soc_system (
 		.out_port   (settings_acceleration_z_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_jerk_e0 (
+	soc_system_command_e0 settings_jerk_e0 (
 		.clk        (clk_clk),                                          //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                  //               reset.reset_n
 		.address    (mm_interconnect_1_settings_jerk_e0_s1_address),    //                  s1.address
@@ -1016,7 +1786,7 @@ module soc_system (
 		.out_port   (settings_jerk_e0_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_jerk_e1 (
+	soc_system_command_e0 settings_jerk_e1 (
 		.clk        (clk_clk),                                          //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                  //               reset.reset_n
 		.address    (mm_interconnect_1_settings_jerk_e1_s1_address),    //                  s1.address
@@ -1027,7 +1797,7 @@ module soc_system (
 		.out_port   (settings_jerk_e1_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_jerk_x (
+	soc_system_command_e0 settings_jerk_x (
 		.clk        (clk_clk),                                         //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
 		.address    (mm_interconnect_1_settings_jerk_x_s1_address),    //                  s1.address
@@ -1038,7 +1808,7 @@ module soc_system (
 		.out_port   (settings_jerk_x_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_jerk_y (
+	soc_system_command_e0 settings_jerk_y (
 		.clk        (clk_clk),                                         //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
 		.address    (mm_interconnect_1_settings_jerk_y_s1_address),    //                  s1.address
@@ -1049,7 +1819,7 @@ module soc_system (
 		.out_port   (settings_jerk_y_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_jerk_z (
+	soc_system_command_e0 settings_jerk_z (
 		.clk        (clk_clk),                                         //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
 		.address    (mm_interconnect_1_settings_jerk_z_s1_address),    //                  s1.address
@@ -1060,7 +1830,7 @@ module soc_system (
 		.out_port   (settings_jerk_z_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_max_speed_e0 (
+	soc_system_command_e0 settings_max_speed_e0 (
 		.clk        (clk_clk),                                               //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                       //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_speed_e0_s1_address),    //                  s1.address
@@ -1071,7 +1841,7 @@ module soc_system (
 		.out_port   (settings_max_speed_e0_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_max_speed_e1 (
+	soc_system_command_e0 settings_max_speed_e1 (
 		.clk        (clk_clk),                                               //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                       //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_speed_e1_s1_address),    //                  s1.address
@@ -1082,7 +1852,7 @@ module soc_system (
 		.out_port   (settings_max_speed_e1_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_max_speed_x (
+	soc_system_command_e0 settings_max_speed_x (
 		.clk        (clk_clk),                                              //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                      //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_speed_x_s1_address),    //                  s1.address
@@ -1093,7 +1863,7 @@ module soc_system (
 		.out_port   (settings_max_speed_x_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_max_speed_y (
+	soc_system_command_e0 settings_max_speed_y (
 		.clk        (clk_clk),                                              //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                      //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_speed_y_s1_address),    //                  s1.address
@@ -1104,7 +1874,7 @@ module soc_system (
 		.out_port   (settings_max_speed_y_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_command_dt settings_max_speed_z (
+	soc_system_command_e0 settings_max_speed_z (
 		.clk        (clk_clk),                                              //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                      //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_speed_z_s1_address),    //                  s1.address
@@ -1115,7 +1885,7 @@ module soc_system (
 		.out_port   (settings_max_speed_z_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_settings_max_temp_bed settings_max_temp_bed (
+	soc_system_command_dt settings_max_temp_bed (
 		.clk        (clk_clk),                                               //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                       //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_temp_bed_s1_address),    //                  s1.address
@@ -1126,7 +1896,7 @@ module soc_system (
 		.out_port   (settings_max_temp_bed_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_settings_max_temp_bed settings_max_temp_e0 (
+	soc_system_command_dt settings_max_temp_e0 (
 		.clk        (clk_clk),                                              //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                      //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_temp_e0_s1_address),    //                  s1.address
@@ -1137,7 +1907,7 @@ module soc_system (
 		.out_port   (settings_max_temp_e0_external_connection_export)       // external_connection.export
 	);
 
-	soc_system_settings_max_temp_bed settings_max_temp_e1 (
+	soc_system_command_dt settings_max_temp_e1 (
 		.clk        (clk_clk),                                              //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                      //               reset.reset_n
 		.address    (mm_interconnect_1_settings_max_temp_e1_s1_address),    //                  s1.address
@@ -1146,6 +1916,46 @@ module soc_system (
 		.chipselect (mm_interconnect_1_settings_max_temp_e1_s1_chipselect), //                    .chipselect
 		.readdata   (mm_interconnect_1_settings_max_temp_e1_s1_readdata),   //                    .readdata
 		.out_port   (settings_max_temp_e1_external_connection_export)       // external_connection.export
+	);
+
+	soc_system_flags_in step_e0_now (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_step_e0_now_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_step_e0_now_s1_readdata), //                    .readdata
+		.in_port  (step_e0_now_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in step_e1_now (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_step_e1_now_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_step_e1_now_s1_readdata), //                    .readdata
+		.in_port  (step_e1_now_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in step_x_now (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_step_x_now_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_step_x_now_s1_readdata), //                    .readdata
+		.in_port  (step_x_now_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in step_y_now (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_step_y_now_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_step_y_now_s1_readdata), //                    .readdata
+		.in_port  (step_y_now_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in step_z_now (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_step_z_now_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_step_z_now_s1_readdata), //                    .readdata
+		.in_port  (step_z_now_external_connection_export)     // external_connection.export
 	);
 
 	soc_system_sysid_qsys sysid_qsys (
@@ -1177,6 +1987,166 @@ module soc_system (
 		.address  (mm_interconnect_1_temp_2_s1_address),  //                  s1.address
 		.readdata (mm_interconnect_1_temp_2_s1_readdata), //                    .readdata
 		.in_port  (temp_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e0_0 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e0_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e0_0_s1_readdata), //                    .readdata
+		.in_port  (timing_e0_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e0_1 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e0_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e0_1_s1_readdata), //                    .readdata
+		.in_port  (timing_e0_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e0_2 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e0_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e0_2_s1_readdata), //                    .readdata
+		.in_port  (timing_e0_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e0_3 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e0_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e0_3_s1_readdata), //                    .readdata
+		.in_port  (timing_e0_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e1_0 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e1_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e1_0_s1_readdata), //                    .readdata
+		.in_port  (timing_e1_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e1_1 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e1_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e1_1_s1_readdata), //                    .readdata
+		.in_port  (timing_e1_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e1_2 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e1_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e1_2_s1_readdata), //                    .readdata
+		.in_port  (timing_e1_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_e1_3 (
+		.clk      (clk_clk),                                   //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
+		.address  (mm_interconnect_1_timing_e1_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_e1_3_s1_readdata), //                    .readdata
+		.in_port  (timing_e1_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_x_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_x_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_x_0_s1_readdata), //                    .readdata
+		.in_port  (timing_x_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_x_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_x_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_x_1_s1_readdata), //                    .readdata
+		.in_port  (timing_x_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_x_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_x_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_x_2_s1_readdata), //                    .readdata
+		.in_port  (timing_x_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_x_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_x_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_x_3_s1_readdata), //                    .readdata
+		.in_port  (timing_x_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_y_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_y_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_y_0_s1_readdata), //                    .readdata
+		.in_port  (timing_y_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_y_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_y_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_y_1_s1_readdata), //                    .readdata
+		.in_port  (timing_y_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_y_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_y_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_y_2_s1_readdata), //                    .readdata
+		.in_port  (timing_y_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_y_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_y_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_y_3_s1_readdata), //                    .readdata
+		.in_port  (timing_y_3_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_z_0 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_z_0_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_z_0_s1_readdata), //                    .readdata
+		.in_port  (timing_z_0_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_z_1 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_z_1_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_z_1_s1_readdata), //                    .readdata
+		.in_port  (timing_z_1_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_z_2 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_z_2_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_z_2_s1_readdata), //                    .readdata
+		.in_port  (timing_z_2_external_connection_export)     // external_connection.export
+	);
+
+	soc_system_flags_in timing_z_3 (
+		.clk      (clk_clk),                                  //                 clk.clk
+		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
+		.address  (mm_interconnect_1_timing_z_3_s1_address),  //                  s1.address
+		.readdata (mm_interconnect_1_timing_z_3_s1_readdata), //                    .readdata
+		.in_port  (timing_z_3_external_connection_export)     // external_connection.export
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
@@ -1268,11 +2238,31 @@ module soc_system (
 		.command_e1_s1_readdata                                 (mm_interconnect_1_command_e1_s1_readdata),                  //                                                 .readdata
 		.command_e1_s1_writedata                                (mm_interconnect_1_command_e1_s1_writedata),                 //                                                 .writedata
 		.command_e1_s1_chipselect                               (mm_interconnect_1_command_e1_s1_chipselect),                //                                                 .chipselect
-		.command_f_s1_address                                   (mm_interconnect_1_command_f_s1_address),                    //                                     command_f_s1.address
-		.command_f_s1_write                                     (mm_interconnect_1_command_f_s1_write),                      //                                                 .write
-		.command_f_s1_readdata                                  (mm_interconnect_1_command_f_s1_readdata),                   //                                                 .readdata
-		.command_f_s1_writedata                                 (mm_interconnect_1_command_f_s1_writedata),                  //                                                 .writedata
-		.command_f_s1_chipselect                                (mm_interconnect_1_command_f_s1_chipselect),                 //                                                 .chipselect
+		.command_f_e0_s1_address                                (mm_interconnect_1_command_f_e0_s1_address),                 //                                  command_f_e0_s1.address
+		.command_f_e0_s1_write                                  (mm_interconnect_1_command_f_e0_s1_write),                   //                                                 .write
+		.command_f_e0_s1_readdata                               (mm_interconnect_1_command_f_e0_s1_readdata),                //                                                 .readdata
+		.command_f_e0_s1_writedata                              (mm_interconnect_1_command_f_e0_s1_writedata),               //                                                 .writedata
+		.command_f_e0_s1_chipselect                             (mm_interconnect_1_command_f_e0_s1_chipselect),              //                                                 .chipselect
+		.command_f_e1_s1_address                                (mm_interconnect_1_command_f_e1_s1_address),                 //                                  command_f_e1_s1.address
+		.command_f_e1_s1_write                                  (mm_interconnect_1_command_f_e1_s1_write),                   //                                                 .write
+		.command_f_e1_s1_readdata                               (mm_interconnect_1_command_f_e1_s1_readdata),                //                                                 .readdata
+		.command_f_e1_s1_writedata                              (mm_interconnect_1_command_f_e1_s1_writedata),               //                                                 .writedata
+		.command_f_e1_s1_chipselect                             (mm_interconnect_1_command_f_e1_s1_chipselect),              //                                                 .chipselect
+		.command_f_x_s1_address                                 (mm_interconnect_1_command_f_x_s1_address),                  //                                   command_f_x_s1.address
+		.command_f_x_s1_write                                   (mm_interconnect_1_command_f_x_s1_write),                    //                                                 .write
+		.command_f_x_s1_readdata                                (mm_interconnect_1_command_f_x_s1_readdata),                 //                                                 .readdata
+		.command_f_x_s1_writedata                               (mm_interconnect_1_command_f_x_s1_writedata),                //                                                 .writedata
+		.command_f_x_s1_chipselect                              (mm_interconnect_1_command_f_x_s1_chipselect),               //                                                 .chipselect
+		.command_f_y_s1_address                                 (mm_interconnect_1_command_f_y_s1_address),                  //                                   command_f_y_s1.address
+		.command_f_y_s1_write                                   (mm_interconnect_1_command_f_y_s1_write),                    //                                                 .write
+		.command_f_y_s1_readdata                                (mm_interconnect_1_command_f_y_s1_readdata),                 //                                                 .readdata
+		.command_f_y_s1_writedata                               (mm_interconnect_1_command_f_y_s1_writedata),                //                                                 .writedata
+		.command_f_y_s1_chipselect                              (mm_interconnect_1_command_f_y_s1_chipselect),               //                                                 .chipselect
+		.command_f_z_s1_address                                 (mm_interconnect_1_command_f_z_s1_address),                  //                                   command_f_z_s1.address
+		.command_f_z_s1_write                                   (mm_interconnect_1_command_f_z_s1_write),                    //                                                 .write
+		.command_f_z_s1_readdata                                (mm_interconnect_1_command_f_z_s1_readdata),                 //                                                 .readdata
+		.command_f_z_s1_writedata                               (mm_interconnect_1_command_f_z_s1_writedata),                //                                                 .writedata
+		.command_f_z_s1_chipselect                              (mm_interconnect_1_command_f_z_s1_chipselect),               //                                                 .chipselect
 		.command_t_s1_address                                   (mm_interconnect_1_command_t_s1_address),                    //                                     command_t_s1.address
 		.command_t_s1_write                                     (mm_interconnect_1_command_t_s1_write),                      //                                                 .write
 		.command_t_s1_readdata                                  (mm_interconnect_1_command_t_s1_readdata),                   //                                                 .readdata
@@ -1317,14 +2307,128 @@ module soc_system (
 		.jtag_uart_avalon_jtag_slave_writedata                  (mm_interconnect_1_jtag_uart_avalon_jtag_slave_writedata),   //                                                 .writedata
 		.jtag_uart_avalon_jtag_slave_waitrequest                (mm_interconnect_1_jtag_uart_avalon_jtag_slave_waitrequest), //                                                 .waitrequest
 		.jtag_uart_avalon_jtag_slave_chipselect                 (mm_interconnect_1_jtag_uart_avalon_jtag_slave_chipselect),  //                                                 .chipselect
+		.max_params_0_s1_address                                (mm_interconnect_1_max_params_0_s1_address),                 //                                  max_params_0_s1.address
+		.max_params_0_s1_readdata                               (mm_interconnect_1_max_params_0_s1_readdata),                //                                                 .readdata
+		.max_params_1_s1_address                                (mm_interconnect_1_max_params_1_s1_address),                 //                                  max_params_1_s1.address
+		.max_params_1_s1_readdata                               (mm_interconnect_1_max_params_1_s1_readdata),                //                                                 .readdata
+		.max_params_2_s1_address                                (mm_interconnect_1_max_params_2_s1_address),                 //                                  max_params_2_s1.address
+		.max_params_2_s1_readdata                               (mm_interconnect_1_max_params_2_s1_readdata),                //                                                 .readdata
+		.max_params_3_s1_address                                (mm_interconnect_1_max_params_3_s1_address),                 //                                  max_params_3_s1.address
+		.max_params_3_s1_readdata                               (mm_interconnect_1_max_params_3_s1_readdata),                //                                                 .readdata
+		.max_params_4_s1_address                                (mm_interconnect_1_max_params_4_s1_address),                 //                                  max_params_4_s1.address
+		.max_params_4_s1_readdata                               (mm_interconnect_1_max_params_4_s1_readdata),                //                                                 .readdata
+		.max_timing_0_s1_address                                (mm_interconnect_1_max_timing_0_s1_address),                 //                                  max_timing_0_s1.address
+		.max_timing_0_s1_readdata                               (mm_interconnect_1_max_timing_0_s1_readdata),                //                                                 .readdata
+		.max_timing_1_s1_address                                (mm_interconnect_1_max_timing_1_s1_address),                 //                                  max_timing_1_s1.address
+		.max_timing_1_s1_readdata                               (mm_interconnect_1_max_timing_1_s1_readdata),                //                                                 .readdata
+		.max_timing_2_s1_address                                (mm_interconnect_1_max_timing_2_s1_address),                 //                                  max_timing_2_s1.address
+		.max_timing_2_s1_readdata                               (mm_interconnect_1_max_timing_2_s1_readdata),                //                                                 .readdata
+		.max_timing_3_s1_address                                (mm_interconnect_1_max_timing_3_s1_address),                 //                                  max_timing_3_s1.address
+		.max_timing_3_s1_readdata                               (mm_interconnect_1_max_timing_3_s1_readdata),                //                                                 .readdata
+		.new_rparams_e0_0_s1_address                            (mm_interconnect_1_new_rparams_e0_0_s1_address),             //                              new_rparams_e0_0_s1.address
+		.new_rparams_e0_0_s1_readdata                           (mm_interconnect_1_new_rparams_e0_0_s1_readdata),            //                                                 .readdata
+		.new_rparams_e0_1_s1_address                            (mm_interconnect_1_new_rparams_e0_1_s1_address),             //                              new_rparams_e0_1_s1.address
+		.new_rparams_e0_1_s1_readdata                           (mm_interconnect_1_new_rparams_e0_1_s1_readdata),            //                                                 .readdata
+		.new_rparams_e0_2_s1_address                            (mm_interconnect_1_new_rparams_e0_2_s1_address),             //                              new_rparams_e0_2_s1.address
+		.new_rparams_e0_2_s1_readdata                           (mm_interconnect_1_new_rparams_e0_2_s1_readdata),            //                                                 .readdata
+		.new_rparams_e0_3_s1_address                            (mm_interconnect_1_new_rparams_e0_3_s1_address),             //                              new_rparams_e0_3_s1.address
+		.new_rparams_e0_3_s1_readdata                           (mm_interconnect_1_new_rparams_e0_3_s1_readdata),            //                                                 .readdata
+		.new_rparams_e0_4_s1_address                            (mm_interconnect_1_new_rparams_e0_4_s1_address),             //                              new_rparams_e0_4_s1.address
+		.new_rparams_e0_4_s1_readdata                           (mm_interconnect_1_new_rparams_e0_4_s1_readdata),            //                                                 .readdata
+		.new_rparams_e1_0_s1_address                            (mm_interconnect_1_new_rparams_e1_0_s1_address),             //                              new_rparams_e1_0_s1.address
+		.new_rparams_e1_0_s1_readdata                           (mm_interconnect_1_new_rparams_e1_0_s1_readdata),            //                                                 .readdata
+		.new_rparams_e1_1_s1_address                            (mm_interconnect_1_new_rparams_e1_1_s1_address),             //                              new_rparams_e1_1_s1.address
+		.new_rparams_e1_1_s1_readdata                           (mm_interconnect_1_new_rparams_e1_1_s1_readdata),            //                                                 .readdata
+		.new_rparams_e1_2_s1_address                            (mm_interconnect_1_new_rparams_e1_2_s1_address),             //                              new_rparams_e1_2_s1.address
+		.new_rparams_e1_2_s1_readdata                           (mm_interconnect_1_new_rparams_e1_2_s1_readdata),            //                                                 .readdata
+		.new_rparams_e1_3_s1_address                            (mm_interconnect_1_new_rparams_e1_3_s1_address),             //                              new_rparams_e1_3_s1.address
+		.new_rparams_e1_3_s1_readdata                           (mm_interconnect_1_new_rparams_e1_3_s1_readdata),            //                                                 .readdata
+		.new_rparams_e1_4_s1_address                            (mm_interconnect_1_new_rparams_e1_4_s1_address),             //                              new_rparams_e1_4_s1.address
+		.new_rparams_e1_4_s1_readdata                           (mm_interconnect_1_new_rparams_e1_4_s1_readdata),            //                                                 .readdata
+		.new_rparams_x_0_s1_address                             (mm_interconnect_1_new_rparams_x_0_s1_address),              //                               new_rparams_x_0_s1.address
+		.new_rparams_x_0_s1_readdata                            (mm_interconnect_1_new_rparams_x_0_s1_readdata),             //                                                 .readdata
+		.new_rparams_x_1_s1_address                             (mm_interconnect_1_new_rparams_x_1_s1_address),              //                               new_rparams_x_1_s1.address
+		.new_rparams_x_1_s1_readdata                            (mm_interconnect_1_new_rparams_x_1_s1_readdata),             //                                                 .readdata
+		.new_rparams_x_2_s1_address                             (mm_interconnect_1_new_rparams_x_2_s1_address),              //                               new_rparams_x_2_s1.address
+		.new_rparams_x_2_s1_readdata                            (mm_interconnect_1_new_rparams_x_2_s1_readdata),             //                                                 .readdata
+		.new_rparams_x_3_s1_address                             (mm_interconnect_1_new_rparams_x_3_s1_address),              //                               new_rparams_x_3_s1.address
+		.new_rparams_x_3_s1_readdata                            (mm_interconnect_1_new_rparams_x_3_s1_readdata),             //                                                 .readdata
+		.new_rparams_x_4_s1_address                             (mm_interconnect_1_new_rparams_x_4_s1_address),              //                               new_rparams_x_4_s1.address
+		.new_rparams_x_4_s1_readdata                            (mm_interconnect_1_new_rparams_x_4_s1_readdata),             //                                                 .readdata
+		.new_rparams_y_0_s1_address                             (mm_interconnect_1_new_rparams_y_0_s1_address),              //                               new_rparams_y_0_s1.address
+		.new_rparams_y_0_s1_readdata                            (mm_interconnect_1_new_rparams_y_0_s1_readdata),             //                                                 .readdata
+		.new_rparams_y_1_s1_address                             (mm_interconnect_1_new_rparams_y_1_s1_address),              //                               new_rparams_y_1_s1.address
+		.new_rparams_y_1_s1_readdata                            (mm_interconnect_1_new_rparams_y_1_s1_readdata),             //                                                 .readdata
+		.new_rparams_y_2_s1_address                             (mm_interconnect_1_new_rparams_y_2_s1_address),              //                               new_rparams_y_2_s1.address
+		.new_rparams_y_2_s1_readdata                            (mm_interconnect_1_new_rparams_y_2_s1_readdata),             //                                                 .readdata
+		.new_rparams_y_3_s1_address                             (mm_interconnect_1_new_rparams_y_3_s1_address),              //                               new_rparams_y_3_s1.address
+		.new_rparams_y_3_s1_readdata                            (mm_interconnect_1_new_rparams_y_3_s1_readdata),             //                                                 .readdata
+		.new_rparams_y_4_s1_address                             (mm_interconnect_1_new_rparams_y_4_s1_address),              //                               new_rparams_y_4_s1.address
+		.new_rparams_y_4_s1_readdata                            (mm_interconnect_1_new_rparams_y_4_s1_readdata),             //                                                 .readdata
+		.new_rparams_z_0_s1_address                             (mm_interconnect_1_new_rparams_z_0_s1_address),              //                               new_rparams_z_0_s1.address
+		.new_rparams_z_0_s1_readdata                            (mm_interconnect_1_new_rparams_z_0_s1_readdata),             //                                                 .readdata
+		.new_rparams_z_1_s1_address                             (mm_interconnect_1_new_rparams_z_1_s1_address),              //                               new_rparams_z_1_s1.address
+		.new_rparams_z_1_s1_readdata                            (mm_interconnect_1_new_rparams_z_1_s1_readdata),             //                                                 .readdata
+		.new_rparams_z_2_s1_address                             (mm_interconnect_1_new_rparams_z_2_s1_address),              //                               new_rparams_z_2_s1.address
+		.new_rparams_z_2_s1_readdata                            (mm_interconnect_1_new_rparams_z_2_s1_readdata),             //                                                 .readdata
+		.new_rparams_z_3_s1_address                             (mm_interconnect_1_new_rparams_z_3_s1_address),              //                               new_rparams_z_3_s1.address
+		.new_rparams_z_3_s1_readdata                            (mm_interconnect_1_new_rparams_z_3_s1_readdata),             //                                                 .readdata
+		.new_rparams_z_4_s1_address                             (mm_interconnect_1_new_rparams_z_4_s1_address),              //                               new_rparams_z_4_s1.address
+		.new_rparams_z_4_s1_readdata                            (mm_interconnect_1_new_rparams_z_4_s1_readdata),             //                                                 .readdata
+		.params_e0_0_s1_address                                 (mm_interconnect_1_params_e0_0_s1_address),                  //                                   params_e0_0_s1.address
+		.params_e0_0_s1_readdata                                (mm_interconnect_1_params_e0_0_s1_readdata),                 //                                                 .readdata
+		.params_e0_1_s1_address                                 (mm_interconnect_1_params_e0_1_s1_address),                  //                                   params_e0_1_s1.address
+		.params_e0_1_s1_readdata                                (mm_interconnect_1_params_e0_1_s1_readdata),                 //                                                 .readdata
+		.params_e0_2_s1_address                                 (mm_interconnect_1_params_e0_2_s1_address),                  //                                   params_e0_2_s1.address
+		.params_e0_2_s1_readdata                                (mm_interconnect_1_params_e0_2_s1_readdata),                 //                                                 .readdata
+		.params_e0_3_s1_address                                 (mm_interconnect_1_params_e0_3_s1_address),                  //                                   params_e0_3_s1.address
+		.params_e0_3_s1_readdata                                (mm_interconnect_1_params_e0_3_s1_readdata),                 //                                                 .readdata
+		.params_e0_4_s1_address                                 (mm_interconnect_1_params_e0_4_s1_address),                  //                                   params_e0_4_s1.address
+		.params_e0_4_s1_readdata                                (mm_interconnect_1_params_e0_4_s1_readdata),                 //                                                 .readdata
+		.params_e1_0_s1_address                                 (mm_interconnect_1_params_e1_0_s1_address),                  //                                   params_e1_0_s1.address
+		.params_e1_0_s1_readdata                                (mm_interconnect_1_params_e1_0_s1_readdata),                 //                                                 .readdata
+		.params_e1_1_s1_address                                 (mm_interconnect_1_params_e1_1_s1_address),                  //                                   params_e1_1_s1.address
+		.params_e1_1_s1_readdata                                (mm_interconnect_1_params_e1_1_s1_readdata),                 //                                                 .readdata
+		.params_e1_2_s1_address                                 (mm_interconnect_1_params_e1_2_s1_address),                  //                                   params_e1_2_s1.address
+		.params_e1_2_s1_readdata                                (mm_interconnect_1_params_e1_2_s1_readdata),                 //                                                 .readdata
+		.params_e1_3_s1_address                                 (mm_interconnect_1_params_e1_3_s1_address),                  //                                   params_e1_3_s1.address
+		.params_e1_3_s1_readdata                                (mm_interconnect_1_params_e1_3_s1_readdata),                 //                                                 .readdata
+		.params_e1_4_s1_address                                 (mm_interconnect_1_params_e1_4_s1_address),                  //                                   params_e1_4_s1.address
+		.params_e1_4_s1_readdata                                (mm_interconnect_1_params_e1_4_s1_readdata),                 //                                                 .readdata
+		.params_x_0_s1_address                                  (mm_interconnect_1_params_x_0_s1_address),                   //                                    params_x_0_s1.address
+		.params_x_0_s1_readdata                                 (mm_interconnect_1_params_x_0_s1_readdata),                  //                                                 .readdata
+		.params_x_1_s1_address                                  (mm_interconnect_1_params_x_1_s1_address),                   //                                    params_x_1_s1.address
+		.params_x_1_s1_readdata                                 (mm_interconnect_1_params_x_1_s1_readdata),                  //                                                 .readdata
+		.params_x_2_s1_address                                  (mm_interconnect_1_params_x_2_s1_address),                   //                                    params_x_2_s1.address
+		.params_x_2_s1_readdata                                 (mm_interconnect_1_params_x_2_s1_readdata),                  //                                                 .readdata
+		.params_x_3_s1_address                                  (mm_interconnect_1_params_x_3_s1_address),                   //                                    params_x_3_s1.address
+		.params_x_3_s1_readdata                                 (mm_interconnect_1_params_x_3_s1_readdata),                  //                                                 .readdata
+		.params_x_4_s1_address                                  (mm_interconnect_1_params_x_4_s1_address),                   //                                    params_x_4_s1.address
+		.params_x_4_s1_readdata                                 (mm_interconnect_1_params_x_4_s1_readdata),                  //                                                 .readdata
+		.params_y_0_s1_address                                  (mm_interconnect_1_params_y_0_s1_address),                   //                                    params_y_0_s1.address
+		.params_y_0_s1_readdata                                 (mm_interconnect_1_params_y_0_s1_readdata),                  //                                                 .readdata
+		.params_y_1_s1_address                                  (mm_interconnect_1_params_y_1_s1_address),                   //                                    params_y_1_s1.address
+		.params_y_1_s1_readdata                                 (mm_interconnect_1_params_y_1_s1_readdata),                  //                                                 .readdata
+		.params_y_2_s1_address                                  (mm_interconnect_1_params_y_2_s1_address),                   //                                    params_y_2_s1.address
+		.params_y_2_s1_readdata                                 (mm_interconnect_1_params_y_2_s1_readdata),                  //                                                 .readdata
+		.params_y_3_s1_address                                  (mm_interconnect_1_params_y_3_s1_address),                   //                                    params_y_3_s1.address
+		.params_y_3_s1_readdata                                 (mm_interconnect_1_params_y_3_s1_readdata),                  //                                                 .readdata
+		.params_y_4_s1_address                                  (mm_interconnect_1_params_y_4_s1_address),                   //                                    params_y_4_s1.address
+		.params_y_4_s1_readdata                                 (mm_interconnect_1_params_y_4_s1_readdata),                  //                                                 .readdata
+		.params_z_0_s1_address                                  (mm_interconnect_1_params_z_0_s1_address),                   //                                    params_z_0_s1.address
+		.params_z_0_s1_readdata                                 (mm_interconnect_1_params_z_0_s1_readdata),                  //                                                 .readdata
+		.params_z_1_s1_address                                  (mm_interconnect_1_params_z_1_s1_address),                   //                                    params_z_1_s1.address
+		.params_z_1_s1_readdata                                 (mm_interconnect_1_params_z_1_s1_readdata),                  //                                                 .readdata
+		.params_z_2_s1_address                                  (mm_interconnect_1_params_z_2_s1_address),                   //                                    params_z_2_s1.address
+		.params_z_2_s1_readdata                                 (mm_interconnect_1_params_z_2_s1_readdata),                  //                                                 .readdata
+		.params_z_3_s1_address                                  (mm_interconnect_1_params_z_3_s1_address),                   //                                    params_z_3_s1.address
+		.params_z_3_s1_readdata                                 (mm_interconnect_1_params_z_3_s1_readdata),                  //                                                 .readdata
+		.params_z_4_s1_address                                  (mm_interconnect_1_params_z_4_s1_address),                   //                                    params_z_4_s1.address
+		.params_z_4_s1_readdata                                 (mm_interconnect_1_params_z_4_s1_readdata),                  //                                                 .readdata
 		.position_e0_s1_address                                 (mm_interconnect_1_position_e0_s1_address),                  //                                   position_e0_s1.address
 		.position_e0_s1_readdata                                (mm_interconnect_1_position_e0_s1_readdata),                 //                                                 .readdata
 		.position_e1_s1_address                                 (mm_interconnect_1_position_e1_s1_address),                  //                                   position_e1_s1.address
 		.position_e1_s1_readdata                                (mm_interconnect_1_position_e1_s1_readdata),                 //                                                 .readdata
-		.position_extruder_type_s1_address                      (mm_interconnect_1_position_extruder_type_s1_address),       //                        position_extruder_type_s1.address
-		.position_extruder_type_s1_readdata                     (mm_interconnect_1_position_extruder_type_s1_readdata),      //                                                 .readdata
-		.position_type_s1_address                               (mm_interconnect_1_position_type_s1_address),                //                                 position_type_s1.address
-		.position_type_s1_readdata                              (mm_interconnect_1_position_type_s1_readdata),               //                                                 .readdata
 		.position_x_s1_address                                  (mm_interconnect_1_position_x_s1_address),                   //                                    position_x_s1.address
 		.position_x_s1_readdata                                 (mm_interconnect_1_position_x_s1_readdata),                  //                                                 .readdata
 		.position_y_s1_address                                  (mm_interconnect_1_position_y_s1_address),                   //                                    position_y_s1.address
@@ -1421,6 +2525,16 @@ module soc_system (
 		.settings_max_temp_e1_s1_readdata                       (mm_interconnect_1_settings_max_temp_e1_s1_readdata),        //                                                 .readdata
 		.settings_max_temp_e1_s1_writedata                      (mm_interconnect_1_settings_max_temp_e1_s1_writedata),       //                                                 .writedata
 		.settings_max_temp_e1_s1_chipselect                     (mm_interconnect_1_settings_max_temp_e1_s1_chipselect),      //                                                 .chipselect
+		.step_e0_now_s1_address                                 (mm_interconnect_1_step_e0_now_s1_address),                  //                                   step_e0_now_s1.address
+		.step_e0_now_s1_readdata                                (mm_interconnect_1_step_e0_now_s1_readdata),                 //                                                 .readdata
+		.step_e1_now_s1_address                                 (mm_interconnect_1_step_e1_now_s1_address),                  //                                   step_e1_now_s1.address
+		.step_e1_now_s1_readdata                                (mm_interconnect_1_step_e1_now_s1_readdata),                 //                                                 .readdata
+		.step_x_now_s1_address                                  (mm_interconnect_1_step_x_now_s1_address),                   //                                    step_x_now_s1.address
+		.step_x_now_s1_readdata                                 (mm_interconnect_1_step_x_now_s1_readdata),                  //                                                 .readdata
+		.step_y_now_s1_address                                  (mm_interconnect_1_step_y_now_s1_address),                   //                                    step_y_now_s1.address
+		.step_y_now_s1_readdata                                 (mm_interconnect_1_step_y_now_s1_readdata),                  //                                                 .readdata
+		.step_z_now_s1_address                                  (mm_interconnect_1_step_z_now_s1_address),                   //                                    step_z_now_s1.address
+		.step_z_now_s1_readdata                                 (mm_interconnect_1_step_z_now_s1_readdata),                  //                                                 .readdata
 		.sysid_qsys_control_slave_address                       (mm_interconnect_1_sysid_qsys_control_slave_address),        //                         sysid_qsys_control_slave.address
 		.sysid_qsys_control_slave_readdata                      (mm_interconnect_1_sysid_qsys_control_slave_readdata),       //                                                 .readdata
 		.temp_0_s1_address                                      (mm_interconnect_1_temp_0_s1_address),                       //                                        temp_0_s1.address
@@ -1428,7 +2542,47 @@ module soc_system (
 		.temp_1_s1_address                                      (mm_interconnect_1_temp_1_s1_address),                       //                                        temp_1_s1.address
 		.temp_1_s1_readdata                                     (mm_interconnect_1_temp_1_s1_readdata),                      //                                                 .readdata
 		.temp_2_s1_address                                      (mm_interconnect_1_temp_2_s1_address),                       //                                        temp_2_s1.address
-		.temp_2_s1_readdata                                     (mm_interconnect_1_temp_2_s1_readdata)                       //                                                 .readdata
+		.temp_2_s1_readdata                                     (mm_interconnect_1_temp_2_s1_readdata),                      //                                                 .readdata
+		.timing_e0_0_s1_address                                 (mm_interconnect_1_timing_e0_0_s1_address),                  //                                   timing_e0_0_s1.address
+		.timing_e0_0_s1_readdata                                (mm_interconnect_1_timing_e0_0_s1_readdata),                 //                                                 .readdata
+		.timing_e0_1_s1_address                                 (mm_interconnect_1_timing_e0_1_s1_address),                  //                                   timing_e0_1_s1.address
+		.timing_e0_1_s1_readdata                                (mm_interconnect_1_timing_e0_1_s1_readdata),                 //                                                 .readdata
+		.timing_e0_2_s1_address                                 (mm_interconnect_1_timing_e0_2_s1_address),                  //                                   timing_e0_2_s1.address
+		.timing_e0_2_s1_readdata                                (mm_interconnect_1_timing_e0_2_s1_readdata),                 //                                                 .readdata
+		.timing_e0_3_s1_address                                 (mm_interconnect_1_timing_e0_3_s1_address),                  //                                   timing_e0_3_s1.address
+		.timing_e0_3_s1_readdata                                (mm_interconnect_1_timing_e0_3_s1_readdata),                 //                                                 .readdata
+		.timing_e1_0_s1_address                                 (mm_interconnect_1_timing_e1_0_s1_address),                  //                                   timing_e1_0_s1.address
+		.timing_e1_0_s1_readdata                                (mm_interconnect_1_timing_e1_0_s1_readdata),                 //                                                 .readdata
+		.timing_e1_1_s1_address                                 (mm_interconnect_1_timing_e1_1_s1_address),                  //                                   timing_e1_1_s1.address
+		.timing_e1_1_s1_readdata                                (mm_interconnect_1_timing_e1_1_s1_readdata),                 //                                                 .readdata
+		.timing_e1_2_s1_address                                 (mm_interconnect_1_timing_e1_2_s1_address),                  //                                   timing_e1_2_s1.address
+		.timing_e1_2_s1_readdata                                (mm_interconnect_1_timing_e1_2_s1_readdata),                 //                                                 .readdata
+		.timing_e1_3_s1_address                                 (mm_interconnect_1_timing_e1_3_s1_address),                  //                                   timing_e1_3_s1.address
+		.timing_e1_3_s1_readdata                                (mm_interconnect_1_timing_e1_3_s1_readdata),                 //                                                 .readdata
+		.timing_x_0_s1_address                                  (mm_interconnect_1_timing_x_0_s1_address),                   //                                    timing_x_0_s1.address
+		.timing_x_0_s1_readdata                                 (mm_interconnect_1_timing_x_0_s1_readdata),                  //                                                 .readdata
+		.timing_x_1_s1_address                                  (mm_interconnect_1_timing_x_1_s1_address),                   //                                    timing_x_1_s1.address
+		.timing_x_1_s1_readdata                                 (mm_interconnect_1_timing_x_1_s1_readdata),                  //                                                 .readdata
+		.timing_x_2_s1_address                                  (mm_interconnect_1_timing_x_2_s1_address),                   //                                    timing_x_2_s1.address
+		.timing_x_2_s1_readdata                                 (mm_interconnect_1_timing_x_2_s1_readdata),                  //                                                 .readdata
+		.timing_x_3_s1_address                                  (mm_interconnect_1_timing_x_3_s1_address),                   //                                    timing_x_3_s1.address
+		.timing_x_3_s1_readdata                                 (mm_interconnect_1_timing_x_3_s1_readdata),                  //                                                 .readdata
+		.timing_y_0_s1_address                                  (mm_interconnect_1_timing_y_0_s1_address),                   //                                    timing_y_0_s1.address
+		.timing_y_0_s1_readdata                                 (mm_interconnect_1_timing_y_0_s1_readdata),                  //                                                 .readdata
+		.timing_y_1_s1_address                                  (mm_interconnect_1_timing_y_1_s1_address),                   //                                    timing_y_1_s1.address
+		.timing_y_1_s1_readdata                                 (mm_interconnect_1_timing_y_1_s1_readdata),                  //                                                 .readdata
+		.timing_y_2_s1_address                                  (mm_interconnect_1_timing_y_2_s1_address),                   //                                    timing_y_2_s1.address
+		.timing_y_2_s1_readdata                                 (mm_interconnect_1_timing_y_2_s1_readdata),                  //                                                 .readdata
+		.timing_y_3_s1_address                                  (mm_interconnect_1_timing_y_3_s1_address),                   //                                    timing_y_3_s1.address
+		.timing_y_3_s1_readdata                                 (mm_interconnect_1_timing_y_3_s1_readdata),                  //                                                 .readdata
+		.timing_z_0_s1_address                                  (mm_interconnect_1_timing_z_0_s1_address),                   //                                    timing_z_0_s1.address
+		.timing_z_0_s1_readdata                                 (mm_interconnect_1_timing_z_0_s1_readdata),                  //                                                 .readdata
+		.timing_z_1_s1_address                                  (mm_interconnect_1_timing_z_1_s1_address),                   //                                    timing_z_1_s1.address
+		.timing_z_1_s1_readdata                                 (mm_interconnect_1_timing_z_1_s1_readdata),                  //                                                 .readdata
+		.timing_z_2_s1_address                                  (mm_interconnect_1_timing_z_2_s1_address),                   //                                    timing_z_2_s1.address
+		.timing_z_2_s1_readdata                                 (mm_interconnect_1_timing_z_2_s1_readdata),                  //                                                 .readdata
+		.timing_z_3_s1_address                                  (mm_interconnect_1_timing_z_3_s1_address),                   //                                    timing_z_3_s1.address
+		.timing_z_3_s1_readdata                                 (mm_interconnect_1_timing_z_3_s1_readdata)                   //                                                 .readdata
 	);
 
 	soc_system_mm_interconnect_2 mm_interconnect_2 (

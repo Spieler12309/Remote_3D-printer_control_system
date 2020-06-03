@@ -23,7 +23,7 @@ print("v0m = {}, vkm = {}, am = {}".format(v0m, vkm, am))
 t0 = int(f / v0m)
 tna = int(f / vkm)
 t = (vk - v0) / a #(f / (a * k)) * ((t0 - tna) / (t0 * tna))
-delta = int(((t0 ** 2) - (tna ** 2)) / (2 * t * f + tna - t0))
+delta = int(((t0 ** 2) - (tna ** 2)) / (2 * t * f - tna - t0))
 if (delta == 0):
    delta = 1;
 if (delta < 0):

@@ -6,72 +6,45 @@
 
 PrinterController::PrinterController() {
     mechanics.printer = this;
-
-    //TODO: Считывание настроек из файла или его создание при отсутствии самого файла
-
-
-    state = Waiting;
-    waiting();
+    loadSettings();
+    mechanics.initMem();
+    mechanics.printSettings();
 }
 
-void PrinterController::main_loop() {
-
-    while (state != ShuttingDown) {
-        if (state == Waiting) {
-            waiting();
-        } else if (state == Printing) {
-            printing();
-        }
-    }
-
+void PrinterController::mainLoop() {
+    //writeToPipe("ready\n");
+    while (true)
+        waiting();
 }
 
 void PrinterController::waiting() {
-    // state == Waiting
-    //TODO: обработать команды от сервера.
-
     string command;
-    Parameters parameters;
-    tie(command, parameters) = gcodeParser.parse_command("G0 X100");
-    //TODO: передать новые данные на сервер.
-    //TODO: добавить задержку перехода в следующую итерацию.
+    //TODO: Добавить обнуление начальных координат, если дальше будут проблемы
+    command = readFromPipe();
+    while (command == "")
+    {
+        usleep(1000000);
+        command = readFromPipe();
+    }
+    cout << "Новая команда: " << command << endl;
+
+    printing(command);
 }
 
-void PrinterController::printing() {
-    // state == Printing
+void PrinterController::printing(string command) {
+    Parameters parameters;
+    GcodeParser gp;
+    string comm;
+    tie(comm, parameters) = gp.parse_command(command);
+    string res = command;
 
-    cout << "OK - PrinterController::printing" << endl;
-
-    cout << "--Printing--" << endl;
-    int32_t pos_x, pos_y, pos_z, pos_e0, pos_e1;
-    mechanics.get_positions(pos_x, pos_y,
-              pos_z, pos_e0,
-              pos_e1);
-    cout << "Координаты: " << pos_x << "; " << pos_y << "; " << pos_z << "; " << pos_e0 << "; " << pos_e1 << endl;
-    gcodeParser parser(to_print);
-    while ((!parser.is_done()) && (state != Stop_Printing)) {
-        string command;
-        Parameters parameters;
-        tie(command, parameters) = parser.parse_command();
-
-        cout << "Command:" << command << "; Parameters: {" << parameters << "}" << endl;
-
-        if (gcode_commands.find(command)) {
-            (this->*gcode_commands[command])(parameters);
-        } else {
-            // передать на экран ошибку
-        }
-
-        //TODO: обработать команды от сервера.
-        //TODO: передать новые данные на сервер.
-        while (state == Pause_Printing) {
-            // обратобать события экрана
-        }
-        
+    if (gcode_commands.find(comm)) {
+        res = (this->*gcode_commands[comm])(parameters);
     }
 
+    cout << "Ответ на команду: " << res << endl;
+    cout << "----------------------------------------------------------" << endl;
+    writeToPipe(res);
 
-    state = Waiting;
-    // если parser.is_done то все хорошо
-    // иначе печать завершилась аварийно
+    usleep(1000);
 }

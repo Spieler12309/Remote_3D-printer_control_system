@@ -1,7 +1,6 @@
 module positioning (
 	input reset,
-
-
+	
 	//Управляющие сигналы двигателей
 	//Двигатель a
 	input		wire			stepper_x_enable,
@@ -43,12 +42,21 @@ module positioning (
 	input		wire	signed	[31:0]	new_pos_e1,
 		
 	//Текущая позиция
-	output	reg	signed	[31:0]	pos_x = 0,
-	output	reg	signed	[31:0]	pos_y = 0,
-	output	reg	signed	[31:0]	pos_z = 0,
-	output	reg	signed	[31:0]	pos_e0 = 0,
-	output	reg	signed	[31:0]	pos_e1 = 0
+	output	reg	signed	[31:0]	pos_x,
+	output	reg	signed	[31:0]	pos_y,
+	output	reg	signed	[31:0]	pos_z,
+	output	reg	signed	[31:0]	pos_e0,
+	output	reg	signed	[31:0]	pos_e1
 );
+
+initial
+begin
+	pos_x = 0;
+	pos_y = 0;
+	pos_z = 0;
+	pos_e0 = 0;
+	pos_e1 = 0;
+end
 
 
 //Изменение текущих координат по управляющему сигналу двигателей

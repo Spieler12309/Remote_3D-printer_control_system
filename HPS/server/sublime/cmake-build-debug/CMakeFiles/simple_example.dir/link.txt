@@ -1,1 +1,0 @@
-/usr/bin/cc -g  -Wl,--enable-auto-import CMakeFiles/simple_example.dir/tcpserver.c.o  -o simple_example.exe -Wl,--out-implib,libsimple_example.dll.a -Wl,--major-image-version,0,--minor-image-version,0 

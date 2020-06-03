@@ -49,7 +49,7 @@
 #define SYSID_QSYS_SPAN 8
 #define SYSID_QSYS_END 0x1007
 #define SYSID_QSYS_ID 4294906626
-#define SYSID_QSYS_TIMESTAMP 1586709271
+#define SYSID_QSYS_TIMESTAMP 1590594581
 
 /*
  * Macros for device 'jtag_uart', class 'altera_avalon_jtag_uart'
@@ -259,28 +259,28 @@
 #define COMMAND_E1_RESET_VALUE 0
 
 /*
- * Macros for device 'command_f', class 'altera_avalon_pio'
- * The macros are prefixed with 'COMMAND_F_'.
+ * Macros for device 'command_f_x', class 'altera_avalon_pio'
+ * The macros are prefixed with 'COMMAND_F_X_'.
  * The prefix is the slave descriptor.
  */
-#define COMMAND_F_COMPONENT_TYPE altera_avalon_pio
-#define COMMAND_F_COMPONENT_NAME command_f
-#define COMMAND_F_BASE 0x50a0
-#define COMMAND_F_SPAN 16
-#define COMMAND_F_END 0x50af
-#define COMMAND_F_BIT_CLEARING_EDGE_REGISTER 0
-#define COMMAND_F_BIT_MODIFYING_OUTPUT_REGISTER 0
-#define COMMAND_F_CAPTURE 0
-#define COMMAND_F_DATA_WIDTH 32
-#define COMMAND_F_DO_TEST_BENCH_WIRING 0
-#define COMMAND_F_DRIVEN_SIM_VALUE 0
-#define COMMAND_F_EDGE_TYPE NONE
-#define COMMAND_F_FREQ 50000000
-#define COMMAND_F_HAS_IN 0
-#define COMMAND_F_HAS_OUT 1
-#define COMMAND_F_HAS_TRI 0
-#define COMMAND_F_IRQ_TYPE NONE
-#define COMMAND_F_RESET_VALUE 0
+#define COMMAND_F_X_COMPONENT_TYPE altera_avalon_pio
+#define COMMAND_F_X_COMPONENT_NAME command_f_x
+#define COMMAND_F_X_BASE 0x50a0
+#define COMMAND_F_X_SPAN 16
+#define COMMAND_F_X_END 0x50af
+#define COMMAND_F_X_BIT_CLEARING_EDGE_REGISTER 0
+#define COMMAND_F_X_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define COMMAND_F_X_CAPTURE 0
+#define COMMAND_F_X_DATA_WIDTH 32
+#define COMMAND_F_X_DO_TEST_BENCH_WIRING 0
+#define COMMAND_F_X_DRIVEN_SIM_VALUE 0
+#define COMMAND_F_X_EDGE_TYPE NONE
+#define COMMAND_F_X_FREQ 50000000
+#define COMMAND_F_X_HAS_IN 0
+#define COMMAND_F_X_HAS_OUT 1
+#define COMMAND_F_X_HAS_TRI 0
+#define COMMAND_F_X_IRQ_TYPE NONE
+#define COMMAND_F_X_RESET_VALUE 0
 
 /*
  * Macros for device 'command_t', class 'altera_avalon_pio'
@@ -295,7 +295,7 @@
 #define COMMAND_T_BIT_CLEARING_EDGE_REGISTER 0
 #define COMMAND_T_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define COMMAND_T_CAPTURE 0
-#define COMMAND_T_DATA_WIDTH 32
+#define COMMAND_T_DATA_WIDTH 12
 #define COMMAND_T_DO_TEST_BENCH_WIRING 0
 #define COMMAND_T_DRIVEN_SIM_VALUE 0
 #define COMMAND_T_EDGE_TYPE NONE
@@ -319,7 +319,7 @@
 #define COMMAND_DT_BIT_CLEARING_EDGE_REGISTER 0
 #define COMMAND_DT_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define COMMAND_DT_CAPTURE 0
-#define COMMAND_DT_DATA_WIDTH 32
+#define COMMAND_DT_DATA_WIDTH 12
 #define COMMAND_DT_DO_TEST_BENCH_WIRING 0
 #define COMMAND_DT_DRIVEN_SIM_VALUE 0
 #define COMMAND_DT_EDGE_TYPE NONE
@@ -763,6 +763,102 @@
 #define SETTINGS_MAX_TEMP_BED_RESET_VALUE 0
 
 /*
+ * Macros for device 'command_f_y', class 'altera_avalon_pio'
+ * The macros are prefixed with 'COMMAND_F_Y_'.
+ * The prefix is the slave descriptor.
+ */
+#define COMMAND_F_Y_COMPONENT_TYPE altera_avalon_pio
+#define COMMAND_F_Y_COMPONENT_NAME command_f_y
+#define COMMAND_F_Y_BASE 0x5340
+#define COMMAND_F_Y_SPAN 16
+#define COMMAND_F_Y_END 0x534f
+#define COMMAND_F_Y_BIT_CLEARING_EDGE_REGISTER 0
+#define COMMAND_F_Y_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define COMMAND_F_Y_CAPTURE 0
+#define COMMAND_F_Y_DATA_WIDTH 32
+#define COMMAND_F_Y_DO_TEST_BENCH_WIRING 0
+#define COMMAND_F_Y_DRIVEN_SIM_VALUE 0
+#define COMMAND_F_Y_EDGE_TYPE NONE
+#define COMMAND_F_Y_FREQ 50000000
+#define COMMAND_F_Y_HAS_IN 0
+#define COMMAND_F_Y_HAS_OUT 1
+#define COMMAND_F_Y_HAS_TRI 0
+#define COMMAND_F_Y_IRQ_TYPE NONE
+#define COMMAND_F_Y_RESET_VALUE 0
+
+/*
+ * Macros for device 'command_f_z', class 'altera_avalon_pio'
+ * The macros are prefixed with 'COMMAND_F_Z_'.
+ * The prefix is the slave descriptor.
+ */
+#define COMMAND_F_Z_COMPONENT_TYPE altera_avalon_pio
+#define COMMAND_F_Z_COMPONENT_NAME command_f_z
+#define COMMAND_F_Z_BASE 0x5360
+#define COMMAND_F_Z_SPAN 16
+#define COMMAND_F_Z_END 0x536f
+#define COMMAND_F_Z_BIT_CLEARING_EDGE_REGISTER 0
+#define COMMAND_F_Z_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define COMMAND_F_Z_CAPTURE 0
+#define COMMAND_F_Z_DATA_WIDTH 32
+#define COMMAND_F_Z_DO_TEST_BENCH_WIRING 0
+#define COMMAND_F_Z_DRIVEN_SIM_VALUE 0
+#define COMMAND_F_Z_EDGE_TYPE NONE
+#define COMMAND_F_Z_FREQ 50000000
+#define COMMAND_F_Z_HAS_IN 0
+#define COMMAND_F_Z_HAS_OUT 1
+#define COMMAND_F_Z_HAS_TRI 0
+#define COMMAND_F_Z_IRQ_TYPE NONE
+#define COMMAND_F_Z_RESET_VALUE 0
+
+/*
+ * Macros for device 'command_f_e0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'COMMAND_F_E0_'.
+ * The prefix is the slave descriptor.
+ */
+#define COMMAND_F_E0_COMPONENT_TYPE altera_avalon_pio
+#define COMMAND_F_E0_COMPONENT_NAME command_f_e0
+#define COMMAND_F_E0_BASE 0x5380
+#define COMMAND_F_E0_SPAN 16
+#define COMMAND_F_E0_END 0x538f
+#define COMMAND_F_E0_BIT_CLEARING_EDGE_REGISTER 0
+#define COMMAND_F_E0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define COMMAND_F_E0_CAPTURE 0
+#define COMMAND_F_E0_DATA_WIDTH 32
+#define COMMAND_F_E0_DO_TEST_BENCH_WIRING 0
+#define COMMAND_F_E0_DRIVEN_SIM_VALUE 0
+#define COMMAND_F_E0_EDGE_TYPE NONE
+#define COMMAND_F_E0_FREQ 50000000
+#define COMMAND_F_E0_HAS_IN 0
+#define COMMAND_F_E0_HAS_OUT 1
+#define COMMAND_F_E0_HAS_TRI 0
+#define COMMAND_F_E0_IRQ_TYPE NONE
+#define COMMAND_F_E0_RESET_VALUE 0
+
+/*
+ * Macros for device 'command_f_e1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'COMMAND_F_E1_'.
+ * The prefix is the slave descriptor.
+ */
+#define COMMAND_F_E1_COMPONENT_TYPE altera_avalon_pio
+#define COMMAND_F_E1_COMPONENT_NAME command_f_e1
+#define COMMAND_F_E1_BASE 0x53a0
+#define COMMAND_F_E1_SPAN 16
+#define COMMAND_F_E1_END 0x53af
+#define COMMAND_F_E1_BIT_CLEARING_EDGE_REGISTER 0
+#define COMMAND_F_E1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define COMMAND_F_E1_CAPTURE 0
+#define COMMAND_F_E1_DATA_WIDTH 32
+#define COMMAND_F_E1_DO_TEST_BENCH_WIRING 0
+#define COMMAND_F_E1_DRIVEN_SIM_VALUE 0
+#define COMMAND_F_E1_EDGE_TYPE NONE
+#define COMMAND_F_E1_FREQ 50000000
+#define COMMAND_F_E1_HAS_IN 0
+#define COMMAND_F_E1_HAS_OUT 1
+#define COMMAND_F_E1_HAS_TRI 0
+#define COMMAND_F_E1_IRQ_TYPE NONE
+#define COMMAND_F_E1_RESET_VALUE 0
+
+/*
  * Macros for device 'temp_0', class 'altera_avalon_pio'
  * The macros are prefixed with 'TEMP_0_'.
  * The prefix is the slave descriptor.
@@ -852,8 +948,8 @@
 #define POSITION_X_DRIVEN_SIM_VALUE 0
 #define POSITION_X_EDGE_TYPE NONE
 #define POSITION_X_FREQ 50000000
-#define POSITION_X_HAS_IN 0
-#define POSITION_X_HAS_OUT 1
+#define POSITION_X_HAS_IN 1
+#define POSITION_X_HAS_OUT 0
 #define POSITION_X_HAS_TRI 0
 #define POSITION_X_IRQ_TYPE NONE
 #define POSITION_X_RESET_VALUE 0
@@ -876,8 +972,8 @@
 #define POSITION_Y_DRIVEN_SIM_VALUE 0
 #define POSITION_Y_EDGE_TYPE NONE
 #define POSITION_Y_FREQ 50000000
-#define POSITION_Y_HAS_IN 0
-#define POSITION_Y_HAS_OUT 1
+#define POSITION_Y_HAS_IN 1
+#define POSITION_Y_HAS_OUT 0
 #define POSITION_Y_HAS_TRI 0
 #define POSITION_Y_IRQ_TYPE NONE
 #define POSITION_Y_RESET_VALUE 0
@@ -900,8 +996,8 @@
 #define POSITION_Z_DRIVEN_SIM_VALUE 0
 #define POSITION_Z_EDGE_TYPE NONE
 #define POSITION_Z_FREQ 50000000
-#define POSITION_Z_HAS_IN 0
-#define POSITION_Z_HAS_OUT 1
+#define POSITION_Z_HAS_IN 1
+#define POSITION_Z_HAS_OUT 0
 #define POSITION_Z_HAS_TRI 0
 #define POSITION_Z_IRQ_TYPE NONE
 #define POSITION_Z_RESET_VALUE 0
@@ -924,8 +1020,8 @@
 #define POSITION_E0_DRIVEN_SIM_VALUE 0
 #define POSITION_E0_EDGE_TYPE NONE
 #define POSITION_E0_FREQ 50000000
-#define POSITION_E0_HAS_IN 0
-#define POSITION_E0_HAS_OUT 1
+#define POSITION_E0_HAS_IN 1
+#define POSITION_E0_HAS_OUT 0
 #define POSITION_E0_HAS_TRI 0
 #define POSITION_E0_IRQ_TYPE NONE
 #define POSITION_E0_RESET_VALUE 0
@@ -948,8 +1044,8 @@
 #define POSITION_E1_DRIVEN_SIM_VALUE 0
 #define POSITION_E1_EDGE_TYPE NONE
 #define POSITION_E1_FREQ 50000000
-#define POSITION_E1_HAS_IN 0
-#define POSITION_E1_HAS_OUT 1
+#define POSITION_E1_HAS_IN 1
+#define POSITION_E1_HAS_OUT 0
 #define POSITION_E1_HAS_TRI 0
 #define POSITION_E1_IRQ_TYPE NONE
 #define POSITION_E1_RESET_VALUE 0
@@ -972,8 +1068,8 @@
 #define POSITION_TYPE_DRIVEN_SIM_VALUE 0
 #define POSITION_TYPE_EDGE_TYPE NONE
 #define POSITION_TYPE_FREQ 50000000
-#define POSITION_TYPE_HAS_IN 0
-#define POSITION_TYPE_HAS_OUT 1
+#define POSITION_TYPE_HAS_IN 1
+#define POSITION_TYPE_HAS_OUT 0
 #define POSITION_TYPE_HAS_TRI 0
 #define POSITION_TYPE_IRQ_TYPE NONE
 #define POSITION_TYPE_RESET_VALUE 0
@@ -996,11 +1092,2027 @@
 #define POSITION_EXTRUDER_TYPE_DRIVEN_SIM_VALUE 0
 #define POSITION_EXTRUDER_TYPE_EDGE_TYPE NONE
 #define POSITION_EXTRUDER_TYPE_FREQ 50000000
-#define POSITION_EXTRUDER_TYPE_HAS_IN 0
-#define POSITION_EXTRUDER_TYPE_HAS_OUT 1
+#define POSITION_EXTRUDER_TYPE_HAS_IN 1
+#define POSITION_EXTRUDER_TYPE_HAS_OUT 0
 #define POSITION_EXTRUDER_TYPE_HAS_TRI 0
 #define POSITION_EXTRUDER_TYPE_IRQ_TYPE NONE
 #define POSITION_EXTRUDER_TYPE_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_x_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_X_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_X_0_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_X_0_COMPONENT_NAME params_x_0
+#define PARAMS_X_0_BASE 0x7000
+#define PARAMS_X_0_SPAN 16
+#define PARAMS_X_0_END 0x700f
+#define PARAMS_X_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_X_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_X_0_CAPTURE 0
+#define PARAMS_X_0_DATA_WIDTH 32
+#define PARAMS_X_0_DO_TEST_BENCH_WIRING 0
+#define PARAMS_X_0_DRIVEN_SIM_VALUE 0
+#define PARAMS_X_0_EDGE_TYPE NONE
+#define PARAMS_X_0_FREQ 50000000
+#define PARAMS_X_0_HAS_IN 1
+#define PARAMS_X_0_HAS_OUT 0
+#define PARAMS_X_0_HAS_TRI 0
+#define PARAMS_X_0_IRQ_TYPE NONE
+#define PARAMS_X_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_x_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_X_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_X_1_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_X_1_COMPONENT_NAME params_x_1
+#define PARAMS_X_1_BASE 0x7020
+#define PARAMS_X_1_SPAN 16
+#define PARAMS_X_1_END 0x702f
+#define PARAMS_X_1_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_X_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_X_1_CAPTURE 0
+#define PARAMS_X_1_DATA_WIDTH 32
+#define PARAMS_X_1_DO_TEST_BENCH_WIRING 0
+#define PARAMS_X_1_DRIVEN_SIM_VALUE 0
+#define PARAMS_X_1_EDGE_TYPE NONE
+#define PARAMS_X_1_FREQ 50000000
+#define PARAMS_X_1_HAS_IN 1
+#define PARAMS_X_1_HAS_OUT 0
+#define PARAMS_X_1_HAS_TRI 0
+#define PARAMS_X_1_IRQ_TYPE NONE
+#define PARAMS_X_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_x_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_X_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_X_2_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_X_2_COMPONENT_NAME params_x_2
+#define PARAMS_X_2_BASE 0x7040
+#define PARAMS_X_2_SPAN 16
+#define PARAMS_X_2_END 0x704f
+#define PARAMS_X_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_X_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_X_2_CAPTURE 0
+#define PARAMS_X_2_DATA_WIDTH 32
+#define PARAMS_X_2_DO_TEST_BENCH_WIRING 0
+#define PARAMS_X_2_DRIVEN_SIM_VALUE 0
+#define PARAMS_X_2_EDGE_TYPE NONE
+#define PARAMS_X_2_FREQ 50000000
+#define PARAMS_X_2_HAS_IN 1
+#define PARAMS_X_2_HAS_OUT 0
+#define PARAMS_X_2_HAS_TRI 0
+#define PARAMS_X_2_IRQ_TYPE NONE
+#define PARAMS_X_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_x_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_X_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_X_3_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_X_3_COMPONENT_NAME params_x_3
+#define PARAMS_X_3_BASE 0x7060
+#define PARAMS_X_3_SPAN 16
+#define PARAMS_X_3_END 0x706f
+#define PARAMS_X_3_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_X_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_X_3_CAPTURE 0
+#define PARAMS_X_3_DATA_WIDTH 32
+#define PARAMS_X_3_DO_TEST_BENCH_WIRING 0
+#define PARAMS_X_3_DRIVEN_SIM_VALUE 0
+#define PARAMS_X_3_EDGE_TYPE NONE
+#define PARAMS_X_3_FREQ 50000000
+#define PARAMS_X_3_HAS_IN 1
+#define PARAMS_X_3_HAS_OUT 0
+#define PARAMS_X_3_HAS_TRI 0
+#define PARAMS_X_3_IRQ_TYPE NONE
+#define PARAMS_X_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_x_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_X_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_X_4_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_X_4_COMPONENT_NAME params_x_4
+#define PARAMS_X_4_BASE 0x7080
+#define PARAMS_X_4_SPAN 16
+#define PARAMS_X_4_END 0x708f
+#define PARAMS_X_4_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_X_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_X_4_CAPTURE 0
+#define PARAMS_X_4_DATA_WIDTH 32
+#define PARAMS_X_4_DO_TEST_BENCH_WIRING 0
+#define PARAMS_X_4_DRIVEN_SIM_VALUE 0
+#define PARAMS_X_4_EDGE_TYPE NONE
+#define PARAMS_X_4_FREQ 50000000
+#define PARAMS_X_4_HAS_IN 1
+#define PARAMS_X_4_HAS_OUT 0
+#define PARAMS_X_4_HAS_TRI 0
+#define PARAMS_X_4_IRQ_TYPE NONE
+#define PARAMS_X_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_y_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Y_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Y_0_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Y_0_COMPONENT_NAME params_y_0
+#define PARAMS_Y_0_BASE 0x70a0
+#define PARAMS_Y_0_SPAN 16
+#define PARAMS_Y_0_END 0x70af
+#define PARAMS_Y_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Y_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Y_0_CAPTURE 0
+#define PARAMS_Y_0_DATA_WIDTH 32
+#define PARAMS_Y_0_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Y_0_DRIVEN_SIM_VALUE 0
+#define PARAMS_Y_0_EDGE_TYPE NONE
+#define PARAMS_Y_0_FREQ 50000000
+#define PARAMS_Y_0_HAS_IN 1
+#define PARAMS_Y_0_HAS_OUT 0
+#define PARAMS_Y_0_HAS_TRI 0
+#define PARAMS_Y_0_IRQ_TYPE NONE
+#define PARAMS_Y_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_y_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Y_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Y_1_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Y_1_COMPONENT_NAME params_y_1
+#define PARAMS_Y_1_BASE 0x70c0
+#define PARAMS_Y_1_SPAN 16
+#define PARAMS_Y_1_END 0x70cf
+#define PARAMS_Y_1_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Y_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Y_1_CAPTURE 0
+#define PARAMS_Y_1_DATA_WIDTH 32
+#define PARAMS_Y_1_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Y_1_DRIVEN_SIM_VALUE 0
+#define PARAMS_Y_1_EDGE_TYPE NONE
+#define PARAMS_Y_1_FREQ 50000000
+#define PARAMS_Y_1_HAS_IN 1
+#define PARAMS_Y_1_HAS_OUT 0
+#define PARAMS_Y_1_HAS_TRI 0
+#define PARAMS_Y_1_IRQ_TYPE NONE
+#define PARAMS_Y_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_y_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Y_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Y_2_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Y_2_COMPONENT_NAME params_y_2
+#define PARAMS_Y_2_BASE 0x70e0
+#define PARAMS_Y_2_SPAN 16
+#define PARAMS_Y_2_END 0x70ef
+#define PARAMS_Y_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Y_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Y_2_CAPTURE 0
+#define PARAMS_Y_2_DATA_WIDTH 32
+#define PARAMS_Y_2_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Y_2_DRIVEN_SIM_VALUE 0
+#define PARAMS_Y_2_EDGE_TYPE NONE
+#define PARAMS_Y_2_FREQ 50000000
+#define PARAMS_Y_2_HAS_IN 1
+#define PARAMS_Y_2_HAS_OUT 0
+#define PARAMS_Y_2_HAS_TRI 0
+#define PARAMS_Y_2_IRQ_TYPE NONE
+#define PARAMS_Y_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_y_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Y_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Y_3_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Y_3_COMPONENT_NAME params_y_3
+#define PARAMS_Y_3_BASE 0x7100
+#define PARAMS_Y_3_SPAN 16
+#define PARAMS_Y_3_END 0x710f
+#define PARAMS_Y_3_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Y_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Y_3_CAPTURE 0
+#define PARAMS_Y_3_DATA_WIDTH 32
+#define PARAMS_Y_3_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Y_3_DRIVEN_SIM_VALUE 0
+#define PARAMS_Y_3_EDGE_TYPE NONE
+#define PARAMS_Y_3_FREQ 50000000
+#define PARAMS_Y_3_HAS_IN 1
+#define PARAMS_Y_3_HAS_OUT 0
+#define PARAMS_Y_3_HAS_TRI 0
+#define PARAMS_Y_3_IRQ_TYPE NONE
+#define PARAMS_Y_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_y_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Y_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Y_4_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Y_4_COMPONENT_NAME params_y_4
+#define PARAMS_Y_4_BASE 0x7120
+#define PARAMS_Y_4_SPAN 16
+#define PARAMS_Y_4_END 0x712f
+#define PARAMS_Y_4_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Y_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Y_4_CAPTURE 0
+#define PARAMS_Y_4_DATA_WIDTH 32
+#define PARAMS_Y_4_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Y_4_DRIVEN_SIM_VALUE 0
+#define PARAMS_Y_4_EDGE_TYPE NONE
+#define PARAMS_Y_4_FREQ 50000000
+#define PARAMS_Y_4_HAS_IN 1
+#define PARAMS_Y_4_HAS_OUT 0
+#define PARAMS_Y_4_HAS_TRI 0
+#define PARAMS_Y_4_IRQ_TYPE NONE
+#define PARAMS_Y_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_z_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Z_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Z_0_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Z_0_COMPONENT_NAME params_z_0
+#define PARAMS_Z_0_BASE 0x7140
+#define PARAMS_Z_0_SPAN 16
+#define PARAMS_Z_0_END 0x714f
+#define PARAMS_Z_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Z_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Z_0_CAPTURE 0
+#define PARAMS_Z_0_DATA_WIDTH 32
+#define PARAMS_Z_0_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Z_0_DRIVEN_SIM_VALUE 0
+#define PARAMS_Z_0_EDGE_TYPE NONE
+#define PARAMS_Z_0_FREQ 50000000
+#define PARAMS_Z_0_HAS_IN 1
+#define PARAMS_Z_0_HAS_OUT 0
+#define PARAMS_Z_0_HAS_TRI 0
+#define PARAMS_Z_0_IRQ_TYPE NONE
+#define PARAMS_Z_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_z_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Z_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Z_1_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Z_1_COMPONENT_NAME params_z_1
+#define PARAMS_Z_1_BASE 0x7160
+#define PARAMS_Z_1_SPAN 16
+#define PARAMS_Z_1_END 0x716f
+#define PARAMS_Z_1_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Z_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Z_1_CAPTURE 0
+#define PARAMS_Z_1_DATA_WIDTH 32
+#define PARAMS_Z_1_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Z_1_DRIVEN_SIM_VALUE 0
+#define PARAMS_Z_1_EDGE_TYPE NONE
+#define PARAMS_Z_1_FREQ 50000000
+#define PARAMS_Z_1_HAS_IN 1
+#define PARAMS_Z_1_HAS_OUT 0
+#define PARAMS_Z_1_HAS_TRI 0
+#define PARAMS_Z_1_IRQ_TYPE NONE
+#define PARAMS_Z_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_z_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Z_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Z_2_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Z_2_COMPONENT_NAME params_z_2
+#define PARAMS_Z_2_BASE 0x7180
+#define PARAMS_Z_2_SPAN 16
+#define PARAMS_Z_2_END 0x718f
+#define PARAMS_Z_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Z_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Z_2_CAPTURE 0
+#define PARAMS_Z_2_DATA_WIDTH 32
+#define PARAMS_Z_2_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Z_2_DRIVEN_SIM_VALUE 0
+#define PARAMS_Z_2_EDGE_TYPE NONE
+#define PARAMS_Z_2_FREQ 50000000
+#define PARAMS_Z_2_HAS_IN 1
+#define PARAMS_Z_2_HAS_OUT 0
+#define PARAMS_Z_2_HAS_TRI 0
+#define PARAMS_Z_2_IRQ_TYPE NONE
+#define PARAMS_Z_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_z_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Z_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Z_3_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Z_3_COMPONENT_NAME params_z_3
+#define PARAMS_Z_3_BASE 0x71a0
+#define PARAMS_Z_3_SPAN 16
+#define PARAMS_Z_3_END 0x71af
+#define PARAMS_Z_3_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Z_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Z_3_CAPTURE 0
+#define PARAMS_Z_3_DATA_WIDTH 32
+#define PARAMS_Z_3_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Z_3_DRIVEN_SIM_VALUE 0
+#define PARAMS_Z_3_EDGE_TYPE NONE
+#define PARAMS_Z_3_FREQ 50000000
+#define PARAMS_Z_3_HAS_IN 1
+#define PARAMS_Z_3_HAS_OUT 0
+#define PARAMS_Z_3_HAS_TRI 0
+#define PARAMS_Z_3_IRQ_TYPE NONE
+#define PARAMS_Z_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_z_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_Z_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_Z_4_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_Z_4_COMPONENT_NAME params_z_4
+#define PARAMS_Z_4_BASE 0x71c0
+#define PARAMS_Z_4_SPAN 16
+#define PARAMS_Z_4_END 0x71cf
+#define PARAMS_Z_4_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_Z_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_Z_4_CAPTURE 0
+#define PARAMS_Z_4_DATA_WIDTH 32
+#define PARAMS_Z_4_DO_TEST_BENCH_WIRING 0
+#define PARAMS_Z_4_DRIVEN_SIM_VALUE 0
+#define PARAMS_Z_4_EDGE_TYPE NONE
+#define PARAMS_Z_4_FREQ 50000000
+#define PARAMS_Z_4_HAS_IN 1
+#define PARAMS_Z_4_HAS_OUT 0
+#define PARAMS_Z_4_HAS_TRI 0
+#define PARAMS_Z_4_IRQ_TYPE NONE
+#define PARAMS_Z_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e0_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E0_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E0_0_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E0_0_COMPONENT_NAME params_e0_0
+#define PARAMS_E0_0_BASE 0x71e0
+#define PARAMS_E0_0_SPAN 16
+#define PARAMS_E0_0_END 0x71ef
+#define PARAMS_E0_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E0_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E0_0_CAPTURE 0
+#define PARAMS_E0_0_DATA_WIDTH 32
+#define PARAMS_E0_0_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E0_0_DRIVEN_SIM_VALUE 0
+#define PARAMS_E0_0_EDGE_TYPE NONE
+#define PARAMS_E0_0_FREQ 50000000
+#define PARAMS_E0_0_HAS_IN 1
+#define PARAMS_E0_0_HAS_OUT 0
+#define PARAMS_E0_0_HAS_TRI 0
+#define PARAMS_E0_0_IRQ_TYPE NONE
+#define PARAMS_E0_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e0_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E0_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E0_1_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E0_1_COMPONENT_NAME params_e0_1
+#define PARAMS_E0_1_BASE 0x7200
+#define PARAMS_E0_1_SPAN 16
+#define PARAMS_E0_1_END 0x720f
+#define PARAMS_E0_1_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E0_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E0_1_CAPTURE 0
+#define PARAMS_E0_1_DATA_WIDTH 32
+#define PARAMS_E0_1_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E0_1_DRIVEN_SIM_VALUE 0
+#define PARAMS_E0_1_EDGE_TYPE NONE
+#define PARAMS_E0_1_FREQ 50000000
+#define PARAMS_E0_1_HAS_IN 1
+#define PARAMS_E0_1_HAS_OUT 0
+#define PARAMS_E0_1_HAS_TRI 0
+#define PARAMS_E0_1_IRQ_TYPE NONE
+#define PARAMS_E0_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e0_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E0_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E0_2_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E0_2_COMPONENT_NAME params_e0_2
+#define PARAMS_E0_2_BASE 0x7220
+#define PARAMS_E0_2_SPAN 16
+#define PARAMS_E0_2_END 0x722f
+#define PARAMS_E0_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E0_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E0_2_CAPTURE 0
+#define PARAMS_E0_2_DATA_WIDTH 32
+#define PARAMS_E0_2_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E0_2_DRIVEN_SIM_VALUE 0
+#define PARAMS_E0_2_EDGE_TYPE NONE
+#define PARAMS_E0_2_FREQ 50000000
+#define PARAMS_E0_2_HAS_IN 1
+#define PARAMS_E0_2_HAS_OUT 0
+#define PARAMS_E0_2_HAS_TRI 0
+#define PARAMS_E0_2_IRQ_TYPE NONE
+#define PARAMS_E0_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e0_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E0_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E0_3_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E0_3_COMPONENT_NAME params_e0_3
+#define PARAMS_E0_3_BASE 0x7240
+#define PARAMS_E0_3_SPAN 16
+#define PARAMS_E0_3_END 0x724f
+#define PARAMS_E0_3_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E0_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E0_3_CAPTURE 0
+#define PARAMS_E0_3_DATA_WIDTH 32
+#define PARAMS_E0_3_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E0_3_DRIVEN_SIM_VALUE 0
+#define PARAMS_E0_3_EDGE_TYPE NONE
+#define PARAMS_E0_3_FREQ 50000000
+#define PARAMS_E0_3_HAS_IN 1
+#define PARAMS_E0_3_HAS_OUT 0
+#define PARAMS_E0_3_HAS_TRI 0
+#define PARAMS_E0_3_IRQ_TYPE NONE
+#define PARAMS_E0_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e0_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E0_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E0_4_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E0_4_COMPONENT_NAME params_e0_4
+#define PARAMS_E0_4_BASE 0x7260
+#define PARAMS_E0_4_SPAN 16
+#define PARAMS_E0_4_END 0x726f
+#define PARAMS_E0_4_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E0_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E0_4_CAPTURE 0
+#define PARAMS_E0_4_DATA_WIDTH 32
+#define PARAMS_E0_4_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E0_4_DRIVEN_SIM_VALUE 0
+#define PARAMS_E0_4_EDGE_TYPE NONE
+#define PARAMS_E0_4_FREQ 50000000
+#define PARAMS_E0_4_HAS_IN 1
+#define PARAMS_E0_4_HAS_OUT 0
+#define PARAMS_E0_4_HAS_TRI 0
+#define PARAMS_E0_4_IRQ_TYPE NONE
+#define PARAMS_E0_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e1_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E1_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E1_0_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E1_0_COMPONENT_NAME params_e1_0
+#define PARAMS_E1_0_BASE 0x7280
+#define PARAMS_E1_0_SPAN 16
+#define PARAMS_E1_0_END 0x728f
+#define PARAMS_E1_0_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E1_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E1_0_CAPTURE 0
+#define PARAMS_E1_0_DATA_WIDTH 32
+#define PARAMS_E1_0_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E1_0_DRIVEN_SIM_VALUE 0
+#define PARAMS_E1_0_EDGE_TYPE NONE
+#define PARAMS_E1_0_FREQ 50000000
+#define PARAMS_E1_0_HAS_IN 1
+#define PARAMS_E1_0_HAS_OUT 0
+#define PARAMS_E1_0_HAS_TRI 0
+#define PARAMS_E1_0_IRQ_TYPE NONE
+#define PARAMS_E1_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e1_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E1_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E1_1_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E1_1_COMPONENT_NAME params_e1_1
+#define PARAMS_E1_1_BASE 0x72a0
+#define PARAMS_E1_1_SPAN 16
+#define PARAMS_E1_1_END 0x72af
+#define PARAMS_E1_1_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E1_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E1_1_CAPTURE 0
+#define PARAMS_E1_1_DATA_WIDTH 32
+#define PARAMS_E1_1_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E1_1_DRIVEN_SIM_VALUE 0
+#define PARAMS_E1_1_EDGE_TYPE NONE
+#define PARAMS_E1_1_FREQ 50000000
+#define PARAMS_E1_1_HAS_IN 1
+#define PARAMS_E1_1_HAS_OUT 0
+#define PARAMS_E1_1_HAS_TRI 0
+#define PARAMS_E1_1_IRQ_TYPE NONE
+#define PARAMS_E1_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e1_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E1_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E1_2_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E1_2_COMPONENT_NAME params_e1_2
+#define PARAMS_E1_2_BASE 0x72c0
+#define PARAMS_E1_2_SPAN 16
+#define PARAMS_E1_2_END 0x72cf
+#define PARAMS_E1_2_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E1_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E1_2_CAPTURE 0
+#define PARAMS_E1_2_DATA_WIDTH 32
+#define PARAMS_E1_2_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E1_2_DRIVEN_SIM_VALUE 0
+#define PARAMS_E1_2_EDGE_TYPE NONE
+#define PARAMS_E1_2_FREQ 50000000
+#define PARAMS_E1_2_HAS_IN 1
+#define PARAMS_E1_2_HAS_OUT 0
+#define PARAMS_E1_2_HAS_TRI 0
+#define PARAMS_E1_2_IRQ_TYPE NONE
+#define PARAMS_E1_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e1_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E1_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E1_3_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E1_3_COMPONENT_NAME params_e1_3
+#define PARAMS_E1_3_BASE 0x72e0
+#define PARAMS_E1_3_SPAN 16
+#define PARAMS_E1_3_END 0x72ef
+#define PARAMS_E1_3_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E1_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E1_3_CAPTURE 0
+#define PARAMS_E1_3_DATA_WIDTH 32
+#define PARAMS_E1_3_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E1_3_DRIVEN_SIM_VALUE 0
+#define PARAMS_E1_3_EDGE_TYPE NONE
+#define PARAMS_E1_3_FREQ 50000000
+#define PARAMS_E1_3_HAS_IN 1
+#define PARAMS_E1_3_HAS_OUT 0
+#define PARAMS_E1_3_HAS_TRI 0
+#define PARAMS_E1_3_IRQ_TYPE NONE
+#define PARAMS_E1_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'params_e1_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'PARAMS_E1_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define PARAMS_E1_4_COMPONENT_TYPE altera_avalon_pio
+#define PARAMS_E1_4_COMPONENT_NAME params_e1_4
+#define PARAMS_E1_4_BASE 0x7300
+#define PARAMS_E1_4_SPAN 16
+#define PARAMS_E1_4_END 0x730f
+#define PARAMS_E1_4_BIT_CLEARING_EDGE_REGISTER 0
+#define PARAMS_E1_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PARAMS_E1_4_CAPTURE 0
+#define PARAMS_E1_4_DATA_WIDTH 32
+#define PARAMS_E1_4_DO_TEST_BENCH_WIRING 0
+#define PARAMS_E1_4_DRIVEN_SIM_VALUE 0
+#define PARAMS_E1_4_EDGE_TYPE NONE
+#define PARAMS_E1_4_FREQ 50000000
+#define PARAMS_E1_4_HAS_IN 1
+#define PARAMS_E1_4_HAS_OUT 0
+#define PARAMS_E1_4_HAS_TRI 0
+#define PARAMS_E1_4_IRQ_TYPE NONE
+#define PARAMS_E1_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_x_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_X_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_X_0_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_X_0_COMPONENT_NAME timing_x_0
+#define TIMING_X_0_BASE 0x7320
+#define TIMING_X_0_SPAN 16
+#define TIMING_X_0_END 0x732f
+#define TIMING_X_0_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_X_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_X_0_CAPTURE 0
+#define TIMING_X_0_DATA_WIDTH 32
+#define TIMING_X_0_DO_TEST_BENCH_WIRING 0
+#define TIMING_X_0_DRIVEN_SIM_VALUE 0
+#define TIMING_X_0_EDGE_TYPE NONE
+#define TIMING_X_0_FREQ 50000000
+#define TIMING_X_0_HAS_IN 1
+#define TIMING_X_0_HAS_OUT 0
+#define TIMING_X_0_HAS_TRI 0
+#define TIMING_X_0_IRQ_TYPE NONE
+#define TIMING_X_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_x_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_X_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_X_1_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_X_1_COMPONENT_NAME timing_x_1
+#define TIMING_X_1_BASE 0x7340
+#define TIMING_X_1_SPAN 16
+#define TIMING_X_1_END 0x734f
+#define TIMING_X_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_X_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_X_1_CAPTURE 0
+#define TIMING_X_1_DATA_WIDTH 32
+#define TIMING_X_1_DO_TEST_BENCH_WIRING 0
+#define TIMING_X_1_DRIVEN_SIM_VALUE 0
+#define TIMING_X_1_EDGE_TYPE NONE
+#define TIMING_X_1_FREQ 50000000
+#define TIMING_X_1_HAS_IN 1
+#define TIMING_X_1_HAS_OUT 0
+#define TIMING_X_1_HAS_TRI 0
+#define TIMING_X_1_IRQ_TYPE NONE
+#define TIMING_X_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_x_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_X_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_X_2_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_X_2_COMPONENT_NAME timing_x_2
+#define TIMING_X_2_BASE 0x7360
+#define TIMING_X_2_SPAN 16
+#define TIMING_X_2_END 0x736f
+#define TIMING_X_2_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_X_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_X_2_CAPTURE 0
+#define TIMING_X_2_DATA_WIDTH 32
+#define TIMING_X_2_DO_TEST_BENCH_WIRING 0
+#define TIMING_X_2_DRIVEN_SIM_VALUE 0
+#define TIMING_X_2_EDGE_TYPE NONE
+#define TIMING_X_2_FREQ 50000000
+#define TIMING_X_2_HAS_IN 1
+#define TIMING_X_2_HAS_OUT 0
+#define TIMING_X_2_HAS_TRI 0
+#define TIMING_X_2_IRQ_TYPE NONE
+#define TIMING_X_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_x_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_X_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_X_3_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_X_3_COMPONENT_NAME timing_x_3
+#define TIMING_X_3_BASE 0x7380
+#define TIMING_X_3_SPAN 16
+#define TIMING_X_3_END 0x738f
+#define TIMING_X_3_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_X_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_X_3_CAPTURE 0
+#define TIMING_X_3_DATA_WIDTH 32
+#define TIMING_X_3_DO_TEST_BENCH_WIRING 0
+#define TIMING_X_3_DRIVEN_SIM_VALUE 0
+#define TIMING_X_3_EDGE_TYPE NONE
+#define TIMING_X_3_FREQ 50000000
+#define TIMING_X_3_HAS_IN 1
+#define TIMING_X_3_HAS_OUT 0
+#define TIMING_X_3_HAS_TRI 0
+#define TIMING_X_3_IRQ_TYPE NONE
+#define TIMING_X_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_y_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Y_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Y_0_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Y_0_COMPONENT_NAME timing_y_0
+#define TIMING_Y_0_BASE 0x73a0
+#define TIMING_Y_0_SPAN 16
+#define TIMING_Y_0_END 0x73af
+#define TIMING_Y_0_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Y_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Y_0_CAPTURE 0
+#define TIMING_Y_0_DATA_WIDTH 32
+#define TIMING_Y_0_DO_TEST_BENCH_WIRING 0
+#define TIMING_Y_0_DRIVEN_SIM_VALUE 0
+#define TIMING_Y_0_EDGE_TYPE NONE
+#define TIMING_Y_0_FREQ 50000000
+#define TIMING_Y_0_HAS_IN 1
+#define TIMING_Y_0_HAS_OUT 0
+#define TIMING_Y_0_HAS_TRI 0
+#define TIMING_Y_0_IRQ_TYPE NONE
+#define TIMING_Y_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_y_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Y_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Y_1_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Y_1_COMPONENT_NAME timing_y_1
+#define TIMING_Y_1_BASE 0x73c0
+#define TIMING_Y_1_SPAN 16
+#define TIMING_Y_1_END 0x73cf
+#define TIMING_Y_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Y_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Y_1_CAPTURE 0
+#define TIMING_Y_1_DATA_WIDTH 32
+#define TIMING_Y_1_DO_TEST_BENCH_WIRING 0
+#define TIMING_Y_1_DRIVEN_SIM_VALUE 0
+#define TIMING_Y_1_EDGE_TYPE NONE
+#define TIMING_Y_1_FREQ 50000000
+#define TIMING_Y_1_HAS_IN 1
+#define TIMING_Y_1_HAS_OUT 0
+#define TIMING_Y_1_HAS_TRI 0
+#define TIMING_Y_1_IRQ_TYPE NONE
+#define TIMING_Y_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_y_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Y_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Y_2_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Y_2_COMPONENT_NAME timing_y_2
+#define TIMING_Y_2_BASE 0x73e0
+#define TIMING_Y_2_SPAN 16
+#define TIMING_Y_2_END 0x73ef
+#define TIMING_Y_2_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Y_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Y_2_CAPTURE 0
+#define TIMING_Y_2_DATA_WIDTH 32
+#define TIMING_Y_2_DO_TEST_BENCH_WIRING 0
+#define TIMING_Y_2_DRIVEN_SIM_VALUE 0
+#define TIMING_Y_2_EDGE_TYPE NONE
+#define TIMING_Y_2_FREQ 50000000
+#define TIMING_Y_2_HAS_IN 1
+#define TIMING_Y_2_HAS_OUT 0
+#define TIMING_Y_2_HAS_TRI 0
+#define TIMING_Y_2_IRQ_TYPE NONE
+#define TIMING_Y_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_y_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Y_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Y_3_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Y_3_COMPONENT_NAME timing_y_3
+#define TIMING_Y_3_BASE 0x7400
+#define TIMING_Y_3_SPAN 16
+#define TIMING_Y_3_END 0x740f
+#define TIMING_Y_3_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Y_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Y_3_CAPTURE 0
+#define TIMING_Y_3_DATA_WIDTH 32
+#define TIMING_Y_3_DO_TEST_BENCH_WIRING 0
+#define TIMING_Y_3_DRIVEN_SIM_VALUE 0
+#define TIMING_Y_3_EDGE_TYPE NONE
+#define TIMING_Y_3_FREQ 50000000
+#define TIMING_Y_3_HAS_IN 1
+#define TIMING_Y_3_HAS_OUT 0
+#define TIMING_Y_3_HAS_TRI 0
+#define TIMING_Y_3_IRQ_TYPE NONE
+#define TIMING_Y_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_z_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Z_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Z_0_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Z_0_COMPONENT_NAME timing_z_0
+#define TIMING_Z_0_BASE 0x7420
+#define TIMING_Z_0_SPAN 16
+#define TIMING_Z_0_END 0x742f
+#define TIMING_Z_0_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Z_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Z_0_CAPTURE 0
+#define TIMING_Z_0_DATA_WIDTH 32
+#define TIMING_Z_0_DO_TEST_BENCH_WIRING 0
+#define TIMING_Z_0_DRIVEN_SIM_VALUE 0
+#define TIMING_Z_0_EDGE_TYPE NONE
+#define TIMING_Z_0_FREQ 50000000
+#define TIMING_Z_0_HAS_IN 1
+#define TIMING_Z_0_HAS_OUT 0
+#define TIMING_Z_0_HAS_TRI 0
+#define TIMING_Z_0_IRQ_TYPE NONE
+#define TIMING_Z_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_z_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Z_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Z_1_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Z_1_COMPONENT_NAME timing_z_1
+#define TIMING_Z_1_BASE 0x7440
+#define TIMING_Z_1_SPAN 16
+#define TIMING_Z_1_END 0x744f
+#define TIMING_Z_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Z_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Z_1_CAPTURE 0
+#define TIMING_Z_1_DATA_WIDTH 32
+#define TIMING_Z_1_DO_TEST_BENCH_WIRING 0
+#define TIMING_Z_1_DRIVEN_SIM_VALUE 0
+#define TIMING_Z_1_EDGE_TYPE NONE
+#define TIMING_Z_1_FREQ 50000000
+#define TIMING_Z_1_HAS_IN 1
+#define TIMING_Z_1_HAS_OUT 0
+#define TIMING_Z_1_HAS_TRI 0
+#define TIMING_Z_1_IRQ_TYPE NONE
+#define TIMING_Z_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_z_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Z_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Z_2_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Z_2_COMPONENT_NAME timing_z_2
+#define TIMING_Z_2_BASE 0x7460
+#define TIMING_Z_2_SPAN 16
+#define TIMING_Z_2_END 0x746f
+#define TIMING_Z_2_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Z_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Z_2_CAPTURE 0
+#define TIMING_Z_2_DATA_WIDTH 32
+#define TIMING_Z_2_DO_TEST_BENCH_WIRING 0
+#define TIMING_Z_2_DRIVEN_SIM_VALUE 0
+#define TIMING_Z_2_EDGE_TYPE NONE
+#define TIMING_Z_2_FREQ 50000000
+#define TIMING_Z_2_HAS_IN 1
+#define TIMING_Z_2_HAS_OUT 0
+#define TIMING_Z_2_HAS_TRI 0
+#define TIMING_Z_2_IRQ_TYPE NONE
+#define TIMING_Z_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_z_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_Z_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_Z_3_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_Z_3_COMPONENT_NAME timing_z_3
+#define TIMING_Z_3_BASE 0x7480
+#define TIMING_Z_3_SPAN 16
+#define TIMING_Z_3_END 0x748f
+#define TIMING_Z_3_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_Z_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_Z_3_CAPTURE 0
+#define TIMING_Z_3_DATA_WIDTH 32
+#define TIMING_Z_3_DO_TEST_BENCH_WIRING 0
+#define TIMING_Z_3_DRIVEN_SIM_VALUE 0
+#define TIMING_Z_3_EDGE_TYPE NONE
+#define TIMING_Z_3_FREQ 50000000
+#define TIMING_Z_3_HAS_IN 1
+#define TIMING_Z_3_HAS_OUT 0
+#define TIMING_Z_3_HAS_TRI 0
+#define TIMING_Z_3_IRQ_TYPE NONE
+#define TIMING_Z_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e0_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E0_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E0_0_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E0_0_COMPONENT_NAME timing_e0_0
+#define TIMING_E0_0_BASE 0x74a0
+#define TIMING_E0_0_SPAN 16
+#define TIMING_E0_0_END 0x74af
+#define TIMING_E0_0_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E0_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E0_0_CAPTURE 0
+#define TIMING_E0_0_DATA_WIDTH 32
+#define TIMING_E0_0_DO_TEST_BENCH_WIRING 0
+#define TIMING_E0_0_DRIVEN_SIM_VALUE 0
+#define TIMING_E0_0_EDGE_TYPE NONE
+#define TIMING_E0_0_FREQ 50000000
+#define TIMING_E0_0_HAS_IN 1
+#define TIMING_E0_0_HAS_OUT 0
+#define TIMING_E0_0_HAS_TRI 0
+#define TIMING_E0_0_IRQ_TYPE NONE
+#define TIMING_E0_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e0_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E0_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E0_1_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E0_1_COMPONENT_NAME timing_e0_1
+#define TIMING_E0_1_BASE 0x74c0
+#define TIMING_E0_1_SPAN 16
+#define TIMING_E0_1_END 0x74cf
+#define TIMING_E0_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E0_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E0_1_CAPTURE 0
+#define TIMING_E0_1_DATA_WIDTH 32
+#define TIMING_E0_1_DO_TEST_BENCH_WIRING 0
+#define TIMING_E0_1_DRIVEN_SIM_VALUE 0
+#define TIMING_E0_1_EDGE_TYPE NONE
+#define TIMING_E0_1_FREQ 50000000
+#define TIMING_E0_1_HAS_IN 1
+#define TIMING_E0_1_HAS_OUT 0
+#define TIMING_E0_1_HAS_TRI 0
+#define TIMING_E0_1_IRQ_TYPE NONE
+#define TIMING_E0_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e0_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E0_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E0_2_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E0_2_COMPONENT_NAME timing_e0_2
+#define TIMING_E0_2_BASE 0x74e0
+#define TIMING_E0_2_SPAN 16
+#define TIMING_E0_2_END 0x74ef
+#define TIMING_E0_2_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E0_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E0_2_CAPTURE 0
+#define TIMING_E0_2_DATA_WIDTH 32
+#define TIMING_E0_2_DO_TEST_BENCH_WIRING 0
+#define TIMING_E0_2_DRIVEN_SIM_VALUE 0
+#define TIMING_E0_2_EDGE_TYPE NONE
+#define TIMING_E0_2_FREQ 50000000
+#define TIMING_E0_2_HAS_IN 1
+#define TIMING_E0_2_HAS_OUT 0
+#define TIMING_E0_2_HAS_TRI 0
+#define TIMING_E0_2_IRQ_TYPE NONE
+#define TIMING_E0_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e0_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E0_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E0_3_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E0_3_COMPONENT_NAME timing_e0_3
+#define TIMING_E0_3_BASE 0x7500
+#define TIMING_E0_3_SPAN 16
+#define TIMING_E0_3_END 0x750f
+#define TIMING_E0_3_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E0_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E0_3_CAPTURE 0
+#define TIMING_E0_3_DATA_WIDTH 32
+#define TIMING_E0_3_DO_TEST_BENCH_WIRING 0
+#define TIMING_E0_3_DRIVEN_SIM_VALUE 0
+#define TIMING_E0_3_EDGE_TYPE NONE
+#define TIMING_E0_3_FREQ 50000000
+#define TIMING_E0_3_HAS_IN 1
+#define TIMING_E0_3_HAS_OUT 0
+#define TIMING_E0_3_HAS_TRI 0
+#define TIMING_E0_3_IRQ_TYPE NONE
+#define TIMING_E0_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e1_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E1_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E1_0_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E1_0_COMPONENT_NAME timing_e1_0
+#define TIMING_E1_0_BASE 0x7520
+#define TIMING_E1_0_SPAN 16
+#define TIMING_E1_0_END 0x752f
+#define TIMING_E1_0_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E1_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E1_0_CAPTURE 0
+#define TIMING_E1_0_DATA_WIDTH 32
+#define TIMING_E1_0_DO_TEST_BENCH_WIRING 0
+#define TIMING_E1_0_DRIVEN_SIM_VALUE 0
+#define TIMING_E1_0_EDGE_TYPE NONE
+#define TIMING_E1_0_FREQ 50000000
+#define TIMING_E1_0_HAS_IN 1
+#define TIMING_E1_0_HAS_OUT 0
+#define TIMING_E1_0_HAS_TRI 0
+#define TIMING_E1_0_IRQ_TYPE NONE
+#define TIMING_E1_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e1_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E1_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E1_1_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E1_1_COMPONENT_NAME timing_e1_1
+#define TIMING_E1_1_BASE 0x7540
+#define TIMING_E1_1_SPAN 16
+#define TIMING_E1_1_END 0x754f
+#define TIMING_E1_1_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E1_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E1_1_CAPTURE 0
+#define TIMING_E1_1_DATA_WIDTH 32
+#define TIMING_E1_1_DO_TEST_BENCH_WIRING 0
+#define TIMING_E1_1_DRIVEN_SIM_VALUE 0
+#define TIMING_E1_1_EDGE_TYPE NONE
+#define TIMING_E1_1_FREQ 50000000
+#define TIMING_E1_1_HAS_IN 1
+#define TIMING_E1_1_HAS_OUT 0
+#define TIMING_E1_1_HAS_TRI 0
+#define TIMING_E1_1_IRQ_TYPE NONE
+#define TIMING_E1_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e1_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E1_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E1_2_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E1_2_COMPONENT_NAME timing_e1_2
+#define TIMING_E1_2_BASE 0x7560
+#define TIMING_E1_2_SPAN 16
+#define TIMING_E1_2_END 0x756f
+#define TIMING_E1_2_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E1_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E1_2_CAPTURE 0
+#define TIMING_E1_2_DATA_WIDTH 32
+#define TIMING_E1_2_DO_TEST_BENCH_WIRING 0
+#define TIMING_E1_2_DRIVEN_SIM_VALUE 0
+#define TIMING_E1_2_EDGE_TYPE NONE
+#define TIMING_E1_2_FREQ 50000000
+#define TIMING_E1_2_HAS_IN 1
+#define TIMING_E1_2_HAS_OUT 0
+#define TIMING_E1_2_HAS_TRI 0
+#define TIMING_E1_2_IRQ_TYPE NONE
+#define TIMING_E1_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'timing_e1_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'TIMING_E1_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define TIMING_E1_3_COMPONENT_TYPE altera_avalon_pio
+#define TIMING_E1_3_COMPONENT_NAME timing_e1_3
+#define TIMING_E1_3_BASE 0x7580
+#define TIMING_E1_3_SPAN 16
+#define TIMING_E1_3_END 0x758f
+#define TIMING_E1_3_BIT_CLEARING_EDGE_REGISTER 0
+#define TIMING_E1_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define TIMING_E1_3_CAPTURE 0
+#define TIMING_E1_3_DATA_WIDTH 32
+#define TIMING_E1_3_DO_TEST_BENCH_WIRING 0
+#define TIMING_E1_3_DRIVEN_SIM_VALUE 0
+#define TIMING_E1_3_EDGE_TYPE NONE
+#define TIMING_E1_3_FREQ 50000000
+#define TIMING_E1_3_HAS_IN 1
+#define TIMING_E1_3_HAS_OUT 0
+#define TIMING_E1_3_HAS_TRI 0
+#define TIMING_E1_3_IRQ_TYPE NONE
+#define TIMING_E1_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_x_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_X_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_X_0_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_X_0_COMPONENT_NAME new_rparams_x_0
+#define NEW_RPARAMS_X_0_BASE 0x75a0
+#define NEW_RPARAMS_X_0_SPAN 16
+#define NEW_RPARAMS_X_0_END 0x75af
+#define NEW_RPARAMS_X_0_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_X_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_X_0_CAPTURE 0
+#define NEW_RPARAMS_X_0_DATA_WIDTH 32
+#define NEW_RPARAMS_X_0_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_X_0_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_X_0_EDGE_TYPE NONE
+#define NEW_RPARAMS_X_0_FREQ 50000000
+#define NEW_RPARAMS_X_0_HAS_IN 1
+#define NEW_RPARAMS_X_0_HAS_OUT 0
+#define NEW_RPARAMS_X_0_HAS_TRI 0
+#define NEW_RPARAMS_X_0_IRQ_TYPE NONE
+#define NEW_RPARAMS_X_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_x_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_X_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_X_1_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_X_1_COMPONENT_NAME new_rparams_x_1
+#define NEW_RPARAMS_X_1_BASE 0x75c0
+#define NEW_RPARAMS_X_1_SPAN 16
+#define NEW_RPARAMS_X_1_END 0x75cf
+#define NEW_RPARAMS_X_1_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_X_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_X_1_CAPTURE 0
+#define NEW_RPARAMS_X_1_DATA_WIDTH 32
+#define NEW_RPARAMS_X_1_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_X_1_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_X_1_EDGE_TYPE NONE
+#define NEW_RPARAMS_X_1_FREQ 50000000
+#define NEW_RPARAMS_X_1_HAS_IN 1
+#define NEW_RPARAMS_X_1_HAS_OUT 0
+#define NEW_RPARAMS_X_1_HAS_TRI 0
+#define NEW_RPARAMS_X_1_IRQ_TYPE NONE
+#define NEW_RPARAMS_X_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_x_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_X_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_X_2_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_X_2_COMPONENT_NAME new_rparams_x_2
+#define NEW_RPARAMS_X_2_BASE 0x75e0
+#define NEW_RPARAMS_X_2_SPAN 16
+#define NEW_RPARAMS_X_2_END 0x75ef
+#define NEW_RPARAMS_X_2_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_X_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_X_2_CAPTURE 0
+#define NEW_RPARAMS_X_2_DATA_WIDTH 32
+#define NEW_RPARAMS_X_2_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_X_2_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_X_2_EDGE_TYPE NONE
+#define NEW_RPARAMS_X_2_FREQ 50000000
+#define NEW_RPARAMS_X_2_HAS_IN 1
+#define NEW_RPARAMS_X_2_HAS_OUT 0
+#define NEW_RPARAMS_X_2_HAS_TRI 0
+#define NEW_RPARAMS_X_2_IRQ_TYPE NONE
+#define NEW_RPARAMS_X_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_x_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_X_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_X_3_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_X_3_COMPONENT_NAME new_rparams_x_3
+#define NEW_RPARAMS_X_3_BASE 0x7600
+#define NEW_RPARAMS_X_3_SPAN 16
+#define NEW_RPARAMS_X_3_END 0x760f
+#define NEW_RPARAMS_X_3_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_X_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_X_3_CAPTURE 0
+#define NEW_RPARAMS_X_3_DATA_WIDTH 32
+#define NEW_RPARAMS_X_3_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_X_3_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_X_3_EDGE_TYPE NONE
+#define NEW_RPARAMS_X_3_FREQ 50000000
+#define NEW_RPARAMS_X_3_HAS_IN 1
+#define NEW_RPARAMS_X_3_HAS_OUT 0
+#define NEW_RPARAMS_X_3_HAS_TRI 0
+#define NEW_RPARAMS_X_3_IRQ_TYPE NONE
+#define NEW_RPARAMS_X_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_x_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_X_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_X_4_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_X_4_COMPONENT_NAME new_rparams_x_4
+#define NEW_RPARAMS_X_4_BASE 0x7620
+#define NEW_RPARAMS_X_4_SPAN 16
+#define NEW_RPARAMS_X_4_END 0x762f
+#define NEW_RPARAMS_X_4_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_X_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_X_4_CAPTURE 0
+#define NEW_RPARAMS_X_4_DATA_WIDTH 32
+#define NEW_RPARAMS_X_4_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_X_4_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_X_4_EDGE_TYPE NONE
+#define NEW_RPARAMS_X_4_FREQ 50000000
+#define NEW_RPARAMS_X_4_HAS_IN 1
+#define NEW_RPARAMS_X_4_HAS_OUT 0
+#define NEW_RPARAMS_X_4_HAS_TRI 0
+#define NEW_RPARAMS_X_4_IRQ_TYPE NONE
+#define NEW_RPARAMS_X_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_y_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Y_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Y_0_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Y_0_COMPONENT_NAME new_rparams_y_0
+#define NEW_RPARAMS_Y_0_BASE 0x7640
+#define NEW_RPARAMS_Y_0_SPAN 16
+#define NEW_RPARAMS_Y_0_END 0x764f
+#define NEW_RPARAMS_Y_0_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Y_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Y_0_CAPTURE 0
+#define NEW_RPARAMS_Y_0_DATA_WIDTH 32
+#define NEW_RPARAMS_Y_0_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Y_0_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Y_0_EDGE_TYPE NONE
+#define NEW_RPARAMS_Y_0_FREQ 50000000
+#define NEW_RPARAMS_Y_0_HAS_IN 1
+#define NEW_RPARAMS_Y_0_HAS_OUT 0
+#define NEW_RPARAMS_Y_0_HAS_TRI 0
+#define NEW_RPARAMS_Y_0_IRQ_TYPE NONE
+#define NEW_RPARAMS_Y_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_y_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Y_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Y_1_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Y_1_COMPONENT_NAME new_rparams_y_1
+#define NEW_RPARAMS_Y_1_BASE 0x7660
+#define NEW_RPARAMS_Y_1_SPAN 16
+#define NEW_RPARAMS_Y_1_END 0x766f
+#define NEW_RPARAMS_Y_1_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Y_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Y_1_CAPTURE 0
+#define NEW_RPARAMS_Y_1_DATA_WIDTH 32
+#define NEW_RPARAMS_Y_1_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Y_1_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Y_1_EDGE_TYPE NONE
+#define NEW_RPARAMS_Y_1_FREQ 50000000
+#define NEW_RPARAMS_Y_1_HAS_IN 1
+#define NEW_RPARAMS_Y_1_HAS_OUT 0
+#define NEW_RPARAMS_Y_1_HAS_TRI 0
+#define NEW_RPARAMS_Y_1_IRQ_TYPE NONE
+#define NEW_RPARAMS_Y_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_y_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Y_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Y_2_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Y_2_COMPONENT_NAME new_rparams_y_2
+#define NEW_RPARAMS_Y_2_BASE 0x7680
+#define NEW_RPARAMS_Y_2_SPAN 16
+#define NEW_RPARAMS_Y_2_END 0x768f
+#define NEW_RPARAMS_Y_2_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Y_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Y_2_CAPTURE 0
+#define NEW_RPARAMS_Y_2_DATA_WIDTH 32
+#define NEW_RPARAMS_Y_2_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Y_2_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Y_2_EDGE_TYPE NONE
+#define NEW_RPARAMS_Y_2_FREQ 50000000
+#define NEW_RPARAMS_Y_2_HAS_IN 1
+#define NEW_RPARAMS_Y_2_HAS_OUT 0
+#define NEW_RPARAMS_Y_2_HAS_TRI 0
+#define NEW_RPARAMS_Y_2_IRQ_TYPE NONE
+#define NEW_RPARAMS_Y_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_y_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Y_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Y_3_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Y_3_COMPONENT_NAME new_rparams_y_3
+#define NEW_RPARAMS_Y_3_BASE 0x76a0
+#define NEW_RPARAMS_Y_3_SPAN 16
+#define NEW_RPARAMS_Y_3_END 0x76af
+#define NEW_RPARAMS_Y_3_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Y_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Y_3_CAPTURE 0
+#define NEW_RPARAMS_Y_3_DATA_WIDTH 32
+#define NEW_RPARAMS_Y_3_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Y_3_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Y_3_EDGE_TYPE NONE
+#define NEW_RPARAMS_Y_3_FREQ 50000000
+#define NEW_RPARAMS_Y_3_HAS_IN 1
+#define NEW_RPARAMS_Y_3_HAS_OUT 0
+#define NEW_RPARAMS_Y_3_HAS_TRI 0
+#define NEW_RPARAMS_Y_3_IRQ_TYPE NONE
+#define NEW_RPARAMS_Y_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_y_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Y_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Y_4_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Y_4_COMPONENT_NAME new_rparams_y_4
+#define NEW_RPARAMS_Y_4_BASE 0x76c0
+#define NEW_RPARAMS_Y_4_SPAN 16
+#define NEW_RPARAMS_Y_4_END 0x76cf
+#define NEW_RPARAMS_Y_4_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Y_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Y_4_CAPTURE 0
+#define NEW_RPARAMS_Y_4_DATA_WIDTH 32
+#define NEW_RPARAMS_Y_4_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Y_4_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Y_4_EDGE_TYPE NONE
+#define NEW_RPARAMS_Y_4_FREQ 50000000
+#define NEW_RPARAMS_Y_4_HAS_IN 1
+#define NEW_RPARAMS_Y_4_HAS_OUT 0
+#define NEW_RPARAMS_Y_4_HAS_TRI 0
+#define NEW_RPARAMS_Y_4_IRQ_TYPE NONE
+#define NEW_RPARAMS_Y_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_z_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Z_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Z_0_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Z_0_COMPONENT_NAME new_rparams_z_0
+#define NEW_RPARAMS_Z_0_BASE 0x76e0
+#define NEW_RPARAMS_Z_0_SPAN 16
+#define NEW_RPARAMS_Z_0_END 0x76ef
+#define NEW_RPARAMS_Z_0_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Z_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Z_0_CAPTURE 0
+#define NEW_RPARAMS_Z_0_DATA_WIDTH 32
+#define NEW_RPARAMS_Z_0_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Z_0_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Z_0_EDGE_TYPE NONE
+#define NEW_RPARAMS_Z_0_FREQ 50000000
+#define NEW_RPARAMS_Z_0_HAS_IN 1
+#define NEW_RPARAMS_Z_0_HAS_OUT 0
+#define NEW_RPARAMS_Z_0_HAS_TRI 0
+#define NEW_RPARAMS_Z_0_IRQ_TYPE NONE
+#define NEW_RPARAMS_Z_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_z_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Z_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Z_1_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Z_1_COMPONENT_NAME new_rparams_z_1
+#define NEW_RPARAMS_Z_1_BASE 0x7700
+#define NEW_RPARAMS_Z_1_SPAN 16
+#define NEW_RPARAMS_Z_1_END 0x770f
+#define NEW_RPARAMS_Z_1_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Z_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Z_1_CAPTURE 0
+#define NEW_RPARAMS_Z_1_DATA_WIDTH 32
+#define NEW_RPARAMS_Z_1_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Z_1_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Z_1_EDGE_TYPE NONE
+#define NEW_RPARAMS_Z_1_FREQ 50000000
+#define NEW_RPARAMS_Z_1_HAS_IN 1
+#define NEW_RPARAMS_Z_1_HAS_OUT 0
+#define NEW_RPARAMS_Z_1_HAS_TRI 0
+#define NEW_RPARAMS_Z_1_IRQ_TYPE NONE
+#define NEW_RPARAMS_Z_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_z_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Z_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Z_2_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Z_2_COMPONENT_NAME new_rparams_z_2
+#define NEW_RPARAMS_Z_2_BASE 0x7720
+#define NEW_RPARAMS_Z_2_SPAN 16
+#define NEW_RPARAMS_Z_2_END 0x772f
+#define NEW_RPARAMS_Z_2_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Z_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Z_2_CAPTURE 0
+#define NEW_RPARAMS_Z_2_DATA_WIDTH 32
+#define NEW_RPARAMS_Z_2_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Z_2_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Z_2_EDGE_TYPE NONE
+#define NEW_RPARAMS_Z_2_FREQ 50000000
+#define NEW_RPARAMS_Z_2_HAS_IN 1
+#define NEW_RPARAMS_Z_2_HAS_OUT 0
+#define NEW_RPARAMS_Z_2_HAS_TRI 0
+#define NEW_RPARAMS_Z_2_IRQ_TYPE NONE
+#define NEW_RPARAMS_Z_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_z_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Z_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Z_3_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Z_3_COMPONENT_NAME new_rparams_z_3
+#define NEW_RPARAMS_Z_3_BASE 0x7740
+#define NEW_RPARAMS_Z_3_SPAN 16
+#define NEW_RPARAMS_Z_3_END 0x774f
+#define NEW_RPARAMS_Z_3_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Z_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Z_3_CAPTURE 0
+#define NEW_RPARAMS_Z_3_DATA_WIDTH 32
+#define NEW_RPARAMS_Z_3_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Z_3_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Z_3_EDGE_TYPE NONE
+#define NEW_RPARAMS_Z_3_FREQ 50000000
+#define NEW_RPARAMS_Z_3_HAS_IN 1
+#define NEW_RPARAMS_Z_3_HAS_OUT 0
+#define NEW_RPARAMS_Z_3_HAS_TRI 0
+#define NEW_RPARAMS_Z_3_IRQ_TYPE NONE
+#define NEW_RPARAMS_Z_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_z_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_Z_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_Z_4_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_Z_4_COMPONENT_NAME new_rparams_z_4
+#define NEW_RPARAMS_Z_4_BASE 0x7760
+#define NEW_RPARAMS_Z_4_SPAN 16
+#define NEW_RPARAMS_Z_4_END 0x776f
+#define NEW_RPARAMS_Z_4_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_Z_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_Z_4_CAPTURE 0
+#define NEW_RPARAMS_Z_4_DATA_WIDTH 32
+#define NEW_RPARAMS_Z_4_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_Z_4_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_Z_4_EDGE_TYPE NONE
+#define NEW_RPARAMS_Z_4_FREQ 50000000
+#define NEW_RPARAMS_Z_4_HAS_IN 1
+#define NEW_RPARAMS_Z_4_HAS_OUT 0
+#define NEW_RPARAMS_Z_4_HAS_TRI 0
+#define NEW_RPARAMS_Z_4_IRQ_TYPE NONE
+#define NEW_RPARAMS_Z_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e0_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E0_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E0_0_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E0_0_COMPONENT_NAME new_rparams_e0_0
+#define NEW_RPARAMS_E0_0_BASE 0x7780
+#define NEW_RPARAMS_E0_0_SPAN 16
+#define NEW_RPARAMS_E0_0_END 0x778f
+#define NEW_RPARAMS_E0_0_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E0_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E0_0_CAPTURE 0
+#define NEW_RPARAMS_E0_0_DATA_WIDTH 32
+#define NEW_RPARAMS_E0_0_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E0_0_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E0_0_EDGE_TYPE NONE
+#define NEW_RPARAMS_E0_0_FREQ 50000000
+#define NEW_RPARAMS_E0_0_HAS_IN 1
+#define NEW_RPARAMS_E0_0_HAS_OUT 0
+#define NEW_RPARAMS_E0_0_HAS_TRI 0
+#define NEW_RPARAMS_E0_0_IRQ_TYPE NONE
+#define NEW_RPARAMS_E0_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e0_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E0_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E0_1_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E0_1_COMPONENT_NAME new_rparams_e0_1
+#define NEW_RPARAMS_E0_1_BASE 0x77a0
+#define NEW_RPARAMS_E0_1_SPAN 16
+#define NEW_RPARAMS_E0_1_END 0x77af
+#define NEW_RPARAMS_E0_1_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E0_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E0_1_CAPTURE 0
+#define NEW_RPARAMS_E0_1_DATA_WIDTH 32
+#define NEW_RPARAMS_E0_1_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E0_1_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E0_1_EDGE_TYPE NONE
+#define NEW_RPARAMS_E0_1_FREQ 50000000
+#define NEW_RPARAMS_E0_1_HAS_IN 1
+#define NEW_RPARAMS_E0_1_HAS_OUT 0
+#define NEW_RPARAMS_E0_1_HAS_TRI 0
+#define NEW_RPARAMS_E0_1_IRQ_TYPE NONE
+#define NEW_RPARAMS_E0_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e0_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E0_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E0_2_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E0_2_COMPONENT_NAME new_rparams_e0_2
+#define NEW_RPARAMS_E0_2_BASE 0x77c0
+#define NEW_RPARAMS_E0_2_SPAN 16
+#define NEW_RPARAMS_E0_2_END 0x77cf
+#define NEW_RPARAMS_E0_2_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E0_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E0_2_CAPTURE 0
+#define NEW_RPARAMS_E0_2_DATA_WIDTH 32
+#define NEW_RPARAMS_E0_2_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E0_2_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E0_2_EDGE_TYPE NONE
+#define NEW_RPARAMS_E0_2_FREQ 50000000
+#define NEW_RPARAMS_E0_2_HAS_IN 1
+#define NEW_RPARAMS_E0_2_HAS_OUT 0
+#define NEW_RPARAMS_E0_2_HAS_TRI 0
+#define NEW_RPARAMS_E0_2_IRQ_TYPE NONE
+#define NEW_RPARAMS_E0_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e0_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E0_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E0_3_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E0_3_COMPONENT_NAME new_rparams_e0_3
+#define NEW_RPARAMS_E0_3_BASE 0x77e0
+#define NEW_RPARAMS_E0_3_SPAN 16
+#define NEW_RPARAMS_E0_3_END 0x77ef
+#define NEW_RPARAMS_E0_3_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E0_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E0_3_CAPTURE 0
+#define NEW_RPARAMS_E0_3_DATA_WIDTH 32
+#define NEW_RPARAMS_E0_3_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E0_3_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E0_3_EDGE_TYPE NONE
+#define NEW_RPARAMS_E0_3_FREQ 50000000
+#define NEW_RPARAMS_E0_3_HAS_IN 1
+#define NEW_RPARAMS_E0_3_HAS_OUT 0
+#define NEW_RPARAMS_E0_3_HAS_TRI 0
+#define NEW_RPARAMS_E0_3_IRQ_TYPE NONE
+#define NEW_RPARAMS_E0_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e0_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E0_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E0_4_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E0_4_COMPONENT_NAME new_rparams_e0_4
+#define NEW_RPARAMS_E0_4_BASE 0x7800
+#define NEW_RPARAMS_E0_4_SPAN 16
+#define NEW_RPARAMS_E0_4_END 0x780f
+#define NEW_RPARAMS_E0_4_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E0_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E0_4_CAPTURE 0
+#define NEW_RPARAMS_E0_4_DATA_WIDTH 32
+#define NEW_RPARAMS_E0_4_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E0_4_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E0_4_EDGE_TYPE NONE
+#define NEW_RPARAMS_E0_4_FREQ 50000000
+#define NEW_RPARAMS_E0_4_HAS_IN 1
+#define NEW_RPARAMS_E0_4_HAS_OUT 0
+#define NEW_RPARAMS_E0_4_HAS_TRI 0
+#define NEW_RPARAMS_E0_4_IRQ_TYPE NONE
+#define NEW_RPARAMS_E0_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e1_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E1_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E1_0_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E1_0_COMPONENT_NAME new_rparams_e1_0
+#define NEW_RPARAMS_E1_0_BASE 0x7820
+#define NEW_RPARAMS_E1_0_SPAN 16
+#define NEW_RPARAMS_E1_0_END 0x782f
+#define NEW_RPARAMS_E1_0_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E1_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E1_0_CAPTURE 0
+#define NEW_RPARAMS_E1_0_DATA_WIDTH 32
+#define NEW_RPARAMS_E1_0_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E1_0_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E1_0_EDGE_TYPE NONE
+#define NEW_RPARAMS_E1_0_FREQ 50000000
+#define NEW_RPARAMS_E1_0_HAS_IN 1
+#define NEW_RPARAMS_E1_0_HAS_OUT 0
+#define NEW_RPARAMS_E1_0_HAS_TRI 0
+#define NEW_RPARAMS_E1_0_IRQ_TYPE NONE
+#define NEW_RPARAMS_E1_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e1_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E1_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E1_1_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E1_1_COMPONENT_NAME new_rparams_e1_1
+#define NEW_RPARAMS_E1_1_BASE 0x7840
+#define NEW_RPARAMS_E1_1_SPAN 16
+#define NEW_RPARAMS_E1_1_END 0x784f
+#define NEW_RPARAMS_E1_1_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E1_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E1_1_CAPTURE 0
+#define NEW_RPARAMS_E1_1_DATA_WIDTH 32
+#define NEW_RPARAMS_E1_1_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E1_1_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E1_1_EDGE_TYPE NONE
+#define NEW_RPARAMS_E1_1_FREQ 50000000
+#define NEW_RPARAMS_E1_1_HAS_IN 1
+#define NEW_RPARAMS_E1_1_HAS_OUT 0
+#define NEW_RPARAMS_E1_1_HAS_TRI 0
+#define NEW_RPARAMS_E1_1_IRQ_TYPE NONE
+#define NEW_RPARAMS_E1_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e1_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E1_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E1_2_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E1_2_COMPONENT_NAME new_rparams_e1_2
+#define NEW_RPARAMS_E1_2_BASE 0x7860
+#define NEW_RPARAMS_E1_2_SPAN 16
+#define NEW_RPARAMS_E1_2_END 0x786f
+#define NEW_RPARAMS_E1_2_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E1_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E1_2_CAPTURE 0
+#define NEW_RPARAMS_E1_2_DATA_WIDTH 32
+#define NEW_RPARAMS_E1_2_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E1_2_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E1_2_EDGE_TYPE NONE
+#define NEW_RPARAMS_E1_2_FREQ 50000000
+#define NEW_RPARAMS_E1_2_HAS_IN 1
+#define NEW_RPARAMS_E1_2_HAS_OUT 0
+#define NEW_RPARAMS_E1_2_HAS_TRI 0
+#define NEW_RPARAMS_E1_2_IRQ_TYPE NONE
+#define NEW_RPARAMS_E1_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e1_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E1_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E1_3_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E1_3_COMPONENT_NAME new_rparams_e1_3
+#define NEW_RPARAMS_E1_3_BASE 0x7880
+#define NEW_RPARAMS_E1_3_SPAN 16
+#define NEW_RPARAMS_E1_3_END 0x788f
+#define NEW_RPARAMS_E1_3_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E1_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E1_3_CAPTURE 0
+#define NEW_RPARAMS_E1_3_DATA_WIDTH 32
+#define NEW_RPARAMS_E1_3_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E1_3_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E1_3_EDGE_TYPE NONE
+#define NEW_RPARAMS_E1_3_FREQ 50000000
+#define NEW_RPARAMS_E1_3_HAS_IN 1
+#define NEW_RPARAMS_E1_3_HAS_OUT 0
+#define NEW_RPARAMS_E1_3_HAS_TRI 0
+#define NEW_RPARAMS_E1_3_IRQ_TYPE NONE
+#define NEW_RPARAMS_E1_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'new_rparams_e1_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'NEW_RPARAMS_E1_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define NEW_RPARAMS_E1_4_COMPONENT_TYPE altera_avalon_pio
+#define NEW_RPARAMS_E1_4_COMPONENT_NAME new_rparams_e1_4
+#define NEW_RPARAMS_E1_4_BASE 0x78a0
+#define NEW_RPARAMS_E1_4_SPAN 16
+#define NEW_RPARAMS_E1_4_END 0x78af
+#define NEW_RPARAMS_E1_4_BIT_CLEARING_EDGE_REGISTER 0
+#define NEW_RPARAMS_E1_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define NEW_RPARAMS_E1_4_CAPTURE 0
+#define NEW_RPARAMS_E1_4_DATA_WIDTH 32
+#define NEW_RPARAMS_E1_4_DO_TEST_BENCH_WIRING 0
+#define NEW_RPARAMS_E1_4_DRIVEN_SIM_VALUE 0
+#define NEW_RPARAMS_E1_4_EDGE_TYPE NONE
+#define NEW_RPARAMS_E1_4_FREQ 50000000
+#define NEW_RPARAMS_E1_4_HAS_IN 1
+#define NEW_RPARAMS_E1_4_HAS_OUT 0
+#define NEW_RPARAMS_E1_4_HAS_TRI 0
+#define NEW_RPARAMS_E1_4_IRQ_TYPE NONE
+#define NEW_RPARAMS_E1_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'step_x_now', class 'altera_avalon_pio'
+ * The macros are prefixed with 'STEP_X_NOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define STEP_X_NOW_COMPONENT_TYPE altera_avalon_pio
+#define STEP_X_NOW_COMPONENT_NAME step_x_now
+#define STEP_X_NOW_BASE 0x7900
+#define STEP_X_NOW_SPAN 16
+#define STEP_X_NOW_END 0x790f
+#define STEP_X_NOW_BIT_CLEARING_EDGE_REGISTER 0
+#define STEP_X_NOW_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define STEP_X_NOW_CAPTURE 0
+#define STEP_X_NOW_DATA_WIDTH 32
+#define STEP_X_NOW_DO_TEST_BENCH_WIRING 0
+#define STEP_X_NOW_DRIVEN_SIM_VALUE 0
+#define STEP_X_NOW_EDGE_TYPE NONE
+#define STEP_X_NOW_FREQ 50000000
+#define STEP_X_NOW_HAS_IN 1
+#define STEP_X_NOW_HAS_OUT 0
+#define STEP_X_NOW_HAS_TRI 0
+#define STEP_X_NOW_IRQ_TYPE NONE
+#define STEP_X_NOW_RESET_VALUE 0
+
+/*
+ * Macros for device 'step_y_now', class 'altera_avalon_pio'
+ * The macros are prefixed with 'STEP_Y_NOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define STEP_Y_NOW_COMPONENT_TYPE altera_avalon_pio
+#define STEP_Y_NOW_COMPONENT_NAME step_y_now
+#define STEP_Y_NOW_BASE 0x7920
+#define STEP_Y_NOW_SPAN 16
+#define STEP_Y_NOW_END 0x792f
+#define STEP_Y_NOW_BIT_CLEARING_EDGE_REGISTER 0
+#define STEP_Y_NOW_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define STEP_Y_NOW_CAPTURE 0
+#define STEP_Y_NOW_DATA_WIDTH 32
+#define STEP_Y_NOW_DO_TEST_BENCH_WIRING 0
+#define STEP_Y_NOW_DRIVEN_SIM_VALUE 0
+#define STEP_Y_NOW_EDGE_TYPE NONE
+#define STEP_Y_NOW_FREQ 50000000
+#define STEP_Y_NOW_HAS_IN 1
+#define STEP_Y_NOW_HAS_OUT 0
+#define STEP_Y_NOW_HAS_TRI 0
+#define STEP_Y_NOW_IRQ_TYPE NONE
+#define STEP_Y_NOW_RESET_VALUE 0
+
+/*
+ * Macros for device 'step_z_now', class 'altera_avalon_pio'
+ * The macros are prefixed with 'STEP_Z_NOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define STEP_Z_NOW_COMPONENT_TYPE altera_avalon_pio
+#define STEP_Z_NOW_COMPONENT_NAME step_z_now
+#define STEP_Z_NOW_BASE 0x7940
+#define STEP_Z_NOW_SPAN 16
+#define STEP_Z_NOW_END 0x794f
+#define STEP_Z_NOW_BIT_CLEARING_EDGE_REGISTER 0
+#define STEP_Z_NOW_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define STEP_Z_NOW_CAPTURE 0
+#define STEP_Z_NOW_DATA_WIDTH 32
+#define STEP_Z_NOW_DO_TEST_BENCH_WIRING 0
+#define STEP_Z_NOW_DRIVEN_SIM_VALUE 0
+#define STEP_Z_NOW_EDGE_TYPE NONE
+#define STEP_Z_NOW_FREQ 50000000
+#define STEP_Z_NOW_HAS_IN 1
+#define STEP_Z_NOW_HAS_OUT 0
+#define STEP_Z_NOW_HAS_TRI 0
+#define STEP_Z_NOW_IRQ_TYPE NONE
+#define STEP_Z_NOW_RESET_VALUE 0
+
+/*
+ * Macros for device 'step_e0_now', class 'altera_avalon_pio'
+ * The macros are prefixed with 'STEP_E0_NOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define STEP_E0_NOW_COMPONENT_TYPE altera_avalon_pio
+#define STEP_E0_NOW_COMPONENT_NAME step_e0_now
+#define STEP_E0_NOW_BASE 0x7960
+#define STEP_E0_NOW_SPAN 16
+#define STEP_E0_NOW_END 0x796f
+#define STEP_E0_NOW_BIT_CLEARING_EDGE_REGISTER 0
+#define STEP_E0_NOW_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define STEP_E0_NOW_CAPTURE 0
+#define STEP_E0_NOW_DATA_WIDTH 32
+#define STEP_E0_NOW_DO_TEST_BENCH_WIRING 0
+#define STEP_E0_NOW_DRIVEN_SIM_VALUE 0
+#define STEP_E0_NOW_EDGE_TYPE NONE
+#define STEP_E0_NOW_FREQ 50000000
+#define STEP_E0_NOW_HAS_IN 1
+#define STEP_E0_NOW_HAS_OUT 0
+#define STEP_E0_NOW_HAS_TRI 0
+#define STEP_E0_NOW_IRQ_TYPE NONE
+#define STEP_E0_NOW_RESET_VALUE 0
+
+/*
+ * Macros for device 'step_e1_now', class 'altera_avalon_pio'
+ * The macros are prefixed with 'STEP_E1_NOW_'.
+ * The prefix is the slave descriptor.
+ */
+#define STEP_E1_NOW_COMPONENT_TYPE altera_avalon_pio
+#define STEP_E1_NOW_COMPONENT_NAME step_e1_now
+#define STEP_E1_NOW_BASE 0x7980
+#define STEP_E1_NOW_SPAN 16
+#define STEP_E1_NOW_END 0x798f
+#define STEP_E1_NOW_BIT_CLEARING_EDGE_REGISTER 0
+#define STEP_E1_NOW_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define STEP_E1_NOW_CAPTURE 0
+#define STEP_E1_NOW_DATA_WIDTH 32
+#define STEP_E1_NOW_DO_TEST_BENCH_WIRING 0
+#define STEP_E1_NOW_DRIVEN_SIM_VALUE 0
+#define STEP_E1_NOW_EDGE_TYPE NONE
+#define STEP_E1_NOW_FREQ 50000000
+#define STEP_E1_NOW_HAS_IN 1
+#define STEP_E1_NOW_HAS_OUT 0
+#define STEP_E1_NOW_HAS_TRI 0
+#define STEP_E1_NOW_IRQ_TYPE NONE
+#define STEP_E1_NOW_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_params_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_PARAMS_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_PARAMS_0_COMPONENT_TYPE altera_avalon_pio
+#define MAX_PARAMS_0_COMPONENT_NAME max_params_0
+#define MAX_PARAMS_0_BASE 0x79a0
+#define MAX_PARAMS_0_SPAN 16
+#define MAX_PARAMS_0_END 0x79af
+#define MAX_PARAMS_0_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_PARAMS_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_PARAMS_0_CAPTURE 0
+#define MAX_PARAMS_0_DATA_WIDTH 32
+#define MAX_PARAMS_0_DO_TEST_BENCH_WIRING 0
+#define MAX_PARAMS_0_DRIVEN_SIM_VALUE 0
+#define MAX_PARAMS_0_EDGE_TYPE NONE
+#define MAX_PARAMS_0_FREQ 50000000
+#define MAX_PARAMS_0_HAS_IN 1
+#define MAX_PARAMS_0_HAS_OUT 0
+#define MAX_PARAMS_0_HAS_TRI 0
+#define MAX_PARAMS_0_IRQ_TYPE NONE
+#define MAX_PARAMS_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_params_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_PARAMS_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_PARAMS_1_COMPONENT_TYPE altera_avalon_pio
+#define MAX_PARAMS_1_COMPONENT_NAME max_params_1
+#define MAX_PARAMS_1_BASE 0x79c0
+#define MAX_PARAMS_1_SPAN 16
+#define MAX_PARAMS_1_END 0x79cf
+#define MAX_PARAMS_1_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_PARAMS_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_PARAMS_1_CAPTURE 0
+#define MAX_PARAMS_1_DATA_WIDTH 32
+#define MAX_PARAMS_1_DO_TEST_BENCH_WIRING 0
+#define MAX_PARAMS_1_DRIVEN_SIM_VALUE 0
+#define MAX_PARAMS_1_EDGE_TYPE NONE
+#define MAX_PARAMS_1_FREQ 50000000
+#define MAX_PARAMS_1_HAS_IN 1
+#define MAX_PARAMS_1_HAS_OUT 0
+#define MAX_PARAMS_1_HAS_TRI 0
+#define MAX_PARAMS_1_IRQ_TYPE NONE
+#define MAX_PARAMS_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_params_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_PARAMS_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_PARAMS_2_COMPONENT_TYPE altera_avalon_pio
+#define MAX_PARAMS_2_COMPONENT_NAME max_params_2
+#define MAX_PARAMS_2_BASE 0x79e0
+#define MAX_PARAMS_2_SPAN 16
+#define MAX_PARAMS_2_END 0x79ef
+#define MAX_PARAMS_2_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_PARAMS_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_PARAMS_2_CAPTURE 0
+#define MAX_PARAMS_2_DATA_WIDTH 32
+#define MAX_PARAMS_2_DO_TEST_BENCH_WIRING 0
+#define MAX_PARAMS_2_DRIVEN_SIM_VALUE 0
+#define MAX_PARAMS_2_EDGE_TYPE NONE
+#define MAX_PARAMS_2_FREQ 50000000
+#define MAX_PARAMS_2_HAS_IN 1
+#define MAX_PARAMS_2_HAS_OUT 0
+#define MAX_PARAMS_2_HAS_TRI 0
+#define MAX_PARAMS_2_IRQ_TYPE NONE
+#define MAX_PARAMS_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_params_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_PARAMS_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_PARAMS_3_COMPONENT_TYPE altera_avalon_pio
+#define MAX_PARAMS_3_COMPONENT_NAME max_params_3
+#define MAX_PARAMS_3_BASE 0x7a00
+#define MAX_PARAMS_3_SPAN 16
+#define MAX_PARAMS_3_END 0x7a0f
+#define MAX_PARAMS_3_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_PARAMS_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_PARAMS_3_CAPTURE 0
+#define MAX_PARAMS_3_DATA_WIDTH 32
+#define MAX_PARAMS_3_DO_TEST_BENCH_WIRING 0
+#define MAX_PARAMS_3_DRIVEN_SIM_VALUE 0
+#define MAX_PARAMS_3_EDGE_TYPE NONE
+#define MAX_PARAMS_3_FREQ 50000000
+#define MAX_PARAMS_3_HAS_IN 1
+#define MAX_PARAMS_3_HAS_OUT 0
+#define MAX_PARAMS_3_HAS_TRI 0
+#define MAX_PARAMS_3_IRQ_TYPE NONE
+#define MAX_PARAMS_3_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_params_4', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_PARAMS_4_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_PARAMS_4_COMPONENT_TYPE altera_avalon_pio
+#define MAX_PARAMS_4_COMPONENT_NAME max_params_4
+#define MAX_PARAMS_4_BASE 0x7a20
+#define MAX_PARAMS_4_SPAN 16
+#define MAX_PARAMS_4_END 0x7a2f
+#define MAX_PARAMS_4_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_PARAMS_4_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_PARAMS_4_CAPTURE 0
+#define MAX_PARAMS_4_DATA_WIDTH 32
+#define MAX_PARAMS_4_DO_TEST_BENCH_WIRING 0
+#define MAX_PARAMS_4_DRIVEN_SIM_VALUE 0
+#define MAX_PARAMS_4_EDGE_TYPE NONE
+#define MAX_PARAMS_4_FREQ 50000000
+#define MAX_PARAMS_4_HAS_IN 1
+#define MAX_PARAMS_4_HAS_OUT 0
+#define MAX_PARAMS_4_HAS_TRI 0
+#define MAX_PARAMS_4_IRQ_TYPE NONE
+#define MAX_PARAMS_4_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_timing_0', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_TIMING_0_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_TIMING_0_COMPONENT_TYPE altera_avalon_pio
+#define MAX_TIMING_0_COMPONENT_NAME max_timing_0
+#define MAX_TIMING_0_BASE 0x7a40
+#define MAX_TIMING_0_SPAN 16
+#define MAX_TIMING_0_END 0x7a4f
+#define MAX_TIMING_0_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_TIMING_0_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_TIMING_0_CAPTURE 0
+#define MAX_TIMING_0_DATA_WIDTH 32
+#define MAX_TIMING_0_DO_TEST_BENCH_WIRING 0
+#define MAX_TIMING_0_DRIVEN_SIM_VALUE 0
+#define MAX_TIMING_0_EDGE_TYPE NONE
+#define MAX_TIMING_0_FREQ 50000000
+#define MAX_TIMING_0_HAS_IN 1
+#define MAX_TIMING_0_HAS_OUT 0
+#define MAX_TIMING_0_HAS_TRI 0
+#define MAX_TIMING_0_IRQ_TYPE NONE
+#define MAX_TIMING_0_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_timing_1', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_TIMING_1_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_TIMING_1_COMPONENT_TYPE altera_avalon_pio
+#define MAX_TIMING_1_COMPONENT_NAME max_timing_1
+#define MAX_TIMING_1_BASE 0x7a60
+#define MAX_TIMING_1_SPAN 16
+#define MAX_TIMING_1_END 0x7a6f
+#define MAX_TIMING_1_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_TIMING_1_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_TIMING_1_CAPTURE 0
+#define MAX_TIMING_1_DATA_WIDTH 32
+#define MAX_TIMING_1_DO_TEST_BENCH_WIRING 0
+#define MAX_TIMING_1_DRIVEN_SIM_VALUE 0
+#define MAX_TIMING_1_EDGE_TYPE NONE
+#define MAX_TIMING_1_FREQ 50000000
+#define MAX_TIMING_1_HAS_IN 1
+#define MAX_TIMING_1_HAS_OUT 0
+#define MAX_TIMING_1_HAS_TRI 0
+#define MAX_TIMING_1_IRQ_TYPE NONE
+#define MAX_TIMING_1_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_timing_2', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_TIMING_2_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_TIMING_2_COMPONENT_TYPE altera_avalon_pio
+#define MAX_TIMING_2_COMPONENT_NAME max_timing_2
+#define MAX_TIMING_2_BASE 0x7a80
+#define MAX_TIMING_2_SPAN 16
+#define MAX_TIMING_2_END 0x7a8f
+#define MAX_TIMING_2_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_TIMING_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_TIMING_2_CAPTURE 0
+#define MAX_TIMING_2_DATA_WIDTH 32
+#define MAX_TIMING_2_DO_TEST_BENCH_WIRING 0
+#define MAX_TIMING_2_DRIVEN_SIM_VALUE 0
+#define MAX_TIMING_2_EDGE_TYPE NONE
+#define MAX_TIMING_2_FREQ 50000000
+#define MAX_TIMING_2_HAS_IN 1
+#define MAX_TIMING_2_HAS_OUT 0
+#define MAX_TIMING_2_HAS_TRI 0
+#define MAX_TIMING_2_IRQ_TYPE NONE
+#define MAX_TIMING_2_RESET_VALUE 0
+
+/*
+ * Macros for device 'max_timing_3', class 'altera_avalon_pio'
+ * The macros are prefixed with 'MAX_TIMING_3_'.
+ * The prefix is the slave descriptor.
+ */
+#define MAX_TIMING_3_COMPONENT_TYPE altera_avalon_pio
+#define MAX_TIMING_3_COMPONENT_NAME max_timing_3
+#define MAX_TIMING_3_BASE 0x7aa0
+#define MAX_TIMING_3_SPAN 16
+#define MAX_TIMING_3_END 0x7aaf
+#define MAX_TIMING_3_BIT_CLEARING_EDGE_REGISTER 0
+#define MAX_TIMING_3_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define MAX_TIMING_3_CAPTURE 0
+#define MAX_TIMING_3_DATA_WIDTH 32
+#define MAX_TIMING_3_DO_TEST_BENCH_WIRING 0
+#define MAX_TIMING_3_DRIVEN_SIM_VALUE 0
+#define MAX_TIMING_3_EDGE_TYPE NONE
+#define MAX_TIMING_3_FREQ 50000000
+#define MAX_TIMING_3_HAS_IN 1
+#define MAX_TIMING_3_HAS_OUT 0
+#define MAX_TIMING_3_HAS_TRI 0
+#define MAX_TIMING_3_IRQ_TYPE NONE
+#define MAX_TIMING_3_RESET_VALUE 0
 
 /*
  * Macros for device 'ILC', class 'interrupt_latency_counter'

@@ -10,6 +10,7 @@
 #include <inttypes.h>
 #include <cmath>
 #include <fcntl.h>
+#include <string>
 
 #include "hwlib.h"
 #include "unistd.h"
@@ -95,6 +96,7 @@ const uint32_t flags_in_set_new_position_y      = 14;
 const uint32_t flags_in_set_new_position_z      = 15;
 const uint32_t flags_in_set_new_position_e0     = 16;
 const uint32_t flags_in_set_new_position_e1     = 17;
+const uint32_t flags_in_reset                   = 18;
 
 //flags_out
 const uint32_t flags_out_num                    = 1;
@@ -121,6 +123,8 @@ const uint32_t flags_out_sw_2                   = 19;
 const uint32_t flags_out_sw_3                   = 20;
 const uint32_t flags_out_command_error          = 21;
 const uint32_t flags_out_driving_error          = 22;
+const uint32_t flags_out_position_type          = 23;
+const uint32_t flags_out_position_extruder_type = 24;
 
 class PrinterController;
 
@@ -129,7 +133,14 @@ class MechanicsController {
 
     //Вспомогательные методы
     uint32_t zeroing(uint32_t number, uint32_t count, uint32_t direction);
-    uint32_t create_number(bool state, uint32_t count);
+    uint32_t createNumber(bool state, uint32_t count);
+
+    template <typename T>
+    void printTable(string title,
+                    int32_t colNum, int32_t rowNum,
+                    string colNames[], string rowNames[],
+                    int32_t colWidth[],
+                    T data[]);
 
     //переменные
     int fd;
@@ -140,7 +151,11 @@ class MechanicsController {
     int32_t  *command_z;
     int32_t  *command_e0;
     int32_t  *command_e1;
-    uint32_t *command_f;
+    uint32_t *command_f_x;
+    uint32_t *command_f_y;
+    uint32_t *command_f_z;
+    uint32_t *command_f_e0;
+    uint32_t *command_f_e1;
     int32_t  *command_t;
     int32_t  *command_dt;
     uint32_t *flags_in;
@@ -170,51 +185,166 @@ class MechanicsController {
     int32_t  *position_z;
     int32_t  *position_e0;
     int32_t  *position_e1;
-    uint32_t *position_type;
-    uint32_t *position_extruder_type;
 
     //flags
-    bool get_flags(uint32_t flag_type, uint32_t bit);
-    void set_flags(uint32_t flag_type, uint32_t bit, bool state);
 
-    void set_settings();
+    void setFlags(uint32_t flag_type, uint32_t bit, bool state);
+
+
+
+    //test variables
+    uint32_t *params_x_0;
+    uint32_t *params_x_1;
+    uint32_t *params_x_2;
+    uint32_t *params_x_3;
+    uint32_t *params_x_4;
+
+    uint32_t *params_y_0;
+    uint32_t *params_y_1;
+    uint32_t *params_y_2;
+    uint32_t *params_y_3;
+    uint32_t *params_y_4;
+
+    uint32_t *params_z_0;
+    uint32_t *params_z_1;
+    uint32_t *params_z_2;
+    uint32_t *params_z_3;
+    uint32_t *params_z_4;
+
+    uint32_t *params_e0_0;
+    uint32_t *params_e0_1;
+    uint32_t *params_e0_2;
+    uint32_t *params_e0_3;
+    uint32_t *params_e0_4;
+
+    uint32_t *params_e1_0;
+    uint32_t *params_e1_1;
+    uint32_t *params_e1_2;
+    uint32_t *params_e1_3;
+    uint32_t *params_e1_4;
+
+
+    uint32_t *new_params_x_0;
+    uint32_t *new_params_x_1;
+    uint32_t *new_params_x_2;
+    uint32_t *new_params_x_3;
+    uint32_t *new_params_x_4;
+
+    uint32_t *new_params_y_0;
+    uint32_t *new_params_y_1;
+    uint32_t *new_params_y_2;
+    uint32_t *new_params_y_3;
+    uint32_t *new_params_y_4;
+
+    uint32_t *new_params_z_0;
+    uint32_t *new_params_z_1;
+    uint32_t *new_params_z_2;
+    uint32_t *new_params_z_3;
+    uint32_t *new_params_z_4;
+
+    uint32_t *new_params_e0_0;
+    uint32_t *new_params_e0_1;
+    uint32_t *new_params_e0_2;
+    uint32_t *new_params_e0_3;
+    uint32_t *new_params_e0_4;
+
+    uint32_t *new_params_e1_0;
+    uint32_t *new_params_e1_1;
+    uint32_t *new_params_e1_2;
+    uint32_t *new_params_e1_3;
+    uint32_t *new_params_e1_4;
+
+
+    uint32_t *timings_x_0;
+    uint32_t *timings_x_1;
+    uint32_t *timings_x_2;
+    uint32_t *timings_x_3;
+
+    uint32_t *timings_y_0;
+    uint32_t *timings_y_1;
+    uint32_t *timings_y_2;
+    uint32_t *timings_y_3;
+
+    uint32_t *timings_z_0;
+    uint32_t *timings_z_1;
+    uint32_t *timings_z_2;
+    uint32_t *timings_z_3;
+
+    uint32_t *timings_e0_0;
+    uint32_t *timings_e0_1;
+    uint32_t *timings_e0_2;
+    uint32_t *timings_e0_3;
+
+    uint32_t *timings_e1_0;
+    uint32_t *timings_e1_1;
+    uint32_t *timings_e1_2;
+    uint32_t *timings_e1_3;
+
+
+    uint32_t *max_params_0;
+    uint32_t *max_params_1;
+    uint32_t *max_params_2;
+    uint32_t *max_params_3;
+    uint32_t *max_params_4;
+
+    uint32_t *max_timings_0;
+    uint32_t *max_timings_1;
+    uint32_t *max_timings_2;
+    uint32_t *max_timings_3;
+
+    uint32_t  *step_x_now;
+    uint32_t  *step_y_now;
+    uint32_t  *step_z_now;
+    uint32_t  *step_e0_now;
+    uint32_t  *step_e1_now;
 
 public:
     PrinterController* printer;
 
     MechanicsController();
 
-    int32_t temperature_adc(int32_t volt);
-    int32_t extruder_number = 0;
+    void initMem();
+    void setSettings();
+    void setTestParameters();
+
+    void printTestParameters();
+    void printSettings();
+    void printCommands();
+
+    int32_t extruderNumber = 0;
 
 
     //Методы для выполнения GCODE команд
-    void move(float dx, float dy, float dz, uint32_t f); //G0
-    void move_extrude(float dx, float dy, float dz, float de, uint32_t f); //G1
-    void set_absolute(); //G90
-    void set_relative(); //G91
-    void set_current_position(  bool x, bool y, bool z, bool e,
-                                float dx, float dy, float dz, float de); //G92
-    void change_extruder(int32_t n); //M6
-    void enable_steppers(); //M17
-    void disable_steppers(); //M18
-    void set_absolute_extruder(); //M82
-    void set_relative_extruder(); //M83
-    void start_cooling(); //M106
-    void stop_cooling(); //M107
-    void set_temperature(int32_t heater, int32_t t); //M104, M140
-    void hold_temperature(int32_t heater, int32_t t); //M109, M190
+    int32_t move(float dx, float dy, float dz, uint32_t fx, uint32_t fy, uint32_t fz); //G0
+    int32_t moveExtrude(float dx, float dy, float dz, float de0, float de1, uint32_t fx, uint32_t fy, uint32_t fz, uint32_t fe0, uint32_t fe1); //G1
+    int32_t setAbsolute(); //G90
+    int32_t setRelative(); //G91
+    int32_t setCurrentPosition(bool x, bool y, bool z, bool e,
+                                 float dx, float dy, float dz, float de); //G92
+
+    int32_t changeExtruder(int32_t n); //M6
+    int32_t enableMotors(); //M17
+    int32_t disableMotors(); //M18
+    int32_t setAbsoluteExtruder(); //M82
+    int32_t setRelativeExtruder(); //M83
+    int32_t startCooling(); //M106
+    int32_t stopCooling(); //M107
+    int32_t setTemperature(int32_t heater, int32_t t); //M104, M140
+    int32_t holdTemperature(int32_t heater, int32_t t); //M109, M190
 
     //Вспомогательные методы
-    void get_endstop_states(bool& xmin, bool& xmax,
+    void getEndstopsStates(bool& xmin, bool& xmax,
                             bool& ymin, bool& ymax,
-                            bool& zmin, bool& zmax);
+                            bool& zmin, bool& zmax,
+                            bool& barend);
 
-    void get_positions(int32_t& pos_x, int32_t& pos_y,
-                       int32_t& pos_z, int32_t& pos_e0,
-                       int32_t& pos_e1);
+    void getPositions(float& pos_x, float& pos_y,
+                       float& pos_z, float& pos_e0,
+                       float& pos_e1);
 
-    int32_t get_temp(uint32_t n);
+    int32_t getTemp(uint32_t n);
+
+    bool getFlags(uint32_t flag_type, uint32_t bit);
 };
 
 #endif //INC_3D_PRINTER_MECHANICSCONTROLLER_H

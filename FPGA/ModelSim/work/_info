@@ -8,41 +8,113 @@ z2
 !i10f 100
 cModel Technology
 dC:/Users/ISM/OneDrive/Verilog_modules/_ModelSim
-vcalc_new_parameters
+vadctemp_temp
 Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
-Z1 !s110 1580928360
+Z1 !s110 1591110728
 !i10b 1
-!s100 TzGF<VYhGQbRBRgo=DOA[0
-I2^cKWk?lLiS85FihC89C80
+!s100 <Q5b1d@mlUfGz;jQ[3WH00
+I>[SDCZEV0]hWDA4YBF@1e0
 Z2 VDg1SIo80bB@j0V0VzS_@n1
-!s105 calc_new_parameters_sv_unit
+!s105 adctemp_temp_sv_unit
 S1
 Z3 dD:/GitHub/FQW/FPGA/ModelSim
-w1580924911
-8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv
-FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv
+w1590947568
+8D:/GitHub/FQW/FPGA/source/adctemp_temp.sv
+FD:/GitHub/FQW/FPGA/source/adctemp_temp.sv
 L0 1
 Z4 OV;L;10.5b;63
 r1
 !s85 0
 31
-Z5 !s108 1580928360.000000
-!s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv|
-!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv|
+Z5 !s108 1591110728.000000
+!s107 D:/GitHub/FQW/FPGA/source/adctemp_temp.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/adctemp_temp.sv|
 !i113 1
 Z6 o-work work -sv
 Z7 tCvgOpt 0
+vanalog_filter
+R0
+Z8 !s110 1590942300
+!i10b 1
+!s100 TO?JN6?f>nnKa;@T5E2KO2
+IWJ_OCI:^A@J`5HD3ffPJJ2
+R2
+!s105 analog_filter_sv_unit
+S1
+R3
+w1590238239
+8D:/GitHub/FQW/FPGA/source/analog_filter.sv
+FD:/GitHub/FQW/FPGA/source/analog_filter.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z9 !s108 1590942300.000000
+!s107 D:/GitHub/FQW/FPGA/source/analog_filter.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/analog_filter.sv|
+!i113 1
+R6
+R7
+vcalc_all_new_parameters
+R0
+Z10 !s110 1590942298
+!i10b 1
+!s100 DIk2h2F8`@PG3b2QgcVaN3
+Iol5P@a994lQ:=dk6R_7:J1
+R2
+!s105 calc_all_new_parameters_sv_unit
+S1
+R3
+w1590863228
+8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_all_new_parameters.sv
+FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_all_new_parameters.sv
+L0 1
+R4
+r1
+!s85 0
+31
+Z11 !s108 1590942298.000000
+!s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_all_new_parameters.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_all_new_parameters.sv|
+!i113 1
+R6
+R7
+vcalc_new_parameters
+R0
+R1
+!i10b 1
+!s100 ZE8NXJ67L<b6]_WjNI`j^1
+Ifbd_^=:hVNdeij6l7SfcI1
+R2
+!s105 calc_new_parameters_sv_unit
+S1
+R3
+w1590949507
+8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv
+FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1591110727.000000
+!s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_new_parameters.sv|
+!i113 1
+R6
+R7
 vcalc_time
 R0
-Z8 !s110 1580928361
+R10
 !i10b 1
-!s100 H]3Y_C4>[3Bj_cWI6CnC@0
-I7hCIUJGkO1Qao6[h1fWeo0
+!s100 cQ=;YVU7VJFEMkHgE7`3e1
+I2JIB^`iPP`69T2VaOlF963
 R2
 !s105 calc_time_sv_unit
 S1
 R3
-w1580927862
+w1590939877
 8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_time.sv
 FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_time.sv
 L0 1
@@ -50,9 +122,57 @@ R4
 r1
 !s85 0
 31
-Z9 !s108 1580928361.000000
+R11
 !s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_time.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_time.sv|
+!i113 1
+R6
+R7
+vcalc_times
+R0
+R10
+!i10b 1
+!s100 H;7n67E9:7jTD?5Y2LDUV2
+IG3ha5L8HbE0M5g_9k9CBH3
+R2
+!s105 calc_times_sv_unit
+S1
+R3
+w1590852591
+8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_times.sv
+FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_times.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R11
+!s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_times.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/calc_times.sv|
+!i113 1
+R6
+R7
+vcontrol_unit
+R0
+R8
+!i10b 1
+!s100 Lk;^BP6?6k:md;;ZH?Rih0
+ISeC>;_dOodQg]fM1;=8h=1
+R2
+!s105 control_unit_sv_unit
+S1
+R3
+w1590901266
+8D:/GitHub/FQW/FPGA/source/control_unit.sv
+FD:/GitHub/FQW/FPGA/source/control_unit.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R9
+!s107 D:\GitHub\FQW\FPGA\source\configuration.vh|D:/GitHub/FQW/FPGA/source/control_unit.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/control_unit.sv|
 !i113 1
 R6
 R7
@@ -66,7 +186,7 @@ R3
 w1575309263
 8D:/GitHub/FQW/FPGA/source/floatALU/divider.v
 FD:/GitHub/FQW/FPGA/source/floatALU/divider.v
-Z10 L0 39
+Z12 L0 39
 R4
 r1
 !s85 0
@@ -75,10 +195,58 @@ r1
 !s107 D:/GitHub/FQW/FPGA/source/floatALU/divider.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/floatALU/divider.v|
 !i113 1
-Z11 o-work work
+Z13 o-work work
+R7
+vendstop_filter
+R0
+R8
+!i10b 1
+!s100 mojKDbdH]P613hW9d_DFR3
+IJdI@hG0@[Bzl8F<G<c5O60
+R2
+!s105 endstop_filter_sv_unit
+S1
+R3
+w1590237951
+8D:/GitHub/FQW/FPGA/source/endstop_filter.sv
+FD:/GitHub/FQW/FPGA/source/endstop_filter.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R9
+!s107 D:/GitHub/FQW/FPGA/source/endstop_filter.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/endstop_filter.sv|
+!i113 1
+R6
+R7
+vfind_max_timing
+R0
+R10
+!i10b 1
+!s100 J=8eDU;iQZdh;=GQkeDF`2
+IB=Sff@zK1Eg;oliKX5LlC2
+R2
+!s105 find_max_timing_sv_unit
+S1
+R3
+w1590853908
+8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/find_max_timing.sv
+FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/find_max_timing.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R11
+!s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/find_max_timing.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/find_max_timing.sv|
+!i113 1
+R6
 R7
 vfixed_point_number
-R1
+!s110 1580928360
 !i10b 1
 !s100 n:EX2JkRE2LZJ955XEIdV2
 IZ38>MC^RNHS^:dSkGJIQ93
@@ -92,23 +260,47 @@ R4
 r1
 !s85 0
 31
-R5
+!s108 1580928360.000000
 !s107 D:\GitHub\FQW\FPGA\source\floatALU\..\configuration.vh|D:/GitHub/FQW/FPGA/source/floatALU/fixed_point_number.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/floatALU/fixed_point_number.v|
 !i113 1
-R11
+R13
+R7
+vheater_control
+R0
+Z14 !s110 1591110729
+!i10b 1
+!s100 E2CeLj58b1ZD53G=m2GzK1
+IlL3767NDggYi]^`o3jzoC2
+R2
+!s105 heater_control_sv_unit
+S1
+R3
+w1590949638
+8D:/GitHub/FQW/FPGA/source/heater_control.sv
+FD:/GitHub/FQW/FPGA/source/heater_control.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/GitHub/FQW/FPGA/source/heater_control.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/heater_control.sv|
+!i113 1
+R6
 R7
 vjas_constrol
 R0
-R8
+!s110 1591114302
 !i10b 1
-!s100 `LkGz?7FBLfL:[UXL]:J02
-I0=Wne`Z6cb=[PHz`i7oKT2
+!s100 G>FcfXiXPVf7>;ziSB^PA0
+I3@l>WjL3LcDS@^@Ymffob0
 R2
 !s105 jas_constrol_sv_unit
 S1
 R3
-w1580917538
+w1591114298
 8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jas_constrol.sv
 FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/jas_constrol.sv
 L0 3
@@ -116,7 +308,7 @@ R4
 r1
 !s85 0
 31
-R9
+!s108 1591114302.000000
 !s107 D:\GitHub\FQW\FPGA\source\speed-jerk-acc\..\configuration.vh|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jas_constrol.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jas_constrol.sv|
 !i113 1
@@ -124,15 +316,15 @@ R6
 R7
 vjerk_acc_speed
 R0
-R8
+Z15 !s110 1590942299
 !i10b 1
-!s100 V<cJ1^WdXV5@[Eo=fWLPJ1
-I5FhFelF[CF8k6a]nQ5jiG2
+!s100 mQ?AZd7@MWR>;0fi_FT8=1
+IDdgh98TH?hGWo=ZKJaS?G3
 R2
 !s105 jerk_acc_speed_sv_unit
 S1
 R3
-w1580928290
+w1590852534
 8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jerk_acc_speed.sv
 FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/jerk_acc_speed.sv
 L0 3
@@ -140,7 +332,7 @@ R4
 r1
 !s85 0
 31
-R9
+Z16 !s108 1590942299.000000
 !s107 D:\GitHub\FQW\FPGA\source\speed-jerk-acc\..\configuration.vh|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jerk_acc_speed.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/jerk_acc_speed.sv|
 !i113 1
@@ -165,7 +357,7 @@ r1
 !s107 D:/GitHub/FQW/FPGA/source/speed-jerk-acc/minSteps.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/minSteps.v|
 !i113 1
-R11
+R13
 R7
 nmin@steps
 vmult
@@ -178,7 +370,7 @@ R3
 w1575309374
 8D:/GitHub/FQW/FPGA/source/floatALU/mult.v
 FD:/GitHub/FQW/FPGA/source/floatALU/mult.v
-R10
+R12
 R4
 r1
 !s85 0
@@ -187,19 +379,43 @@ r1
 !s107 D:/GitHub/FQW/FPGA/source/floatALU/mult.v|
 !s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/floatALU/mult.v|
 !i113 1
-R11
+R13
+R7
+vpositioning
+R0
+R1
+!i10b 1
+!s100 ZHmE7Yf0bQEKiYbjj7=1G1
+IDBiKFeQ:RKlCGJY[QHC?U3
+R2
+!s105 positioning_sv_unit
+S1
+R3
+w1590993857
+8D:/GitHub/FQW/FPGA/source/positioning.sv
+FD:/GitHub/FQW/FPGA/source/positioning.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R5
+!s107 D:/GitHub/FQW/FPGA/source/positioning.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/positioning.sv|
+!i113 1
+R6
 R7
 vspeed_to_timing
 R0
-!s110 1580928362
+!s110 1590943186
 !i10b 1
-!s100 JBcYHfQ;c8K_4nRjhjAa83
-IT>I<CM<2AS7RoTWkW2W>X0
+!s100 KPagO?EiJ6E0=289g3jL[2
+IJeATZFMVRjKAOGFPLV0Ad2
 R2
 !s105 speed_to_timing_sv_unit
 S1
 R3
-w1580925776
+w1590942356
 8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speed_to_timing.sv
 FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/speed_to_timing.sv
 L0 3
@@ -207,30 +423,174 @@ R4
 r1
 !s85 0
 31
-R9
+!s108 1590943186.000000
 !s107 D:\GitHub\FQW\FPGA\source\speed-jerk-acc\..\configuration.vh|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speed_to_timing.sv|
 !s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speed_to_timing.sv|
 !i113 1
 R6
 R7
-vtestbench_jas_control
-R1
+vspeeds_to_timings
+R0
+R15
 !i10b 1
-!s100 HS0JZ9KddYSXjSWEEaz4`2
-IN`XYWN^emNVjEV?ajW_o<1
+!s100 [Fhc3:@KEcG6S8:_cH@YT0
+IM@54H9W3?ELRF_EV3OZ]80
 R2
+!s105 speeds_to_timings_sv_unit
+S1
 R3
-w1578242192
-8D:/GitHub/FQW/FPGA/source/testbench/testbench_jas_control.v
-FD:/GitHub/FQW/FPGA/source/testbench/testbench_jas_control.v
+w1590852485
+8D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speeds_to_timings.sv
+FD:/GitHub/FQW/FPGA/source/speed-jerk-acc/speeds_to_timings.sv
 L0 3
 R4
 r1
 !s85 0
 31
-R5
-!s107 D:\GitHub\FQW\FPGA\source\testbench\..\configuration.vh|D:/GitHub/FQW/FPGA/source/testbench/testbench_jas_control.v|
-!s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_jas_control.v|
+R16
+!s107 D:\GitHub\FQW\FPGA\source\speed-jerk-acc\..\configuration.vh|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speeds_to_timings.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/speed-jerk-acc/speeds_to_timings.sv|
 !i113 1
-R11
+R6
+R7
+vtemp_adctemp
+R0
+R14
+!i10b 1
+!s100 iz0Mg=Tg>MFW9kOWZ7AU]3
+IQEQN110SJC?b<J6Gd;0Ej2
+R2
+!s105 temp_adctemp_sv_unit
+S1
+R3
+w1590949475
+8D:/GitHub/FQW/FPGA/source/temp_adctemp.sv
+FD:/GitHub/FQW/FPGA/source/temp_adctemp.sv
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1591110729.000000
+!s107 D:/GitHub/FQW/FPGA/source/temp_adctemp.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/temp_adctemp.sv|
+!i113 1
+R6
+R7
+vtestbench_calc_times
+R0
+R15
+!i10b 1
+!s100 6FUL7MZ4n^2_GZT7SJjCc3
+IFAMQAeGioEYVzN3EO5eOZ1
+R2
+!s105 testbench_calc_times_sv_unit
+S1
+R3
+w1589738647
+8D:/GitHub/FQW/FPGA/source/testbench/testbench_calc_times.sv
+FD:/GitHub/FQW/FPGA/source/testbench/testbench_calc_times.sv
+L0 3
+R4
+r1
+!s85 0
+31
+R16
+!s107 D:\GitHub\FQW\FPGA\source\testbench\..\configuration.vh|D:/GitHub/FQW/FPGA/source/testbench/testbench_calc_times.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_calc_times.sv|
+!i113 1
+R6
+R7
+vtestbench_jas_control
+!s110 1589725791
+!i10b 1
+!s100 mPHKZofK<_ezGUZ`Nc86B0
+IdWCCX]:T3ZI0a64`?^nY73
+R2
+R3
+w1589725782
+8D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.v
+FD:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.v
+L0 1
+R4
+r1
+!s85 0
+31
+!s108 1589725791.000000
+!s107 D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.v|
+!s90 -reportprogress|300|-work|work|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.v|
+!i113 1
+R13
+R7
+vtestbench_jerk_acc_speed
+R0
+R8
+!i10b 1
+!s100 9Glo3JJ[EoAEI4neTEZ9A3
+IL9;nX_XYl3EkC9ekz@bL;0
+R2
+!s105 testbench_jerk_acc_speed_sv_unit
+S1
+R3
+w1590488057
+8D:/GitHub/FQW/FPGA/source/testbench/testbench_jerk_acc_speed.sv
+FD:/GitHub/FQW/FPGA/source/testbench/testbench_jerk_acc_speed.sv
+L0 4
+R4
+r1
+!s85 0
+31
+R9
+!s107 D:\GitHub\FQW\FPGA\source\testbench\..\configuration.vh|D:/GitHub/FQW/FPGA/source/testbench/testbench_jerk_acc_speed.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_jerk_acc_speed.sv|
+!i113 1
+R6
+R7
+vtestbench_printer
+R0
+!s110 1591122920
+!i10b 1
+!s100 4Q584hdFoSBYVYfZEGiN92
+Ij0K[?nYKCaFzb;@=ojoJ<3
+R2
+!s105 testbench_printer_sv_unit
+S1
+R3
+w1591122914
+8D:/GitHub/FQW/FPGA/source/testbench/testbench_printer.sv
+FD:/GitHub/FQW/FPGA/source/testbench/testbench_printer.sv
+L0 4
+R4
+r1
+!s85 0
+31
+!s108 1591122920.000000
+!s107 D:\GitHub\FQW\FPGA\source\testbench\..\configuration.vh|D:/GitHub/FQW/FPGA/source/testbench/testbench_printer.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_printer.sv|
+!i113 1
+R6
+R7
+vtestbench_speeds_to_timings
+R0
+R8
+!i10b 1
+!s100 ^93WF_bTCl5MlEb7JVY@32
+IJl[SGz]49aKj[FA`ciS9P3
+R2
+!s105 testbench_speeds_to_timings_sv_unit
+S1
+R3
+w1589730809
+8D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.sv
+FD:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.sv
+L0 1
+R4
+r1
+!s85 0
+31
+R9
+!s107 D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.sv|
+!s90 -reportprogress|300|-work|work|-sv|-stats=none|D:/GitHub/FQW/FPGA/source/testbench/testbench_speeds_to_timings.sv|
+!i113 1
+R6
 R7

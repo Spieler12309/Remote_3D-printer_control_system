@@ -1,0 +1,2 @@
+time =        0, E0:  en = x, step = 0, dir = 0, delta =      x, e0 =     0
+time =        0, E0:  en = 0, step = 0, dir = 0, delta =      0, e0 =     0
