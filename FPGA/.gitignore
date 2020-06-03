@@ -7,6 +7,7 @@ incremental_db
 simulation
 testbench
 timing
+hps_isw_handoff
 **/.qsys_edit
 printer_system.asm.rpt.htm_files
 printer_system.fit.rpt.htm_files
@@ -27,6 +28,9 @@ QSYS_components/soc_system
 **/*.rpt.html
 **/*.flow.rpt.htm
 **/*.map.rpt.htm
+**/*.sta.rpt.htm
+**/*.fit.rpt.htm
+**/*.asm.rpt.htm
 **/*.jdi
 **/*.jpg
 **/*.mif
