@@ -216,12 +216,14 @@ assign const_speed = const_speed_x || const_speed_y || const_speed_z || const_sp
 
 assign finish = ((fin_jc_x && fin_jc_y) && (fin_jc_z && fin_jc_e0) && fin_jc_e1 || error) && start_driving_main;
 
-assign error = ((endstops[0]) && (x == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) || (
-				        (endstops[1]) && (x == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
-	        ((endstops[2]) && (y == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) || (
-				        (endstops[3]) && (y == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
-	        ((endstops[4]) && (stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now))) ||
-	                    ((endstops[5]) && (~stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now)));
+assign error = ((endstops[0]) && (x == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+				       ((endstops[1]) && (x == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+				       
+	        		 ((endstops[2]) && (y == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+				       ((endstops[3]) && (y == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+
+	        		 ((endstops[4]) && (stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now))) ||
+	             ((endstops[5]) && (~stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now)));
 wire	start_driving;
 assign start_driving = (start_driving_main) && (~error);
 
