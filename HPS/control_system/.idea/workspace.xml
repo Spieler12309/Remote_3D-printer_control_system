@@ -28,25 +28,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b6c4419d-01a8-48d3-8aef-65bac260d006" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../../FPGA/source/testbench/python/test_error.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/ModelSim/test_printer.mpf" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/ModelSim/test_printer.mpf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/ModelSim/work/_info" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/ModelSim/work/_info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/ModelSim/work/_lib.qdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/ModelSim/work/_lib.qdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system.qsys" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system.qsys" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system.sopcinfo" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system.sopcinfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system.bsf" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system.bsf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system_bb.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/soc_system_bb.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.debuginfo" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.debuginfo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.qip" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.qip" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system_hps_0_hps.svd" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/soc_system_hps_0_hps.svd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/submodules/soc_system_position_e0.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/submodules/soc_system_position_e0.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/submodules/soc_system_sysid_qsys.v" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/QSYS_components/soc_system/synthesis/submodules/soc_system_sysid_qsys.v" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.map.rpt.htm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sld" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sld" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/printer_system.sof" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/printer_system.sof" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../FPGA/source/speed-jerk-acc/jerk_acc_speed.sv" beforeDir="false" afterPath="$PROJECT_DIR$/../../FPGA/source/speed-jerk-acc/jerk_acc_speed.sv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../FPGA/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
