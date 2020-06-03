@@ -369,11 +369,11 @@ module soc_system (
 	output		pll_sys_outclk10mhz_clk;
 	output		pll_sys_outclk1mhz_clk;
 	output		pll_sys_outclk5mhz_clk;
-	input	[11:0]	position_e0_external_connection_export;
-	input	[11:0]	position_e1_external_connection_export;
-	input	[11:0]	position_x_external_connection_export;
-	input	[11:0]	position_y_external_connection_export;
-	input	[11:0]	position_z_external_connection_export;
+	input	[31:0]	position_e0_external_connection_export;
+	input	[31:0]	position_e1_external_connection_export;
+	input	[31:0]	position_x_external_connection_export;
+	input	[31:0]	position_y_external_connection_export;
+	input	[31:0]	position_z_external_connection_export;
 	input		reset_reset_n;
 	output	[31:0]	settings_acceleration_e0_external_connection_export;
 	output	[31:0]	settings_acceleration_e1_external_connection_export;

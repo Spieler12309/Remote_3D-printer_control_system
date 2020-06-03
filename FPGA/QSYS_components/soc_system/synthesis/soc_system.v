@@ -162,11 +162,11 @@ module soc_system (
 		output wire        pll_sys_outclk10mhz_clk,                             //                          pll_sys_outclk10mhz.clk
 		output wire        pll_sys_outclk1mhz_clk,                              //                           pll_sys_outclk1mhz.clk
 		output wire        pll_sys_outclk5mhz_clk,                              //                           pll_sys_outclk5mhz.clk
-		input  wire [11:0] position_e0_external_connection_export,              //              position_e0_external_connection.export
-		input  wire [11:0] position_e1_external_connection_export,              //              position_e1_external_connection.export
-		input  wire [11:0] position_x_external_connection_export,               //               position_x_external_connection.export
-		input  wire [11:0] position_y_external_connection_export,               //               position_y_external_connection.export
-		input  wire [11:0] position_z_external_connection_export,               //               position_z_external_connection.export
+		input  wire [31:0] position_e0_external_connection_export,              //              position_e0_external_connection.export
+		input  wire [31:0] position_e1_external_connection_export,              //              position_e1_external_connection.export
+		input  wire [31:0] position_x_external_connection_export,               //               position_x_external_connection.export
+		input  wire [31:0] position_y_external_connection_export,               //               position_y_external_connection.export
+		input  wire [31:0] position_z_external_connection_export,               //               position_z_external_connection.export
 		input  wire        reset_reset_n,                                       //                                        reset.reset_n
 		output wire [31:0] settings_acceleration_e0_external_connection_export, // settings_acceleration_e0_external_connection.export
 		output wire [31:0] settings_acceleration_e1_external_connection_export, // settings_acceleration_e1_external_connection.export
@@ -1680,7 +1680,7 @@ module soc_system (
 		.locked   ()                          // (terminated)
 	);
 
-	soc_system_position_e0 position_e0 (
+	soc_system_flags_in position_e0 (
 		.clk      (clk_clk),                                   //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address  (mm_interconnect_1_position_e0_s1_address),  //                  s1.address
@@ -1688,7 +1688,7 @@ module soc_system (
 		.in_port  (position_e0_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 position_e1 (
+	soc_system_flags_in position_e1 (
 		.clk      (clk_clk),                                   //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),           //               reset.reset_n
 		.address  (mm_interconnect_1_position_e1_s1_address),  //                  s1.address
@@ -1696,7 +1696,7 @@ module soc_system (
 		.in_port  (position_e1_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 position_x (
+	soc_system_flags_in position_x (
 		.clk      (clk_clk),                                  //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address  (mm_interconnect_1_position_x_s1_address),  //                  s1.address
@@ -1704,7 +1704,7 @@ module soc_system (
 		.in_port  (position_x_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 position_y (
+	soc_system_flags_in position_y (
 		.clk      (clk_clk),                                  //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address  (mm_interconnect_1_position_y_s1_address),  //                  s1.address
@@ -1712,7 +1712,7 @@ module soc_system (
 		.in_port  (position_y_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 position_z (
+	soc_system_flags_in position_z (
 		.clk      (clk_clk),                                  //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),          //               reset.reset_n
 		.address  (mm_interconnect_1_position_z_s1_address),  //                  s1.address
@@ -1965,7 +1965,7 @@ module soc_system (
 		.address  (mm_interconnect_1_sysid_qsys_control_slave_address)   //              .address
 	);
 
-	soc_system_position_e0 temp_0 (
+	soc_system_temp_0 temp_0 (
 		.clk      (clk_clk),                              //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
 		.address  (mm_interconnect_1_temp_0_s1_address),  //                  s1.address
@@ -1973,7 +1973,7 @@ module soc_system (
 		.in_port  (temp_0_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 temp_1 (
+	soc_system_temp_0 temp_1 (
 		.clk      (clk_clk),                              //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
 		.address  (mm_interconnect_1_temp_1_s1_address),  //                  s1.address
@@ -1981,7 +1981,7 @@ module soc_system (
 		.in_port  (temp_1_external_connection_export)     // external_connection.export
 	);
 
-	soc_system_position_e0 temp_2 (
+	soc_system_temp_0 temp_2 (
 		.clk      (clk_clk),                              //                 clk.clk
 		.reset_n  (~rst_controller_reset_out_reset),      //               reset.reset_n
 		.address  (mm_interconnect_1_temp_2_s1_address),  //                  s1.address

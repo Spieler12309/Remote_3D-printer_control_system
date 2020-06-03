@@ -130,7 +130,7 @@ string PrinterController::gcodeG1(const Parameters& parameters) {
 
     string ans = "";
 
-    if (status1 == 1 && status2 == 1) {
+    if ((status1 == 1) && (status2 == 1)) {
         ans =  "1 ";
     }
     else {
@@ -140,11 +140,11 @@ string PrinterController::gcodeG1(const Parameters& parameters) {
     mechanics.getPositions(pos_x, pos_y, pos_z, pos_e0, pos_e1);
 
     ostringstream stringStream;
-    stringStream << fixed << setw(8) << setprecision(4) << pos_x << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_y << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_z << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e0 << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e1 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_x << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_y << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_z << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e0 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e1 << " ";
     ans += stringStream.str();
 
     mechanics.getEndstopsStates(xmin, xmax,
@@ -244,11 +244,11 @@ string PrinterController::gcodeG28(const Parameters& parameters) {
     mechanics.getPositions(pos_x, pos_y, pos_z, pos_e0, pos_e1);
 
     ostringstream stringStream;
-    stringStream << fixed << setw(8) << setprecision(4) << pos_x << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_y << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_z << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e0 << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e1 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_x << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_y << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_z << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e0 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e1 << " ";
     ans += stringStream.str();
 
     mechanics.getEndstopsStates(xmin, xmax,
@@ -312,13 +312,32 @@ string PrinterController::gcodeG92(const Parameters& parameters) {
     status = mechanics.setCurrentPosition(x, y, z, e,
             dx, dy, dz, de);
 
+    string ans = "";
+
+    float pos_x  = 0;
+    float pos_y  = 0;
+    float pos_z  = 0;
+    float pos_e0 = 0;
+    float pos_e1 = 0;
+
     if (status == 1) {
-        return "1";
+        ans = "1";
     }
     else {
-        return "0";
+        ans = "0";
     }
-    return "0";
+
+    mechanics.getPositions(pos_x, pos_y, pos_z, pos_e0, pos_e1);
+
+    ostringstream stringStream;
+    stringStream << fixed << setw(6) << setprecision(2) << pos_x << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_y << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_z << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e0 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e1 << " ";
+    ans += stringStream.str();
+
+    return ans;
 }
 
 string PrinterController::gcodeM6(const Parameters& parameters) {
@@ -460,11 +479,11 @@ string PrinterController::gcodeM114(const Parameters& parameters) {
     mechanics.getPositions(pos_x, pos_y, pos_z, pos_e0, pos_e1);
 
     ostringstream stringStream;
-    stringStream << fixed << setw(8) << setprecision(4) << pos_x << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_y << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_z << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e0 << " ";
-    stringStream << fixed << setw(8) << setprecision(4) << pos_e1;
+    stringStream << fixed << setw(6) << setprecision(2) << pos_x << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_y << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_z << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e0 << " ";
+    stringStream << fixed << setw(6) << setprecision(2) << pos_e1;
     string spos = stringStream.str();
 
     return spos;

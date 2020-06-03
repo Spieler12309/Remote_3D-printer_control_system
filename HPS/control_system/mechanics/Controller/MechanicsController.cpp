@@ -345,11 +345,11 @@ void MechanicsController::printTestParameters() {
 
     string timingsColNames[4] = {"t1", "t2", "t3", "tt"};
     double data2[5 * 4] = {
-            (*timings_x_0 ) / 50000000.0 * 20.0, (*timings_x_1 ) / 50000000.0 * 20.0, (*timings_x_2 ) / 50000000.0 * 20.0, (*timings_x_3 ) / 50000000.0 * 20.0,
-            (*timings_y_0 ) / 50000000.0 * 20.0, (*timings_y_1 ) / 50000000.0 * 20.0, (*timings_y_2 ) / 50000000.0 * 20.0, (*timings_y_3 ) / 50000000.0 * 20.0,
-            (*timings_z_0 ) / 50000000.0 * 20.0, (*timings_z_1 ) / 50000000.0 * 20.0, (*timings_z_2 ) / 50000000.0 * 20.0, (*timings_z_3 ) / 50000000.0 * 20.0,
-            (*timings_e0_0) / 50000000.0 * 20.0, (*timings_e0_1) / 50000000.0 * 20.0, (*timings_e0_2) / 50000000.0 * 20.0, (*timings_e0_3) / 50000000.0 * 20.0,
-            (*timings_e1_0) / 50000000.0 * 20.0, (*timings_e1_1) / 50000000.0 * 20.0, (*timings_e1_2) / 50000000.0 * 20.0, (*timings_e1_3) / 50000000.0 * 20.0,};
+            (*timings_x_0 ) / 50000000.0, (*timings_x_1 ) / 50000000.0, (*timings_x_2 ) / 50000000.0, (*timings_x_3 ) / 50000000.0,
+            (*timings_y_0 ) / 50000000.0, (*timings_y_1 ) / 50000000.0, (*timings_y_2 ) / 50000000.0, (*timings_y_3 ) / 50000000.0,
+            (*timings_z_0 ) / 50000000.0, (*timings_z_1 ) / 50000000.0, (*timings_z_2 ) / 50000000.0, (*timings_z_3 ) / 50000000.0,
+            (*timings_e0_0) / 50000000.0, (*timings_e0_1) / 50000000.0, (*timings_e0_2) / 50000000.0, (*timings_e0_3) / 50000000.0,
+            (*timings_e1_0) / 50000000.0, (*timings_e1_1) / 50000000.0, (*timings_e1_2) / 50000000.0, (*timings_e1_3) / 50000000.0,};
     printTable( "Время движения в секундах",
                 4,   5,
                 timingsColNames, motorsNames,
@@ -359,10 +359,10 @@ void MechanicsController::printTestParameters() {
 
     string maxTimingsRowNames[1] = {"maxTimings"};
     double data3[1 * 4] = {
-            (*max_timings_0) / 50000000.0 * 20.0,
-            (*max_timings_1) / 50000000.0 * 20.0,
-            (*max_timings_2) / 50000000.0 * 20.0,
-            (*max_timings_3) / 50000000.0 * 20.0,};
+            (*max_timings_0) / 50000000.0,
+            (*max_timings_1) / 50000000.0,
+            (*max_timings_2) / 50000000.0,
+            (*max_timings_3) / 50000000.0,};
     printTable( "Максимальное время",
                 4,   1,
                 timingsColNames, maxTimingsRowNames,

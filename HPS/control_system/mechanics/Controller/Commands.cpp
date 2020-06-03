@@ -17,8 +17,7 @@ int32_t MechanicsController::move(float dx, float dy, float dz, uint32_t fx, uin
     setFlags(flags_in_num, flags_in_run_command, true);
     usleep(100);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
-    {
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
     }
 
@@ -52,7 +51,6 @@ int32_t MechanicsController::moveExtrude(  float dx, float dy, float dz, float d
     *command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
     *command_e0 = static_cast<int32_t>(de0 * printer->printerVariables.settings.movement.step_per_Unit.e0);
     *command_e1 = static_cast<int32_t>(de1 * printer->printerVariables.settings.movement.step_per_Unit.e1);
-    //TODO: Сделать нормальные логи
 
     *command_f_x  = fx * printer->printerVariables.settings.movement.step_per_Unit.x / 60;
     *command_f_y  = fy * printer->printerVariables.settings.movement.step_per_Unit.y / 60;
@@ -67,9 +65,10 @@ int32_t MechanicsController::moveExtrude(  float dx, float dy, float dz, float d
     usleep(100);
     printTestParameters();
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
-
+    }
+    usleep(10);
     bool fin, err2, err1;
     err2 = getFlags(flags_out_num, flags_out_driving_error);
     err1 = getFlags(flags_out_num, flags_out_command_error);
@@ -90,7 +89,7 @@ int32_t MechanicsController::moveExtrude(  float dx, float dy, float dz, float d
     *command_f_z  = 0;
     *command_f_e0 = 0;
     *command_f_e1 = 0;
-
+    cout << "moveExtrude answer: " << (4 * err2 + 2 * err1 + fin) << endl;
     return (4 * err2 + 2 * err1 + fin);
 }
 
@@ -100,8 +99,9 @@ int32_t MechanicsController::setAbsolute() { //G90
 
     setFlags(flags_in_num, flags_in_run_command, true);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
+    }
     usleep(100);
     bool fin, err;
     err = getFlags(flags_out_num, flags_out_command_error);
@@ -118,8 +118,9 @@ int32_t MechanicsController::setRelative() { //G91
 
     setFlags(flags_in_num, flags_in_run_command, true);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
+    }
     usleep(100);
 
     bool fin, err;
@@ -184,7 +185,7 @@ int32_t MechanicsController::setCurrentPosition(bool x, bool y, bool z, bool e,
     setFlags(flags_in_num, flags_in_set_new_position_y, true);
     setFlags(flags_in_num, flags_in_set_new_position_z, true);
     setFlags(flags_in_num, flags_in_set_new_position_e0 + extruderNumber, true);
-    usleep(10000);
+    usleep(1000);
 
     setFlags(flags_in_num, flags_in_set_new_position_x, false);
     setFlags(flags_in_num, flags_in_set_new_position_y, false);
@@ -218,8 +219,9 @@ int32_t MechanicsController::enableMotors() {
     usleep(1);
     setFlags(flags_in_num, flags_in_run_command, true);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
+    }
     usleep(100);
     bool fin, err;
     err = getFlags(flags_out_num, flags_out_command_error);
@@ -236,8 +238,9 @@ int32_t MechanicsController::disableMotors() {
     usleep(1);
     setFlags(flags_in_num, flags_in_run_command, true);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
+    }
     usleep(100);
     bool fin, err;
     err = getFlags(flags_out_num, flags_out_command_error);
@@ -254,8 +257,9 @@ int32_t MechanicsController::setAbsoluteExtruder() { //M82
     usleep(1);
 
     setFlags(flags_in_num, flags_in_run_command, true);
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
+    }
     usleep(100);
     bool fin, err;
     err = getFlags(flags_out_num, flags_out_command_error);
@@ -273,9 +277,9 @@ int32_t MechanicsController::setRelativeExtruder() { //M83
 
     setFlags(flags_in_num, flags_in_run_command, true);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(10);
-
+    }
     usleep(100);
     bool fin, err;
     err = getFlags(flags_out_num, flags_out_command_error);
@@ -292,8 +296,7 @@ int32_t MechanicsController::startCooling() { //M106
     setFlags(flags_in_num, flags_in_run_command, true);
     usleep(100);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
-    {
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
     }
     bool fin, err;
@@ -311,8 +314,7 @@ int32_t MechanicsController::stopCooling() { //M107
     setFlags(flags_in_num, flags_in_run_command, true);
     usleep(100);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
-    {
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
     }
     bool fin, err;
@@ -340,8 +342,7 @@ int32_t MechanicsController::setTemperature(int32_t heater, int32_t t) {
     setFlags(flags_in_num, flags_in_run_command, true);
     usleep(100);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
-    {
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
     }
     bool fin, err;
@@ -372,8 +373,7 @@ int32_t MechanicsController::holdTemperature(int32_t heater, int32_t t) {
     setFlags(flags_in_num, flags_in_run_command, true);
     usleep(100);
 
-    while (!getFlags(flags_out_num, flags_out_command_finish))
-    {
+    while (!getFlags(flags_out_num, flags_out_command_finish)) {
         usleep(1000);
     }
     bool fin, err;

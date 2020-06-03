@@ -5612,7 +5612,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
+  <parameter name="width" value="32" />
  </module>
  <module
    name="position_e1"
@@ -5630,7 +5630,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
+  <parameter name="width" value="32" />
  </module>
  <module name="position_x" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -5644,7 +5644,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
+  <parameter name="width" value="32" />
  </module>
  <module name="position_y" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -5658,7 +5658,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
+  <parameter name="width" value="32" />
  </module>
  <module name="position_z" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
@@ -5672,7 +5672,7 @@
   <parameter name="resetValue" value="0" />
   <parameter name="simDoTestBenchWiring" value="false" />
   <parameter name="simDrivenValue" value="0" />
-  <parameter name="width" value="12" />
+  <parameter name="width" value="32" />
  </module>
  <module
    name="settings_acceleration_e0"

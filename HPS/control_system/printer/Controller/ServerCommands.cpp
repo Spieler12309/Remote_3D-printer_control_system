@@ -158,9 +158,17 @@ void PrinterController::createSettings()
 }
 
 void PrinterController::writeToPipe(string s) {
+    ofstream infile(fromPipe);
+    if (infile.is_open()){
+        infile << "";
+        infile.close();
+    }
+    
     ofstream outfile(toPipe);
     outfile << s;
     outfile.close();
+
+
 }
 
 string PrinterController::readFromPipe() {
@@ -173,12 +181,6 @@ string PrinterController::readFromPipe() {
         myfile.close();
     }
     transform(alls.begin(), alls.end(), alls.begin(), ::toupper);
-
-    ofstream outfile(fromPipe);
-    if (outfile.is_open()){
-        outfile << "";
-        outfile.close();
-    }
 
     return alls;
 }

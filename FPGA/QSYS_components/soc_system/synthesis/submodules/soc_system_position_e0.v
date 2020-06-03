@@ -33,17 +33,17 @@ module soc_system_position_e0 (
   output  [ 31: 0] readdata;
   input   [  1: 0] address;
   input            clk;
-  input   [ 11: 0] in_port;
+  input   [ 30: 0] in_port;
   input            reset_n;
 
 
 wire             clk_en;
-wire    [ 11: 0] data_in;
-wire    [ 11: 0] read_mux_out;
+wire    [ 30: 0] data_in;
+wire    [ 30: 0] read_mux_out;
 reg     [ 31: 0] readdata;
   assign clk_en = 1;
   //s1, which is an e_avalon_slave
-  assign read_mux_out = {12 {(address == 0)}} & data_in;
+  assign read_mux_out = {31 {(address == 0)}} & data_in;
   always @(posedge clk or negedge reset_n)
     begin
       if (reset_n == 0)

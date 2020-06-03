@@ -10,6 +10,9 @@ int main(int argc, char *argv[]) {
     }*/
 	std::cout << "PrinterController started" << std::endl;
 
+    ofstream fout("/home/root/printer_management/gcode.txt", ios_base::out);
+    fout.close();
+
   	PrinterController printer;
   	printer.mainLoop();
     return 0;

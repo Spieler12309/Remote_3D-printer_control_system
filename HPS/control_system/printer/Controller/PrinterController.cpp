@@ -42,6 +42,10 @@ void PrinterController::printing(string command) {
         res = (this->*gcode_commands[comm])(parameters);
     }
 
+    ofstream fout("/home/root/printer_management/gcode.txt", ios_base::app);
+    fout << "Команда: " << command << ". Ответ: " << res << "." << endl;
+    fout.close();
+
     cout << "Ответ на команду: " << res << endl;
     cout << "----------------------------------------------------------" << endl;
     writeToPipe(res);

@@ -216,12 +216,12 @@ assign const_speed = const_speed_x || const_speed_y || const_speed_z || const_sp
 
 assign finish = ((fin_jc_x && fin_jc_y) && (fin_jc_z && fin_jc_e0) && fin_jc_e1 || error) && start_driving_main;
 
-assign error = ((((x == 1) && endstops[0]) || 
-			((x == 2) && endstops[1])) && (num_y - num_y_now == num_x - num_x_now) && (stepper_x_direction != stepper_y_direction)) &&
-		((((y == 1) && endstops[2]) || 
-			((y == 2) && endstops[3])) && (num_y - num_y_now == num_x - num_x_now) && (stepper_x_direction == stepper_y_direction)) &&
-		((~stepper_z_direction && endstops[4] && num_z != num_z_now) || 
-			(stepper_z_direction && endstops[5]));
+assign error = ((endstops[0]) && (x == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) || (
+				        (endstops[1]) && (x == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+	        ((endstops[2]) && (y == 1) && ((num_x != num_x_now) || (num_y != num_y_now))) || (
+				        (endstops[3]) && (y == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
+	        ((endstops[4]) && (stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now))) ||
+	                    ((endstops[5]) && (~stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now)));
 wire	start_driving;
 assign start_driving = (start_driving_main) && (~error);
 
@@ -239,7 +239,7 @@ begin
 	//Вычисление направления движения по осям x и y
 	if ((stepper_x_direction == 0) && (stepper_y_direction == 0))
 	begin
-		x = 2;
+		x = ((num_x == 0) && (num_y == 0)) ? 0 : 2;
 		if (num_x > num_y)
 			y = 2;
 		else 
@@ -253,7 +253,7 @@ begin
 	
 	if ((stepper_x_direction == 0) && (stepper_y_direction == 1))
 	begin
-		y = 2;
+		y = ((num_x == 0) && (num_y == 0)) ? 0 : 2;
 		if (num_x > num_y)
 			x = 2;
 		else 
@@ -267,7 +267,7 @@ begin
 	
 	if ((stepper_x_direction == 1) && (stepper_y_direction == 0))
 	begin
-		y = 1;
+		y = ((num_x == 0) && (num_y == 0)) ? 0 : 1;
 		if (num_y > num_x)
 			x = 2;
 		else 
@@ -281,7 +281,7 @@ begin
 	
 	if ((stepper_x_direction == 1) && (stepper_y_direction == 1))
 	begin
-		x = 1;
+		x = ((num_x == 0) & (num_y == 0)) ? 0 : 1;
 		if (num_y > num_x)
 			y = 2;
 		else 
