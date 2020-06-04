@@ -135,12 +135,15 @@ class MechanicsController {
     uint32_t zeroing(uint32_t number, uint32_t count, uint32_t direction);
     uint32_t createNumber(bool state, uint32_t count);
 
-    template <typename T>
+    template <typename T1>
     void printTable(string title,
                     int32_t colNum, int32_t rowNum,
                     string colNames[], string rowNames[],
                     int32_t colWidth[],
-                    T data[]);
+                    T1 data[]);
+
+    template <typename T2>
+    T2* createVariable(void* virtual_base, unsigned long base);
 
     //переменные
     int fd = -1;
@@ -160,21 +163,21 @@ class MechanicsController {
     int32_t  *command_dt;
     uint32_t *flags_in;
     uint32_t *flags_out;
-    uint32_t *settings_max_speed_x;
-    uint32_t *settings_max_speed_y;
-    uint32_t *settings_max_speed_z;
-    uint32_t *settings_max_speed_e0;
-    uint32_t *settings_max_speed_e1;
-    uint32_t *settings_acceleration_x;
-    uint32_t *settings_acceleration_y;
-    uint32_t *settings_acceleration_z;
-    uint32_t *settings_acceleration_e0;
-    uint32_t *settings_acceleration_e1;
-    uint32_t *settings_jerk_x;
-    uint32_t *settings_jerk_y;
-    uint32_t *settings_jerk_z;
-    uint32_t *settings_jerk_e0;
-    uint32_t *settings_jerk_e1;
+    uint32_t *settingsMaxSpeedX;
+    uint32_t *settingsMaxSpeedY;
+    uint32_t *settingsMaxSpeedZ;
+    uint32_t *settingsMaxSpeedE0;
+    uint32_t *settingsMaxSpeedE1;
+    uint32_t *settingsAccelerationX;
+    uint32_t *settingsAccelerationY;
+    uint32_t *settingsAccelerationZ;
+    uint32_t *settingsAccelerationE0;
+    uint32_t *settingsAccelerationE1;
+    uint32_t *settingsJerkX;
+    uint32_t *settingsJerkY;
+    uint32_t *settingsJerkZ;
+    uint32_t *settingsJerkE0;
+    uint32_t *settingsJerkE1;
     int32_t  *settings_max_temp_e0;
     int32_t  *settings_max_temp_e1;
     int32_t  *settings_max_temp_bed;
@@ -300,6 +303,7 @@ class MechanicsController {
 
 public:
     PrinterController* printer;
+    Kinematic kinematic;
 
     MechanicsController();
 

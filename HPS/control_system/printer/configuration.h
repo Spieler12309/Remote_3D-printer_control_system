@@ -4,6 +4,8 @@
 #include <cstdint>
 
 enum {CoreXY, Simple};
+enum {mm, steps};
+enum {perMinute, perSecond};
 
 static const int32_t KINEMATICS = CoreXY;
 

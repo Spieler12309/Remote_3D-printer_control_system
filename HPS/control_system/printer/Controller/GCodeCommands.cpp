@@ -16,9 +16,9 @@ string PrinterController::gcodeG0(const Parameters& parameters) {
     }
 
     uint32_t fx, fy, fz;
-    fx = printerVariables.settings.movement.default_Speed.x;
-    fy = printerVariables.settings.movement.default_Speed.y;
-    fz = printerVariables.settings.movement.default_Speed.z;
+    fx = printerVariables.settings.movement.defaultSpeed.x;
+    fy = printerVariables.settings.movement.defaultSpeed.y;
+    fz = printerVariables.settings.movement.defaultSpeed.z;
 
     if (parameters.find("F")) {
         fx = static_cast<uint32_t>(parameters["F"]);
@@ -81,11 +81,11 @@ string PrinterController::gcodeG1(const Parameters& parameters) {
 
     uint32_t fx, fy, fz, fe0, fe1;
 
-    fx = printerVariables.settings.movement.default_Speed.x;
-    fy = printerVariables.settings.movement.default_Speed.y;
-    fz = printerVariables.settings.movement.default_Speed.z;
-    fe0 = printerVariables.settings.movement.default_Speed.e0;
-    fe1 = printerVariables.settings.movement.default_Speed.e1;
+    fx = printerVariables.settings.movement.defaultSpeed.x;
+    fy = printerVariables.settings.movement.defaultSpeed.y;
+    fz = printerVariables.settings.movement.defaultSpeed.z;
+    fe0 = printerVariables.settings.movement.defaultSpeed.e0;
+    fe1 = printerVariables.settings.movement.defaultSpeed.e1;
     if (parameters.find("F")) {
         fx = static_cast<uint32_t>(parameters["F"]);
         fy = static_cast<uint32_t>(parameters["F"]);
