@@ -125,12 +125,12 @@ string PrinterController::gcodeG1(const Parameters& parameters) {
 
     status1 = mechanics.moveExtrude(dx, dy, dz, de0, de1, fx, fy, fz, fe0, fe1);
     bool xmin, xmax, ymin, ymax, zmin, zmax, barend;
-    mechanics.getEndstopsStates(xmin, xmax, ymin, ymax, zmin, zmax, barend);
-    status2 = mechanics.setCurrentPosition(xmin, ymin, zmin, false, 0, 0, 0, 0);
+    //mechanics.getEndstopsStates(xmin, xmax, ymin, ymax, zmin, zmax, barend);
+    //status2 = mechanics.setCurrentPosition(xmin, ymin, zmin, false, 0, 0, 0, 0);
 
     string ans = "";
 
-    if ((status1 == 1) && (status2 == 1)) {
+    if ((status1 == 1)){//&& (status2 == 1)) {
         ans =  "1 ";
     }
     else {
@@ -552,3 +552,7 @@ string PrinterController::gcodeM501(const Parameters& parameters) {
     return "1";
 }
 
+string PrinterController::resetSystem(const Parameters& parameters) {
+    mechanics.initMem();
+    return "1";
+}

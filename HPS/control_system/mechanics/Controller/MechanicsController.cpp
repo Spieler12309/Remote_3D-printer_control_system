@@ -78,6 +78,11 @@ MechanicsController::MechanicsController() {
 
 void MechanicsController::initMem() {
     // инициацизация памяти
+    if(fd != -1){
+        printf("Reset all settings and PrinterController\n");
+        close(fd);
+    }
+
     if((fd = open( "/dev/mem", (O_RDWR | O_SYNC))) == -1){
         printf("ERROR: could not open \"/dev/mem\"...\n");
     }

@@ -37,7 +37,7 @@ void PrinterController::printing(string command) {
     string comm;
     tie(comm, parameters) = gp.parse_command(command);
     string res = command;
-
+    
     if (gcode_commands.find(comm)) {
         res = (this->*gcode_commands[comm])(parameters);
     }

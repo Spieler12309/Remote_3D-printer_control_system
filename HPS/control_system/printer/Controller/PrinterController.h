@@ -71,31 +71,33 @@ public:
     string gcodeM140    (const Parameters& parameters);
     string gcodeM190    (const Parameters& parameters);
     string gcodeM501    (const Parameters& parameters);
+    string resetSystem  (const Parameters& parameters);
 
     dict<string, string(PrinterController::*)(const Parameters&)> gcode_commands = {
-            {"G0",      &PrinterController::gcodeG0},
-            {"G1",      &PrinterController::gcodeG1},
-            {"G4",      &PrinterController::gcodeG4},
-            {"G28",     &PrinterController::gcodeG28},
-            {"G90",     &PrinterController::gcodeG90},
-            {"G91",     &PrinterController::gcodeG91},
-            {"G92",     &PrinterController::gcodeG92},
+            {"G0",              &PrinterController::gcodeG0},
+            {"G1",              &PrinterController::gcodeG1},
+            {"G4",              &PrinterController::gcodeG4},
+            {"G28",             &PrinterController::gcodeG28},
+            {"G90",             &PrinterController::gcodeG90},
+            {"G91",             &PrinterController::gcodeG91},
+            {"G92",             &PrinterController::gcodeG92},
 
-            {"M6",      &PrinterController::gcodeM6},
-            {"M17",     &PrinterController::gcodeM17},
-            {"M18",     &PrinterController::gcodeM18},
-            {"M82",     &PrinterController::gcodeM82},
-            {"M83",     &PrinterController::gcodeM83},
-            {"M104",    &PrinterController::gcodeM104},
-            {"M105",    &PrinterController::gcodeM105},
-            {"M106",    &PrinterController::gcodeM106},
-            {"M107",    &PrinterController::gcodeM107},
-            {"M109",    &PrinterController::gcodeM109},
-            {"M114",    &PrinterController::gcodeM114},
-            {"M119",    &PrinterController::gcodeM119},
-            {"M140",    &PrinterController::gcodeM140},
-            {"M190",    &PrinterController::gcodeM190},
-            {"M501",    &PrinterController::gcodeM501},
+            {"M6",              &PrinterController::gcodeM6},
+            {"M17",             &PrinterController::gcodeM17},
+            {"M18",             &PrinterController::gcodeM18},
+            {"M82",             &PrinterController::gcodeM82},
+            {"M83",             &PrinterController::gcodeM83},
+            {"M104",            &PrinterController::gcodeM104},
+            {"M105",            &PrinterController::gcodeM105},
+            {"M106",            &PrinterController::gcodeM106},
+            {"M107",            &PrinterController::gcodeM107},
+            {"M109",            &PrinterController::gcodeM109},
+            {"M114",            &PrinterController::gcodeM114},
+            {"M119",            &PrinterController::gcodeM119},
+            {"M140",            &PrinterController::gcodeM140},
+            {"M190",            &PrinterController::gcodeM190},
+            {"M501",            &PrinterController::gcodeM501},
+            {"RESETSYSTEM",     &PrinterController::resetSystem},
     };
 
 

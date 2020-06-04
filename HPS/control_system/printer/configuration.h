@@ -3,7 +3,9 @@
 
 #include <cstdint>
 
-static const int32_t KINEMATICS = 0; //0 - CoreXY; 1 - Simple kinematics
+enum {CoreXY, Simple};
+
+static const int32_t KINEMATICS = CoreXY;
 
 static const int32_t NUM_EXTRUDERS                  = 2;
 static const int32_t NUM_STEPPERS                   = 5;

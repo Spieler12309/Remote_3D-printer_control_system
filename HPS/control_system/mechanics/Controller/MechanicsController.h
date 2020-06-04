@@ -143,7 +143,7 @@ class MechanicsController {
                     T data[]);
 
     //переменные
-    int fd;
+    int fd = -1;
     void* virtual_base;
     uint32_t *command_type;
     int32_t  *command_x;
