@@ -6,20 +6,20 @@ int32_t MechanicsController::move(float dx, float dy, float dz, uint32_t fx, uin
     *command_type = CODE_GCODE_G0;
 
     if (KINEMATICS == CoreXY) {
-        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x +
-                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x -
-                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x +
+                                          dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
+        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x -
+                                          dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
     }
     else
     if (KINEMATICS == Simple){
-        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x);
-        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-    }*command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x);
+        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
+    }*command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.stepsPerUnit.z);
 
-    *command_f_x  = fx * printer->printerVariables.settings.movement.step_per_Unit.x / 60;
-    *command_f_y  = fy * printer->printerVariables.settings.movement.step_per_Unit.y / 60;
-    *command_f_z  = fz * printer->printerVariables.settings.movement.step_per_Unit.z / 60;
+    *command_f_x  = fx * printer->printerVariables.settings.movement.stepsPerUnit.x / 60;
+    *command_f_y  = fy * printer->printerVariables.settings.movement.stepsPerUnit.y / 60;
+    *command_f_z  = fz * printer->printerVariables.settings.movement.stepsPerUnit.z / 60;
 
 
     setFlags(flags_in_num, flags_in_run_command, true);
@@ -55,24 +55,24 @@ int32_t MechanicsController::moveExtrude(  float dx, float dy, float dz, float d
                                             uint32_t fx, uint32_t fy, uint32_t fz, uint32_t fe0, uint32_t fe1){ //G1
     *command_type = CODE_GCODE_G1;
     if (KINEMATICS == CoreXY) {
-        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x +
-                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
-        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x -
-                                          dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x +
+                                          dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
+        *command_y = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x -
+                                          dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
     }
     else if (KINEMATICS == Simple){
-        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.step_per_Unit.x);
-        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.step_per_Unit.y);
+        *command_x = static_cast<int32_t>(dx * printer->printerVariables.settings.movement.stepsPerUnit.x);
+        *command_y = static_cast<int32_t>(dy * printer->printerVariables.settings.movement.stepsPerUnit.y);
     }
-    *command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.step_per_Unit.z);
-    *command_e0 = static_cast<int32_t>(de0 * printer->printerVariables.settings.movement.step_per_Unit.e0);
-    *command_e1 = static_cast<int32_t>(de1 * printer->printerVariables.settings.movement.step_per_Unit.e1);
+    *command_z = static_cast<int32_t>(dz * printer->printerVariables.settings.movement.stepsPerUnit.z);
+    *command_e0 = static_cast<int32_t>(de0 * printer->printerVariables.settings.movement.stepsPerUnit.e0);
+    *command_e1 = static_cast<int32_t>(de1 * printer->printerVariables.settings.movement.stepsPerUnit.e1);
 
-    *command_f_x  = fx * printer->printerVariables.settings.movement.step_per_Unit.x / 60;
-    *command_f_y  = fy * printer->printerVariables.settings.movement.step_per_Unit.y / 60;
-    *command_f_z  = fz * printer->printerVariables.settings.movement.step_per_Unit.z / 60;
-    *command_f_e0 = fe0 * printer->printerVariables.settings.movement.step_per_Unit.e0 / 60;
-    *command_f_e1 = fe1 * printer->printerVariables.settings.movement.step_per_Unit.e1 / 60;
+    *command_f_x  = fx * printer->printerVariables.settings.movement.stepsPerUnit.x / 60;
+    *command_f_y  = fy * printer->printerVariables.settings.movement.stepsPerUnit.y / 60;
+    *command_f_z  = fz * printer->printerVariables.settings.movement.stepsPerUnit.z / 60;
+    *command_f_e0 = fe0 * printer->printerVariables.settings.movement.stepsPerUnit.e0 / 60;
+    *command_f_e1 = fe1 * printer->printerVariables.settings.movement.stepsPerUnit.e1 / 60;
 
     usleep(10);
     setFlags(flags_in_num, flags_in_run_command, true);
@@ -158,24 +158,24 @@ int32_t MechanicsController::setCurrentPosition(bool x, bool y, bool z, bool e,
                     pos_e1);
     float new_x, new_y, new_z, new_e;
     if (x)
-        new_x = dx * printer->printerVariables.settings.movement.step_per_Unit.x;
+        new_x = dx * printer->printerVariables.settings.movement.stepsPerUnit.x;
     else
-        new_x = pos_x * printer->printerVariables.settings.movement.step_per_Unit.x;
+        new_x = pos_x * printer->printerVariables.settings.movement.stepsPerUnit.x;
     if (y)
-        new_y = dy * printer->printerVariables.settings.movement.step_per_Unit.y;
+        new_y = dy * printer->printerVariables.settings.movement.stepsPerUnit.y;
     else
-        new_y = pos_y * printer->printerVariables.settings.movement.step_per_Unit.y;
+        new_y = pos_y * printer->printerVariables.settings.movement.stepsPerUnit.y;
     if (z)
-        new_z = dz * printer->printerVariables.settings.movement.step_per_Unit.z;
+        new_z = dz * printer->printerVariables.settings.movement.stepsPerUnit.z;
     else
-        new_z = pos_z * printer->printerVariables.settings.movement.step_per_Unit.z;
+        new_z = pos_z * printer->printerVariables.settings.movement.stepsPerUnit.z;
     if (e)
-        new_e = de * printer->printerVariables.settings.movement.step_per_Unit.e0;
+        new_e = de * printer->printerVariables.settings.movement.stepsPerUnit.e0;
     else
         if (extruderNumber == 0)
-            new_e = pos_e0 * printer->printerVariables.settings.movement.step_per_Unit.e0;
+            new_e = pos_e0 * printer->printerVariables.settings.movement.stepsPerUnit.e0;
         else
-            new_e = pos_e1 * printer->printerVariables.settings.movement.step_per_Unit.e1;
+            new_e = pos_e1 * printer->printerVariables.settings.movement.stepsPerUnit.e1;
 
 
     if (KINEMATICS == CoreXY) {
@@ -431,17 +431,17 @@ void MechanicsController::getPositions(float& pos_x, float& pos_y,
                                         float& pos_e1)
 {
     if (KINEMATICS == CoreXY) {
-        pos_x  = ((*position_x) + (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.x);
-        pos_y  = ((*position_x) - (*position_y)) / (2 * printer->printerVariables.settings.movement.step_per_Unit.y);
+        pos_x  = ((*position_x) + (*position_y)) / (2 * printer->printerVariables.settings.movement.stepsPerUnit.x);
+        pos_y  = ((*position_x) - (*position_y)) / (2 * printer->printerVariables.settings.movement.stepsPerUnit.y);
     }
     else if (KINEMATICS == Simple){
-        pos_x  = (*position_x) / (printer->printerVariables.settings.movement.step_per_Unit.x);
-        pos_y  = (*position_y) / (printer->printerVariables.settings.movement.step_per_Unit.y);
+        pos_x  = (*position_x) / (printer->printerVariables.settings.movement.stepsPerUnit.x);
+        pos_y  = (*position_y) / (printer->printerVariables.settings.movement.stepsPerUnit.y);
     }
 
-    pos_z  = (*position_z) / printer->printerVariables.settings.movement.step_per_Unit.z;
-    pos_e0 = (*position_e0) / printer->printerVariables.settings.movement.step_per_Unit.e0;
-    pos_e1 = (*position_e1) / printer->printerVariables.settings.movement.step_per_Unit.e1;
+    pos_z  = (*position_z) / printer->printerVariables.settings.movement.stepsPerUnit.z;
+    pos_e0 = (*position_e0) / printer->printerVariables.settings.movement.stepsPerUnit.e0;
+    pos_e1 = (*position_e1) / printer->printerVariables.settings.movement.stepsPerUnit.e1;
 }
 
 int32_t MechanicsController::getTemp(uint32_t n)

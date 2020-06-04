@@ -24,46 +24,46 @@ void PrinterController::loadSettings()
     printerVariables.settings.movement.homing.slow.y = j["home_speed_slow"]["Y"];
     printerVariables.settings.movement.homing.slow.z = j["home_speed_slow"]["Z"];
 
-    printerVariables.settings.movement.default_Speed.x  = j["speed"]["X"];
-    printerVariables.settings.movement.default_Speed.y  = j["speed"]["Y"];
-    printerVariables.settings.movement.default_Speed.z  = j["speed"]["Z"];
-    printerVariables.settings.movement.default_Speed.e0 = j["speed"]["E0"];
-    printerVariables.settings.movement.default_Speed.e1 = j["speed"]["E0"];
+    printerVariables.settings.movement.defaultSpeed.x  = j["speed"]["X"];
+    printerVariables.settings.movement.defaultSpeed.y  = j["speed"]["Y"];
+    printerVariables.settings.movement.defaultSpeed.z  = j["speed"]["Z"];
+    printerVariables.settings.movement.defaultSpeed.e0 = j["speed"]["E0"];
+    printerVariables.settings.movement.defaultSpeed.e1 = j["speed"]["E0"];
 
-    printerVariables.settings.movement.max_Speed.x  = j["max_speed"]["X"];
-    printerVariables.settings.movement.max_Speed.y  = j["max_speed"]["Y"];
-    printerVariables.settings.movement.max_Speed.z  = j["max_speed"]["Z"];
-    printerVariables.settings.movement.max_Speed.e0 = j["max_speed"]["E0"];
-    printerVariables.settings.movement.max_Speed.e1 = j["max_speed"]["E0"];
+    printerVariables.settings.movement.maxSpeed.x  = j["max_speed"]["X"];
+    printerVariables.settings.movement.maxSpeed.y  = j["max_speed"]["Y"];
+    printerVariables.settings.movement.maxSpeed.z  = j["max_speed"]["Z"];
+    printerVariables.settings.movement.maxSpeed.e0 = j["max_speed"]["E0"];
+    printerVariables.settings.movement.maxSpeed.e1 = j["max_speed"]["E0"];
 
-    printerVariables.settings.movement.max_Acceleration.x  = j["acceleration"]["X"];
-    printerVariables.settings.movement.max_Acceleration.y  = j["acceleration"]["Y"];
-    printerVariables.settings.movement.max_Acceleration.z  = j["acceleration"]["Z"];
-    printerVariables.settings.movement.max_Acceleration.e0 = j["acceleration"]["E0"];
-    printerVariables.settings.movement.max_Acceleration.e1 = j["acceleration"]["E0"];
+    printerVariables.settings.movement.maxAcceleration.x  = j["acceleration"]["X"];
+    printerVariables.settings.movement.maxAcceleration.y  = j["acceleration"]["Y"];
+    printerVariables.settings.movement.maxAcceleration.z  = j["acceleration"]["Z"];
+    printerVariables.settings.movement.maxAcceleration.e0 = j["acceleration"]["E0"];
+    printerVariables.settings.movement.maxAcceleration.e1 = j["acceleration"]["E0"];
 
-    printerVariables.settings.movement.max_Jerk.x  = j["jerk"]["X"];
-    printerVariables.settings.movement.max_Jerk.y  = j["jerk"]["Y"];
-    printerVariables.settings.movement.max_Jerk.z  = j["jerk"]["Z"];
-    printerVariables.settings.movement.max_Jerk.e0 = j["jerk"]["E0"];
-    printerVariables.settings.movement.max_Jerk.e1 = j["jerk"]["E0"];
+    printerVariables.settings.movement.maxJerk.x  = j["jerk"]["X"];
+    printerVariables.settings.movement.maxJerk.y  = j["jerk"]["Y"];
+    printerVariables.settings.movement.maxJerk.z  = j["jerk"]["Z"];
+    printerVariables.settings.movement.maxJerk.e0 = j["jerk"]["E0"];
+    printerVariables.settings.movement.maxJerk.e1 = j["jerk"]["E0"];
 
-    printerVariables.settings.heaters.max_Temp.bed = j["max_temps"]["BED"];
-    printerVariables.settings.heaters.max_Temp.e0 = j["max_temps"]["E0"];
-    printerVariables.settings.heaters.max_Temp.e1 = j["max_temps"]["E0"];
+    printerVariables.settings.heaters.maxTemp.bed = j["max_temps"]["BED"];
+    printerVariables.settings.heaters.maxTemp.e0 = j["max_temps"]["E0"];
+    printerVariables.settings.heaters.maxTemp.e1 = j["max_temps"]["E0"];
 
-    printerVariables.settings.movement.step_per_Unit.x  = j["steps_per_unit"]["X"];
-    printerVariables.settings.movement.step_per_Unit.y  = j["steps_per_unit"]["Y"];
-    printerVariables.settings.movement.step_per_Unit.z  = j["steps_per_unit"]["Z"];
-    printerVariables.settings.movement.step_per_Unit.e0 = j["steps_per_unit"]["E0"];
-    printerVariables.settings.movement.step_per_Unit.e1 = j["steps_per_unit"]["E0"];
+    printerVariables.settings.movement.stepsPerUnit.x  = j["steps_per_unit"]["X"];
+    printerVariables.settings.movement.stepsPerUnit.y  = j["steps_per_unit"]["Y"];
+    printerVariables.settings.movement.stepsPerUnit.z  = j["steps_per_unit"]["Z"];
+    printerVariables.settings.movement.stepsPerUnit.e0 = j["steps_per_unit"]["E0"];
+    printerVariables.settings.movement.stepsPerUnit.e1 = j["steps_per_unit"]["E0"];
 
     printerVariables.settings.movement.size.x = j["max_size"]["X"];
     printerVariables.settings.movement.size.y = j["max_size"]["Y"];
     printerVariables.settings.movement.size.z = j["max_size"]["Z"];
 
-    printerVariables.settings.movement.num_extruders = j["num_extruders"];
-    printerVariables.settings.movement.num_motors = j["num_motors"];
+    printerVariables.settings.movement.numOfExtruders = j["num_extruders"];
+    printerVariables.settings.movement.numOfMotors = j["num_motors"];
 
     printerVariables.settings.movement.invertion.motors.x  = j["motors_inverting"]["X"];
     printerVariables.settings.movement.invertion.motors.y  = j["motors_inverting"]["Y"];
@@ -71,7 +71,7 @@ void PrinterController::loadSettings()
     printerVariables.settings.movement.invertion.motors.e0 = j["motors_inverting"]["E0"];
     printerVariables.settings.movement.invertion.motors.e1 = j["motors_inverting"]["E0"];
 
-    printerVariables.settings.movement.num_endstops = j["num_endstops"];
+    printerVariables.settings.movement.numOfEndstops = j["num_endstops"];
 
     printerVariables.settings.movement.invertion.endstops.xmin = j["endstops_inverting"]["X_MIN"];
     printerVariables.settings.movement.invertion.endstops.xmax = j["endstops_inverting"]["X_MAX"];

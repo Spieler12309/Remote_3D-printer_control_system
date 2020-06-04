@@ -12,12 +12,12 @@ uint32_t MechanicsController::zeroing(uint32_t number, uint32_t count, uint32_t 
         return (number >> count) << count;
 };
 
-template <typename T>
+template <typename T1>
 void MechanicsController::printTable(string title,
                 int32_t colNum, int32_t rowNum,
                 string colNames[], string rowNames[],
                 int32_t colWidth[],
-                T data[])
+                T1 data[])
 {
     int allWidth = colNum + 1;
     for (int i = 0; i <= colNum; i++)
@@ -60,6 +60,11 @@ void MechanicsController::printTable(string title,
     cout << border << endl;
 }
 
+template <typename T2>
+T2* MechanicsController::createVariable(void* virtual_base, unsigned long base) {
+    return (T2 *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + base) & (unsigned long)(HW_REGS_MASK)));
+}
+
 uint32_t MechanicsController::createNumber(bool state, uint32_t count)
 {
     uint32_t a = 1;
@@ -94,54 +99,54 @@ void MechanicsController::initMem() {
         close(fd);
     }
 
-    command_type 				= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_TYPE_BASE)             & (unsigned long)(HW_REGS_MASK)));
-    command_x 				    = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_X_BASE)                 & (unsigned long)(HW_REGS_MASK)));
-    command_y 				    = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_Y_BASE)                 & (unsigned long)(HW_REGS_MASK)));
-    command_z 			        = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_Z_BASE)                 & (unsigned long)(HW_REGS_MASK)));
-    command_e0 			        = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_E0_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    command_e1                  = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_E1_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    command_f_x 		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_F_X_BASE)              & (unsigned long)(HW_REGS_MASK)));
-    command_f_y 		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_F_Y_BASE)              & (unsigned long)(HW_REGS_MASK)));
-    command_f_z 		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_F_Z_BASE)              & (unsigned long)(HW_REGS_MASK)));
-    command_f_e0		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_F_E0_BASE)             & (unsigned long)(HW_REGS_MASK)));
-    command_f_e1		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_F_E1_BASE)             & (unsigned long)(HW_REGS_MASK)));
-    command_t 			        = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_T_BASE)                 & (unsigned long)(HW_REGS_MASK)));
-    command_dt 				    = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + COMMAND_DT_BASE)                & (unsigned long)(HW_REGS_MASK)));
+    command_type                = createVariable<uint32_t>(virtual_base, COMMAND_TYPE_BASE);
+    command_x 				    = createVariable<int32_t >(virtual_base, COMMAND_X_BASE   );
+    command_y 				    = createVariable<int32_t >(virtual_base, COMMAND_Y_BASE   );
+    command_z 			        = createVariable<int32_t >(virtual_base, COMMAND_Z_BASE   );
+    command_e0 			        = createVariable<int32_t >(virtual_base, COMMAND_E0_BASE  );
+    command_e1                  = createVariable<int32_t >(virtual_base, COMMAND_E1_BASE  );
+    command_f_x 		        = createVariable<uint32_t>(virtual_base, COMMAND_F_X_BASE );
+    command_f_y 		        = createVariable<uint32_t>(virtual_base, COMMAND_F_Y_BASE );
+    command_f_z 		        = createVariable<uint32_t>(virtual_base, COMMAND_F_Z_BASE );
+    command_f_e0		        = createVariable<uint32_t>(virtual_base, COMMAND_F_E0_BASE);
+    command_f_e1		        = createVariable<uint32_t>(virtual_base, COMMAND_F_E1_BASE);
+    command_t 			        = createVariable<int32_t >(virtual_base, COMMAND_T_BASE   );
+    command_dt 				    = createVariable<int32_t >(virtual_base, COMMAND_DT_BASE  );
 
-    flags_in	                = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + FLAGS_OUT_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    flags_out		            = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + FLAGS_IN_BASE)                 & (unsigned long)(HW_REGS_MASK)));
+    flags_in	                = createVariable<uint32_t>(virtual_base, FLAGS_OUT_BASE               );
+    flags_out		            = createVariable<uint32_t>(virtual_base, FLAGS_IN_BASE                );
 
-    settings_max_speed_x        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_SPEED_X_BASE)     & (unsigned long)(HW_REGS_MASK)));
-    settings_max_speed_y        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_SPEED_Y_BASE)     & (unsigned long)(HW_REGS_MASK)));
-    settings_max_speed_z 	    = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_SPEED_Z_BASE)     & (unsigned long)(HW_REGS_MASK)));
-    settings_max_speed_e0 	    = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_SPEED_E0_BASE)    & (unsigned long)(HW_REGS_MASK)));
-    settings_max_speed_e1 	    = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_SPEED_E1_BASE)    & (unsigned long)(HW_REGS_MASK)));
+    settingsMaxSpeedX           = createVariable<uint32_t>(virtual_base, SETTINGS_MAX_SPEED_X_BASE    );
+    settingsMaxSpeedY           = createVariable<uint32_t>(virtual_base, SETTINGS_MAX_SPEED_Y_BASE    );
+    settingsMaxSpeedZ 	        = createVariable<uint32_t>(virtual_base, SETTINGS_MAX_SPEED_Z_BASE    );
+    settingsMaxSpeedE0 	        = createVariable<uint32_t>(virtual_base, SETTINGS_MAX_SPEED_E0_BASE   );
+    settingsMaxSpeedE1 	        = createVariable<uint32_t>(virtual_base, SETTINGS_MAX_SPEED_E1_BASE   );
 
-    settings_acceleration_x		= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_ACCELERATION_X_BASE)  & (unsigned long)(HW_REGS_MASK)));
-    settings_acceleration_y		= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_ACCELERATION_Y_BASE)  & (unsigned long)(HW_REGS_MASK)));
-    settings_acceleration_z 	= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_ACCELERATION_Z_BASE)  & (unsigned long)(HW_REGS_MASK)));
-    settings_acceleration_e0 	= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_ACCELERATION_E0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    settings_acceleration_e1 	= (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_ACCELERATION_E1_BASE) & (unsigned long)(HW_REGS_MASK)));
+    settingsAccelerationX		= createVariable<uint32_t>(virtual_base, SETTINGS_ACCELERATION_X_BASE );
+    settingsAccelerationY		= createVariable<uint32_t>(virtual_base, SETTINGS_ACCELERATION_Y_BASE );
+    settingsAccelerationZ 	    = createVariable<uint32_t>(virtual_base, SETTINGS_ACCELERATION_Z_BASE );
+    settingsAccelerationE0 	    = createVariable<uint32_t>(virtual_base, SETTINGS_ACCELERATION_E0_BASE);
+    settingsAccelerationE1 	    = createVariable<uint32_t>(virtual_base, SETTINGS_ACCELERATION_E1_BASE);
 
-    settings_jerk_x		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_JERK_X_BASE)          & (unsigned long)(HW_REGS_MASK)));
-    settings_jerk_y		        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_JERK_Y_BASE)          & (unsigned long)(HW_REGS_MASK)));
-    settings_jerk_z 	        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_JERK_Z_BASE)          & (unsigned long)(HW_REGS_MASK)));
-    settings_jerk_e0 	        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_JERK_E0_BASE)         & (unsigned long)(HW_REGS_MASK)));
-    settings_jerk_e1 	        = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_JERK_E1_BASE)         & (unsigned long)(HW_REGS_MASK)));
+    settingsJerkX		        = createVariable<uint32_t>(virtual_base, SETTINGS_JERK_X_BASE         );
+    settingsJerkY		        = createVariable<uint32_t>(virtual_base, SETTINGS_JERK_Y_BASE         );
+    settingsJerkZ 	            = createVariable<uint32_t>(virtual_base, SETTINGS_JERK_Z_BASE         );
+    settingsJerkE0 	            = createVariable<uint32_t>(virtual_base, SETTINGS_JERK_E0_BASE        );
+    settingsJerkE1 	            = createVariable<uint32_t>(virtual_base, SETTINGS_JERK_E1_BASE        );
 
-    settings_max_temp_e0		= (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_TEMP_E0_BASE)      & (unsigned long)(HW_REGS_MASK)));
-    settings_max_temp_e1		= (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_TEMP_E1_BASE)      & (unsigned long)(HW_REGS_MASK)));
-    settings_max_temp_bed 	    = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + SETTINGS_MAX_TEMP_BED_BASE)     & (unsigned long)(HW_REGS_MASK)));
+    settings_max_temp_e0		= createVariable<int32_t >(virtual_base, SETTINGS_MAX_TEMP_E0_BASE    );
+    settings_max_temp_e1		= createVariable<int32_t >(virtual_base, SETTINGS_MAX_TEMP_E1_BASE    );
+    settings_max_temp_bed 	    = createVariable<int32_t >(virtual_base, SETTINGS_MAX_TEMP_BED_BASE   );
 
-    temp[0]                     = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TEMP_0_BASE)                    & (unsigned long)(HW_REGS_MASK)));
-    temp[1]                     = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TEMP_1_BASE)                    & (unsigned long)(HW_REGS_MASK)));
-    temp[2]                     = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TEMP_2_BASE)                    & (unsigned long)(HW_REGS_MASK)));
+    temp[0]                     = createVariable<int32_t >(virtual_base, TEMP_0_BASE                  );
+    temp[1]                     = createVariable<int32_t >(virtual_base, TEMP_1_BASE                  );
+    temp[2]                     = createVariable<int32_t >(virtual_base, TEMP_2_BASE                  );
 
-    position_x                  = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + POSITION_X_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    position_y                  = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + POSITION_Y_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    position_z                  = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + POSITION_Z_BASE)                & (unsigned long)(HW_REGS_MASK)));
-    position_e0                 = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + POSITION_E0_BASE)               & (unsigned long)(HW_REGS_MASK)));
-    position_e1                 = (int32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + POSITION_E1_BASE)               & (unsigned long)(HW_REGS_MASK)));
+    position_x                  = createVariable<int32_t >(virtual_base, POSITION_X_BASE              );
+    position_y                  = createVariable<int32_t >(virtual_base, POSITION_Y_BASE              );
+    position_z                  = createVariable<int32_t >(virtual_base, POSITION_Z_BASE              );
+    position_e0                 = createVariable<int32_t >(virtual_base, POSITION_E0_BASE             );
+    position_e1                 = createVariable<int32_t >(virtual_base, POSITION_E1_BASE             );
 
 
     *command_type 				= uint32_t(0);
@@ -165,42 +170,42 @@ void MechanicsController::initMem() {
 
 void MechanicsController::setSettings()
 {
-    *settings_max_speed_x       =   uint32_t(printer->printerVariables.settings.movement.max_Speed.x  *
-                                             printer->printerVariables.settings.movement.step_per_Unit.x  / 60);
-    *settings_max_speed_y       =   uint32_t(printer->printerVariables.settings.movement.max_Speed.y  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.y  / 60);
-    *settings_max_speed_z 	    =   uint32_t(printer->printerVariables.settings.movement.max_Speed.z  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.z  / 60);
-    *settings_max_speed_e0 	    =   uint32_t(printer->printerVariables.settings.movement.max_Speed.e0 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e0 / 60);
-    *settings_max_speed_e1 	    =   uint32_t(printer->printerVariables.settings.movement.max_Speed.e1 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e1 / 60);
+    *settingsMaxSpeedX       =   uint32_t(printer->printerVariables.settings.movement.maxSpeed.x  *
+                                             printer->printerVariables.settings.movement.stepsPerUnit.x  / 60);
+    *settingsMaxSpeedY       =   uint32_t(printer->printerVariables.settings.movement.maxSpeed.y  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.y  / 60);
+    *settingsMaxSpeedZ 	    =   uint32_t(printer->printerVariables.settings.movement.maxSpeed.z  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.z  / 60);
+    *settingsMaxSpeedE0 	    =   uint32_t(printer->printerVariables.settings.movement.maxSpeed.e0 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e0 / 60);
+    *settingsMaxSpeedE1 	    =   uint32_t(printer->printerVariables.settings.movement.maxSpeed.e1 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e1 / 60);
 
-    *settings_acceleration_x	=   uint32_t(printer->printerVariables.settings.movement.max_Acceleration.x  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.x  / 3600);
-    *settings_acceleration_y	=   uint32_t(printer->printerVariables.settings.movement.max_Acceleration.y  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.y  / 3600);
-    *settings_acceleration_z 	=   uint32_t(printer->printerVariables.settings.movement.max_Acceleration.z  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.z  / 3600);
-    *settings_acceleration_e0 	=   uint32_t(printer->printerVariables.settings.movement.max_Acceleration.e0 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e0 / 3600);
-    *settings_acceleration_e1   =   uint32_t(printer->printerVariables.settings.movement.max_Acceleration.e1 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e1 / 3600);
+    *settingsAccelerationX	=   uint32_t(printer->printerVariables.settings.movement.maxAcceleration.x  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.x  / 3600);
+    *settingsAccelerationY	=   uint32_t(printer->printerVariables.settings.movement.maxAcceleration.y  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.y  / 3600);
+    *settingsAccelerationZ 	=   uint32_t(printer->printerVariables.settings.movement.maxAcceleration.z  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.z  / 3600);
+    *settingsAccelerationE0 	=   uint32_t(printer->printerVariables.settings.movement.maxAcceleration.e0 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e0 / 3600);
+    *settingsAccelerationE1   =   uint32_t(printer->printerVariables.settings.movement.maxAcceleration.e1 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e1 / 3600);
 
-    *settings_jerk_x		    =   uint32_t(printer->printerVariables.settings.movement.max_Jerk.x  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.x  / 60);
-    *settings_jerk_y		    =   uint32_t(printer->printerVariables.settings.movement.max_Jerk.y  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.y  / 60);
-    *settings_jerk_z 	        =   uint32_t(printer->printerVariables.settings.movement.max_Jerk.z  *
-                                                printer->printerVariables.settings.movement.step_per_Unit.z  / 60);
-    *settings_jerk_e0 	        =   uint32_t(printer->printerVariables.settings.movement.max_Jerk.e0 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e0 / 60);
-    *settings_jerk_e1 	        =   uint32_t(printer->printerVariables.settings.movement.max_Jerk.e1 *
-                                                printer->printerVariables.settings.movement.step_per_Unit.e1 / 60);
+    *settingsJerkX		    =   uint32_t(printer->printerVariables.settings.movement.maxJerk.x  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.x  / 60);
+    *settingsJerkY		    =   uint32_t(printer->printerVariables.settings.movement.maxJerk.y  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.y  / 60);
+    *settingsJerkZ 	        =   uint32_t(printer->printerVariables.settings.movement.maxJerk.z  *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.z  / 60);
+    *settingsJerkE0 	        =   uint32_t(printer->printerVariables.settings.movement.maxJerk.e0 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e0 / 60);
+    *settingsJerkE1 	        =   uint32_t(printer->printerVariables.settings.movement.maxJerk.e1 *
+                                                printer->printerVariables.settings.movement.stepsPerUnit.e1 / 60);
 
-    *settings_max_temp_e0		=   int32_t(printer->printerVariables.settings.heaters.max_Temp.e0);
-    *settings_max_temp_e1		=   int32_t(printer->printerVariables.settings.heaters.max_Temp.e1);
-    *settings_max_temp_bed 	    =   int32_t(printer->printerVariables.settings.heaters.max_Temp.bed);
+    *settings_max_temp_e0		=   int32_t(printer->printerVariables.settings.heaters.maxTemp.e0);
+    *settings_max_temp_e1		=   int32_t(printer->printerVariables.settings.heaters.maxTemp.e1);
+    *settings_max_temp_bed 	    =   int32_t(printer->printerVariables.settings.heaters.maxTemp.bed);
 
     setFlags(flags_in_num, flags_in_inversion_steppers_base + 0, printer->printerVariables.settings.movement.invertion.motors.x == "true");
     setFlags(flags_in_num, flags_in_inversion_steppers_base + 1, printer->printerVariables.settings.movement.invertion.motors.y == "true");
@@ -223,109 +228,110 @@ void MechanicsController::setSettings()
 }
 
 void MechanicsController::setTestParameters() {
-    params_x_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_X_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_x_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_X_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_x_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_X_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_x_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_X_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_x_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_X_4_BASE) & (unsigned long)(HW_REGS_MASK)));
 
-    params_y_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Y_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_y_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Y_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_y_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Y_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_y_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Y_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_y_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Y_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    params_x_0      = createVariable<uint32_t>(virtual_base, PARAMS_X_0_BASE);
+    params_x_1      = createVariable<uint32_t>(virtual_base, PARAMS_X_1_BASE);
+    params_x_2      = createVariable<uint32_t>(virtual_base, PARAMS_X_2_BASE);
+    params_x_3      = createVariable<uint32_t>(virtual_base, PARAMS_X_3_BASE);
+    params_x_4      = createVariable<uint32_t>(virtual_base, PARAMS_X_4_BASE);
 
-    params_z_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Z_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_z_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Z_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_z_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Z_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_z_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Z_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_z_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_Z_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    params_y_0      = createVariable<uint32_t>(virtual_base, PARAMS_Y_0_BASE);
+    params_y_1      = createVariable<uint32_t>(virtual_base, PARAMS_Y_1_BASE);
+    params_y_2      = createVariable<uint32_t>(virtual_base, PARAMS_Y_2_BASE);
+    params_y_3      = createVariable<uint32_t>(virtual_base, PARAMS_Y_3_BASE);
+    params_y_4      = createVariable<uint32_t>(virtual_base, PARAMS_Y_4_BASE);
 
-    params_e0_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E0_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e0_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E0_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e0_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E0_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e0_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E0_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e0_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E0_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    params_z_0      = createVariable<uint32_t>(virtual_base, PARAMS_Z_0_BASE);
+    params_z_1      = createVariable<uint32_t>(virtual_base, PARAMS_Z_1_BASE);
+    params_z_2      = createVariable<uint32_t>(virtual_base, PARAMS_Z_2_BASE);
+    params_z_3      = createVariable<uint32_t>(virtual_base, PARAMS_Z_3_BASE);
+    params_z_4      = createVariable<uint32_t>(virtual_base, PARAMS_Z_4_BASE);
 
-    params_e1_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E1_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e1_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E1_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e1_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E1_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e1_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E1_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    params_e1_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + PARAMS_E1_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    params_e0_0     = createVariable<uint32_t>(virtual_base, PARAMS_E0_0_BASE);
+    params_e0_1     = createVariable<uint32_t>(virtual_base, PARAMS_E0_1_BASE);
+    params_e0_2     = createVariable<uint32_t>(virtual_base, PARAMS_E0_2_BASE);
+    params_e0_3     = createVariable<uint32_t>(virtual_base, PARAMS_E0_3_BASE);
+    params_e0_4     = createVariable<uint32_t>(virtual_base, PARAMS_E0_4_BASE);
 
-
-    timings_x_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_X_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_x_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_X_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_x_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_X_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_x_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_X_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-
-    timings_y_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Y_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_y_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Y_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_y_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Y_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_y_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Y_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-
-    timings_z_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Z_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_z_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Z_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_z_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Z_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_z_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + TIMING_Z_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-
-    timings_e0_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E0_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e0_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E0_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e0_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E0_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e0_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E0_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-
-    timings_e1_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E1_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e1_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E1_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e1_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E1_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    timings_e1_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST +TIMING_E1_3_BASE) & (unsigned long)(HW_REGS_MASK)));
+    params_e1_0     = createVariable<uint32_t>(virtual_base, PARAMS_E1_0_BASE);
+    params_e1_1     = createVariable<uint32_t>(virtual_base, PARAMS_E1_1_BASE);
+    params_e1_2     = createVariable<uint32_t>(virtual_base, PARAMS_E1_2_BASE);
+    params_e1_3     = createVariable<uint32_t>(virtual_base, PARAMS_E1_3_BASE);
+    params_e1_4     = createVariable<uint32_t>(virtual_base, PARAMS_E1_4_BASE);
 
 
-    new_params_x_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_X_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_x_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_X_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_x_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_X_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_x_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_X_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_x_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_X_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    timings_x_0     =  createVariable<uint32_t>(virtual_base, TIMING_X_0_BASE);
+    timings_x_1     =  createVariable<uint32_t>(virtual_base, TIMING_X_1_BASE);
+    timings_x_2     =  createVariable<uint32_t>(virtual_base, TIMING_X_2_BASE);
+    timings_x_3     =  createVariable<uint32_t>(virtual_base, TIMING_X_3_BASE);
 
-    new_params_y_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Y_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_y_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Y_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_y_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Y_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_y_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Y_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_y_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Y_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    timings_y_0     =  createVariable<uint32_t>(virtual_base, TIMING_Y_0_BASE);
+    timings_y_1     =  createVariable<uint32_t>(virtual_base, TIMING_Y_1_BASE);
+    timings_y_2     =  createVariable<uint32_t>(virtual_base, TIMING_Y_2_BASE);
+    timings_y_3     =  createVariable<uint32_t>(virtual_base, TIMING_Y_3_BASE);
 
-    new_params_z_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Z_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_z_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Z_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_z_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Z_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_z_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Z_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_z_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_Z_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    timings_z_0     =  createVariable<uint32_t>(virtual_base, TIMING_Z_0_BASE);
+    timings_z_1     =  createVariable<uint32_t>(virtual_base, TIMING_Z_1_BASE);
+    timings_z_2     =  createVariable<uint32_t>(virtual_base, TIMING_Z_2_BASE);
+    timings_z_3     =  createVariable<uint32_t>(virtual_base, TIMING_Z_3_BASE);
 
-    new_params_e0_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E0_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e0_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E0_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e0_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E0_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e0_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E0_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e0_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E0_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    timings_e0_0    = createVariable<uint32_t>(virtual_base, TIMING_E0_0_BASE);
+    timings_e0_1    = createVariable<uint32_t>(virtual_base, TIMING_E0_1_BASE);
+    timings_e0_2    = createVariable<uint32_t>(virtual_base, TIMING_E0_2_BASE);
+    timings_e0_3    = createVariable<uint32_t>(virtual_base, TIMING_E0_3_BASE);
 
-    new_params_e1_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E1_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e1_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E1_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e1_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E1_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e1_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E1_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    new_params_e1_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + NEW_RPARAMS_E1_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    timings_e1_0    = createVariable<uint32_t>(virtual_base, TIMING_E1_0_BASE);
+    timings_e1_1    = createVariable<uint32_t>(virtual_base, TIMING_E1_1_BASE);
+    timings_e1_2    = createVariable<uint32_t>(virtual_base, TIMING_E1_2_BASE);
+    timings_e1_3    = createVariable<uint32_t>(virtual_base, TIMING_E1_3_BASE);
 
-    max_timings_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_TIMING_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_timings_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_TIMING_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_timings_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_TIMING_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_timings_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_TIMING_3_BASE) & (unsigned long)(HW_REGS_MASK)));
 
-    max_params_0 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_PARAMS_0_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_params_1 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_PARAMS_1_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_params_2 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_PARAMS_2_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_params_3 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_PARAMS_3_BASE) & (unsigned long)(HW_REGS_MASK)));
-    max_params_4 = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + MAX_PARAMS_4_BASE) & (unsigned long)(HW_REGS_MASK)));
+    new_params_x_0  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_X_0_BASE);
+    new_params_x_1  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_X_1_BASE);
+    new_params_x_2  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_X_2_BASE);
+    new_params_x_3  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_X_3_BASE);
+    new_params_x_4  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_X_4_BASE);
 
-    step_x_now  = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + STEP_X_NOW_BASE) & (unsigned long)(HW_REGS_MASK)));
-    step_y_now  = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + STEP_Y_NOW_BASE) & (unsigned long)(HW_REGS_MASK)));
-    step_z_now  = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + STEP_Z_NOW_BASE) & (unsigned long)(HW_REGS_MASK)));
-    step_e0_now = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + STEP_E0_NOW_BASE) & (unsigned long)(HW_REGS_MASK)));
-    step_e1_now = (uint32_t *) (virtual_base + ((unsigned long)(ALT_LWFPGASLVS_OFST + STEP_E1_NOW_BASE) & (unsigned long)(HW_REGS_MASK)));
+    new_params_y_0  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Y_0_BASE);
+    new_params_y_1  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Y_1_BASE);
+    new_params_y_2  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Y_2_BASE);
+    new_params_y_3  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Y_3_BASE);
+    new_params_y_4  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Y_4_BASE);
+
+    new_params_z_0  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Z_0_BASE);
+    new_params_z_1  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Z_1_BASE);
+    new_params_z_2  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Z_2_BASE);
+    new_params_z_3  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Z_3_BASE);
+    new_params_z_4  = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_Z_4_BASE);
+
+    new_params_e0_0 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E0_0_BASE);
+    new_params_e0_1 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E0_1_BASE);
+    new_params_e0_2 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E0_2_BASE);
+    new_params_e0_3 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E0_3_BASE);
+    new_params_e0_4 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E0_4_BASE);
+
+    new_params_e1_0 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E1_0_BASE);
+    new_params_e1_1 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E1_1_BASE);
+    new_params_e1_2 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E1_2_BASE);
+    new_params_e1_3 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E1_3_BASE);
+    new_params_e1_4 = createVariable<uint32_t>(virtual_base, NEW_RPARAMS_E1_4_BASE);
+
+    max_timings_0   = createVariable<uint32_t>(virtual_base, MAX_TIMING_0_BASE);
+    max_timings_1   = createVariable<uint32_t>(virtual_base, MAX_TIMING_1_BASE);
+    max_timings_2   = createVariable<uint32_t>(virtual_base, MAX_TIMING_2_BASE);
+    max_timings_3   = createVariable<uint32_t>(virtual_base, MAX_TIMING_3_BASE);
+
+    max_params_0    = createVariable<uint32_t>(virtual_base, MAX_PARAMS_0_BASE);
+    max_params_1    = createVariable<uint32_t>(virtual_base, MAX_PARAMS_1_BASE);
+    max_params_2    = createVariable<uint32_t>(virtual_base, MAX_PARAMS_2_BASE);
+    max_params_3    = createVariable<uint32_t>(virtual_base, MAX_PARAMS_3_BASE);
+    max_params_4    = createVariable<uint32_t>(virtual_base, MAX_PARAMS_4_BASE);
+
+    step_x_now      = createVariable<uint32_t>(virtual_base, STEP_X_NOW_BASE);
+    step_y_now      = createVariable<uint32_t>(virtual_base, STEP_Y_NOW_BASE);
+    step_z_now      = createVariable<uint32_t>(virtual_base, STEP_Z_NOW_BASE);
+    step_e0_now     = createVariable<uint32_t>(virtual_base, STEP_E0_NOW_BASE);
+    step_e1_now     = createVariable<uint32_t>(virtual_base, STEP_E1_NOW_BASE);
 
 }
 
@@ -402,9 +408,9 @@ void MechanicsController::printSettings() {
     string settingsRowNames[3] = {"maxSpeed", "acceleration", "jerk"};
     int32_t colWidth[5 + 1] = {12, 10, 10, 10, 10, 10};
     uint32_t data[5 * 3] = {
-            *settings_max_speed_x , *settings_max_speed_y , *settings_max_speed_z , *settings_max_speed_e0 , *settings_max_speed_e1,
-            *settings_acceleration_x , *settings_acceleration_y , *settings_acceleration_z , *settings_acceleration_e0 , *settings_acceleration_e1,
-            *settings_jerk_x , *settings_jerk_y , *settings_jerk_z , *settings_jerk_e0 , *settings_jerk_e1};
+            *settingsMaxSpeedX , *settingsMaxSpeedY , *settingsMaxSpeedZ , *settingsMaxSpeedE0 , *settingsMaxSpeedE1,
+            *settingsAccelerationX , *settingsAccelerationY , *settingsAccelerationZ , *settingsAccelerationE0 , *settingsAccelerationE1,
+            *settingsJerkX , *settingsJerkY , *settingsJerkZ , *settingsJerkE0 , *settingsJerkE1};
     printTable( "Заданные настройки",
                 5,   3,
                 settingsColNames, settingsRowNames,

@@ -21,18 +21,18 @@ struct PrinterVariables {
                 float i = 0.0f;
                 float d = 0.0f;
             };
-            struct Max_Temp {
+            struct MaxTemp {
                 int32_t bed = 300;
                 int32_t e0  = 300;
                 int32_t e1  = 300;
             };
             int32_t delta = 1;
             PID pid;
-            Max_Temp max_Temp;
+            MaxTemp maxTemp;
         };
 
         struct Movement {
-            struct Default_Speed {
+            struct DefaultSpeed {
                 float x  = 6000.0f;
                 float y  = 6000.0f;
                 float z  = 2000.0f;
@@ -40,7 +40,7 @@ struct PrinterVariables {
                 float e1 =  200.0f;
             };
 
-            struct Max_Speed {
+            struct MaxSpeed {
                 float x  = 6000.0f;
                 float y  = 6000.0f;
                 float z  = 2000.0f;
@@ -48,7 +48,7 @@ struct PrinterVariables {
                 float e1 =  200.0f;
             };
 
-            struct Max_Acceleration {
+            struct MaxAcceleration {
                 float x  = 7200000.0f;
                 float y  = 7200000.0f;
                 float z  = 3600000.0f;
@@ -56,7 +56,7 @@ struct PrinterVariables {
                 float e1 =  360000.0f;
             };
 
-            struct Max_Jerk {
+            struct MaxJerk {
                 float x  = 1000.0f;
                 float y  = 1000.0f;
                 float z  =  100.0f;
@@ -80,7 +80,7 @@ struct PrinterVariables {
                 Slow slow;
             };
 
-            struct Step_per_Unit {
+            struct StepsPerUnit {
                 float x  =  80.0f;
                 float y  =  80.0f;
                 float z  = 800.0f;
@@ -94,10 +94,10 @@ struct PrinterVariables {
                 float z = 250.0f;
             };
 
-            int32_t num_extruders = 1;
-            int32_t num_endstops = 1;
-            int32_t num_motors = 5;
-            int32_t num_barend = 1;
+            int32_t numOfExtruders = 1;
+            int32_t numOfEndstops = 1;
+            int32_t numOfMotors = 5;
+            int32_t numOfBarend = 1;
 
             struct Invertion {
                 struct Motors {
@@ -126,11 +126,11 @@ struct PrinterVariables {
             };
 
 
-            Default_Speed default_Speed;
-            Max_Speed max_Speed;
-            Max_Acceleration max_Acceleration;
-            Max_Jerk max_Jerk;
-            Step_per_Unit step_per_Unit;
+            DefaultSpeed defaultSpeed;
+            MaxSpeed maxSpeed;
+            MaxAcceleration maxAcceleration;
+            MaxJerk maxJerk;
+            StepsPerUnit stepsPerUnit;
             Size size;
             Homing homing;
             Invertion invertion;
