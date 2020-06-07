@@ -1,14 +1,16 @@
-module heater_control(	input 	wire 				clk,
-								input		wire	[11:0]	temp,
+module heater_control(	
+								input 	wire 									clk,
+								input		wire									reset,
+								input		wire					[11:0]	temp,
 								input 	wire	signed	[11:0]	t,
 								input		wire	signed	[11:0]	dt,
 								input		wire	signed	[11:0]	max_temp,
-								input		wire					heat,
-								input		wire					heat_long,
+								input		wire									heat,
+								input		wire									heat_long,
 
-								output	reg						enable_heater,
-								output	reg						f);
-wire [11:0] temp_filter;
+								output	reg										enable_heater,
+								output	reg										f);
+wire  [11:0]	temp_filter;
 wire	[11:0]	temp_bottom;
 wire	[11:0]	temp_upper;
 wire	[11:0]	temp_heat;
@@ -26,9 +28,9 @@ initial
 begin
 	enable_heater = 1'b0;
 	f = 1'b1;
-	rth = 'd0;
-	rt = 'd0;
-	rdt = 'd0;
+	rth = 'd1836;
+	rt = 'd1836;
+	rdt = 'd1836;
 	w = 'd0;
 	g = 1'b0;
 	hp = 1'b0;
@@ -51,91 +53,111 @@ temp_adctemp tat2(.clk(clk),
 					.temp(rt),
 					.adc_temp(temp_upper));
 					
-always @(posedge heat or posedge heat_long)
+always @(posedge heat or posedge heat_long or posedge reset)
 begin
-	if (heat)
+	if (reset)
 	begin
-		if (t >= max_temp)
-		begin
-			rth <= 'd0;
-			rt <= 'd0;
-			rdt <= 'd0;
-		end
-		else
-		begin
-			rth <= t;
-			rt <= 'd0;
-			rdt <= 'd0;
-		end
+		rth <= 'd0;
+		rt <= 'd0;
+		rdt <= 'd0;
 	end
 	else
-	begin
-		if (t >= max_temp)
+	begin	
+		if (heat)
 		begin
-			rth <= 'd0;
-			rt <= 'd0;
-			rdt <= 'd0;
+			if (t >= max_temp)
+			begin
+				rth <= 'd0;
+				rt <= 'd0;
+				rdt <= 'd0;
+			end
+			else
+			begin
+				rth <= t;
+				rt <= 'd0;
+				rdt <= 'd0;
+			end
 		end
 		else
 		begin
-			rth <= 'd0;
-			rt <= t;
-			rdt <= dt;
+			if (t >= max_temp)
+			begin
+				rth <= 'd0;
+				rt <= 'd0;
+				rdt <= 'd0;
+			end
+			else
+			begin
+				rth <= 'd0;
+				rt <= t;
+				rdt <= dt;
+			end
 		end
 	end
 end
 					
 always @(posedge clk)
 begin
-	g = (heat != hp) | (heat_long != hlp);
-	hp = heat;
-	hlp = heat_long;
-	if (w <= 0)
+	if (reset)
 	begin
-		if (heat == 1'b0)
-			f = 1'b1;
-
-		if (heat == 1'b1) //нагрев
-		begin
-			if (f == 1'b1)
-			begin
-				if (g)
-				begin
-					w = 'd100;
-				end
-				else
-				begin
-					if (temp_filter <= temp_heat)
-					begin
-						enable_heater = 1'b0;
-						f = 1'b0;
-					end
-					else
-						enable_heater = 1'b1;
-				end
-			end
-		end
-		else 
-		begin 
-			if (g)
-				w = 'd100;
-			else
-			begin
-				if (temp_filter <= temp_upper)
-				begin
-					enable_heater = 1'b0;
-				end
-				else
-				begin
-					if (temp_filter >= temp_bottom)
-						enable_heater = 1'b1;
-				end
-			end
-		end
+		g = 0;
+		hp = 0;
+		hlp = 0;
+		w = 0;
+		f = 0;
+		enable_heater = 0;
 	end
 	else
 	begin
-		w <= w - 1;
+		g = (heat != hp) | (heat_long != hlp);
+		hp = heat;
+		hlp = heat_long;
+		if (w <= 0)
+		begin
+			if (heat == 1'b0)
+				f = 1'b1;
+			if (heat == 1'b1) //нагрев
+			begin
+				if (f == 1'b1)
+				begin
+					if (g)
+					begin
+						w = 'd100;
+					end
+					else
+					begin
+						if (temp_filter <= temp_heat)
+						begin
+							enable_heater = 1'b0;
+							f = 1'b0;
+						end
+						else
+							enable_heater = 1'b1;
+					end
+				end
+			end
+			else 
+			begin 
+				if (g)
+					w = 'd100;
+				else
+				begin
+					if (temp_filter <= temp_upper)
+					begin
+						enable_heater = 1'b0;
+					end
+					else
+					begin
+						if (temp_filter >= temp_bottom)
+							enable_heater = 1'b1;
+					end
+				end
+			end
+		end
+		else
+		begin
+			w <= w - 1;
+		end
 	end
 end
 

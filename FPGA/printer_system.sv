@@ -244,22 +244,16 @@ assign flags_in[5] = endstops[5];
 assign flags_in[6] = bar_end;
 
 adctemp_temp att0(.clk(CLK_1MHz),
+					.reset(reset),
 					.adc_temp(temp[0]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_0));
 adctemp_temp att1(.clk(CLK_1MHz),
+					.reset(reset),
 					.adc_temp(temp[1]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_1));
 adctemp_temp att2(.clk(CLK_1MHz),
+					.reset(reset),
 					.adc_temp(temp[2]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_2));
 
 assign flags_in[12] = heaters[0];
@@ -688,6 +682,8 @@ jerk_acc_speed jas0(
 	.stepper_e1_enable(motors[4][0]),
 	.stepper_e1_step(motors[4][1]),
 	.stepper_e1_direction(motors[4][2]),
+
+	
 	.finish(finish_driving),
 	.error(flags_in[22]),
 
@@ -718,6 +714,7 @@ jerk_acc_speed jas0(
 
 heater_control hc0(	
 	.clk(CLK_1MHz),
+	.reset(reset),
 	.temp(temp[0]),
 	.t(command_t),
 	.dt(command_dt),
@@ -730,6 +727,7 @@ heater_control hc0(
 
 heater_control hc1(	
 	.clk(),
+	.reset(reset),
 	.temp(temp[1]),
 	.t(command_t),
 	.dt(command_dt),
@@ -742,6 +740,7 @@ heater_control hc1(
 
 heater_control hc2(	
 	.clk(CLK_1MHz),
+	.reset(reset),
 	.temp(temp[2]),
 	.t(command_t),
 	.dt(command_dt),

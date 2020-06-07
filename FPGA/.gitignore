@@ -5,7 +5,6 @@ db
 greybox_tmp
 incremental_db
 simulation
-testbench
 timing
 hps_isw_handoff
 **/.qsys_edit
@@ -78,5 +77,3 @@ ModelSim/cov*/
 ModelSim/transcript*
 ModelSim/sc_dpiheader.h
 ModelSim/vsim.dbg
-
-#HPS

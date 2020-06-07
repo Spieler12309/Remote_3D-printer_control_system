@@ -1,74 +1,38 @@
-time =      350. Positions: X =     0; Y =     0; Z =     0; E0 =     0; E1 =     0.
+command GCODE_G91 started
+time =      230. Positions: X =     0; Y =     0; Z =     0; E0 =     0; E1 =     0.
 command GCODE_G91 finished
 
-      5410 	 jas0.fin_stt
-X:  N =        240, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Y:  N =         80, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-     12810 	 jas0.fin_ct
-X:  t1 =          0, t2 =    1500000, t30 =          0, tt =    1500000
-Y:  t1 =          0, t2 =     500000, t30 =          0, tt =     500000
-Z:  t1 =          0, t2 =          0, t30 =          0, tt =          0
-E0: t1 =          0, t2 =          0, t30 =          0, tt =          0
-E1: t1 =          0, t2 =          0, t30 =          0, tt =          0
-     12830 	 jas0.fin_fmt
-max_params: N =        240, nn =          0, t0 =       6250, tna =       6250, delta =          0
-max_timing: t1 =          0, t2 =    1500000, t30 =          0, tt =    1500000
-     16930 	 jas0.fin_canp
-X:  N =        240, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Y:  N =         80, nn =          0, t0 =      18750, tna =      18750, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
+
+command GCODE_G1 started
+time =     1430. X =  2400; Y =   800; Z =   400; E0 =   500; E1 =   450.
+     13250 	 jas0.fin_stt
+X:  N =       2400, nn =         83, t0 =      50000, tna =      10160, delta =        480
+Y:  N =        800, nn =         41, t0 =      50000, tna =      10640, delta =        960
+Z:  N =        400, nn =       7010, t0 =      37509, tna =       2459, delta =          5
+E0: N =        500, nn =         25, t0 =      30012, tna =      19037, delta =        439
+E1: N =        450, nn =         25, t0 =      30012, tna =      19037, delta =        439
+     20650 	 jas0.fin_ct
+X:  t1 =    2516560, t2 =   22697440, t30 =    2516560, tt =   27730560
+Y:  t1 =    1262800, t2 =    7639520, t30 =    1262800, tt =   10165120
+Z:  t1 =    7402300, t2 =          0, t30 =    7402300, tt =   14804600
+E0: t1 =     618600, t2 =    8566650, t30 =     618600, tt =    9803850
+E1: t1 =     618600, t2 =    7614800, t30 =     618600, tt =    8852000
+     20670 	 jas0.fin_fmt
+max_params: N =       2400, nn =         83, t0 =      50000, tna =      10160, delta =        480
+max_timing: t1 =    2516560, t2 =   22697440, t30 =    2516560, tt =   27730560
+     31370 	 jas0.fin_canp
+X:  N =       2400, nn =         83, t0 =      50000, tna =      10160, delta =        480
+Y:  N =        800, nn =         27, t0 =     151502, tna =      30425, delta =       4484
+Z:  N =        400, nn =         13, t0 =     307490, tna =      60688, delta =      18984
+E0: N =        500, nn =         17, t0 =     236323, tna =      48706, delta =      11036
+E1: N =        450, nn =         15, t0 =     267284, tna =      54041, delta =      14216
+time = 553642710. Positions: X =  2400; Y =   800; Z =   400; E0 =   500; E1 =   450.
 command GCODE_G1 finished
 
-time = 29892070. Positions: X =   240; Y =    80; Z =     0; E0 =     0; E1 =     0.
-  29897190 	 jas0.fin_stt
-X:  N =        400, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Y:  N =        240, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-  29904590 	 jas0.fin_ct
-X:  t1 =          0, t2 =    2500000, t30 =          0, tt =    2500000
-Y:  t1 =          0, t2 =    1500000, t30 =          0, tt =    1500000
-Z:  t1 =          0, t2 =          0, t30 =          0, tt =          0
-E0: t1 =          0, t2 =          0, t30 =          0, tt =          0
-E1: t1 =          0, t2 =          0, t30 =          0, tt =          0
-  29904610 	 jas0.fin_fmt
-max_params: N =        400, nn =          0, t0 =       6250, tna =       6250, delta =          0
-max_timing: t1 =          0, t2 =    2500000, t30 =          0, tt =    2500000
-  29908710 	 jas0.fin_canp
-X:  N =        400, nn =          0, t0 =       6250, tna =       6250, delta =          0
-Y:  N =        240, nn =          0, t0 =      10416, tna =      10416, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-command GCODE_G1 finished
 
-time = 79783850. Positions: X =   640; Y =  -160; Z =     0; E0 =     0; E1 =     0.
-  79787250 	 jas0.fin_stt
-X:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-Y:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-  79794650 	 jas0.fin_ct
-X:  t1 =          0, t2 =          0, t30 =          0, tt =          0
-Y:  t1 =          0, t2 =          0, t30 =          0, tt =          0
-Z:  t1 =          0, t2 =          0, t30 =          0, tt =          0
-E0: t1 =          0, t2 =          0, t30 =          0, tt =          0
-E1: t1 =          0, t2 =          0, t30 =          0, tt =          0
-  79794670 	 jas0.fin_fmt
-max_params: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-max_timing: t1 =          0, t2 =          0, t30 =          0, tt =          0
-  79796570 	 jas0.fin_canp
-X:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-Y:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-Z:  N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E0: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-E1: N =          0, nn =          0, t0 =          0, tna =          0, delta =          0
-command GCODE_G1 finished
-time = 79796710. Positions: X =   640; Y =  -160; Z =     0; E0 =     0; E1 =     0.
+command GCODE_M104 started
+Target temp: 200. dt =   1.
+time = 553764070. Positions: X =  2400; Y =   800; Z =   400; E0 =   500; E1 =   450.
+command GCODE_M104 finished
+
+

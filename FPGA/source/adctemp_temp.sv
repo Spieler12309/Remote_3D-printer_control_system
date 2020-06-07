@@ -1,52 +1,66 @@
-module adctemp_temp(
+module adctemp_temp
+	#(
+	parameter res = 100000,
+	parameter voltage = 33,
+	parameter k = 10)
+	(
 	input 	wire							clk,
+	input		wire 							reset,
 	input		wire				[11:0]	adc_temp,
-	input		wire				[31:0]	res,
-	input		wire				[31:0]	voltage,	//Напряжение умноженное на k
-	input		wire				[31:0]	k,
 	output	reg 	signed	[11:0]	temp);
 	
-reg [31:0]	mem	[0:71];
+reg [31:0]	mem	[0:72];
 reg [31:0]	rt;
-reg [7:0]	i;
-reg [1:0]	state;
+reg [31:0]	t;
+reg [31:0]	t2;
+reg [7:0]		i;
+reg [1:0]		state;
+
 
 always @(posedge clk)
 begin
-	case (state)
-		0:
-		begin
-			rt <= (10 * res * adc_temp * k) / (1000 * voltage - adc_temp * k);
-			state <= state + 'd1;
-			i <= 'd0;
-		end
-		1:
-		begin
-			if (i <= 71 && mem[i] > rt)
-				i <= i + 1;
-			else
-				state <= state + 1;
-		end
-		2:
-		begin
-			if (i > 71)
-				temp <= 'd300;
-			else
+	if (reset)
+	begin
+		state <= 'd0;
+		i <= 'd0;
+		rt <= 0;
+		temp <= 'd0;
+	end
+	else
+	begin	
+		case (state)
+			0:
 			begin
-				if (i == 0)
-					temp <= -'d55;
+				rt <= (10 * res * adc_temp * k) / (1000 * voltage - adc_temp * k);
+				state <= state + 'd1;
+				i <= 'd0;
+			end
+			1:
+			begin
+				if (i <= 71 && mem[i] > rt)
+					i <= i + 1;
+				else
+					state <= state + 1;
+			end
+			2:
+			begin
+				if (i > 71)
+					temp <= 'd300;
 				else
 				begin
-					temp <= ((5 * (i * (mem[i - 1] - mem[i]) + mem[i] - rt)) / (mem[i - 1] - mem[i])) - 55;
+					if (i == 0)
+						temp <= -'d55;
+					else
+					begin
+						temp <= ((5 * (i * (mem[i - 1] - mem[i]) + mem[i] - rt)) / (mem[i - 1] - mem[i])) - 55;
+					end
 				end
+				state <= state + 1;
 			end
-			state <= state + 1;
-		end
-		default:
-			state <= 'd0;
-	endcase
-	
-	
+			default:
+				state <= 'd0;
+		endcase
+	end
 end
 
 //Значение сопротивления термистора в дециом  (дОм)
@@ -128,6 +142,7 @@ begin
 	mem[69] <= 'd1240;
 	mem[70] <= 'd1155;
 	mem[71] <= 'd1078;
+	mem[72] <= 'd1000;
 end
 
 endmodule

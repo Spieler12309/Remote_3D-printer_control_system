@@ -9,6 +9,176 @@ integer motor_z;
 integer motor_e0;
 integer motor_e1;
 integer main_data;
+integer heater_0;
+integer heater_1;
+integer heater_2;
+
+integer i;
+
+reg [11:0] temps [0:159];
+initial
+begin
+	temps[0]  = 1836;
+	temps[1]  = 1729;
+	temps[2]  = 1616;
+	temps[3]  = 1508;
+	temps[4]  = 1403;
+	temps[5]  = 1297;
+	temps[6]  = 1204;
+	temps[7]  = 1109;
+	temps[8]  = 1022;
+	temps[9]  = 940;
+	temps[10]  = 860;
+	temps[11]  = 744;
+	temps[12]  = 642;
+	temps[13]  = 553;
+	temps[14]  = 476;
+	temps[15]  = 410;
+	temps[16]  = 353;
+	temps[17]  = 304;
+	temps[18]  = 263;
+	temps[19]  = 227;
+	temps[20]  = 197;
+	temps[21]  = 171;
+	temps[22]  = 149;
+	temps[23]  = 130;
+	temps[24]  = 114;
+	temps[25]  = 100;
+	temps[26]  = 87;
+	temps[27]  = 77;
+	temps[28]  = 68;
+	temps[29]  = 60;
+	temps[30]  = 53;
+	temps[31]  = 50;
+	temps[32]  = 46;
+	temps[33]  = 43;
+	temps[34]  = 40;
+	temps[35]  = 38;
+	temps[36]  = 35;
+	temps[37]  = 33;
+	temps[38]  = 31;
+	temps[39]  = 29;
+	temps[40]  = 27;
+	temps[41]  = 26;
+	temps[42]  = 26;
+	temps[43]  = 25;
+	temps[44]  = 25;
+	temps[45]  = 24;
+	temps[46]  = 24;
+	temps[47]  = 23;
+	temps[48]  = 23;
+	temps[49]  = 22;
+	temps[50]  = 22;
+	temps[51]  = 21;
+	temps[52]  = 21;
+	temps[53]  = 21;
+	temps[54]  = 20;
+	temps[55]  = 20;
+	temps[56]  = 19;
+	temps[57]  = 19;
+	temps[58]  = 19;
+	temps[59]  = 18;
+	temps[60]  = 18;
+	temps[61]  = 18;
+	temps[62]  = 18;
+	temps[63]  = 17;
+	temps[64]  = 17;
+	temps[65]  = 17;
+	temps[66]  = 17;
+	temps[67]  = 17;
+	temps[68]  = 17;
+	temps[69]  = 17;
+	temps[70]  = 17;
+	temps[71]  = 17;
+	temps[72]  = 17;
+	temps[73]  = 17;
+	temps[74]  = 17;
+	temps[75]  = 17;
+	temps[76]  = 17;
+	temps[77]  = 17;
+	temps[78]  = 18;
+	temps[79]  = 18;
+	temps[80]  = 18;
+	temps[81]  = 18;
+	temps[82]  = 19;
+	temps[83]  = 19;
+	temps[84]  = 19;
+	temps[85]  = 20;
+	temps[86]  = 20;
+	temps[87]  = 21;
+	temps[88]  = 21;
+	temps[89]  = 21;
+	temps[90]  = 22;
+	temps[91]  = 21;
+	temps[92]  = 21;
+	temps[93]  = 20;
+	temps[94]  = 19;
+	temps[95]  = 19;
+	temps[96]  = 18;
+	temps[97]  = 18;
+	temps[98]  = 17;
+	temps[99]  = 17;
+	temps[100]  = 16;
+	temps[101]  = 16;
+	temps[102]  = 16;
+	temps[103]  = 17;
+	temps[104]  = 17;
+	temps[105]  = 17;
+	temps[106]  = 17;
+	temps[107]  = 17;
+	temps[108]  = 17;
+	temps[109]  = 18;
+	temps[110]  = 18;
+	temps[111]  = 18;
+	temps[112]  = 19;
+	temps[113]  = 19;
+	temps[114]  = 19;
+	temps[115]  = 20;
+	temps[116]  = 20;
+	temps[117]  = 21;
+	temps[118]  = 21;
+	temps[119]  = 21;
+	temps[120]  = 22;
+	temps[121]  = 21;
+	temps[122]  = 21;
+	temps[123]  = 21;
+	temps[124]  = 20;
+	temps[125]  = 20;
+	temps[126]  = 19;
+	temps[127]  = 19;
+	temps[128]  = 19;
+	temps[129]  = 18;
+	temps[130]  = 18;
+	temps[131]  = 19;
+	temps[132]  = 19;
+	temps[133]  = 20;
+	temps[134]  = 21;
+	temps[135]  = 22;
+	temps[136]  = 23;
+	temps[137]  = 24;
+	temps[138]  = 25;
+	temps[139]  = 26;
+	temps[140]  = 27;
+	temps[141]  = 29;
+	temps[142]  = 31;
+	temps[143]  = 33;
+	temps[144]  = 35;
+	temps[145]  = 38;
+	temps[146]  = 40;
+	temps[147]  = 43;
+	temps[148]  = 46;
+	temps[149]  = 50;
+	temps[150]  = 53;
+	temps[151]  = 60;
+	temps[152]  = 68;
+	temps[153]  = 77;
+	temps[154]  = 87;
+	temps[155]  = 100;
+	temps[156]  = 114;
+	temps[157]  = 130;
+	temps[158]  = 149;
+	temps[159]  = 171;
+end
 
 wire	[1:0]		KEY;
 wire	[7:0]		LED;
@@ -101,22 +271,16 @@ assign flags_in[5] = endstops[5];
 assign flags_in[6] = bar_end;
 
 adctemp_temp att0(.clk(CLK_50MHz),
+					.reset(reset),
 					.adc_temp(temp[0]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_0));
 adctemp_temp att1(.clk(CLK_50MHz),
+					.reset(reset),
 					.adc_temp(temp[1]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_1));
 adctemp_temp att2(.clk(CLK_50MHz),
+					.reset(reset),
 					.adc_temp(temp[2]),
-					.res(100000),
-					.voltage(33), //Напряжение, умноженное на k
-					.k(10),
 					.temp(temp_2));
 
 assign flags_in[12] = heaters[0];
@@ -284,6 +448,7 @@ jerk_acc_speed jas0(
 
 heater_control hc0(	
 	.clk(CLK_50MHz),
+	.reset(reset),
 	.temp(temp[0]),
 	.t(command_t),
 	.dt(command_dt),
@@ -296,6 +461,7 @@ heater_control hc0(
 
 heater_control hc1(	
 	.clk(CLK_50MHz),
+	.reset(reset),
 	.temp(temp[1]),
 	.t(command_t),
 	.dt(command_dt),
@@ -308,6 +474,7 @@ heater_control hc1(
 
 heater_control hc2(	
 	.clk(CLK_50MHz),
+	.reset(reset),
 	.temp(temp[2]),
 	.t(command_t),
 	.dt(command_dt),
@@ -329,6 +496,377 @@ always
 always
 	#(1000/2) CLK_1MHz = ~CLK_1MHz;
 
+task resetSystem;
+begin
+	reset	= 'd0;
+	#50;
+	reset = 'd1;
+	#50;
+	reset = 'd0;
+end
+endtask : resetSystem
+
+task setSettings();
+begin
+	settings_max_temp_e0			= 'd300;
+	settings_max_temp_e1			= 'd300;
+	settings_max_temp_bed 		= 'd300;
+
+	settings_max_speed_x 			= 8000;
+	settings_max_speed_y 			= 8000;
+	settings_max_speed_z 			= 133333;
+	settings_max_speed_e0 		= 2666;
+	settings_max_speed_e1 		= 2666;
+
+	settings_acceleration_x 	= 80000;
+	settings_acceleration_y 	= 160000;
+	settings_acceleration_z 	= 8000;
+	settings_acceleration_e0 	= 80000;
+	settings_acceleration_e1 	= 80000;
+
+	settings_jerk_x 					= 1000;
+	settings_jerk_y 					= 1000;
+	settings_jerk_z 					= 1333;
+	settings_jerk_e0 					= 1666;
+	settings_jerk_e1 					= 1666;
+end
+endtask : setSettings
+
+task zeroingInputs();
+begin
+	command_type	= `GCODE_G1;
+	command_x  		= 0;
+	command_y  		= 0;
+	command_z  		= 0;
+	command_e0 		= 0;
+	command_e1 		= 0;
+
+	command_f_x  	= 0;
+	command_f_y  	= 0;
+	command_f_z  	= 0;
+	command_f_e0 	= 0;
+	command_f_e1 	= 0;
+
+	command_t			= 0;
+	command_dt		= 0;
+end
+endtask : zeroingInputs
+
+task runG1;
+input		signed 	[31:0]	x;
+input		signed 	[31:0]	y;
+input		signed 	[31:0]	z;
+input		signed 	[31:0]	e0;
+input		signed 	[31:0]	e1;
+
+input						[31:0]	f_x;
+input						[31:0]	f_y;
+input						[31:0]	f_z;
+input						[31:0]	f_e0;
+input						[31:0]	f_e1;
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G1 started");
+	$fdisplay(main_data, "time = %8d. X = %5d; Y = %5d; Z = %5d; E0 = %5d; E1 = %5d.", 
+						$time, x, y, z, e0, e1);
+	$fclose(main_data);
+
+	command_type	= `GCODE_G1;
+	command_x  = x ;
+	command_y  = y ;
+	command_z  = z ;
+	command_e0 = e0;
+	command_e1 = e1;
+
+	command_f_x  = f_x ;
+	command_f_y  = f_y ;
+	command_f_z  = f_z ;
+	command_f_e0 = f_e0;
+	command_f_e1 = f_e1;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G1 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+
+	zeroingInputs();
+end
+endtask : runG1
+
+task runG90();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G90 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_G90;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G90 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runG90
+
+task runG91();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G91 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_G91;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_G91 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runG91
+
+task runM17();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M17 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_M17;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M17 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM17
+
+task runM18();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M18 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_M18;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M8 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM18
+
+task runM82();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M82 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_M82;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M82 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM82
+
+task runM83();
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M83 started");
+	$fclose(main_data);
+
+	command_type = `GCODE_M83;
+	#20;
+	flags_out = 'd1;
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M83 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM83
+
+task runM104;
+input		signed 	[31:0]	x;
+input 					[11:0]	t;
+input 					[11:0]	dt;
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M104 started");
+	$fdisplay(main_data, "Target temp: %3d. dt = %3d.", t, dt);
+	$fclose(main_data);
+
+	command_type = `GCODE_M104;
+	command_t = t;
+	command_dt = dt;
+	#20;
+	flags_out = 'd1;
+
+	for (i = 0; i < 160; i = i + 1)
+	begin
+		#2000 temp[x] = temps[i];
+	end
+
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M104 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM104
+
+task runM140;
+input		signed 	[31:0]	x;
+input 					[11:0]	t;
+input 					[11:0]	dt;
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M140 started");
+	$fdisplay(main_data, "Target temp: %3d. dt = %3d.", t, dt);
+	$fclose(main_data);
+
+	command_type = `GCODE_M140;
+	command_t = t;
+	command_dt = dt;
+	#20;
+	flags_out = 'd1;
+
+	for (i = 0; i < 130; i = i + 1)
+	begin
+		#2000 temp[x] = temps[i];
+	end
+
+	wait(flags_in[7]);
+	#200;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M140 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM140
+
+task runM109;
+input		signed 	[31:0]	x;
+input 					[11:0]	t;
+input 					[11:0]	dt;
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M109 started");
+	$fdisplay(main_data, "Target temp: %3d. dt = %3d.", t, dt);
+	$fclose(main_data);
+
+	command_type = `GCODE_M109;
+	command_t = t;
+	command_dt = dt;
+	#20;
+	flags_out = 'd1;
+	#20;
+	wait(flags_in[7]);
+	for (i = 0; i < 130; i = i + 1)
+	begin
+		#2000 temp[x] = temps[i];
+	end
+
+	
+	#20000;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M109 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM109
+
+task runM190;
+input		signed 	[31:0]	x;
+input 					[11:0]	t;
+input 					[11:0]	dt;
+begin
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M190 started");
+	$fdisplay(main_data, "Target temp: %3d. dt = %3d.", t, dt);
+	$fclose(main_data);
+
+	command_type = `GCODE_M190;
+	command_t = t;
+	command_dt = dt;
+	#20;
+	flags_out = 'd1;
+
+	for (i = 0; i < 130; i = i + 1)
+	begin
+		#2000 temp[x] = temps[i];
+	end
+
+	wait(flags_in[7]);
+	#20000;
+
+	main_data	= $fopen("main_data.txt", "a");
+	$fdisplay(main_data, "command GCODE_M190 finished\n\n");
+	$fclose(main_data);
+	#100;
+	flags_out = 'd0;
+	#1000;
+end
+endtask : runM190
+
+always @(temp[0] or heaters[0])
+begin
+	#500;
+	heater_0	= $fopen("heater_0.txt", "a");
+	$fdisplay(heater_0, "time = %8d, Heat = %1b, Target temp = %3d, dt = %3d, Current temp = %10d,%5d", 
+						$time, heaters[0], command_t, command_dt, temp[0], temp_0);
+	$fclose(heater_0);
+end
+
 initial
 begin
 	motor_x	 = $fopen("motor_x.txt");
@@ -337,6 +875,9 @@ begin
 	motor_e0 = $fopen("motor_e0.txt");
 	motor_e1 = $fopen("motor_e1.txt");
 	main_data = $fopen("main_data.txt");
+	heater_0 = $fopen("heater_0.txt");
+	heater_1 = $fopen("heater_1.txt");
+	heater_2 = $fopen("heater_2.txt");
 
 	$fclose(motor_x	);
 	$fclose(motor_y	);
@@ -344,6 +885,9 @@ begin
 	$fclose(motor_e0);
 	$fclose(motor_e1);
 	$fclose(main_data);
+	$fclose(heater_0);
+	$fclose(heater_1);
+	$fclose(heater_2);
 
 
 	CLK_100MHz	= 1'b0;
@@ -354,129 +898,26 @@ begin
 
 	
 
-	reset											= 'd0;
-	#50;
-	reset = 'd1;
-	#100;
-	reset = 'd0;
-		
-	settings_max_temp_e0			= 'd300;
-	settings_max_temp_e1			= 'd300;
-	settings_max_temp_bed 		= 'd300;
+	resetSystem();
+	setSettings();
+	zeroingInputs();
 
-	settings_max_speed_x = 8000;
-	settings_max_speed_y = 8000;
-	settings_max_speed_z = 133333;
-	settings_max_speed_e0 = 2666;
-	settings_max_speed_e1 = 2666;
+	runG91();	
 
-	settings_acceleration_x = 8000;
-	settings_acceleration_y = 160000;
-	settings_acceleration_z = 0;
-	settings_acceleration_e0 = 80000;
-	settings_acceleration_e1 = 80000;
+	runG1(2400,//command_x,
+				800,//command_y,
+				400,//command_z,
+				500,//command_e0,
+				450,//command_e1,
+				5000,//command_f_x, 
+				5000,//command_f_y, 
+				20333,//command_f_z, 
+				2666,//command_f_e0,
+				2666//command_f_e1,
+				);
 
-	settings_jerk_x = 8000;
-	settings_jerk_y = 8000;
-	settings_jerk_z = 1333;
-	settings_jerk_e0 = 2666;
-	settings_jerk_e1 = 2666;
-
-	#50;
-
-	command_type = `GCODE_G91;
-	#50;
-	flags_out = 'd1;
-
-	wait(flags_in[7]);
-	#50;
-	flags_out = 'd0;
-	#1000;
-
-	main_data	= $fopen("main_data.txt", "a");
-	$fdisplay(main_data, "command GCODE_G91 finished\n");
-	$fclose(main_data);
-
-	command_type	= `GCODE_G1;
-	command_x  = 240;
-	command_y  = 80;
-	command_z  = 0;
-	command_e0 = 0;
-	command_e1 = 0;
-
-	command_f_x  = 8000;
-	command_f_y  = 8000;
-	command_f_z  = 1333;
-	command_f_e0 = 2666;
-	command_f_e1 = 2666;
-
-	command_t			= 'd0;
-	command_dt		= 'd1;
-
-	#5;
-	flags_out = 'd1;
-
-	wait(flags_in[7]);
-	main_data	= $fopen("main_data.txt", "a");
-	$fdisplay(main_data, "command GCODE_G1 finished\n");
-	$fclose(main_data);
-	#100;
-	flags_out = 'd0;
-	#1000;
-
-	command_type	= `GCODE_G1;
-	command_x  = 400;
-	command_y  = -240;
-	command_z  = 0;
-	command_e0 = 0;
-	command_e1 = 0;
-
-	command_f_x  = 8000;
-	command_f_y  = 8000;
-	command_f_z  = 1333;
-	command_f_e0 = 2666;
-	command_f_e1 = 2666;
-
-	command_t			= 'd0;
-	command_dt		= 'd1;
-
-	#5;
-	flags_out = 'd1;
-
-	wait(flags_in[7]);
-	main_data	= $fopen("main_data.txt", "a");
-	$fdisplay(main_data, "command GCODE_G1 finished\n");
-	$fclose(main_data);
-	#100;
-	flags_out = 'd0;
-	#1000;
-
-	command_type	= `GCODE_G1;
-	command_x  = 0;
-	command_y  = 0;
-	command_z  = 0;
-	command_e0 = 0;
-	command_e1 = 0;
-
-	command_f_x  = 8000;
-	command_f_y  = 8000;
-	command_f_z  = 1333;
-	command_f_e0 = 2666;
-	command_f_e1 = 2666;
-
-	command_t			= 'd0;
-	command_dt		= 'd1;
-
-	#500;
-	flags_out = 'd1;
-
-	wait(flags_in[7]);
-	main_data	= $fopen("main_data.txt", "a");
-	$fdisplay(main_data, "command GCODE_G1 finished");
-	$fclose(main_data);
-	#100;
-	flags_out = 'd0;
-	#1000;
+	runM104(0, 200, 1);
+	
 
 	$stop;
 end

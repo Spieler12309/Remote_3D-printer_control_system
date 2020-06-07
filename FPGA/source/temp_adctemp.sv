@@ -11,7 +11,7 @@ module temp_adctemp
 
 	
 	
-	reg [31:0]	mem	[0:71];
+	reg [31:0]	mem	[0:72];
 	reg [11:0]	a;
 	reg [31:0]	rt;
 	reg [3:0] state;
@@ -134,6 +134,7 @@ module temp_adctemp
 		mem[69] <= 'd1240;
 		mem[70] <= 'd1155;
 		mem[71] <= 'd1078;
+		mem[72] <= 'd1000;
 	end
 	
 endmodule

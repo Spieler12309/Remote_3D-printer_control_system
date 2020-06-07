@@ -223,7 +223,8 @@ assign error = ((endstops[0]) && (x == 1) && ((num_x != num_x_now) || (num_y != 
 				       ((endstops[3]) && (y == 2) && ((num_x != num_x_now) || (num_y != num_y_now))) ||
 
 	        		 ((endstops[4]) && (stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now))) ||
-	             ((endstops[5]) && (~stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now)));
+	             ((endstops[5]) && (~stepper_z_direction) && ((num_z != num_z_now) || (num_z != num_z_now))) ||
+	             (~bar_end && (num_e0 != 0 || num_e1 != 0));
 wire	start_driving;
 assign start_driving = (start_driving_main) && (~error);
 

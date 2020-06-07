@@ -184,35 +184,60 @@ string PrinterController::gcodeG28(const Parameters& parameters) {
     int status5 = 0;
     //TODO: Сделать home тдельно для каждой оси
     status1 = gcodeG91(parameters);
-    Parameters par;
-    par.insert("FX", printerVariables.settings.movement.homing.fast.x);
-    par.insert("FY", printerVariables.settings.movement.homing.fast.y);
-    par.insert("FZ", printerVariables.settings.movement.homing.fast.z);
-    par.insert("X", parameters.find("X") * (-500.0));
-    par.insert("Y", parameters.find("Y") * (-500.0));
-    par.insert("Z", parameters.find("Z") * (-500.0));
-    status2 = gcodeG0(par);
+    Parameters par11;
+    par11.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par11.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par11.insert("X", parameters.find("X") * (-500.0));
+    status2 = gcodeG0(par11);
 
-    Parameters par2;
-    par2.insert("FX", printerVariables.settings.movement.homing.fast.x);
-    par2.insert("FY", printerVariables.settings.movement.homing.fast.y);
-    par2.insert("FZ", printerVariables.settings.movement.homing.fast.z);
-    par2.insert("X", parameters.find("X") * (10));
-    par2.insert("Y", parameters.find("Y") * (10));
-    par2.insert("Z", parameters.find("Z") * (10));
-    status3 = gcodeG0(par2);
+    Parameters par12;
+    par12.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par12.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par12.insert("Y", parameters.find("Y") * (-500.0));
+    status2 = gcodeG0(par12);
 
-    Parameters par3;
-    par3.insert("FX", printerVariables.settings.movement.homing.fast.x);
-    par3.insert("FY", printerVariables.settings.movement.homing.fast.y);
-    par3.insert("FZ", printerVariables.settings.movement.homing.fast.z);
-    par3.insert("X", parameters.find("X") * (-15));
-    par3.insert("Y", parameters.find("Y") * (-15));
-    par3.insert("Z", parameters.find("Z") * (-15));
-    status4 = gcodeG0(par3);
+    Parameters par13;
+    par13.insert("FZ", printerVariables.settings.movement.homing.fast.z);
+    par13.insert("Z", parameters.find("Z") * (-500.0));
+    status2 = gcodeG0(par13);
+
+
+    Parameters par21;
+    par21.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par21.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par21.insert("X", parameters.find("X") * (10));
+    status3 = gcodeG0(par21);
+
+    Parameters par22;
+    par22.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par22.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par22.insert("Y", parameters.find("Y") * (10));
+    status3 = gcodeG0(par22);
+
+    Parameters par23;
+    par23.insert("FZ", printerVariables.settings.movement.homing.fast.z);
+    par23.insert("Z", parameters.find("Z") * (10));
+    status3 = gcodeG0(par23);
+
+    Parameters par31;
+    par31.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par31.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par31.insert("X", parameters.find("X") * (-15));
+    status4 = gcodeG0(par31);
+
+    Parameters par32;
+    par32.insert("FX", printerVariables.settings.movement.homing.fast.x);
+    par32.insert("FY", printerVariables.settings.movement.homing.fast.y);
+    par32.insert("Y", parameters.find("Y") * (-15));
+    status4 = gcodeG0(par32);
+
+    Parameters par33;
+    par33.insert("FZ", printerVariables.settings.movement.homing.fast.z);
+    par33.insert("Z", parameters.find("Z") * (-15));
+    status4 = gcodeG0(par33);
 
     status5 = mechanics.setCurrentPosition(true, true, true, false, 0, 0, 0, 0);
-    gcodeG90(par3);
+    gcodeG90(par33);
 
 
     string ans = "";
